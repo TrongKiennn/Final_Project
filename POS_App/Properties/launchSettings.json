@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "POS_App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "POS_App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

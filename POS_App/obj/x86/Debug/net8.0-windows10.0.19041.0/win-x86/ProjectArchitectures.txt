@@ -1,0 +1,1 @@
+D:\C#\Du_An\POS_App\POS_App\POS_App.csproj;x86
