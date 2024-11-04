@@ -49,7 +49,7 @@
                     <TextBlock Text="Material Management" Foreground="White" />
                 </StackPanel>
             </Button>
-            <Button Name="page03Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left">
+            <Button Name="page03Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Click="eventSchedulingButtonClick">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Assets/calendar.png" Width="24" Height="24" Margin="0,0,10,0"/>
                     <TextBlock Text="Event Scheduling" Foreground="White" />

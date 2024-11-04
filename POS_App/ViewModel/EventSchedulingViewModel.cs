@@ -17,10 +17,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.System;
+using Microsoft.UI.Xaml.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace POS_App.ViewModel;
 
-public class EventSchedulingViewModel 
+public class EventSchedulingViewModel : INotifyPropertyChanged
 {
     public class EventParameters : INotifyPropertyChanged
     {
@@ -33,7 +35,7 @@ public class EventSchedulingViewModel
         public int TableNumber { get; set; }
         public string Type { get; set; }
         public string Note { get; set; }
-        public string NumberOfEmployee { get; set; }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
@@ -41,7 +43,9 @@ public class EventSchedulingViewModel
 
     private DatabaseManager _dbManager;
 
-    public ICommand EventSchedulingCommand { get; private set; }
+    public ICommand SaveCommand { get; private set; }
+
+    public ICommand ReturnCommand { get; private set; }
     public ObservableCollection<Grid> Orders { get; set; }
 
     public event Action OnEventSchedulingSuccessful;
@@ -49,24 +53,55 @@ public class EventSchedulingViewModel
 
     public EventParameters EventParams { get; set; }
 
+    public EventParameters InfoParams { get; set; }
+
+    private bool _isDefaultViewVisible;
+    private bool _isEventViewVisible;
+
+    public bool IsDefaultViewVisible
+    {
+        get => _isDefaultViewVisible;
+        set
+        {
+            _isDefaultViewVisible = value;
+            OnPropertyChanged(nameof(IsDefaultViewVisible));
+        }
+    }
+
+    public bool IsEventViewVisible
+    {
+        get => _isEventViewVisible;
+        set
+        {
+            _isEventViewVisible = value;
+            OnPropertyChanged(nameof(IsEventViewVisible));
+        }
+    }
+
     public EventSchedulingViewModel()
     {
         _dbManager = new DatabaseManager();
 
         EventParams = new EventParameters(); // Khởi tạo LoginParameters
 
-        EventSchedulingCommand = new RelayCommand(ExecuteEvent);
+        InfoParams = new EventParameters();
+
+        SaveCommand = new RelayCommand(ExecuteEvent);
+
+        ReturnCommand = new RelayCommand(ReturnEventSchedulingPage);
 
         Orders = new ObservableCollection<Grid>();
+
+        IsDefaultViewVisible = true;
+        IsEventViewVisible = false;
 
         LoadOrders(null);
     }
 
-
     private void ExecuteEvent(object parameter)
     {
-        Model.Event Event = null;
 
+        Model.Event Event = null;
         var EventParams = parameter as EventParameters;
         if (EventParams != null)
         {
@@ -94,6 +129,11 @@ public class EventSchedulingViewModel
                     TableNumber = tableNumber,
                     Note = note
                 };
+
+                if(Event.Note == null)
+                {
+                    Event.Note = "Không có ghi chú";
+                }
 
                 string dateTimeString = $"{Event.Date} {Event.Time}";
                 DateTime eventDateTime = DateTime.ParseExact(dateTimeString, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
@@ -167,6 +207,7 @@ public class EventSchedulingViewModel
         {
             Padding = new Thickness(10, 10, 10, 0),
             Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xFF, 0xFF, 0xE0))
+            
         };
         Grid.SetRow(infoPanel, 0);
 
@@ -174,6 +215,9 @@ public class EventSchedulingViewModel
         infoPanel.Children.Add(new TextBlock { Text = "Ngày Giờ: " + row["date"].ToString(), Foreground = new SolidColorBrush(Colors.Gray) });
         infoPanel.Children.Add(new TextBlock { Text = "Người đặt: " + row["customer_name"].ToString(), Foreground = new SolidColorBrush(Colors.Gray) });
 
+        infoPanel.PointerPressed += OnStackPanelPressed;
+
+        infoPanel.Tag = row["id"].ToString();
         orderGrid.Children.Add(infoPanel);
 
         StackPanel buttonPanel = new StackPanel
@@ -209,13 +253,14 @@ public class EventSchedulingViewModel
         return orderGrid;
     }
 
+    
+
     private void ResetForm(object parameter)
     {
         EventParams.Name = string.Empty;
         EventParams.PhoneNumber = string.Empty;
         EventParams.Email = string.Empty;
         EventParams.Note = string.Empty;
-        EventParams.NumberOfEmployee=string.Empty;
         EventParams.TableNumber=0;
         EventParams.Time=string.Empty;
         EventParams.Date=string.Empty;
@@ -237,6 +282,71 @@ public class EventSchedulingViewModel
         }
 
         LoadOrders(null);
+    }
+
+    public void OnStackPanelPressed(object sender, PointerRoutedEventArgs e)
+    {
+        if (IsDefaultViewVisible)
+        {
+            IsDefaultViewVisible = false;
+            IsEventViewVisible = true;
+        }
+
+        int id = Convert.ToInt32((sender as StackPanel).Tag);
+        Model.Event Event = null;
+        string query = "SELECT * FROM events WHERE id=@id";
+        using (var connection = _dbManager.GetConnection())
+        {
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+
+                cmd.Parameters.AddWithValue("@id", id);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        DateTime dateTime = reader.GetDateTime(reader.GetOrdinal("date"));
+                        Event = new Model.Event
+                        {
+                            Name = reader.GetString("customer_name"),
+                            PhoneNumber = reader.GetString("phone_number"),
+                            Email = reader.GetString("email"),
+                            TableNumber = reader.GetInt32("table_number"),
+                            Note = reader.GetString("note"),
+                            Date = dateTime.ToString("yyyy-MM-dd"),
+                            Time = dateTime.ToString("HH:mm:ss")
+                        };
+                        
+                    }
+                }
+            }
+        }
+
+       
+        InfoParams.Name = Event.Name;
+        InfoParams.PhoneNumber=Event.PhoneNumber;
+        InfoParams.Email=Event.Email;
+        InfoParams.Date = Event.Date;
+        InfoParams.Time = Event.Time;
+        InfoParams.Note = Event.Note;
+        
+    }
+
+    private void ReturnEventSchedulingPage(object parameter)
+    {
+        if (IsEventViewVisible)
+        {
+            IsDefaultViewVisible = true;
+            IsEventViewVisible = false;
+            //LoadOrders(null);
+        }
+    }
+
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
     

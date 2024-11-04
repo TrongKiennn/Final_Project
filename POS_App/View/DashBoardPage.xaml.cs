@@ -44,6 +44,14 @@ namespace POS_App
                 UserNameTextBlock.Text = $"Welcome, {_user.FirstName}";
             }
         }
-        
+
+        private void eventSchedulingButtonClick(object sender, RoutedEventArgs e)
+        {
+            EventScheduling eventScheduling = new EventScheduling();
+            Frame.Navigate(typeof(EventScheduling));
+        }
+
+
+
     }
 }

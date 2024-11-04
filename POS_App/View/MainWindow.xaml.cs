@@ -32,12 +32,12 @@ namespace POS_App
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
 
-            //if (content.Content == null)
-            //{
+            if (content.Content == null)
+            {
 
-            //content.Navigate(typeof(Login));
-            //}
-            content.Navigate(typeof(EventScheduling));
+                content.Navigate(typeof(Login));
+            }
+           
            
         }
     }
