@@ -238,8 +238,5 @@ public class EventSchedulingViewModel
 
         LoadOrders(null);
     }
-
-
-
 }
     

@@ -31,12 +31,13 @@ namespace POS_App
 
         private void Window_Activated(object sender, WindowActivatedEventArgs args)
         {
-            
-            if (content.Content == null)
-            {
-               
-                content.Navigate(typeof(Login));
-            }
+
+            //if (content.Content == null)
+            //{
+
+            //content.Navigate(typeof(Login));
+            //}
+            content.Navigate(typeof(EventScheduling));
            
         }
     }

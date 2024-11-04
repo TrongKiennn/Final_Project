@@ -48,5 +48,4 @@ namespace POS_App
             Frame.Navigate(typeof(Register));
         }
     }
-
 }

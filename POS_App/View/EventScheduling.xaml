@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="POS_App.EventScheduling"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:POS_App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="82"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="305"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Background="#2A314B">
+            <Image Source="Assets/latte.png" Width="50" Height="60" Margin="20,0,20,0"/>
+            <TextBlock Text="Event Scheduling" Foreground="White" VerticalAlignment="Center" FontSize="24" Margin="10"/>
+        </StackPanel>
+
+        <!-- Ô đầu tiên, hàng 0 cột 1 -->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid x:Name="DefaultTitleView" Visibility="Visible">
+                <StackPanel  Width="auto" Height="auto" VerticalAlignment="Center" >
+                    <TextBlock Text="New Event" Foreground="Gray"  VerticalAlignment="Center"  FontWeight="Bold" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="EventTitleView" Visibility="Collapsed">
+                <StackPanel  Width="auto" Height="auto" VerticalAlignment="Center" >
+                    <TextBlock Text="Test" Foreground="Gray"  VerticalAlignment="Center"  FontWeight="Bold" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+
+
+
+        <!-- Ô thứ ba, hàng 1 cột 0 -->
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Background="#2A314B" Width="auto" Height="Auto">
+                <Grid Background="WhiteSmoke" Height="150" Margin="10,10,10,0" CornerRadius="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Hàng đầu tiên chứa thông tin cũ -->
+                    <StackPanel Grid.Row="0" Padding="10,10,10,0" Background="#ffffe0" PointerPressed="StackPanel_PointerPressed">
+                        <TextBlock Text="Tên sự kiện: " Foreground="Gray"/>
+                        <TextBlock Text="Ngày: " Foreground="Gray"/>
+                        <TextBlock Text="Giờ: " Foreground="Gray"/>
+                        <TextBlock Text="Người đặt: " Foreground="Gray"/>
+                    </StackPanel>
+
+                    <!-- Hàng thứ hai chứa thông tin mới -->
+                    <StackPanel Grid.Row="1" Margin="10,0,0,0">
+                        <Button Grid.Row="5" Grid.Column="2" CornerRadius="20" Background="#f08080" Width="120" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CompleteButton_Click" Margin="0, 5, 0, 0">
+                            <TextBlock Text="Complete" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+
+
+
+                <!-- Thêm các phần tử khác vào đây nếu cần -->
+            </StackPanel>
+        </ScrollViewer>
+
+
+        <!-- Lưới con (hàng 1, cột 1) -->
+        <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" Margin="10" CornerRadius="12">
+            <Grid x:Name="DefaultView" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Border Grid.Row="0" Grid.Column="0" Background="LightGray" Width="Auto" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Họ và tên" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="Auto" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Số điện thoại" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="2" Background="LightGray" Width="Auto" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Email liên hệ công việc" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" HorizontalAlignment="Stretch" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Nội dung chính bữa tiệc" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="0" Background="LightGray" Width="Auto" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Ngày tổ chức" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="Auto" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Thời gian" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="2" Background="LightGray" Width="Auto" Height="100">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Số lượng bàn muốn đặt" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" HorizontalAlignment="Stretch" Height="200">
+                    <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
+                        <TextBlock Text="Ghi chú" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="150" CornerRadius="8"/>
+                    </StackPanel>
+                </Border>
+
+                <Button Grid.Row="4" Grid.Column="2" Background="#2A314B" Margin="10" Width="70" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SaveButton_Click">
+                    <TextBlock Text="Save" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </Grid>
+
+            <Grid x:Name="EventView" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="250, 0, 250, 0" VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/name.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="Ho ve ten" Foreground="White" Padding="10"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock x:Name="Fullname" 
+                                        Padding="10, 0, 10, 0"
+                                        Grid.Column="1" 
+                                        HorizontalAlignment="Stretch" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="250, 0, 250, 0" VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/phone_number.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="So dien thoai" Foreground="White" Padding="10" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock x:Name="PhoneNumber" 
+                                        Padding="10, 0, 10, 0"
+                                        Grid.Column="1" 
+                                        HorizontalAlignment="Stretch" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Margin="250, 0, 250, 0" VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/email.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="Email" Foreground="White" Padding="10" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock x:Name="Email" 
+                                        Padding="10, 0, 10, 0"
+                                        Grid.Column="1" 
+                                        HorizontalAlignment="Stretch" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Margin="250, 0, 250, 0" VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/date.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="Ngay to chuc" Foreground="White" Padding="10" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock x:Name="Date" 
+                                        Padding="10, 0, 10, 0"
+                                        Grid.Column="1" 
+                                        HorizontalAlignment="Stretch" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Margin="250, 0, 250, 0 " VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/time.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="Thoi gian" Foreground="White" Padding="10" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock x:Name="Time" 
+                                Padding="10, 0, 10, 0"
+                                Grid.Column="1" 
+                                HorizontalAlignment="Stretch" 
+                                TextWrapping="Wrap" 
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5" Margin="250, 0, 250, 0" VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/count.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="So luong ban" Foreground="White" Padding="10" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock x:Name="NumberOfTables" 
+                                        Padding="10, 0, 10, 0"
+                                        Grid.Column="1" 
+                                        HorizontalAlignment="Stretch" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Row="6" Margin="250, 0, 250, 0" VerticalAlignment="Center">
+                    <Border CornerRadius="6" Background="White">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="#2A314B" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="150">
+                                    <Image Source="Assets/note.png" Width="24" Height="24" Margin="10,0,2,0" />
+                                    <TextBlock Text="Ghi chú" Foreground="White" Padding="10" FontSize="16" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock Text="I like the air in the countryside because life here is peaceful. The scenery is beautiful and picturesque, with paddy fields and canals. The people are very friendly, hospitable, and kind. Children often play traditional games such as hide and seek and soccer. In addition, there are many trees, so the air is fresh and cool. In short, in my opinion, country life is better than city life." 
+                                        x:Name="Note" 
+                                        Padding="10, 0, 10, 0"
+                                        Grid.Column="1" 
+                                        HorizontalAlignment="Stretch" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+
+                <Border Grid.Row="7">
+                    <Button Grid.Row="1" Background="#2A314B" Margin="250,0,250,0" Width="70" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Return_Click">
+                        <TextBlock Text="Return" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    </Button>
+                </Border>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>

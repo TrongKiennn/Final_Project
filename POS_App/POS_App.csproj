@@ -14,8 +14,24 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\calendar.png" />
+    <None Remove="Assets\count.png" />
+    <None Remove="Assets\crown.png" />
+    <None Remove="Assets\date.png" />
+    <None Remove="Assets\email.png" />
+    <None Remove="Assets\employee.png" />
+    <None Remove="Assets\lab-beaker.png" />
+    <None Remove="Assets\market-analysis.png" />
+    <None Remove="Assets\name.png" />
+    <None Remove="Assets\note.png" />
+    <None Remove="Assets\order.png" />
+    <None Remove="Assets\phone_number.png" />
+    <None Remove="Assets\restaurant.png" />
+    <None Remove="Assets\table.png" />
+    <None Remove="Assets\time.png" />
     <None Remove="Login.xaml" />
     <None Remove="MainPage.xaml" />
+    <None Remove="View\EventScheduling.xaml" />
     <None Remove="View\Register.xaml" />
   </ItemGroup>
 
@@ -44,6 +60,11 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\EventScheduling.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Register.xaml">
