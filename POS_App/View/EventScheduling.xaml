@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Background="#2A314B">
-            <Image Source="Assets/latte.png" Width="50" Height="60" Margin="20,0,20,0"/>
+            <Image Source="../Assets/latte.png" Width="50" Height="60" Margin="20,0,20,0"/>
             <TextBlock Text="Event Scheduling" Foreground="White" VerticalAlignment="Center" FontSize="24" Margin="10"/>
         </StackPanel>
 

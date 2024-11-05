@@ -13,7 +13,7 @@ namespace POS_App.Model
 
         public DatabaseManager()
         {
-            connectionString = "Server=localhost;Database=pos_manager;User=food_delivery;Password=19e5a718a54a9fe0559dfbce6908;";
+            connectionString = "Server=localhost;Database=pos_manager;User=root;Password=1234;";
         }
 
         public MySqlConnection GetConnection()

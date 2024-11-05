@@ -329,6 +329,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         InfoParams.Date = Event.Date;
         InfoParams.Time = Event.Time;
         InfoParams.Note = Event.Note;
+        InfoParams.TableNumber = Event.TableNumber;
         
     }
 

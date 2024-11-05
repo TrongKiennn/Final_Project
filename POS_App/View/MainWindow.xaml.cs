@@ -38,7 +38,7 @@ namespace POS_App
                 content.Navigate(typeof(Login));
             }
            
-           
+
         }
     }
 
