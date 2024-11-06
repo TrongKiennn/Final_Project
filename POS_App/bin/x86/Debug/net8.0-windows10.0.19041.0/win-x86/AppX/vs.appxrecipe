@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\C#\Du_An\POS_App\POS_App\bin\x86\Debug\net8.0-windows10.0.19041.0\win-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-11-05T12:04:23.418</Modified>
+      <Modified>2024-11-06T16:39:02.381</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\C#\Du_An\POS_App\POS_App\bin\x86\Debug\net8.0-windows10.0.19041.0\win-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-11-05T12:04:23.218</Modified>
+      <Modified>2024-11-06T16:39:02.047</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\Du_An\POS_App\POS_App\bin\x86\Debug\net8.0-windows10.0.19041.0\win-x86\POS_App.runtimeconfig.json">
       <PackagePath>POS_App.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\Du_An\POS_App\POS_App\bin\x86\Debug\net8.0-windows10.0.19041.0\win-x86\POS_App.dll">
       <PackagePath>POS_App.dll</PackagePath>
-      <Modified>2024-11-05T12:04:23.042</Modified>
+      <Modified>2024-11-06T16:39:01.386</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\Du_An\POS_App\POS_App\obj\x86\Debug\net8.0-windows10.0.19041.0\win-x86\apphost.exe">
       <PackagePath>POS_App.exe</PackagePath>
-      <Modified>2024-11-05T12:04:23.042</Modified>
+      <Modified>2024-11-06T16:39:01.469</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x86\native\WebView2Loader.dll</PackagePath>

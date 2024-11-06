@@ -24,6 +24,11 @@ namespace POS_App
             ESVm = new EventSchedulingViewModel();
             DataContext = ESVm;
         }
-       
+        private void BackToDashBoardButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DashBoardPage));
+        }
+        
+
     }
 }

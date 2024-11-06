@@ -30,12 +30,12 @@
 
         <!-- Ô đầu tiên, hàng 0 cột 1 -->
         <Grid Grid.Row="0" Grid.Column="1">
-            <Grid x:ConnectionId='20' x:Name="DefaultTitleView" Visibility="Visible">
+            <Grid x:ConnectionId='21' x:Name="DefaultTitleView" Visibility="Visible">
                 <StackPanel  Width="auto" Height="auto" VerticalAlignment="Center" >
                     <TextBlock Text="New Event" Foreground="Gray"  VerticalAlignment="Center"  FontWeight="Bold" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
                 </StackPanel>
             </Grid>
-            <Grid x:ConnectionId='21' x:Name="EventTitleView" Visibility="Collapsed">
+            <Grid x:ConnectionId='22' x:Name="EventTitleView" Visibility="Collapsed">
                 <StackPanel  Width="auto" Height="auto" VerticalAlignment="Center" >
                     <TextBlock Text="Test" Foreground="Gray"  VerticalAlignment="Center"  FontWeight="Bold" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
                 </StackPanel>
@@ -77,7 +77,7 @@
                 <Border Grid.Row="0" Grid.Column="0" Background="LightGray" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Họ và tên" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='18' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='19' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="nameTextBox"
                                  Text="{Binding EventParams.Name, Mode=TwoWay}"/>
                     </StackPanel>
@@ -86,7 +86,7 @@
                 <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Số điện thoại" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='17' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='18' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="phoneNumberTextBox"
                                  Text="{Binding EventParams.PhoneNumber, Mode=TwoWay}"/>
                     </StackPanel>
@@ -95,7 +95,7 @@
                 <Border Grid.Row="0" Grid.Column="2" Background="LightGray" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Email liên hệ công việc" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='16' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='17' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="emailTextBox"
                                  Text="{Binding EventParams.Email, Mode=TwoWay}"/>
                     </StackPanel>
@@ -104,7 +104,7 @@
                 <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" HorizontalAlignment="Stretch" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Nội dung chính bữa tiệc" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='15' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='16' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="typeTextBox"
                                  Text="{Binding EventParams.Type, Mode=TwoWay}"/>
                     </StackPanel>
@@ -113,7 +113,7 @@
                 <Border Grid.Row="2" Grid.Column="0" Background="LightGray" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Ngày tổ chức" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='14' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='15' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="dateTextBox"
                                  Text="{Binding EventParams.Date, Mode=TwoWay}"/>
                     </StackPanel>
@@ -122,7 +122,7 @@
                 <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Thời gian" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='13' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='14' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="timeTextBox"
                                  Text="{Binding EventParams.Time, Mode=TwoWay}"/>
                     </StackPanel>
@@ -131,7 +131,7 @@
                 <Border Grid.Row="2" Grid.Column="2" Background="LightGray" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Số lượng bàn muốn đặt" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='12' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBox x:ConnectionId='13' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
                                  Name="tableNumberTextBox"
                                  Text="{Binding EventParams.TableNumber, Mode=TwoWay}"/>
                     </StackPanel>
@@ -140,7 +140,7 @@
                 <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" HorizontalAlignment="Stretch" Height="200">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
                         <TextBlock Text="Ghi chú" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox x:ConnectionId='11' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="150" CornerRadius="8"
+                        <TextBox x:ConnectionId='12' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="150" CornerRadius="8"
                                  Name="noteTextBox"
                                  Text="{Binding EventParams.Note, Mode=TwoWay}"/>
                     </StackPanel>
@@ -160,6 +160,9 @@
                     Command="{Binding SaveCommand}"  
                     CommandParameter="{Binding EventParams}"
                 />
+                <Button x:ConnectionId='11' Grid.Row="4" Grid.Column="0" Background="#2A314B" Margin="10" Width="150" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center"                                    >
+                    <TextBlock Text="Back to DashBoard" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
 
             </Grid>
 

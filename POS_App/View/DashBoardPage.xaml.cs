@@ -51,7 +51,10 @@ namespace POS_App
             Frame.Navigate(typeof(EventScheduling));
         }
 
-
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Login));
+        }
 
     }
 }

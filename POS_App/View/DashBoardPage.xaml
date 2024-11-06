@@ -80,6 +80,9 @@
                 </StackPanel>
             </Button>
 
+            <Button Background="Gray" CornerRadius="12" Margin="0, 80,0,0" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="LogOutButton_Click">
+                <TextBlock Text="LOGOUT" Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
 
         </StackPanel>
 

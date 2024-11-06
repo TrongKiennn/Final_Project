@@ -33,7 +33,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="DashBoard" Foreground="Gray" FontWeight="Bold" VerticalAlignment="Center" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
-            <TextBlock x:ConnectionId='9' x:Name="UserNameTextBlock" Foreground="LightGray" VerticalAlignment="Center" FontSize="16" Grid.Column="2" Margin="0, 0, 30, 0"/>
+            <TextBlock x:ConnectionId='10' x:Name="UserNameTextBlock" Foreground="LightGray" VerticalAlignment="Center" FontSize="16" Grid.Column="2" Margin="0, 0, 30, 0"/>
         </Grid>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="#2A314B" >
@@ -80,6 +80,9 @@
                 </StackPanel>
             </Button>
 
+            <Button x:ConnectionId='9' Background="Gray" CornerRadius="12" Margin="0, 80,0,0" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom"                           >
+                <TextBlock Text="LOGOUT" Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
 
         </StackPanel>
 

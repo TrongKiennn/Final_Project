@@ -160,6 +160,9 @@
                     Command="{Binding SaveCommand}"  
                     CommandParameter="{Binding EventParams}"
                 />
+                <Button Grid.Row="4" Grid.Column="0" Background="#2A314B" Margin="10" Width="150" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BackToDashBoardButton_Click">
+                    <TextBlock Text="Back to DashBoard" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
 
             </Grid>
 
