@@ -13,3 +13,17 @@ This project is a comprehensive Point of Sale (POS) system designed for coffee s
 - **Customer Loyalty Program:** Tracks customer purchase history and offers rewards for frequent patrons.
 
 Our system enhances the efficiency and customer experience in a coffee shop environment, providing a valuable tool for both staff and management.
+
+## Project Milestones
+
+This project is structured into three milestones. Currently, we are in **weeks 4–7**, working towards releasing the first software version as **Milestone 01**.
+
+### Milestone 01: Initial Release
+
+For Milestone 01, we have implemented several core features to ensure the system's functionality and usability, including:
+
+- **User Management**
+- **Event Scheduling**
+- **Create migration for database with docker and node**
+
+These features provide a foundation for the system, meeting essential operational needs and setting the stage for additional functionality in future milestones.
