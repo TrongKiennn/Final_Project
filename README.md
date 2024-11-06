@@ -66,11 +66,38 @@ Ensure you have:
    Open your MySQL client and create a database named `pos_manager`:
    ```sql
    CREATE DATABASE pos_manager;
-You need to add .env with content like this
-```bash
-NODE_ENV=development
-MYSQL_HOST=127.0.0.1
-MYSQL_PORT=3306
-MYSQL_DB=pos_manager
-MYSQL_USER=root
-MYSQL_PASSWORD=1234
+   
+2. Set Up Environment Variables
+   Create a .env file in the root directory of your project with the following content:
+   ```bash
+   NODE_ENV=development
+   MYSQL_HOST=127.0.0.1
+   MYSQL_PORT=3306
+   MYSQL_DB=pos_manager
+   MYSQL_USER=root
+   MYSQL_PASSWORD=1234
+
+## Milestone Evaluation Criteria
+
+To ensure consistent progress and quality, each milestone will be assessed based on the following criteria:
+
+- **UI/UX (20%)**  
+   - The interface should be clean and logically organized.
+   - On login, if the user enters an incorrect username or password, display:  
+     `"UserName or Password is incorrect!"`
+   - On registration, if the username already exists, display:  
+     `"Account already exists"`
+
+- **Design Patterns / Architecture (20%)**  
+   - The project follows the **MVVM architecture** to ensure a clear separation of concerns.
+   - Each function and class includes comments detailing its functionality for improved code readability.
+
+- **Teamwork - Git Flow (10%)**  
+   - The team uses **GitHub** and **Trello** to organize and track development:
+     - Trello: [Project Board](https://trello.com/b/N54ELBhQ/l%E1%BA%ADp-trinh-win)
+     - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project)
+
+- **Quality Assurance (20%)**  
+   - Quality assurance standards will be followed in upcoming milestones to ensure code quality, reliability, and maintainability.
+
+These criteria will help guide development and provide benchmarks for success in each milestone.
