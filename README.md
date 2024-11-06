@@ -48,3 +48,29 @@ Ensure the following are installed on your system:
    ```bash
    git clone git@github.com:TrongKiennn/Final_Project.git
    cd POS_App
+
+## Database Setup and Connection
+
+This section will guide you through setting up and connecting to the MySQL database for the Coffee Shop POS System.
+
+### Prerequisites
+
+Ensure you have:
+- **MySQL** installed and running on your local machine or server.
+- A **MySQL client** or **command-line tool** to interact with the database.
+
+### Step-by-Step Guide
+
+1. **Create the Database**
+
+   Open your MySQL client and create a database named `pos_manager`:
+   ```sql
+   CREATE DATABASE pos_manager;
+You need to add .env with content like this
+```bash
+NODE_ENV=development
+MYSQL_HOST=127.0.0.1
+MYSQL_PORT=3306
+MYSQL_DB=pos_manager
+MYSQL_USER=root
+MYSQL_PASSWORD=1234
