@@ -62,8 +62,9 @@ Ensure you have:
 ### Step-by-Step Guide
 
 1. **Create the Database**
+Follow [this link](https://tdquang7.notion.site/H-ng-d-n-t-o-nhanh-backend-server-v-i-database-Postgres-c5f6e163a27e4882ac22fe32774b1a3c?pvs=4) for instructions on setting up a backend server with a database connection.
 
-   Open your MySQL client and create a database named `pos_manager`:
+   Alternatively, if using MySQL, open your MySQL client and create a database named `pos_manager`:
    ```sql
    CREATE DATABASE pos_manager;
    
