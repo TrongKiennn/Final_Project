@@ -27,3 +27,24 @@ For Milestone 01, we have implemented several core features to ensure the system
 - **Create migration for database with docker and node**
 
 These features provide a foundation for the system, meeting essential operational needs and setting the stage for additional functionality in future milestones.
+
+## Installation Instructions
+
+Follow these steps to install and set up the Coffee Shop POS System.
+
+### Prerequisites
+
+Ensure the following are installed on your system:
+
+- **Visual Studio 2022** (with .NET Desktop Development workload)
+- **.NET 6 SDK** or higher
+- **WinUI 3** (compatible with the .NET SDK)
+
+### Installation Steps
+
+1. **Clone the Repository**
+
+   Clone this repository to your local machine using Git:
+   ```bash
+   git clone git@github.com:TrongKiennn/Final_Project.git
+   cd POS_App
