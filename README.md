@@ -78,6 +78,17 @@ Follow [this link](https://tdquang7.notion.site/H-ng-d-n-t-o-nhanh-backend-serve
    MYSQL_USER=root
    MYSQL_PASSWORD=1234
 
+3. Install Database Dependencies
+Run the following command to install necessary MySQL dependencies (e.g., mysql2 for Node.js):
+
+   ```bash
+   npm install mysql2
+4. Open the Project in Visual Studio
+Launch Visual Studio and open the cloned project folder.
+6. Build and Run the Project
+- **Build the project to ensure all dependencies are correctly set up by going to Build > Build Solution.**
+- **Run the application using the "Start" button in Visual Studio or press F5. This will launch the POS system in debug mode.**
+
 ## Milestone Evaluation Criteria
 
 To ensure consistent progress and quality, each milestone will be assessed based on the following criteria:
