@@ -19,6 +19,8 @@ using System.Windows.Input;
 using Windows.System;
 using Microsoft.UI.Xaml.Input;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Windows.UI.Text;
+using Microsoft.UI.Text;
 
 namespace POS_App.ViewModel;
 
@@ -194,7 +196,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
     {
         Grid orderGrid = new Grid
         {
-            Background = new SolidColorBrush(Colors.WhiteSmoke),
+            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x98, 0x66, 0x50)),
             Height = 150,
             Margin = new Thickness(10, 10, 10, 0),
             CornerRadius = new CornerRadius(12)
@@ -205,15 +207,16 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
 
         StackPanel infoPanel = new StackPanel
         {
+           
             Padding = new Thickness(10, 10, 10, 0),
-            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xFF, 0xFF, 0xE0))
+            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xf0, 0xda, 0xae))
             
         };
         Grid.SetRow(infoPanel, 0);
 
-        infoPanel.Children.Add(new TextBlock { Text = "Tên sự kiện: " + row["event_name"].ToString(), Foreground = new SolidColorBrush(Colors.Gray) });
-        infoPanel.Children.Add(new TextBlock { Text = "Ngày Giờ: " + row["date"].ToString(), Foreground = new SolidColorBrush(Colors.Gray) });
-        infoPanel.Children.Add(new TextBlock { Text = "Người đặt: " + row["customer_name"].ToString(), Foreground = new SolidColorBrush(Colors.Gray) });
+        infoPanel.Children.Add(new TextBlock { Text = "Tên sự kiện: " + row["event_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize=16 });
+        infoPanel.Children.Add(new TextBlock { Text = "Ngày Giờ: " + row["date"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
+        infoPanel.Children.Add(new TextBlock { Text = "Người đặt: " + row["customer_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
 
         infoPanel.PointerPressed += OnStackPanelPressed;
 
@@ -230,7 +233,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         {
             Width = 120,
             Height = 40,
-            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xF0, 0x80, 0x80)),
+            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)),
             CornerRadius = new CornerRadius(20),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
@@ -242,7 +245,9 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         completeButton.Content = new TextBlock
         {
             Text = "Complete",
-            Foreground = new SolidColorBrush(Colors.White),
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xf0, 0xda, 0xae)),
+            FontWeight= FontWeights.Bold,
+            FontSize = 16,
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };

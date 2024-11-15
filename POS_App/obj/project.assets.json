@@ -15,6 +15,22 @@
           }
         }
       },
+      "Castle.Core/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Fody/6.6.4": {
         "type": "package",
         "build": {
@@ -116,7 +132,7 @@
           }
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.1742": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -242,6 +258,18 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "Moq/4.20.72": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {}
         }
       },
       "MySql.Data/9.1.0": {
@@ -639,6 +667,102 @@
           }
         }
       },
+      "xunit/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.analyzers": "1.16.0",
+          "xunit.assert": "2.9.2",
+          "xunit.core": "[2.9.2]"
+        }
+      },
+      "xunit.abstractions/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.analyzers/1.16.0": {
+        "type": "package"
+      },
+      "xunit.assert/2.9.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]",
+          "xunit.extensibility.execution": "[2.9.2]"
+        },
+        "build": {
+          "build/xunit.core.props": {},
+          "build/xunit.core.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/xunit.core.props": {},
+          "buildMultiTargeting/xunit.core.targets": {}
+        }
+      },
+      "xunit.extensibility.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.extensibility.execution/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.runner.visualstudio/2.8.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "build": {
+          "build/net6.0/xunit.runner.visualstudio.props": {}
+        }
+      },
       "ZstdSharp.Port/0.8.0": {
         "type": "package",
         "compile": {
@@ -659,6 +783,22 @@
         },
         "runtime": {
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Castle.Core/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
             "related": ".xml"
           }
         }
@@ -753,7 +893,7 @@
           "build/Microsoft.Web.WebView2.targets": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.1742": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -868,6 +1008,18 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "Moq/4.20.72": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {}
         }
       },
       "MySql.Data/9.1.0": {
@@ -1289,6 +1441,102 @@
           }
         }
       },
+      "xunit/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.analyzers": "1.16.0",
+          "xunit.assert": "2.9.2",
+          "xunit.core": "[2.9.2]"
+        }
+      },
+      "xunit.abstractions/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.analyzers/1.16.0": {
+        "type": "package"
+      },
+      "xunit.assert/2.9.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]",
+          "xunit.extensibility.execution": "[2.9.2]"
+        },
+        "build": {
+          "build/xunit.core.props": {},
+          "build/xunit.core.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/xunit.core.props": {},
+          "buildMultiTargeting/xunit.core.targets": {}
+        }
+      },
+      "xunit.extensibility.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.extensibility.execution/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.runner.visualstudio/2.8.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "build": {
+          "build/net6.0/xunit.runner.visualstudio.props": {}
+        }
+      },
       "ZstdSharp.Port/0.8.0": {
         "type": "package",
         "compile": {
@@ -1309,6 +1557,22 @@
         },
         "runtime": {
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Castle.Core/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
             "related": ".xml"
           }
         }
@@ -1403,7 +1667,7 @@
           "build/Microsoft.Web.WebView2.targets": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.1742": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -1518,6 +1782,18 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "Moq/4.20.72": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {}
         }
       },
       "MySql.Data/9.1.0": {
@@ -1946,6 +2222,102 @@
           }
         }
       },
+      "xunit/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.analyzers": "1.16.0",
+          "xunit.assert": "2.9.2",
+          "xunit.core": "[2.9.2]"
+        }
+      },
+      "xunit.abstractions/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.analyzers/1.16.0": {
+        "type": "package"
+      },
+      "xunit.assert/2.9.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]",
+          "xunit.extensibility.execution": "[2.9.2]"
+        },
+        "build": {
+          "build/xunit.core.props": {},
+          "build/xunit.core.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/xunit.core.props": {},
+          "buildMultiTargeting/xunit.core.targets": {}
+        }
+      },
+      "xunit.extensibility.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.extensibility.execution/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.runner.visualstudio/2.8.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "build": {
+          "build/net6.0/xunit.runner.visualstudio.props": {}
+        }
+      },
       "ZstdSharp.Port/0.8.0": {
         "type": "package",
         "compile": {
@@ -1966,6 +2338,22 @@
         },
         "runtime": {
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Castle.Core/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.EventLog": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Castle.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Castle.Core.dll": {
             "related": ".xml"
           }
         }
@@ -2060,7 +2448,7 @@
           "build/Microsoft.Web.WebView2.targets": {}
         }
       },
-      "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
+      "Microsoft.Windows.SDK.BuildTools/10.0.26100.1742": {
         "type": "package",
         "build": {
           "buildTransitive/Microsoft.Windows.SDK.BuildTools.props": {},
@@ -2175,6 +2563,18 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "Moq/4.20.72": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Moq.dll": {}
         }
       },
       "MySql.Data/9.1.0": {
@@ -2596,6 +2996,102 @@
           }
         }
       },
+      "xunit/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.analyzers": "1.16.0",
+          "xunit.assert": "2.9.2",
+          "xunit.core": "[2.9.2]"
+        }
+      },
+      "xunit.abstractions/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/xunit.abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.analyzers/1.16.0": {
+        "type": "package"
+      },
+      "xunit.assert/2.9.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/xunit.assert.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]",
+          "xunit.extensibility.execution": "[2.9.2]"
+        },
+        "build": {
+          "build/xunit.core.props": {},
+          "build/xunit.core.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/xunit.core.props": {},
+          "buildMultiTargeting/xunit.core.targets": {}
+        }
+      },
+      "xunit.extensibility.core/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.abstractions": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.extensibility.execution/2.9.2": {
+        "type": "package",
+        "dependencies": {
+          "xunit.extensibility.core": "[2.9.2]"
+        },
+        "compile": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/xunit.execution.dotnet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "xunit.runner.visualstudio/2.8.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/_._": {}
+        },
+        "runtime": {
+          "lib/net6.0/_._": {}
+        },
+        "build": {
+          "build/net6.0/xunit.runner.visualstudio.props": {}
+        }
+      },
       "ZstdSharp.Port/0.8.0": {
         "type": "package",
         "compile": {
@@ -2626,6 +3122,30 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "Castle.Core/5.1.1": {
+      "sha512": "rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
+      "type": "package",
+      "path": "castle.core/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ASL - Apache Software Foundation License.txt",
+        "CHANGELOG.md",
+        "LICENSE",
+        "castle-logo.png",
+        "castle.core.5.1.1.nupkg.sha512",
+        "castle.core.nuspec",
+        "lib/net462/Castle.Core.dll",
+        "lib/net462/Castle.Core.xml",
+        "lib/net6.0/Castle.Core.dll",
+        "lib/net6.0/Castle.Core.xml",
+        "lib/netstandard2.0/Castle.Core.dll",
+        "lib/netstandard2.0/Castle.Core.xml",
+        "lib/netstandard2.1/Castle.Core.dll",
+        "lib/netstandard2.1/Castle.Core.xml",
+        "readme.txt"
       ]
     },
     "Fody/6.6.4": {
@@ -2870,197 +3390,201 @@
         "tools/wv2winrt/zh-Hant/System.CommandLine.resources.dll"
       ]
     },
-    "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
-      "sha512": "7ZL2sFSioYm1Ry067Kw1hg0SCcW5kuVezC2SwjGbcPE61Nn+gTbH86T73G3LcEOVj0S3IZzNuE/29gZvOLS7VA==",
+    "Microsoft.Windows.SDK.BuildTools/10.0.26100.1742": {
+      "sha512": "ypcHjr4KEi6xQhgClnbXoANHcyyX/QsC4Rky4igs6M4GiDa+weegPo8JuV/VMxqrZCV4zlqDsp2krgkN7ReAAg==",
       "type": "package",
-      "path": "microsoft.windows.sdk.buildtools/10.0.22621.756",
+      "path": "microsoft.windows.sdk.buildtools/10.0.26100.1742",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "bin/10.0.22621.0/arm/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/arm/DeployUtil.exe",
-        "bin/10.0.22621.0/arm64/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/arm64/ComparePackage.exe",
-        "bin/10.0.22621.0/arm64/DeployUtil.exe",
-        "bin/10.0.22621.0/arm64/MakeCert.exe",
-        "bin/10.0.22621.0/arm64/Microsoft.ComparePackage.Lib.dll",
-        "bin/10.0.22621.0/arm64/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/arm64/Microsoft.PackageEditor.Lib.dll",
-        "bin/10.0.22621.0/arm64/Microsoft.Tools.Connectivity.dll",
-        "bin/10.0.22621.0/arm64/Microsoft.Tools.Deploy.dll",
-        "bin/10.0.22621.0/arm64/Microsoft.Windows.Build.Appx.AppxPackaging.dll.manifest",
-        "bin/10.0.22621.0/arm64/Microsoft.Windows.Build.Appx.AppxSip.dll.manifest",
-        "bin/10.0.22621.0/arm64/Microsoft.Windows.Build.Appx.OpcServices.dll.manifest",
-        "bin/10.0.22621.0/arm64/Microsoft.Windows.Build.Signing.mssign32.dll.manifest",
-        "bin/10.0.22621.0/arm64/Microsoft.Windows.Build.Signing.wintrust.dll.manifest",
-        "bin/10.0.22621.0/arm64/PackageEditor.exe",
-        "bin/10.0.22621.0/arm64/ServicingCommon.dll",
-        "bin/10.0.22621.0/arm64/SirepClient.assembly.manifest",
-        "bin/10.0.22621.0/arm64/SirepClient.dll",
-        "bin/10.0.22621.0/arm64/SirepInterop.dll",
-        "bin/10.0.22621.0/arm64/SshClient.dll",
-        "bin/10.0.22621.0/arm64/WinAppDeployCmd.exe",
-        "bin/10.0.22621.0/arm64/WinAppDeployCommon.dll",
-        "bin/10.0.22621.0/arm64/appxpackaging.dll",
-        "bin/10.0.22621.0/arm64/appxsip.dll",
-        "bin/10.0.22621.0/arm64/en-US/AppxPackaging.dll.mui",
-        "bin/10.0.22621.0/arm64/en/Microsoft.Tools.Deploy.resources.dll",
-        "bin/10.0.22621.0/arm64/en/WinAppDeployCmd.resources.dll",
-        "bin/10.0.22621.0/arm64/ipoverusb.discoverpartners.dll",
-        "bin/10.0.22621.0/arm64/makeappx.exe",
-        "bin/10.0.22621.0/arm64/makecat.exe",
-        "bin/10.0.22621.0/arm64/makecat.exe.manifest",
-        "bin/10.0.22621.0/arm64/makepri.exe",
-        "bin/10.0.22621.0/arm64/mc.exe",
-        "bin/10.0.22621.0/arm64/mdmerge.exe",
-        "bin/10.0.22621.0/arm64/midl.exe",
-        "bin/10.0.22621.0/arm64/midlc.exe",
-        "bin/10.0.22621.0/arm64/midlrt.exe",
-        "bin/10.0.22621.0/arm64/midlrtmd.dll",
-        "bin/10.0.22621.0/arm64/mrmsupport.dll",
-        "bin/10.0.22621.0/arm64/msisip.dll",
-        "bin/10.0.22621.0/arm64/mssign32.dll",
-        "bin/10.0.22621.0/arm64/mt.exe",
-        "bin/10.0.22621.0/arm64/mt.exe.config",
-        "bin/10.0.22621.0/arm64/opcservices.dll",
-        "bin/10.0.22621.0/arm64/rc.exe",
-        "bin/10.0.22621.0/arm64/rcdll.dll",
-        "bin/10.0.22621.0/arm64/signtool.exe",
-        "bin/10.0.22621.0/arm64/signtool.exe.manifest",
-        "bin/10.0.22621.0/arm64/tracewpp.exe",
-        "bin/10.0.22621.0/arm64/uuidgen.exe",
-        "bin/10.0.22621.0/arm64/winmdidl.exe",
-        "bin/10.0.22621.0/arm64/wintrust.dll",
-        "bin/10.0.22621.0/arm64/wintrust.dll.ini",
-        "bin/10.0.22621.0/x64/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/x64/ComparePackage.exe",
-        "bin/10.0.22621.0/x64/DeployUtil.exe",
-        "bin/10.0.22621.0/x64/MakeCert.exe",
-        "bin/10.0.22621.0/x64/Microsoft.ComparePackage.Lib.dll",
-        "bin/10.0.22621.0/x64/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/x64/Microsoft.PackageEditor.Lib.dll",
-        "bin/10.0.22621.0/x64/Microsoft.Tools.Connectivity.dll",
-        "bin/10.0.22621.0/x64/Microsoft.Tools.Deploy.dll",
-        "bin/10.0.22621.0/x64/Microsoft.Windows.Build.Appx.AppxPackaging.dll.manifest",
-        "bin/10.0.22621.0/x64/Microsoft.Windows.Build.Appx.AppxSip.dll.manifest",
-        "bin/10.0.22621.0/x64/Microsoft.Windows.Build.Appx.OpcServices.dll.manifest",
-        "bin/10.0.22621.0/x64/Microsoft.Windows.Build.Signing.mssign32.dll.manifest",
-        "bin/10.0.22621.0/x64/Microsoft.Windows.Build.Signing.wintrust.dll.manifest",
-        "bin/10.0.22621.0/x64/PackageEditor.exe",
-        "bin/10.0.22621.0/x64/ServicingCommon.dll",
-        "bin/10.0.22621.0/x64/SirepClient.assembly.manifest",
-        "bin/10.0.22621.0/x64/SirepClient.dll",
-        "bin/10.0.22621.0/x64/SirepInterop.dll",
-        "bin/10.0.22621.0/x64/SshClient.dll",
-        "bin/10.0.22621.0/x64/WinAppDeployCmd.exe",
-        "bin/10.0.22621.0/x64/WinAppDeployCommon.dll",
-        "bin/10.0.22621.0/x64/appxpackaging.dll",
-        "bin/10.0.22621.0/x64/appxsip.dll",
-        "bin/10.0.22621.0/x64/en-US/AppxPackaging.dll.mui",
-        "bin/10.0.22621.0/x64/en/Microsoft.Tools.Deploy.resources.dll",
-        "bin/10.0.22621.0/x64/en/WinAppDeployCmd.resources.dll",
-        "bin/10.0.22621.0/x64/ipoverusb.discoverpartners.dll",
-        "bin/10.0.22621.0/x64/makeappx.exe",
-        "bin/10.0.22621.0/x64/makecat.exe",
-        "bin/10.0.22621.0/x64/makecat.exe.manifest",
-        "bin/10.0.22621.0/x64/makepri.exe",
-        "bin/10.0.22621.0/x64/mc.exe",
-        "bin/10.0.22621.0/x64/mdmerge.exe",
-        "bin/10.0.22621.0/x64/midl.exe",
-        "bin/10.0.22621.0/x64/midlc.exe",
-        "bin/10.0.22621.0/x64/midlrt.exe",
-        "bin/10.0.22621.0/x64/midlrtmd.dll",
-        "bin/10.0.22621.0/x64/mrmsupport.dll",
-        "bin/10.0.22621.0/x64/msisip.dll",
-        "bin/10.0.22621.0/x64/mssign32.dll",
-        "bin/10.0.22621.0/x64/mt.exe",
-        "bin/10.0.22621.0/x64/mt.exe.config",
-        "bin/10.0.22621.0/x64/opcservices.dll",
-        "bin/10.0.22621.0/x64/rc.exe",
-        "bin/10.0.22621.0/x64/rcdll.dll",
-        "bin/10.0.22621.0/x64/signtool.exe",
-        "bin/10.0.22621.0/x64/signtool.exe.manifest",
-        "bin/10.0.22621.0/x64/tracewpp.exe",
-        "bin/10.0.22621.0/x64/uuidgen.exe",
-        "bin/10.0.22621.0/x64/winmdidl.exe",
-        "bin/10.0.22621.0/x64/wintrust.dll",
-        "bin/10.0.22621.0/x64/wintrust.dll.ini",
-        "bin/10.0.22621.0/x86/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/x86/ComparePackage.exe",
-        "bin/10.0.22621.0/x86/DeployUtil.exe",
-        "bin/10.0.22621.0/x86/MakeCert.exe",
-        "bin/10.0.22621.0/x86/Microsoft.ComparePackage.Lib.dll",
-        "bin/10.0.22621.0/x86/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "bin/10.0.22621.0/x86/Microsoft.PackageEditor.Lib.dll",
-        "bin/10.0.22621.0/x86/Microsoft.Tools.Connectivity.dll",
-        "bin/10.0.22621.0/x86/Microsoft.Tools.Deploy.dll",
-        "bin/10.0.22621.0/x86/Microsoft.Windows.Build.Appx.AppxPackaging.dll.manifest",
-        "bin/10.0.22621.0/x86/Microsoft.Windows.Build.Appx.AppxSip.dll.manifest",
-        "bin/10.0.22621.0/x86/Microsoft.Windows.Build.Appx.OpcServices.dll.manifest",
-        "bin/10.0.22621.0/x86/Microsoft.Windows.Build.Signing.mssign32.dll.manifest",
-        "bin/10.0.22621.0/x86/Microsoft.Windows.Build.Signing.wintrust.dll.manifest",
-        "bin/10.0.22621.0/x86/PackageEditor.exe",
-        "bin/10.0.22621.0/x86/ServicingCommon.dll",
-        "bin/10.0.22621.0/x86/SirepClient.assembly.manifest",
-        "bin/10.0.22621.0/x86/SirepClient.dll",
-        "bin/10.0.22621.0/x86/SirepInterop.dll",
-        "bin/10.0.22621.0/x86/SshClient.dll",
-        "bin/10.0.22621.0/x86/WinAppDeployCmd.exe",
-        "bin/10.0.22621.0/x86/WinAppDeployCommon.dll",
-        "bin/10.0.22621.0/x86/appxpackaging.dll",
-        "bin/10.0.22621.0/x86/appxsip.dll",
-        "bin/10.0.22621.0/x86/en-US/AppxPackaging.dll.mui",
-        "bin/10.0.22621.0/x86/en/Microsoft.Tools.Deploy.resources.dll",
-        "bin/10.0.22621.0/x86/en/WinAppDeployCmd.resources.dll",
-        "bin/10.0.22621.0/x86/ipoverusb.discoverpartners.dll",
-        "bin/10.0.22621.0/x86/makeappx.exe",
-        "bin/10.0.22621.0/x86/makecat.exe",
-        "bin/10.0.22621.0/x86/makecat.exe.manifest",
-        "bin/10.0.22621.0/x86/makepri.exe",
-        "bin/10.0.22621.0/x86/mc.exe",
-        "bin/10.0.22621.0/x86/mdmerge.exe",
-        "bin/10.0.22621.0/x86/midl.exe",
-        "bin/10.0.22621.0/x86/midlc.exe",
-        "bin/10.0.22621.0/x86/midlrt.exe",
-        "bin/10.0.22621.0/x86/midlrtmd.dll",
-        "bin/10.0.22621.0/x86/mrmsupport.dll",
-        "bin/10.0.22621.0/x86/msisip.dll",
-        "bin/10.0.22621.0/x86/mssign32.dll",
-        "bin/10.0.22621.0/x86/mt.exe",
-        "bin/10.0.22621.0/x86/mt.exe.config",
-        "bin/10.0.22621.0/x86/opcservices.dll",
-        "bin/10.0.22621.0/x86/rc.exe",
-        "bin/10.0.22621.0/x86/rcdll.dll",
-        "bin/10.0.22621.0/x86/signtool.exe",
-        "bin/10.0.22621.0/x86/signtool.exe.manifest",
-        "bin/10.0.22621.0/x86/tracewpp.exe",
-        "bin/10.0.22621.0/x86/uuidgen.exe",
-        "bin/10.0.22621.0/x86/winmdidl.exe",
-        "bin/10.0.22621.0/x86/wintrust.dll",
-        "bin/10.0.22621.0/x86/wintrust.dll.ini",
+        "bin/10.0.26100.0/arm64/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "bin/10.0.26100.0/arm64/ComparePackage.exe",
+        "bin/10.0.26100.0/arm64/DeployUtil.exe",
+        "bin/10.0.26100.0/arm64/MakeCert.exe",
+        "bin/10.0.26100.0/arm64/Microsoft.ComparePackage.Lib.dll",
+        "bin/10.0.26100.0/arm64/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "bin/10.0.26100.0/arm64/Microsoft.PackageEditor.Lib.dll",
+        "bin/10.0.26100.0/arm64/Microsoft.Tools.Connectivity.dll",
+        "bin/10.0.26100.0/arm64/Microsoft.Tools.Deploy.dll",
+        "bin/10.0.26100.0/arm64/Microsoft.Windows.Build.Appx.AppxPackaging.dll.manifest",
+        "bin/10.0.26100.0/arm64/Microsoft.Windows.Build.Appx.AppxSip.dll.manifest",
+        "bin/10.0.26100.0/arm64/Microsoft.Windows.Build.Appx.OpcServices.dll.manifest",
+        "bin/10.0.26100.0/arm64/Microsoft.Windows.Build.Signing.mssign32.dll.manifest",
+        "bin/10.0.26100.0/arm64/Microsoft.Windows.Build.Signing.wintrust.dll.manifest",
+        "bin/10.0.26100.0/arm64/PackageEditor.exe",
+        "bin/10.0.26100.0/arm64/ServicingCommon.dll",
+        "bin/10.0.26100.0/arm64/SirepClient.assembly.manifest",
+        "bin/10.0.26100.0/arm64/SirepClient.dll",
+        "bin/10.0.26100.0/arm64/SirepInterop.dll",
+        "bin/10.0.26100.0/arm64/SshClient.dll",
+        "bin/10.0.26100.0/arm64/WinAppDeployCmd.exe",
+        "bin/10.0.26100.0/arm64/WinAppDeployCommon.dll",
+        "bin/10.0.26100.0/arm64/appxpackaging.dll",
+        "bin/10.0.26100.0/arm64/appxsip.dll",
+        "bin/10.0.26100.0/arm64/en-US/AppxPackaging.dll.mui",
+        "bin/10.0.26100.0/arm64/en/Microsoft.Tools.Deploy.resources.dll",
+        "bin/10.0.26100.0/arm64/en/WinAppDeployCmd.resources.dll",
+        "bin/10.0.26100.0/arm64/ipoverusb.discoverpartners.dll",
+        "bin/10.0.26100.0/arm64/makeappx.exe",
+        "bin/10.0.26100.0/arm64/makecat.exe",
+        "bin/10.0.26100.0/arm64/makecat.exe.manifest",
+        "bin/10.0.26100.0/arm64/makepri.exe",
+        "bin/10.0.26100.0/arm64/mc.exe",
+        "bin/10.0.26100.0/arm64/mdmerge.exe",
+        "bin/10.0.26100.0/arm64/midl.exe",
+        "bin/10.0.26100.0/arm64/midlc.exe",
+        "bin/10.0.26100.0/arm64/midlrt.exe",
+        "bin/10.0.26100.0/arm64/midlrtmd.dll",
+        "bin/10.0.26100.0/arm64/mrmsupport.dll",
+        "bin/10.0.26100.0/arm64/msisip.dll",
+        "bin/10.0.26100.0/arm64/mssign32.dll",
+        "bin/10.0.26100.0/arm64/mt.exe",
+        "bin/10.0.26100.0/arm64/mt.exe.config",
+        "bin/10.0.26100.0/arm64/opcservices.dll",
+        "bin/10.0.26100.0/arm64/rc.exe",
+        "bin/10.0.26100.0/arm64/rcdll.dll",
+        "bin/10.0.26100.0/arm64/signtool.exe",
+        "bin/10.0.26100.0/arm64/signtool.exe.manifest",
+        "bin/10.0.26100.0/arm64/tracewpp.exe",
+        "bin/10.0.26100.0/arm64/uuidgen.exe",
+        "bin/10.0.26100.0/arm64/veiid.exe",
+        "bin/10.0.26100.0/arm64/winmdidl.exe",
+        "bin/10.0.26100.0/arm64/wintrust.dll",
+        "bin/10.0.26100.0/arm64/wintrust.dll.ini",
+        "bin/10.0.26100.0/x64/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "bin/10.0.26100.0/x64/ComparePackage.exe",
+        "bin/10.0.26100.0/x64/DeployUtil.exe",
+        "bin/10.0.26100.0/x64/MakeCert.exe",
+        "bin/10.0.26100.0/x64/Microsoft.ComparePackage.Lib.dll",
+        "bin/10.0.26100.0/x64/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "bin/10.0.26100.0/x64/Microsoft.PackageEditor.Lib.dll",
+        "bin/10.0.26100.0/x64/Microsoft.Tools.Connectivity.dll",
+        "bin/10.0.26100.0/x64/Microsoft.Tools.Deploy.dll",
+        "bin/10.0.26100.0/x64/Microsoft.Windows.Build.Appx.AppxPackaging.dll.manifest",
+        "bin/10.0.26100.0/x64/Microsoft.Windows.Build.Appx.AppxSip.dll.manifest",
+        "bin/10.0.26100.0/x64/Microsoft.Windows.Build.Appx.OpcServices.dll.manifest",
+        "bin/10.0.26100.0/x64/Microsoft.Windows.Build.Signing.mssign32.dll.manifest",
+        "bin/10.0.26100.0/x64/Microsoft.Windows.Build.Signing.wintrust.dll.manifest",
+        "bin/10.0.26100.0/x64/PackageEditor.exe",
+        "bin/10.0.26100.0/x64/ServicingCommon.dll",
+        "bin/10.0.26100.0/x64/SirepClient.assembly.manifest",
+        "bin/10.0.26100.0/x64/SirepClient.dll",
+        "bin/10.0.26100.0/x64/SirepInterop.dll",
+        "bin/10.0.26100.0/x64/SshClient.dll",
+        "bin/10.0.26100.0/x64/WinAppDeployCmd.exe",
+        "bin/10.0.26100.0/x64/WinAppDeployCommon.dll",
+        "bin/10.0.26100.0/x64/appxpackaging.dll",
+        "bin/10.0.26100.0/x64/appxsip.dll",
+        "bin/10.0.26100.0/x64/en-US/AppxPackaging.dll.mui",
+        "bin/10.0.26100.0/x64/en/Microsoft.Tools.Deploy.resources.dll",
+        "bin/10.0.26100.0/x64/en/WinAppDeployCmd.resources.dll",
+        "bin/10.0.26100.0/x64/ipoverusb.discoverpartners.dll",
+        "bin/10.0.26100.0/x64/makeappx.exe",
+        "bin/10.0.26100.0/x64/makecat.exe",
+        "bin/10.0.26100.0/x64/makecat.exe.manifest",
+        "bin/10.0.26100.0/x64/makepri.exe",
+        "bin/10.0.26100.0/x64/mc.exe",
+        "bin/10.0.26100.0/x64/mdmerge.exe",
+        "bin/10.0.26100.0/x64/midl.exe",
+        "bin/10.0.26100.0/x64/midlc.exe",
+        "bin/10.0.26100.0/x64/midlrt.exe",
+        "bin/10.0.26100.0/x64/midlrtmd.dll",
+        "bin/10.0.26100.0/x64/mrmsupport.dll",
+        "bin/10.0.26100.0/x64/msisip.dll",
+        "bin/10.0.26100.0/x64/mssign32.dll",
+        "bin/10.0.26100.0/x64/mt.exe",
+        "bin/10.0.26100.0/x64/mt.exe.config",
+        "bin/10.0.26100.0/x64/opcservices.dll",
+        "bin/10.0.26100.0/x64/rc.exe",
+        "bin/10.0.26100.0/x64/rcdll.dll",
+        "bin/10.0.26100.0/x64/signtool.exe",
+        "bin/10.0.26100.0/x64/signtool.exe.manifest",
+        "bin/10.0.26100.0/x64/tracewpp.exe",
+        "bin/10.0.26100.0/x64/uuidgen.exe",
+        "bin/10.0.26100.0/x64/veiid.exe",
+        "bin/10.0.26100.0/x64/winmdidl.exe",
+        "bin/10.0.26100.0/x64/wintrust.dll",
+        "bin/10.0.26100.0/x64/wintrust.dll.ini",
+        "bin/10.0.26100.0/x86/AccChecker/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "bin/10.0.26100.0/x86/ComparePackage.exe",
+        "bin/10.0.26100.0/x86/DeployUtil.exe",
+        "bin/10.0.26100.0/x86/MakeCert.exe",
+        "bin/10.0.26100.0/x86/Microsoft.ComparePackage.Lib.dll",
+        "bin/10.0.26100.0/x86/Microsoft.Diagnostics.Tracing.EventSource.dll",
+        "bin/10.0.26100.0/x86/Microsoft.PackageEditor.Lib.dll",
+        "bin/10.0.26100.0/x86/Microsoft.Tools.Connectivity.dll",
+        "bin/10.0.26100.0/x86/Microsoft.Tools.Deploy.dll",
+        "bin/10.0.26100.0/x86/Microsoft.Windows.Build.Appx.AppxPackaging.dll.manifest",
+        "bin/10.0.26100.0/x86/Microsoft.Windows.Build.Appx.AppxSip.dll.manifest",
+        "bin/10.0.26100.0/x86/Microsoft.Windows.Build.Appx.OpcServices.dll.manifest",
+        "bin/10.0.26100.0/x86/Microsoft.Windows.Build.Signing.mssign32.dll.manifest",
+        "bin/10.0.26100.0/x86/Microsoft.Windows.Build.Signing.wintrust.dll.manifest",
+        "bin/10.0.26100.0/x86/PackageEditor.exe",
+        "bin/10.0.26100.0/x86/ServicingCommon.dll",
+        "bin/10.0.26100.0/x86/SirepClient.assembly.manifest",
+        "bin/10.0.26100.0/x86/SirepClient.dll",
+        "bin/10.0.26100.0/x86/SirepInterop.dll",
+        "bin/10.0.26100.0/x86/SshClient.dll",
+        "bin/10.0.26100.0/x86/WinAppDeployCmd.exe",
+        "bin/10.0.26100.0/x86/WinAppDeployCommon.dll",
+        "bin/10.0.26100.0/x86/appxpackaging.dll",
+        "bin/10.0.26100.0/x86/appxsip.dll",
+        "bin/10.0.26100.0/x86/en-US/AppxPackaging.dll.mui",
+        "bin/10.0.26100.0/x86/en/Microsoft.Tools.Deploy.resources.dll",
+        "bin/10.0.26100.0/x86/en/WinAppDeployCmd.resources.dll",
+        "bin/10.0.26100.0/x86/ipoverusb.discoverpartners.dll",
+        "bin/10.0.26100.0/x86/makeappx.exe",
+        "bin/10.0.26100.0/x86/makecat.exe",
+        "bin/10.0.26100.0/x86/makecat.exe.manifest",
+        "bin/10.0.26100.0/x86/makepri.exe",
+        "bin/10.0.26100.0/x86/mc.exe",
+        "bin/10.0.26100.0/x86/mdmerge.exe",
+        "bin/10.0.26100.0/x86/midl.exe",
+        "bin/10.0.26100.0/x86/midlc.exe",
+        "bin/10.0.26100.0/x86/midlrt.exe",
+        "bin/10.0.26100.0/x86/midlrtmd.dll",
+        "bin/10.0.26100.0/x86/mrmsupport.dll",
+        "bin/10.0.26100.0/x86/msisip.dll",
+        "bin/10.0.26100.0/x86/mssign32.dll",
+        "bin/10.0.26100.0/x86/mt.exe",
+        "bin/10.0.26100.0/x86/mt.exe.config",
+        "bin/10.0.26100.0/x86/opcservices.dll",
+        "bin/10.0.26100.0/x86/rc.exe",
+        "bin/10.0.26100.0/x86/rcdll.dll",
+        "bin/10.0.26100.0/x86/signtool.exe",
+        "bin/10.0.26100.0/x86/signtool.exe.manifest",
+        "bin/10.0.26100.0/x86/tracewpp.exe",
+        "bin/10.0.26100.0/x86/uuidgen.exe",
+        "bin/10.0.26100.0/x86/winmdidl.exe",
+        "bin/10.0.26100.0/x86/wintrust.dll",
+        "bin/10.0.26100.0/x86/wintrust.dll.ini",
         "build/Microsoft.Windows.SDK.BuildTools.props",
         "build/Microsoft.Windows.SDK.BuildTools.targets",
         "buildTransitive/Microsoft.Windows.SDK.BuildTools.props",
         "buildTransitive/Microsoft.Windows.SDK.BuildTools.targets",
-        "microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
+        "microsoft.windows.sdk.buildtools.10.0.26100.1742.nupkg.sha512",
         "microsoft.windows.sdk.buildtools.nuspec",
-        "schemas/10.0.22621.0/winrt/AppxManifestSchema.xsd",
-        "schemas/10.0.22621.0/winrt/AppxManifestSchema2010_v2.xsd",
-        "schemas/10.0.22621.0/winrt/AppxManifestSchema2013.xsd",
-        "schemas/10.0.22621.0/winrt/FoundationManifestSchema.xsd",
-        "schemas/10.0.22621.0/winrt/FoundationManifestSchema_v2.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v10.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v11.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v12.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v13.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v2.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v3.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v4.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v5.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v6.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v7.xsd",
-        "schemas/10.0.22621.0/winrt/UapManifestSchema_v8.xsd"
+        "schemas/10.0.26100.0/winrt/AppxManifestSchema.xsd",
+        "schemas/10.0.26100.0/winrt/AppxManifestSchema2010_v2.xsd",
+        "schemas/10.0.26100.0/winrt/AppxManifestSchema2013.xsd",
+        "schemas/10.0.26100.0/winrt/FoundationManifestSchema.xsd",
+        "schemas/10.0.26100.0/winrt/FoundationManifestSchema_v2.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v10.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v11.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v12.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v13.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v15.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v15a.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v16.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v17.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v2.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v3.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v4.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v5.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v6.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v7.xsd",
+        "schemas/10.0.26100.0/winrt/UapManifestSchema_v8.xsd"
       ]
     },
     "Microsoft.WindowsAppSDK/1.6.240923002": {
@@ -3514,6 +4038,23 @@
         "tools/net6.0/System.Text.Json.dll",
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
+      ]
+    },
+    "Moq/4.20.72": {
+      "sha512": "EA55cjyNn8eTNWrgrdZJH5QLFp2L43oxl1tlkoYUKIE9pRwL784OWiTXeCV5ApS+AMYEAlt7Fo03A2XfouvHmQ==",
+      "type": "package",
+      "path": "moq/4.20.72",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net462/Moq.dll",
+        "lib/net6.0/Moq.dll",
+        "lib/netstandard2.0/Moq.dll",
+        "lib/netstandard2.1/Moq.dll",
+        "moq.4.20.72.nupkg.sha512",
+        "moq.nuspec",
+        "readme.md"
       ]
     },
     "MySql.Data/9.1.0": {
@@ -4681,6 +5222,150 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "xunit/2.9.2": {
+      "sha512": "7LhFS2N9Z6Xgg8aE5lY95cneYivRMfRI8v+4PATa4S64D5Z/Plkg0qa8dTRHSiGRgVZ/CL2gEfJDE5AUhOX+2Q==",
+      "type": "package",
+      "path": "xunit/2.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "xunit.2.9.2.nupkg.sha512",
+        "xunit.nuspec"
+      ]
+    },
+    "xunit.abstractions/2.0.3": {
+      "sha512": "pot1I4YOxlWjIb5jmwvvQNbTrZ3lJQ+jUGkGjWE3hEFM0l5gOnBWS+H3qsex68s5cO52g+44vpGzhAt+42vwKg==",
+      "type": "package",
+      "path": "xunit.abstractions/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/xunit.abstractions.dll",
+        "lib/net35/xunit.abstractions.xml",
+        "lib/netstandard1.0/xunit.abstractions.dll",
+        "lib/netstandard1.0/xunit.abstractions.xml",
+        "lib/netstandard2.0/xunit.abstractions.dll",
+        "lib/netstandard2.0/xunit.abstractions.xml",
+        "xunit.abstractions.2.0.3.nupkg.sha512",
+        "xunit.abstractions.nuspec"
+      ]
+    },
+    "xunit.analyzers/1.16.0": {
+      "sha512": "hptYM7vGr46GUIgZt21YHO4rfuBAQS2eINbFo16CV/Dqq+24Tp+P5gDCACu1AbFfW4Sp/WRfDPSK8fmUUb8s0Q==",
+      "type": "package",
+      "path": "xunit.analyzers/1.16.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "analyzers/dotnet/cs/xunit.analyzers.dll",
+        "analyzers/dotnet/cs/xunit.analyzers.fixes.dll",
+        "tools/install.ps1",
+        "tools/uninstall.ps1",
+        "xunit.analyzers.1.16.0.nupkg.sha512",
+        "xunit.analyzers.nuspec"
+      ]
+    },
+    "xunit.assert/2.9.2": {
+      "sha512": "QkNBAQG4pa66cholm28AxijBjrmki98/vsEh4Sx5iplzotvPgpiotcxqJQMRC8d7RV7nIT8ozh97957hDnZwsQ==",
+      "type": "package",
+      "path": "xunit.assert/2.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/net6.0/xunit.assert.dll",
+        "lib/net6.0/xunit.assert.xml",
+        "lib/netstandard1.1/xunit.assert.dll",
+        "lib/netstandard1.1/xunit.assert.xml",
+        "xunit.assert.2.9.2.nupkg.sha512",
+        "xunit.assert.nuspec"
+      ]
+    },
+    "xunit.core/2.9.2": {
+      "sha512": "O6RrNSdmZ0xgEn5kT927PNwog5vxTtKrWMihhhrT0Sg9jQ7iBDciYOwzBgP2krBEk5/GBXI18R1lKvmnxGcb4w==",
+      "type": "package",
+      "path": "xunit.core/2.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "build/xunit.core.props",
+        "build/xunit.core.targets",
+        "buildMultiTargeting/xunit.core.props",
+        "buildMultiTargeting/xunit.core.targets",
+        "xunit.core.2.9.2.nupkg.sha512",
+        "xunit.core.nuspec"
+      ]
+    },
+    "xunit.extensibility.core/2.9.2": {
+      "sha512": "Ol+KlBJz1x8BrdnhN2DeOuLrr1I/cTwtHCggL9BvYqFuVd/TUSzxNT5O0NxCIXth30bsKxgMfdqLTcORtM52yQ==",
+      "type": "package",
+      "path": "xunit.extensibility.core/2.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/net452/xunit.core.dll",
+        "lib/net452/xunit.core.dll.tdnet",
+        "lib/net452/xunit.core.xml",
+        "lib/net452/xunit.runner.tdnet.dll",
+        "lib/net452/xunit.runner.utility.net452.dll",
+        "lib/netstandard1.1/xunit.core.dll",
+        "lib/netstandard1.1/xunit.core.xml",
+        "xunit.extensibility.core.2.9.2.nupkg.sha512",
+        "xunit.extensibility.core.nuspec"
+      ]
+    },
+    "xunit.extensibility.execution/2.9.2": {
+      "sha512": "rKMpq4GsIUIJibXuZoZ8lYp5EpROlnYaRpwu9Zr0sRZXE7JqJfEEbCsUriZqB+ByXCLFBJyjkTRULMdC+U566g==",
+      "type": "package",
+      "path": "xunit.extensibility.execution/2.9.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "lib/net452/xunit.execution.desktop.dll",
+        "lib/net452/xunit.execution.desktop.xml",
+        "lib/netstandard1.1/xunit.execution.dotnet.dll",
+        "lib/netstandard1.1/xunit.execution.dotnet.xml",
+        "xunit.extensibility.execution.2.9.2.nupkg.sha512",
+        "xunit.extensibility.execution.nuspec"
+      ]
+    },
+    "xunit.runner.visualstudio/2.8.2": {
+      "sha512": "vm1tbfXhFmjFMUmS4M0J0ASXz3/U5XvXBa6DOQUL3fEz4Vt6YPhv+ESCarx6M6D+9kJkJYZKCNvJMas1+nVfmQ==",
+      "type": "package",
+      "path": "xunit.runner.visualstudio/2.8.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "_content/README.md",
+        "_content/logo-128-transparent.png",
+        "build/net462/xunit.abstractions.dll",
+        "build/net462/xunit.runner.reporters.net452.dll",
+        "build/net462/xunit.runner.utility.net452.dll",
+        "build/net462/xunit.runner.visualstudio.props",
+        "build/net462/xunit.runner.visualstudio.testadapter.dll",
+        "build/net6.0/xunit.abstractions.dll",
+        "build/net6.0/xunit.runner.reporters.netcoreapp10.dll",
+        "build/net6.0/xunit.runner.utility.netcoreapp10.dll",
+        "build/net6.0/xunit.runner.visualstudio.props",
+        "build/net6.0/xunit.runner.visualstudio.testadapter.dll",
+        "lib/net462/_._",
+        "lib/net6.0/_._",
+        "xunit.runner.visualstudio.2.8.2.nupkg.sha512",
+        "xunit.runner.visualstudio.nuspec"
+      ]
+    },
     "ZstdSharp.Port/0.8.0": {
       "sha512": "Z62eNBIu8E8YtbqlMy57tK3dV1+m2b9NhPeaYovB5exmLKvrGCqOhJTzrEUH5VyUWU6vwX3c1XHJGhW5HVs8dA==",
       "type": "package",
@@ -4703,10 +5388,13 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows10.0.19041": [
-      "Microsoft.Windows.SDK.BuildTools >= 10.0.22621.756",
+      "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.1742",
       "Microsoft.WindowsAppSDK >= 1.6.240923002",
+      "Moq >= 4.20.72",
       "MySql.Data >= 9.1.0",
-      "PropertyChanged.Fody >= 4.1.0"
+      "PropertyChanged.Fody >= 4.1.0",
+      "xunit >= 2.9.2",
+      "xunit.runner.visualstudio >= 2.8.2"
     ]
   },
   "packageFolders": {
@@ -4716,11 +5404,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\Du_An\\POS_App\\POS_App\\POS_App.csproj",
+      "projectUniqueName": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\POS_App.csproj",
       "projectName": "POS_App",
-      "projectPath": "D:\\C#\\Du_An\\POS_App\\POS_App\\POS_App.csproj",
+      "projectPath": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\POS_App.csproj",
       "packagesPath": "C:\\Users\\MICHAEL\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\Du_An\\POS_App\\POS_App\\obj\\",
+      "outputPath": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4761,11 +5449,15 @@
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": {
             "target": "Package",
-            "version": "[10.0.22621.756, )"
+            "version": "[10.0.26100.1742, )"
           },
           "Microsoft.WindowsAppSDK": {
             "target": "Package",
             "version": "[1.6.240923002, )"
+          },
+          "Moq": {
+            "target": "Package",
+            "version": "[4.20.72, )"
           },
           "MySql.Data": {
             "target": "Package",
@@ -4774,6 +5466,16 @@
           "PropertyChanged.Fody": {
             "target": "Package",
             "version": "[4.1.0, )"
+          },
+          "xunit": {
+            "target": "Package",
+            "version": "[2.9.2, )"
+          },
+          "xunit.runner.visualstudio": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.8.2, )"
           }
         },
         "imports": [

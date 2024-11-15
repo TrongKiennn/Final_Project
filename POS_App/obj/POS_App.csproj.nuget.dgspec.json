@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\Du_An\\POS_App\\POS_App\\POS_App.csproj": {}
+    "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\POS_App.csproj": {}
   },
   "projects": {
-    "D:\\C#\\Du_An\\POS_App\\POS_App\\POS_App.csproj": {
+    "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\POS_App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\Du_An\\POS_App\\POS_App\\POS_App.csproj",
+        "projectUniqueName": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\POS_App.csproj",
         "projectName": "POS_App",
-        "projectPath": "D:\\C#\\Du_An\\POS_App\\POS_App\\POS_App.csproj",
+        "projectPath": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\POS_App.csproj",
         "packagesPath": "C:\\Users\\MICHAEL\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\Du_An\\POS_App\\POS_App\\obj\\",
+        "outputPath": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,11 +52,15 @@
           "dependencies": {
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
-              "version": "[10.0.22621.756, )"
+              "version": "[10.0.26100.1742, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
               "version": "[1.6.240923002, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
             },
             "MySql.Data": {
               "target": "Package",
@@ -65,6 +69,16 @@
             "PropertyChanged.Fody": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.8.2, )"
             }
           },
           "imports": [

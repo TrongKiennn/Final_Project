@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#f0daae">
 
     <Page.Resources>
         <local:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -23,16 +23,16 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Background="#2A314B">
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Background="#794730">
             <Image Source="../Assets/latte.png" Width="50" Height="60" Margin="20,0,20,0"/>
-            <TextBlock Text="Event Scheduling" Foreground="White" VerticalAlignment="Center" FontSize="24" Margin="10"/>
+            <TextBlock Text="Event Scheduling" Foreground="#f0daae" VerticalAlignment="Center" FontSize="24" Margin="10" FontWeight="Bold"/>
         </StackPanel>
 
         <!-- Ô đầu tiên, hàng 0 cột 1 -->
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid x:Name="DefaultTitleView" Visibility="Visible">
                 <StackPanel  Width="auto" Height="auto" VerticalAlignment="Center" >
-                    <TextBlock Text="New Event" Foreground="Gray"  VerticalAlignment="Center"  FontWeight="Bold" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
+                    <TextBlock Text="New Event" Foreground="#794730"  VerticalAlignment="Center"  FontWeight="Bold" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
                 </StackPanel>
             </Grid>
             <Grid x:Name="EventTitleView" Visibility="Collapsed">
@@ -46,7 +46,7 @@
 
 
         <!-- Ô thứ ba, hàng 1 cột 0 -->
-        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Background="#2A314B">
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Background="#794730">
             <ItemsControl ItemsSource="{Binding Orders}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -58,7 +58,7 @@
 
 
         <!-- Lưới con (hàng 1, cột 1) -->
-        <Grid Grid.Row="1" Grid.Column="1" Background="LightGray" Margin="10" CornerRadius="12">
+        <Grid Grid.Row="1" Grid.Column="1" Background="#986650" Margin="10" CornerRadius="12">
             <Grid x:Name="DefaultView" Visibility="{Binding IsDefaultViewVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -74,75 +74,91 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Border Grid.Row="0" Grid.Column="0" Background="LightGray" Width="Auto" Height="100">
+                <Border Grid.Row="0" Grid.Column="0" Background="#986650" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Họ và tên" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Họ và tên" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="nameTextBox"
-                                 Text="{Binding EventParams.Name, Mode=TwoWay}"/>
+                                 Foreground="Black"
+                                 Text="{Binding EventParams.Name, Mode=TwoWay}"
+                                 Padding="10,15,0,15" 
+                                 />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="0" Grid.Column="1" Background="LightGray" Width="Auto" Height="100">
+                <Border Grid.Row="0" Grid.Column="1" Background="#986650" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Số điện thoại" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Số điện thoại" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="phoneNumberTextBox"
-                                 Text="{Binding EventParams.PhoneNumber, Mode=TwoWay}"/>
+                                 Foreground="Black"
+                                 Text="{Binding EventParams.PhoneNumber, Mode=TwoWay}"
+                                 Padding="10,15,0,15" />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="0" Grid.Column="2" Background="LightGray" Width="Auto" Height="100">
+                <Border Grid.Row="0" Grid.Column="2" Background="#986650" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Email liên hệ công việc" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Email liên hệ công việc" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="emailTextBox"
-                                 Text="{Binding EventParams.Email, Mode=TwoWay}"/>
+                                 Text="{Binding EventParams.Email, Mode=TwoWay}"
+                                 Foreground="Black"
+                                 Padding="10,15,0,15" />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" HorizontalAlignment="Stretch" Height="100">
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="#986650" HorizontalAlignment="Stretch" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Nội dung chính bữa tiệc" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Nội dung chính bữa tiệc" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="typeTextBox"
-                                 Text="{Binding EventParams.Type, Mode=TwoWay}"/>
+                                 Text="{Binding EventParams.Type, Mode=TwoWay}"
+                                 Foreground="Black"
+                                 Padding="10,15,0,15" />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" Grid.Column="0" Background="LightGray" Width="Auto" Height="100">
+                <Border Grid.Row="2" Grid.Column="0" Background="#986650" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Ngày tổ chức" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Ngày tổ chức" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="dateTextBox"
-                                 Text="{Binding EventParams.Date, Mode=TwoWay}"/>
+                                 Text="{Binding EventParams.Date, Mode=TwoWay}"
+                                 Foreground="Black"
+                                 Padding="10,15,0,15" />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" Grid.Column="1" Background="LightGray" Width="Auto" Height="100">
+                <Border Grid.Row="2" Grid.Column="1" Background="#986650" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Thời gian" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Thời gian" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="timeTextBox"
-                                 Text="{Binding EventParams.Time, Mode=TwoWay}"/>
+                                 Text="{Binding EventParams.Time, Mode=TwoWay}"
+                                 Foreground="Black"
+                                 Padding="10,15,0,15" />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="2" Grid.Column="2" Background="LightGray" Width="Auto" Height="100">
+                <Border Grid.Row="2" Grid.Column="2" Background="#986650" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Số lượng bàn muốn đặt" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8"
+                        <TextBlock Text="Số lượng bàn muốn đặt" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                                  Name="tableNumberTextBox"
-                                 Text="{Binding EventParams.TableNumber, Mode=TwoWay}"/>
+                                 Text="{Binding EventParams.TableNumber, Mode=TwoWay}"
+                                 Foreground="Black"
+                                 Padding="10,15,0,15" />
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="LightGray" HorizontalAlignment="Stretch" Height="200">
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="#986650" HorizontalAlignment="Stretch" Height="200">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Ghi chú" Foreground="Black" VerticalAlignment="Center" Margin="0,5,0,0"/>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="150" CornerRadius="8"
+                        <TextBlock Text="Ghi chú" Foreground="#f0daae" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="150" CornerRadius="8" Background="#f0daae"
                                  Name="noteTextBox"
-                                 Text="{Binding EventParams.Note, Mode=TwoWay}"/>
+                                 Text="{Binding EventParams.Note, Mode=TwoWay}"
+                                 Foreground="Black"/>
                     </StackPanel>
                 </Border>
 
@@ -152,16 +168,16 @@
                     FontSize="16" 
                     FontWeight="Bold" 
                     CornerRadius="5"
-                    Foreground="White"
-                    Background="#2A314B" 
+                    Foreground="#794730"
+                    Background="#f0daae" 
                     Width="70" 
                     Height="40" 
                     Margin="30 0"
                     Command="{Binding SaveCommand}"  
                     CommandParameter="{Binding EventParams}"
                 />
-                <Button Grid.Row="4" Grid.Column="0" Background="#2A314B" Margin="10" Width="150" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BackToDashBoardButton_Click">
-                    <TextBlock Text="Back to DashBoard" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Grid.Row="4" Grid.Column="0" Background="#f0daae" Margin="10" Width="150" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BackToDashBoardButton_Click">
+                    <TextBlock Text="Back to DashBoard" Foreground="#794730" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
 
             </Grid>

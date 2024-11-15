@@ -49,7 +49,7 @@ public class LoginViewModel
     }        
 
       
-    private void ExecuteLogin(object parameter)
+    public void ExecuteLogin(object parameter)
     {
         Model.User user = null;
 

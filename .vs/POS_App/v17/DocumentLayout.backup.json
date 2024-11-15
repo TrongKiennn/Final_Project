@@ -1,46 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\C#\\Du_An\\POS_App\\",
+  "WorkspaceRootPath": "D:\\C#\\22120151_22120167\\POS_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\view\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\dashboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\view\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\view\\eventscheduling.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\eventscheduling.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\view\\eventscheduling.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\view\\eventscheduling.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\eventscheduling.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\viewmodel\\eventschedulingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\view\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\viewmodel\\eventschedulingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\eventschedulingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\viewmodel\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\service\\hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\service\\hasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\service\\gensalt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\service\\gensalt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\du_an\\pos_app\\pos_app\\view\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,137 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Login.xaml.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\Login.xaml.cs",
-              "RelativeDocumentMoniker": "POS_App\\View\\Login.xaml.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\Login.xaml.cs",
-              "RelativeToolTip": "POS_App\\View\\Login.xaml.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAuwCsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T12:06:46.814Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DashBoardPage.xaml.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\DashBoardPage.xaml.cs",
-              "RelativeDocumentMoniker": "POS_App\\View\\DashBoardPage.xaml.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\DashBoardPage.xaml.cs*",
-              "RelativeToolTip": "POS_App\\View\\DashBoardPage.xaml.cs*",
-              "ViewState": "AgIAACQAAAAAAAAAAAA1wDgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:38:25.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EventScheduling.xaml.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\EventScheduling.xaml.cs",
-              "RelativeDocumentMoniker": "POS_App\\View\\EventScheduling.xaml.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\EventScheduling.xaml.cs*",
-              "RelativeToolTip": "POS_App\\View\\EventScheduling.xaml.cs*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAIAAAAAAAAAA==",
+              "Title": "EventSchedulingViewModel.cs",
+              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\EventSchedulingViewModel.cs",
+              "RelativeDocumentMoniker": "POS_App\\ViewModel\\EventSchedulingViewModel.cs",
+              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\EventSchedulingViewModel.cs",
+              "RelativeToolTip": "POS_App\\ViewModel\\EventSchedulingViewModel.cs",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAkwPkAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:37:32.856Z",
+              "WhenOpened": "2024-11-15T01:10:33.396Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DashBoardPage.xaml",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\DashBoardPage.xaml",
+              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\DashBoardPage.xaml",
               "RelativeDocumentMoniker": "POS_App\\View\\DashBoardPage.xaml",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\DashBoardPage.xaml*",
-              "RelativeToolTip": "POS_App\\View\\DashBoardPage.xaml*",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFQAAAAVAAAAAAAAAA==",
+              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\DashBoardPage.xaml",
+              "RelativeToolTip": "POS_App\\View\\DashBoardPage.xaml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAC0AAACwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-06T16:37:02.864Z",
+              "WhenOpened": "2024-11-13T03:15:53.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "EventScheduling.xaml",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\EventScheduling.xaml",
+              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\EventScheduling.xaml",
               "RelativeDocumentMoniker": "POS_App\\View\\EventScheduling.xaml",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\View\\EventScheduling.xaml*",
-              "RelativeToolTip": "POS_App\\View\\EventScheduling.xaml*",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAAAKQAAAAZAAAAAAAAAA==",
+              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\EventScheduling.xaml",
+              "RelativeToolTip": "POS_App\\View\\EventScheduling.xaml",
+              "ViewState": "AgIAACwAAAAAAAAAAAAtwDEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-06T16:32:57.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\ViewModel\\RegisterViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\RegisterViewModel.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\ViewModel\\RegisterViewModel.cs",
-              "RelativeToolTip": "POS_App\\ViewModel\\RegisterViewModel.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAUwG8AAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:26:19.409Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\ViewModel\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\LoginViewModel.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\ViewModel\\LoginViewModel.cs",
-              "RelativeToolTip": "POS_App\\ViewModel\\LoginViewModel.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAADwv1QAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:16:14.39Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EventSchedulingViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\ViewModel\\EventSchedulingViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\EventSchedulingViewModel.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\ViewModel\\EventSchedulingViewModel.cs",
-              "RelativeToolTip": "POS_App\\ViewModel\\EventSchedulingViewModel.cs",
-              "ViewState": "AgIAAKQAAAAAAAAAAAAgwLgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:16:05.358Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Hasher.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\Service\\Hasher.cs",
-              "RelativeDocumentMoniker": "POS_App\\Service\\Hasher.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\Service\\Hasher.cs",
-              "RelativeToolTip": "POS_App\\Service\\Hasher.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAwwB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:14:51.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GenSalt.cs",
-              "DocumentMoniker": "D:\\C#\\Du_An\\POS_App\\POS_App\\Service\\GenSalt.cs",
-              "RelativeDocumentMoniker": "POS_App\\Service\\GenSalt.cs",
-              "ToolTip": "D:\\C#\\Du_An\\POS_App\\POS_App\\Service\\GenSalt.cs",
-              "RelativeToolTip": "POS_App\\Service\\GenSalt.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T16:12:09.891Z",
+              "WhenOpened": "2024-11-13T02:55:03.633Z",
               "EditorCaption": ""
             }
           ]

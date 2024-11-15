@@ -7,36 +7,40 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:POS_App.ViewModel"
-    mc:Ignorable="d" 
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="../Assets/background.jpg"/>
+    </Page.Background>
+   
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="20" >
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid Background="#505589" Height="200" Width="400">
-            <FontIcon Glyph="&#xE77B;" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid Background="#FAF7F5" Height="200" Width="400">
+            <FontIcon Glyph="&#xE77B;" FontSize="72" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" />
             <TextBlock Text="Please enter user information."
                        HorizontalAlignment="Left"
                        VerticalAlignment="Bottom"
                        Margin="10"
-                       FontSize="16" />
+                       FontSize="16"
+                       Foreground="Black"/>
         </Grid>
-        <StackPanel Background="#D5DADF" Width="400">
+        <StackPanel Background="#EBE8E6" Width="400">
             <StackPanel>
                 <TextBox
                     Width="300"
-                    PlaceholderText="Enter your username"
                     Margin="0,5,0,0"
                     Background="White"
                     Foreground="Black"
                     BorderBrush="Gray"
                     BorderThickness="1"
                     Padding="10"
+                    PlaceholderForeground="Black"
                     Name="usernameTextBox"
                     Text="{Binding LoginParams.Username, Mode=TwoWay}">
                    
                     <TextBox.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock 
-                                Text="Username" 
+                                Text="Enter your Email" 
                                 FontSize="16" 
                                 FontWeight="Bold" 
                                 Foreground="Black"
@@ -50,7 +54,6 @@
             <StackPanel>
                 <PasswordBox
                     Width="300"
-                    PlaceholderText="Enter your password"
                     Margin="0,5,0,0"
                     Background="White"
                     Foreground="Black"
@@ -63,7 +66,7 @@
                     <PasswordBox.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock 
-                                Text="Password" 
+                                Text="Enter your password" 
                                 FontSize="16" 
                                 FontWeight="Bold" 
                                 Foreground="Black"
@@ -71,6 +74,7 @@
                                 Margin="0 20 0 10"/>
                         </DataTemplate>
                     </PasswordBox.HeaderTemplate>
+                    
                 </PasswordBox>
             </StackPanel>
            
@@ -79,7 +83,7 @@
                 <TextBlock
                     
                     Text="{Binding LoginParams.Noti, Mode=OneWay}"
-                    Foreground="Red"
+                    Foreground="#D6557E"
                     FontSize="16"/>
             </StackPanel>
             
@@ -101,7 +105,7 @@
                         FontWeight="Bold" 
                         CornerRadius="20" 
                         Foreground="Black"
-                        Background="Red" 
+                        Background="#D6557E" 
                         Width="120" 
                         Height="40" 
                         Margin="30 0"
