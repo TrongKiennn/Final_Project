@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DemoListBinding1610 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DemoListBinding1610 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

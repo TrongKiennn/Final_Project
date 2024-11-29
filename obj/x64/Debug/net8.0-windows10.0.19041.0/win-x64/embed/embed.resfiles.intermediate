@@ -1,0 +1,7 @@
+App.xbf
+MainWindow.xbf
+View\EmployeeAddPage.xbf
+View\EmployeeEditPage.xbf
+View\MainPage.xbf
+View\OrderPage.xbf
+View\UserControl\EmployeeUserControl.xbf
