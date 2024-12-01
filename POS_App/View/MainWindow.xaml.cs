@@ -35,7 +35,7 @@ namespace POS_App
             if (content.Content == null)
             {
 
-                content.Navigate(typeof(EventScheduling));
+                content.Navigate(typeof(OrderPage));
             }
            
 

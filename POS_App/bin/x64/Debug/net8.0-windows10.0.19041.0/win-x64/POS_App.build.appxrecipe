@@ -49,6 +49,9 @@
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\xunit.runner.visualstudio\2.8.2\build\net6.0\xunit.runner.utility.netcoreapp10.dll">
       <PackagePath>xunit.runner.utility.netcoreapp10.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\Assets\matcha-latte.jpg">
+      <PackagePath>Assets\matcha-latte.jpg</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.8\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
     </AppxPackagedFile>

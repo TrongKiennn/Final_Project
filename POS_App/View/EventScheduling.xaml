@@ -28,6 +28,8 @@
             <TextBlock Text="Event Scheduling" Foreground="#f0daae" VerticalAlignment="Center" FontSize="24" Margin="10" FontWeight="Bold"/>
         </StackPanel>
 
+       
+
         <!-- Ô đầu tiên, hàng 0 cột 1 -->
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid x:Name="DefaultTitleView" Visibility="Visible">
@@ -46,15 +48,20 @@
 
 
         <!-- Ô thứ ba, hàng 1 cột 0 -->
-        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Background="#794730">
-            <ItemsControl ItemsSource="{Binding Orders}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <ContentPresenter Content="{Binding}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="#794730">
+            <StackPanel>
+
+                <!-- Nội dung ItemsControl ban đầu -->
+                <ItemsControl ItemsSource="{Binding Orders}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ContentPresenter Content="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
         </ScrollViewer>
+
 
 
         <!-- Lưới con (hàng 1, cột 1) -->

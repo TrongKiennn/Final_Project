@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-11-15T01:22:46.882</Modified>
+      <Modified>2024-11-30T08:14:32.437</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-11-15T01:08:42.999</Modified>
+      <Modified>2024-11-30T08:14:32.035</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
       <PackagePath>POS_App.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
       <PackagePath>POS_App.dll</PackagePath>
-      <Modified>2024-11-15T01:22:46.565</Modified>
+      <Modified>2024-11-30T08:14:31.780</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>POS_App.exe</PackagePath>
-      <Modified>2024-11-15T01:22:46.593</Modified>
+      <Modified>2024-11-30T08:14:31.819</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
@@ -65,6 +65,10 @@
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\xunit.runner.visualstudio\2.8.2\build\net6.0\xunit.runner.utility.netcoreapp10.dll">
       <PackagePath>xunit.runner.utility.netcoreapp10.dll</PackagePath>
       <Modified>2024-07-07T19:47:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\Assets\matcha-latte.jpg">
+      <PackagePath>Assets\matcha-latte.jpg</PackagePath>
+      <Modified>2024-11-30T08:01:06.135</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.8\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -988,7 +992,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
       <PackagePath>POS_App.deps.json</PackagePath>
-      <Modified>2024-11-07T07:25:42.925</Modified>
+      <Modified>2024-11-30T08:09:51.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>

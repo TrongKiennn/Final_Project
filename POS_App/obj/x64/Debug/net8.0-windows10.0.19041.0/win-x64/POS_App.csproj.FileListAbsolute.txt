@@ -306,3 +306,9 @@ D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.genpublishdeps.cache
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\Castle.Core.dll
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\Moq.dll
+D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.xbf
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.g.i.cs
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.g.cs
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.xaml
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.xbf
+D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\Assets\matcha-latte.jpg
