@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,6 +62,10 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         SelectedItems.Add(new SelectedItem { ItemName = "Coffee - $5" });
         SelectedItems.Add(new SelectedItem { ItemName = "Tea - $3" });
         SelectedItems.Add(new SelectedItem { ItemName = "Croissant - $4" });
+
+
+        // Check if items are added
+        Debug.WriteLine($"Number of items in SelectedItems: {SelectedItems.Count}");
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

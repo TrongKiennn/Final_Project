@@ -31,14 +31,14 @@ namespace POS_App.View
         {
             this.InitializeComponent();
             ViewModel = new OrderPageViewModel();
-            // DataContext = this;
+            DataContext = ViewModel;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel = e.Parameter as OrderPageViewModel;
-            DataContext = ViewModel;
+            //ViewModel = e.Parameter as OrderPageViewModel;
+            //DataContext = ViewModel;
         }
 
         //Event handler for Continue to Payment button
@@ -46,6 +46,17 @@ namespace POS_App.View
         {
             try
             {
+                if (ViewModel == null || ViewModel.SelectedItems == null)
+                {
+                    await new ContentDialog
+                    {
+                        Title = "Error",
+                        Content = "No items selected.",
+                        CloseButtonText = "Ok",
+                        XamlRoot = this.XamlRoot
+                    }.ShowAsync();
+                    return;
+                }
                 // Create a ListView to display the selected items
                 ListView billListView = new ListView
                 {
@@ -264,6 +275,43 @@ namespace POS_App.View
                 //ToastHelper.ShowToast("Order was canceled.");
             }
         }
+
+        private bool isDrawerOpen = false;
+
+        private void ToggleDrawer()
+        {
+            // Adjust the width of the drawer
+            var drawer = DrawerGrid; // Replace with your drawer grid name
+            if (isDrawerOpen)
+            {
+                drawer.Width = 100;
+
+                // Hide text for all buttons
+                page01Text.Visibility = Visibility.Collapsed;
+                page02Text.Visibility = Visibility.Collapsed;
+                page03Text.Visibility = Visibility.Collapsed;
+                page04Text.Visibility = Visibility.Collapsed;
+                page05Text.Visibility = Visibility.Collapsed;
+                page06Text.Visibility = Visibility.Collapsed;
+                page07Text.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                drawer.Width = 305;
+
+                // Show text for all buttons
+                page01Text.Visibility = Visibility.Visible;
+                page02Text.Visibility = Visibility.Visible;
+                page03Text.Visibility = Visibility.Visible;
+                page04Text.Visibility = Visibility.Visible;
+                page05Text.Visibility = Visibility.Visible;
+                page06Text.Visibility = Visibility.Visible;
+                page07Text.Visibility = Visibility.Visible;
+            }
+
+            isDrawerOpen = !isDrawerOpen;
+        }
+
 
         // This will handle Save button click inside the ContentDialog
         private void OnSaveClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)

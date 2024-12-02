@@ -20,16 +20,16 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="8.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="305"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Grid.Column="0" Background="#ffffff" BorderBrush="Black">
+        <Border Grid.Row="0" Grid.Column="0" Background="#794730" BorderBrush="Black">
             <Image Source="ms-appx:///Assets/latte-art.png" Width="64" Height="64"/>
         </Border>
 
@@ -80,30 +80,30 @@
             <StackPanel>
                 <!-- Sugar options -->
                 <TextBlock Text="Sugar" />
-                <RadioButton x:ConnectionId='26' x:Name="Sugar100" Content="100%" />
-                <RadioButton x:ConnectionId='27' x:Name="Sugar50" Content="50%" />
+                <RadioButton x:ConnectionId='36' x:Name="Sugar100" Content="100%" />
+                <RadioButton x:ConnectionId='37' x:Name="Sugar50" Content="50%" />
 
                 <!-- Ice options -->
                 <TextBlock Text="Ice" />
-                <RadioButton x:ConnectionId='28' x:Name="NoIce" Content="No Ice" />
-                <RadioButton x:ConnectionId='29' x:Name="SeparateIce" Content="Separate Ice" />
-                <RadioButton x:ConnectionId='30' x:Name="ShareIce" Content="Share Ice" />
-                <RadioButton x:ConnectionId='31' x:Name="LittleIce" Content="Little Ice" />
+                <RadioButton x:ConnectionId='38' x:Name="NoIce" Content="No Ice" />
+                <RadioButton x:ConnectionId='39' x:Name="SeparateIce" Content="Separate Ice" />
+                <RadioButton x:ConnectionId='40' x:Name="ShareIce" Content="Share Ice" />
+                <RadioButton x:ConnectionId='41' x:Name="LittleIce" Content="Little Ice" />
 
                 <!-- Take Away or Stay Here -->
                 <TextBlock Text="Take Away or Stay Here" />
-                <RadioButton x:ConnectionId='32' x:Name="TakeAway" Content="Take Away" />
-                <RadioButton x:ConnectionId='33' x:Name="StayHere" Content="Stay Here" />
+                <RadioButton x:ConnectionId='42' x:Name="TakeAway" Content="Take Away" />
+                <RadioButton x:ConnectionId='43' x:Name="StayHere" Content="Stay Here" />
 
                 <!-- Note -->
                 <TextBlock Text="Note" />
-                <TextBox x:ConnectionId='34' x:Name="NoteTextBox" />
+                <TextBox x:ConnectionId='44' x:Name="NoteTextBox" />
             </StackPanel>
 
         </ContentDialog>
 
 
-        <Grid Grid.Row="0" Grid.Column="1" Padding="30,30,0,30" Background="#f0f0f0" BorderBrush="Black">
+        <Grid Grid.Row="0" Grid.Column="1" Padding="30,30,0,30" Background="#f0daae" BorderBrush="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -117,9 +117,9 @@
 
             <!-- Các phần tử còn lại -->
             <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <TextBox x:ConnectionId='24' Name="keyword" VerticalAlignment="Center"                                  
+                <TextBox x:ConnectionId='34' Name="keyword" VerticalAlignment="Center"                                  
                                                                        Width="200" HorizontalAlignment="Right"/>
-                <Button x:ConnectionId='25' Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                <Button x:ConnectionId='35' Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
                         Content="Search"                            Margin="0,0,10,0"/>
                 <ToggleSwitch Width="100"  
                               HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort"/>
@@ -133,31 +133,71 @@
 
         <!--Hàng 2 
          Image Items Section-->
-        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="9*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <ScrollViewer Grid.Row="0" Background="#ffffff">
-                <ItemsRepeater x:ConnectionId='20'                                                         >
-                    <ItemsRepeater.Layout>
-                        <UniformGridLayout MinItemWidth="100" MinItemHeight="50" Orientation="Horizontal"/>
-                    </ItemsRepeater.Layout>
-                    <ItemsRepeater.ItemTemplate>
-                        <DataTemplate                              >
-                            <Button x:ConnectionId='22' Width="100" Height="50"                                      >
-                                <Image x:ConnectionId='23' Width="32" Height="32"                               Stretch="UniformToFill"/>
-                            </Button>
-                        </DataTemplate>
-                    </ItemsRepeater.ItemTemplate>
-                </ItemsRepeater>
-            </ScrollViewer>
-            <Button x:ConnectionId='19' Grid.Row="1" Width="100" Background="Orange" Height="35" Content="Back to Dashboard"                                    />
-        </Grid>
+		<Grid x:ConnectionId='6' x:Name="DrawerGrid" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="9*"/>
+        <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+
+    <!-- Drawer Content -->
+    <StackPanel Grid.Row="0" Background="#794730">
+        <!-- Page Buttons -->
+        <Button x:ConnectionId='20' Name="page01Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/order.png" Width="24" Height="24" Margin="0,0,10,0" />
+                <TextBlock x:ConnectionId='33' x:Name="page01Text" Text="Order" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+        <Button x:ConnectionId='21' Name="page02Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/lab-beaker.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                <TextBlock x:ConnectionId='32' x:Name="page02Text" Text="Material Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+        <Button x:ConnectionId='22' Name="page03Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/calendar.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                <TextBlock x:ConnectionId='31' x:Name="page03Text" Text="Event Scheduling" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+        <Button x:ConnectionId='23' Name="page04Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/market-analysis.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                <TextBlock x:ConnectionId='30' x:Name="page04Text" Text="Statistics" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+        <Button x:ConnectionId='24' Name="page05Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/table.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                <TextBlock x:ConnectionId='29' x:Name="page05Text" Text="Table Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+        <Button x:ConnectionId='25' Name="page06Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/settings.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                <TextBlock x:ConnectionId='28' x:Name="page06Text" Text="Settings" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+        <Button x:ConnectionId='26' Name="page07Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+                HorizontalContentAlignment="Left" Background="#f0daae">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="../Assets/help.png" Width="24" Height="24" Margin="0,0,10,0"/>
+                <TextBlock x:ConnectionId='27' x:Name="page07Text" Text="Help" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Grid>
 
 
 
-        <Grid x:ConnectionId='6' Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#f0f0f0" 
+
+        <Grid x:ConnectionId='7' Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#f0daae" 
                     Name="optionsStackPanel">
             <Grid.RowDefinitions>
                 <RowDefinition Height="9*" />
@@ -172,14 +212,14 @@
                 </Grid.RowDefinitions>
 
                 <!-- Hàng chứa các nút -->
-                <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#f0f0f0" 
+                <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#f0daae" 
                         Orientation="Horizontal">
-                    <Button x:ConnectionId='13' Name="Coffee" Margin="5" Content="Coffee" Width="150" Height="35"/>
-                    <Button x:ConnectionId='14' Name="MilkTea" Content="MilkTea" Width="150" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='15' Name="Croissant" Content="Croissant" Width="150" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='16' Name="Smoothie" Content="Smoothie" Width="150" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='17' Name="Juice" Content="Juice" Width="150" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='18' Name="Tea" Content="Tea" Width="150" Height="35" Margin="5"/>
+                    <Button x:ConnectionId='14' Name="Coffee" Margin="5" Content="Coffee" Width="100" Height="35"/>
+                    <Button x:ConnectionId='15' Name="MilkTea" Content="MilkTea" Width="100" Height="35" Margin="5"/>
+                    <Button x:ConnectionId='16' Name="Croissant" Content="Croissant" Width="100" Height="35" Margin="5"/>
+                    <Button x:ConnectionId='17' Name="Smoothie" Content="Smoothie" Width="100" Height="35" Margin="5"/>
+                    <Button x:ConnectionId='18' Name="Juice" Content="Juice" Width="100" Height="35" Margin="5"/>
+                    <Button x:ConnectionId='19' Name="Tea" Content="Tea" Width="100" Height="35" Margin="5"/>
                 </StackPanel>
 
                 <!-- This place use for display all items of categories-->
@@ -202,7 +242,8 @@
                     <!-- Template for each item -->
                     <GridView>
 
-                        <StackPanel x:ConnectionId='12' Orientation="Vertical" Background="White" Width="200" HorizontalAlignment="Center"                         >
+                        <StackPanel x:ConnectionId='13' Orientation="Vertical" Background="White" Width="200" HorizontalAlignment="Center" 
+									                        >
                             <!-- Product Image -->
                             <Border  Width="200" Height="200" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
                                 <Image Source="../Assets/matcha-latte.jpg" Stretch="UniformToFill"/>
@@ -225,9 +266,9 @@
                 </GridView>
             </Grid>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <Button x:ConnectionId='8' Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
+                <Button x:ConnectionId='9' Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
                                                     />
-                <ComboBox x:ConnectionId='9'                                                        
+                <ComboBox x:ConnectionId='10'                                                        
                                                                                                
                                                                              
                             Margin="5" Name="pagesComboBox" Width="100" Height="35">
@@ -239,7 +280,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <Button x:ConnectionId='10' Margin="5" Content=">" Width="80" Height="35" Name="nextButton"                         />
+                <Button x:ConnectionId='11' Margin="5" Content=">" Width="80" Height="35" Name="nextButton"                         />
             </StackPanel>
         </Grid>
 
@@ -382,7 +423,7 @@
                 </StackPanel>
 
                 <!-- Nút tiếp tục thanh toán -->
-                <Button x:ConnectionId='7' Grid.Row="2" Width="auto" Height="50" Background="Orange" HorizontalAlignment="Center" 
+                <Button x:ConnectionId='8' Grid.Row="2" Width="auto" Height="50" Background="Orange" HorizontalAlignment="Center" 
                         CornerRadius="12"                                   >
                     <TextBlock Text="Continue to Payment" FontWeight="Bold" Foreground="White" />
                 </Button>
