@@ -93,6 +93,8 @@ Launch Visual Studio and open the cloned project folder.
 
 To ensure consistent progress and quality, each milestone will be assessed based on the following criteria:
 
+### Milestone 01: Initial Release (Weeks 4–7)
+
 - **UI/UX (20%)**  
    - The interface should be clean and logically organized.
    - On login, if the user enters an incorrect username or password, display:  
@@ -111,5 +113,53 @@ To ensure consistent progress and quality, each milestone will be assessed based
 
 - **Quality Assurance (20%)**  
    - Quality assurance standards will be followed in upcoming milestones to ensure code quality, reliability, and maintainability.
+ 
+### Milestone 02: Intermediate Development (Weeks 8–11)
+The team has completed 7 hours of work for **Milestone 2**, focusing on two main features:
 
-These criteria will help guide development and provide benchmarks for success in each milestone.
+1. **OrderPage (4 hours):** Developed the interface for placing orders, customizing products, displaying order details, and supporting payment via pop-ups.  
+2. **Search and Sort (3 hours):** Implemented functionality to search and sort products by name.  [ProjectProposal](https://docs.google.com/document/d/1kSat9CqWG8-aWRFB-62Lu82mtGdHkVtC2Y2KuRkuEpE/edit?usp=sharing)
+
+Both features have been thoroughly tested and are operating as expected, meeting the milestone timeline.
+
+Task Assignment Table:
+| 22120151                                                                                                                             | 22120167                                                                                                                             |
+|----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| FrontEnd for OrderPage                                                                                                                | BackEnd for OrderPage                                                                                                                 |
+| navigationView                                                                                                                        | filter                                                                                                                                |
+| Items view                                                                                                                            | search                                                                                                                                |
+| searchView                                                                                                                            | display items                                                                                                                         |
+| filterView                                                                                                                            | save items into database                                                                                                              |
+| popup for continue to payment                                                                                                         | handle popup for custom an item when order                                                                                            |
+| popup for custom an item when order                                                                                                   | handle popUp for continue payment                                                                                                     |
+| Content for Record                                                                                                                    | Video Record                                                                                                                          |
+| Unit test                                                                                                                             | Unit test                                                                                                                             |
+- **UI/UX (20%)**  
+   - The interface should be cleaned and logically organized.
+   - When click on an items, If user does not choose any custom items, the default will be seted for this items.
+   - UI: [UI link check](https://docs.google.com/document/d/1XnmnEVnmcCzOUzSOjxavhJ2Yj78g9KM-R-ONCt2x0Jw/edit?usp=sharing)
+
+- **Design Patterns / Architecture (20%)**  
+   - The project follows the **MVVM architecture** to ensure a clear separation of concerns.
+   - Each function and class includes comments detailing its functionality for improved code readability.
+ 
+- **Advantage Topic**
+   - Use NavigationView to navigate between pages.
+   - Export bills to PDF files.
+
+- **Teamwork - Git Flow (10%)**  
+   - The team uses **GitHub** and **Trello** to organize and track development:
+     - Trello: [Project Board](https://trello.com/b/N54ELBhQ/l%E1%BA%ADp-trinh-win)
+     - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project)
+
+- **Quality Assurance (20%)**  
+   - Unit test some functions: Search, SortByName, Loadata.
+ 
+Link Video Demo Milestone 2: 
+
+### Milestone 03: Final Release (Weeks 12–15)
+*To be determined based on outcomes of previous milestones.*
+
+---
+
+By setting clear and actionable criteria, we aim to ensure each milestone meets its objectives while maintaining high standards for usability, reliability, and scalability.
