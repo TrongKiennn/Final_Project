@@ -26,98 +26,98 @@ namespace POS_App.View
     /// </summary>
     public sealed partial class OrderPage : Page
     {
-        public OrderPageViewModel ViewModel { get; set; }
+        public OrderPageViewModel OrderPageViewModel { get; set; }
         public OrderPage()
         {
             this.InitializeComponent();
-            ViewModel = new OrderPageViewModel();
-            DataContext = ViewModel;
+            OrderPageViewModel = new OrderPageViewModel();
+            DataContext = OrderPageViewModel;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            //ViewModel = e.Parameter as OrderPageViewModel;
-            //DataContext = ViewModel;
-        }
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    base.OnNavigatedTo(e);
+        //    //ViewModel = e.Parameter as OrderPageViewModel;
+        //    //DataContext = ViewModel;
+        //}
 
         //Event handler for Continue to Payment button
         private async void OnContinueToPaymentClicked(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (ViewModel == null || ViewModel.SelectedItems == null)
-                {
-                    await new ContentDialog
-                    {
-                        Title = "Error",
-                        Content = "No items selected.",
-                        CloseButtonText = "Ok",
-                        XamlRoot = this.XamlRoot
-                    }.ShowAsync();
-                    return;
-                }
-                // Create a ListView to display the selected items
-                ListView billListView = new ListView
-                {
-                    ItemsSource = ViewModel.SelectedItems,  // Bind to SelectedItems from ViewModel
-                    SelectionMode = ListViewSelectionMode.None
-                };
+            //try
+            //{
+            //    if (ViewModel == null || ViewModel.SelectedItems == null)
+            //    {
+            //        await new ContentDialog
+            //        {
+            //            Title = "Error",
+            //            Content = "No items selected.",
+            //            CloseButtonText = "Ok",
+            //            XamlRoot = this.XamlRoot
+            //        }.ShowAsync();
+            //        return;
+            //    }
+            //    // Create a ListView to display the selected items
+            //    ListView billListView = new ListView
+            //    {
+            //        ItemsSource = ViewModel.SelectedItems,  // Bind to SelectedItems from ViewModel
+            //        SelectionMode = ListViewSelectionMode.None
+            //    };
 
-                // Create and show the ContentDialog with the list of selected items
-                ContentDialog billDialog = new ContentDialog
-                {
-                    Title = "Bill Details",
-                    Content = new StackPanel
-                    {
-                        Children =
-                        {
-                            new TextBlock
-                            {
-                                Text = "Your Selected Items:",
-                                FontSize = 18,
-                                Margin = new Thickness(0, 0, 0, 10)
-                            },
-                            billListView
-                        }
-                    },
-                    PrimaryButtonText = "Choose Payment Method",
-                    SecondaryButtonText = "Cancel",
-                    DefaultButton = ContentDialogButton.Primary,
-                    XamlRoot = this.XamlRoot
-                };
+            //    // Create and show the ContentDialog with the list of selected items
+            //    ContentDialog billDialog = new ContentDialog
+            //    {
+            //        Title = "Bill Details",
+            //        Content = new StackPanel
+            //        {
+            //            Children =
+            //            {
+            //                new TextBlock
+            //                {
+            //                    Text = "Your Selected Items:",
+            //                    FontSize = 18,
+            //                    Margin = new Thickness(0, 0, 0, 10)
+            //                },
+            //                billListView
+            //            }
+            //        },
+            //        PrimaryButtonText = "Choose Payment Method",
+            //        SecondaryButtonText = "Cancel",
+            //        DefaultButton = ContentDialogButton.Primary,
+            //        XamlRoot = this.XamlRoot
+            //    };
 
-                // Show the ContentDialog and handle the result
-                ContentDialogResult result = await billDialog.ShowAsync();
+            //    // Show the ContentDialog and handle the result
+            //    ContentDialogResult result = await billDialog.ShowAsync();
 
-                if (result == ContentDialogResult.Primary)
-                {
-                    // Show another dialog to choose payment method
-                    await ShowPaymentMethodDialog();
-                }
-                else
-                {
-                    // Payment was canceled
-                    await new ContentDialog
-                    {
-                        Title = "Payment Canceled",
-                        Content = "Your payment was canceled.",
-                        CloseButtonText = "Ok",
-                        XamlRoot = this.XamlRoot
-                    }.ShowAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle any errors that occur
-                await new ContentDialog
-                {
-                    Title = "Error",
-                    Content = $"An error occurred: {ex.Message}",
-                    CloseButtonText = "Ok",
-                    XamlRoot = this.XamlRoot
-                }.ShowAsync();
-            }
+            //    if (result == ContentDialogResult.Primary)
+            //    {
+            //        // Show another dialog to choose payment method
+            //        await ShowPaymentMethodDialog();
+            //    }
+            //    else
+            //    {
+            //        // Payment was canceled
+            //        await new ContentDialog
+            //        {
+            //            Title = "Payment Canceled",
+            //            Content = "Your payment was canceled.",
+            //            CloseButtonText = "Ok",
+            //            XamlRoot = this.XamlRoot
+            //        }.ShowAsync();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Handle any errors that occur
+            //    await new ContentDialog
+            //    {
+            //        Title = "Error",
+            //        Content = $"An error occurred: {ex.Message}",
+            //        CloseButtonText = "Ok",
+            //        XamlRoot = this.XamlRoot
+            //    }.ShowAsync();
+            //}
         }
 
         private async Task ShowPaymentMethodDialog()
@@ -254,64 +254,26 @@ namespace POS_App.View
 
         private async void OnProductTapped(object sender, RoutedEventArgs e)
         {
-            // Open the ContentDialog when the product is tapped
-            var result = await OrderDetailDialog.ShowAsync();
+            await OrderDetailDialog.ShowAsync();
 
-            if (result == ContentDialogResult.Primary) // Save button was clicked
-            {
-                // Collect the selections and note
-                string sugar = Sugar100.IsChecked == true ? "100%" : "50%";
-                string ice = NoIce.IsChecked == true ? "No Ice" :
-                             SeparateIce.IsChecked == true ? "Separate Ice" :
-                             ShareIce.IsChecked == true ? "Share Ice" :
-                             "Little Ice";
-                string takeawayOrStay = TakeAway.IsChecked == true ? "Take Away" : "Stay Here";
-                string note = NoteTextBox.Text;
+            //if (result == ContentDialogResult.Primary) // Save button was clicked
+            //{
+            //    // Collect the selections and note
+            //    string sugar = Sugar100.IsChecked == true ? "100%" : "50%";
+            //    string ice = NoIce.IsChecked == true ? "No Ice" :
+            //                 SeparateIce.IsChecked == true ? "Separate Ice" :
+            //                 ShareIce.IsChecked == true ? "Share Ice" :
+            //                 "Little Ice";
+            //    string takeawayOrStay = TakeAway.IsChecked == true ? "Take Away" : "Stay Here";
+            //    string note = NoteTextBox.Text;
 
-            }
-            else if (result == ContentDialogResult.Secondary) // Cancel button clicked
-            {
-                // Optionally handle cancellation
-                //ToastHelper.ShowToast("Order was canceled.");
-            }
+            //}
+            //else if (result == ContentDialogResult.Secondary) // Cancel button clicked
+            //{
+            //    // Optionally handle cancellation
+            //    //ToastHelper.ShowToast("Order was canceled.");
+            //}
         }
-
-        private bool isDrawerOpen = false;
-
-        private void ToggleDrawer()
-        {
-            // Adjust the width of the drawer
-            var drawer = DrawerGrid; // Replace with your drawer grid name
-            if (isDrawerOpen)
-            {
-                drawer.Width = 100;
-
-                // Hide text for all buttons
-                page01Text.Visibility = Visibility.Collapsed;
-                page02Text.Visibility = Visibility.Collapsed;
-                page03Text.Visibility = Visibility.Collapsed;
-                page04Text.Visibility = Visibility.Collapsed;
-                page05Text.Visibility = Visibility.Collapsed;
-                page06Text.Visibility = Visibility.Collapsed;
-                page07Text.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                drawer.Width = 305;
-
-                // Show text for all buttons
-                page01Text.Visibility = Visibility.Visible;
-                page02Text.Visibility = Visibility.Visible;
-                page03Text.Visibility = Visibility.Visible;
-                page04Text.Visibility = Visibility.Visible;
-                page05Text.Visibility = Visibility.Visible;
-                page06Text.Visibility = Visibility.Visible;
-                page07Text.Visibility = Visibility.Visible;
-            }
-
-            isDrawerOpen = !isDrawerOpen;
-        }
-
 
         // This will handle Save button click inside the ContentDialog
         private void OnSaveClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -325,19 +287,34 @@ namespace POS_App.View
             // Handle cancellation logic if needed
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e) { }
-        private void previousButton_Click(object sender, RoutedEventArgs e) { }
-        private void pagesComboBox_SelectionChanged(object sender, RoutedEventArgs e) { }
-        private void backToDashboardButton_Click(object sender, RoutedEventArgs e) { }
-        private void getAllCoffeeButton_Click(object sender, RoutedEventArgs e) { }
-        private void getAllTeaButton_Click(object sender, RoutedEventArgs e) { }
-        private void getAllJuiceButton_Click(object sender, RoutedEventArgs e) { }
-        private void getAllSmoothieButton_Click(object sender, RoutedEventArgs e) { }
-        private void getAllMilkTeaButton_Click(object sender, RoutedEventArgs e) { }
-        private void getAllCroissantButton_Click(object sender, RoutedEventArgs e) { }
-        private void searchButton_Click(object sender, RoutedEventArgs e) { //ViewModel.Search(); 
+        private void nextButton_Click(object sender, RoutedEventArgs e) {
+            OrderPageViewModel.GoToNextPage();
+        }
+        private void previousButton_Click(object sender, RoutedEventArgs e) {
+            OrderPageViewModel.GoToPreviousPage();
         }
 
+        bool init = false;
+        private void pagesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (init == false)
+            {
+                init = true;
+                return;
+            }
+            if (pagesComboBox.SelectedIndex >= 0)
+            {
+                var item = pagesComboBox.SelectedItem as PageInfo;
+                OrderPageViewModel.GoToPage(item.Page);
+            }
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            OrderPageViewModel.Search();
+        }
+       
         private void Image_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();

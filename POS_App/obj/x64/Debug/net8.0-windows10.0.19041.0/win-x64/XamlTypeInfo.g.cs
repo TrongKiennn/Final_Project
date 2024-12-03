@@ -465,7 +465,7 @@ namespace POS_App.POS_App_XamlTypeInfo
                 userType = new global::POS_App.POS_App_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_15_OrderPage;
                 userType.StaticInitializer = StaticInitializer_15_OrderPage;
-                userType.AddMemberName("ViewModel");
+                userType.AddMemberName("OrderPageViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -614,15 +614,15 @@ namespace POS_App.POS_App_XamlTypeInfo
             var that = (global::POS_App.Login)instance;
             that.uVm = (global::POS_App.ViewModel.LoginViewModel)Value;
         }
-        private object get_3_OrderPage_ViewModel(object instance)
+        private object get_3_OrderPage_OrderPageViewModel(object instance)
         {
             var that = (global::POS_App.View.OrderPage)instance;
-            return that.ViewModel;
+            return that.OrderPageViewModel;
         }
-        private void set_3_OrderPage_ViewModel(object instance, object Value)
+        private void set_3_OrderPage_OrderPageViewModel(object instance, object Value)
         {
             var that = (global::POS_App.View.OrderPage)instance;
-            that.ViewModel = (global::POS_App.OrderPageViewModel)Value;
+            that.OrderPageViewModel = (global::POS_App.OrderPageViewModel)Value;
         }
         private object get_4_Register_uVm(object instance)
         {
@@ -711,11 +711,11 @@ namespace POS_App.POS_App_XamlTypeInfo
                 xamlMember.Getter = get_2_Login_uVm;
                 xamlMember.Setter = set_2_Login_uVm;
                 break;
-            case "POS_App.View.OrderPage.ViewModel":
+            case "POS_App.View.OrderPage.OrderPageViewModel":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.OrderPage");
-                xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "ViewModel", "POS_App.OrderPageViewModel");
-                xamlMember.Getter = get_3_OrderPage_ViewModel;
-                xamlMember.Setter = set_3_OrderPage_ViewModel;
+                xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "OrderPageViewModel", "POS_App.OrderPageViewModel");
+                xamlMember.Getter = get_3_OrderPage_OrderPageViewModel;
+                xamlMember.Setter = set_3_OrderPage_OrderPageViewModel;
                 break;
             case "POS_App.View.Register.uVm":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.Register");

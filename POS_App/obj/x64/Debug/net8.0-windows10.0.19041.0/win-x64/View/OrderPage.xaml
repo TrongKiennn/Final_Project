@@ -69,38 +69,36 @@
 
         <!-- ContentDialog.xaml -->
         <ContentDialog x:ConnectionId='5' x:Name="OrderDetailDialog"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                Title="Order Details"
                PrimaryButtonText="Save"
                SecondaryButtonText="Cancel"
-                                                 
-                                                     >
+               SecondaryButtonCommand="{Binding CancelCommand}">
 
             <StackPanel>
                 <!-- Sugar options -->
                 <TextBlock Text="Sugar" />
-                <RadioButton x:ConnectionId='36' x:Name="Sugar100" Content="100%" />
-                <RadioButton x:ConnectionId='37' x:Name="Sugar50" Content="50%" />
+                <CheckBox Content="100%" IsChecked="{Binding OrderDetails.Sugar100, Mode=TwoWay}" />
+                <CheckBox Content="50%" IsChecked="{Binding OrderDetails.Sugar50, Mode=TwoWay}" />
 
                 <!-- Ice options -->
                 <TextBlock Text="Ice" />
-                <RadioButton x:ConnectionId='38' x:Name="NoIce" Content="No Ice" />
-                <RadioButton x:ConnectionId='39' x:Name="SeparateIce" Content="Separate Ice" />
-                <RadioButton x:ConnectionId='40' x:Name="ShareIce" Content="Share Ice" />
-                <RadioButton x:ConnectionId='41' x:Name="LittleIce" Content="Little Ice" />
+                <CheckBox Content="No Ice" IsChecked="{Binding OrderDetails.NoIce, Mode=TwoWay}" />
+                <CheckBox Content="Separate Ice" IsChecked="{Binding OrderDetails.SeparateIce, Mode=TwoWay}" />
+                <CheckBox Content="Share Ice" IsChecked="{Binding OrderDetails.ShareIce, Mode=TwoWay}" />
+                <CheckBox Content="Little Ice" IsChecked="{Binding OrderDetails.LittleIce, Mode=TwoWay}" />
 
                 <!-- Take Away or Stay Here -->
                 <TextBlock Text="Take Away or Stay Here" />
-                <RadioButton x:ConnectionId='42' x:Name="TakeAway" Content="Take Away" />
-                <RadioButton x:ConnectionId='43' x:Name="StayHere" Content="Stay Here" />
+                <CheckBox Content="Take Away" IsChecked="{Binding OrderDetails.TakeAway, Mode=TwoWay}" />
+                <CheckBox Content="Stay Here" IsChecked="{Binding OrderDetails.StayHere, Mode=TwoWay}" />
 
                 <!-- Note -->
                 <TextBlock Text="Note" />
-                <TextBox x:ConnectionId='44' x:Name="NoteTextBox" />
+                <TextBox Text="{Binding OrderDetails.Note, Mode=TwoWay}" />
             </StackPanel>
-
         </ContentDialog>
+
+
 
 
         <Grid Grid.Row="0" Grid.Column="1" Padding="30,30,0,30" Background="#f0daae" BorderBrush="Black">
@@ -117,9 +115,9 @@
 
             <!-- Các phần tử còn lại -->
             <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <TextBox x:ConnectionId='34' Name="keyword" VerticalAlignment="Center"                                  
+                <TextBox x:ConnectionId='28' Name="keyword" VerticalAlignment="Center"                                           
                                                                        Width="200" HorizontalAlignment="Right"/>
-                <Button x:ConnectionId='35' Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                <Button x:ConnectionId='29' Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
                         Content="Search"                            Margin="0,0,10,0"/>
                 <ToggleSwitch Width="100"  
                               HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort"/>
@@ -142,53 +140,53 @@
     <!-- Drawer Content -->
     <StackPanel Grid.Row="0" Background="#794730">
         <!-- Page Buttons -->
-        <Button x:ConnectionId='20' Name="page01Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='14' Name="page01Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/order.png" Width="24" Height="24" Margin="0,0,10,0" />
-                <TextBlock x:ConnectionId='33' x:Name="page01Text" Text="Order" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='27' x:Name="page01Text" Text="Order" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
-        <Button x:ConnectionId='21' Name="page02Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='15' Name="page02Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/lab-beaker.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:ConnectionId='32' x:Name="page02Text" Text="Material Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='26' x:Name="page02Text" Text="Material Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
-        <Button x:ConnectionId='22' Name="page03Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='16' Name="page03Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/calendar.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:ConnectionId='31' x:Name="page03Text" Text="Event Scheduling" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='25' x:Name="page03Text" Text="Event Scheduling" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
-        <Button x:ConnectionId='23' Name="page04Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='17' Name="page04Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/market-analysis.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:ConnectionId='30' x:Name="page04Text" Text="Statistics" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='24' x:Name="page04Text" Text="Statistics" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
-        <Button x:ConnectionId='24' Name="page05Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='18' Name="page05Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/table.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:ConnectionId='29' x:Name="page05Text" Text="Table Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='23' x:Name="page05Text" Text="Table Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
-        <Button x:ConnectionId='25' Name="page06Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='19' Name="page06Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/settings.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:ConnectionId='28' x:Name="page06Text" Text="Settings" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='22' x:Name="page06Text" Text="Settings" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
-        <Button x:ConnectionId='26' Name="page07Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
+        <Button x:ConnectionId='20' Name="page07Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
                 HorizontalContentAlignment="Left" Background="#f0daae">
             <StackPanel Orientation="Horizontal">
                 <Image Source="../Assets/help.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:ConnectionId='27' x:Name="page07Text" Text="Help" Foreground="#794730" FontSize="16" Visibility="Visible"/>
+                <TextBlock x:ConnectionId='21' x:Name="page07Text" Text="Help" Foreground="#794730" FontSize="16" Visibility="Visible"/>
             </StackPanel>
         </Button>
     </StackPanel>
@@ -212,64 +210,61 @@
                 </Grid.RowDefinitions>
 
                 <!-- Hàng chứa các nút -->
-                <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#f0daae" 
-                        Orientation="Horizontal">
-                    <Button x:ConnectionId='14' Name="Coffee" Margin="5" Content="Coffee" Width="100" Height="35"/>
-                    <Button x:ConnectionId='15' Name="MilkTea" Content="MilkTea" Width="100" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='16' Name="Croissant" Content="Croissant" Width="100" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='17' Name="Smoothie" Content="Smoothie" Width="100" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='18' Name="Juice" Content="Juice" Width="100" Height="35" Margin="5"/>
-                    <Button x:ConnectionId='19' Name="Tea" Content="Tea" Width="100" Height="35" Margin="5"/>
+                <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#f0daae" Orientation="Horizontal">
+                    <Button Content="Coffee" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Coffee"/>
+                    <Button Content="MilkTea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="MilkTea"/>
+                    <Button Content="Croissant" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Croissant"/>
+                    <Button Content="Smoothie" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Smoothie"/>
+                    <Button Content="Juice" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Juice"/>
+                    <Button Content="Tea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Tea"/>
+                    <Button Content="All" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="All"/>
                 </StackPanel>
 
+
                 <!-- This place use for display all items of categories-->
-                <GridView Grid.Row="1" Margin="10" 
-                            IsItemClickEnabled="True">
-                    <!-- Wrap items in rows of 4 -->
+                <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True">
+                    <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
                     <GridView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="4" />
+                            <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" />
                         </ItemsPanelTemplate>
                     </GridView.ItemsPanel>
 
-                    <!-- Item spacing -->
+                    <!-- Item container style to set margins and alignment -->
                     <GridView.ItemContainerStyle>
                         <Style TargetType="GridViewItem">
-                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="5"/>
                         </Style>
                     </GridView.ItemContainerStyle>
 
                     <!-- Template for each item -->
-                    <GridView>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel x:ConnectionId='13' Orientation="Vertical" Background="White" Width="200" HorizontalAlignment="Stretch"                         >
+                                <!-- Product Image -->
+                                <Border Width="200" Height="200" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
+                                    <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>
+                                </Border>
 
-                        <StackPanel x:ConnectionId='13' Orientation="Vertical" Background="White" Width="200" HorizontalAlignment="Center" 
-									                        >
-                            <!-- Product Image -->
-                            <Border  Width="200" Height="200" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
-                                <Image Source="../Assets/matcha-latte.jpg" Stretch="UniformToFill"/>
-                            </Border>
+                                <!-- Product Name -->
+                                <TextBlock Text="{Binding name}" MaxLines="2" TextWrapping="Wrap" Foreground="Black"
+                           FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
 
-                            <!-- Product Name -->
-                            <TextBlock Text="Matcha latte" MaxLines="2" TextWrapping="Wrap"
-                                FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
-
-                            <!-- Product Price -->
-                            <TextBlock Text="12$" FontSize="14" FontWeight="SemiBold" Foreground="Orange"
-                                HorizontalAlignment="Center" Margin="0,0,0,5"/>
-                        </StackPanel>
-
-
-                        <!--<DataTemplate x:DataType="viewmodel:Product">
-                    </DataTemplate>-->
-
-                    </GridView>
+                                <!-- Product Price -->
+                                <TextBlock Text="{Binding price}" FontSize="14" FontWeight="SemiBold" Foreground="Black"
+                           HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
                 </GridView>
+
             </Grid>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Button x:ConnectionId='9' Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
                                                     />
-                <ComboBox x:ConnectionId='10'                                                        
-                                                                                               
+                <ComboBox x:ConnectionId='10'                                                                 
+                                                                                                        
                                                                              
                             Margin="5" Name="pagesComboBox" Width="100" Height="35">
                     <ComboBox.ItemTemplate>
