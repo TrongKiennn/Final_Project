@@ -1,2 +1,0 @@
-C:\Users\MK\source\Repos\Final_Project\POS_App.Test\POS_App.Test.csproj;x64
-C:\Users\MK\source\Repos\Final_Project\POS_App\POS_App.csproj;x64
