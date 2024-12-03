@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-12-03T17:20:48.608</Modified>
+      <Modified>2024-12-03T18:11:25.187</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-12-03T17:20:48.184</Modified>
+      <Modified>2024-12-03T18:11:24.879</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
       <PackagePath>POS_App.runtimeconfig.json</PackagePath>
-      <Modified>2024-12-02T10:33:33.260</Modified>
+      <Modified>2024-12-03T17:46:41.178</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
       <PackagePath>POS_App.dll</PackagePath>
-      <Modified>2024-12-03T17:20:47.784</Modified>
+      <Modified>2024-12-03T18:11:24.447</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>POS_App.exe</PackagePath>
-      <Modified>2024-12-03T17:20:47.804</Modified>
+      <Modified>2024-12-03T18:11:24.488</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
@@ -67,7 +67,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\matcha-latte.jpg">
       <PackagePath>Assets\matcha-latte.jpg</PackagePath>
-      <Modified>2024-12-02T10:31:27.407</Modified>
+      <Modified>2024-12-03T17:43:27.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.8\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -991,7 +991,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
       <PackagePath>POS_App.deps.json</PackagePath>
-      <Modified>2024-12-02T10:33:34.004</Modified>
+      <Modified>2024-12-03T17:46:41.911</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>
