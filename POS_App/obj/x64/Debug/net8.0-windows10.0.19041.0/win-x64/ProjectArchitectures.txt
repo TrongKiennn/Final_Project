@@ -1,1 +1,1 @@
-C:\Users\MK\Source\Repos\Final_Project\POS_App\POS_App.csproj;x64
+C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\POS_App.csproj;x64

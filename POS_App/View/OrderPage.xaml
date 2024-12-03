@@ -24,14 +24,12 @@
             <RowDefinition Height="8.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="305"/>
+            <ColumnDefinition Width="0.7*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Grid.Column="0" Background="#794730" BorderBrush="Black">
-            <Image Source="ms-appx:///Assets/latte-art.png" Width="64" Height="64"/>
-        </Border>
+        
 
         <ContentDialog x:Name="PaymentDialog"
                Title="Payment Options"
@@ -102,20 +100,40 @@
 
         </ContentDialog>
 
+        <!-- Left Navigation Pane [0,0]-[1,0]-->
+        <NavigationView Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+            PaneDisplayMode="LeftCompact" 
+            IsBackButtonVisible="Collapsed">
+            <!-- Pane Header -->
+            <NavigationView.PaneHeader>
+                <TextBlock Text="App Name" FontSize="18" HorizontalAlignment="Center" />
+            </NavigationView.PaneHeader>
 
+            <!-- Navigation Menu Items -->
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Dashboard" Icon="Home" />
+                <NavigationViewItem Content="Settings" Icon="Home" />
+            </NavigationView.MenuItems>
+
+            <!-- Main Content -->
+            <NavigationView.Content>
+                <TextBlock Text="Welcome to the Dashboard" FontSize="24" 
+               HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </NavigationView.Content>
+        </NavigationView>
+
+        <!--Welcome, Search, and Filter by Name [0,1]-->
         <Grid Grid.Row="0" Grid.Column="1" Padding="30,30,0,30" Background="#f0daae" BorderBrush="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Phần chứa hai TextBlock được xếp dọc -->
             <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <TextBlock Text="Welcome, Menu" HorizontalAlignment="Left" FontWeight="Bold" FontSize="28"/>
                 <TextBlock Text="Discover whatever you need easily" HorizontalAlignment="Left" FontSize="18"/>
             </StackPanel>
 
-            <!-- Các phần tử còn lại -->
             <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <TextBox Name="keyword" VerticalAlignment="Center" Text="{x:Bind ViewModel.Keyword, 
                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" HorizontalAlignment="Right"/>
@@ -126,77 +144,13 @@
             </StackPanel>
         </Grid>
 
+        <!--Current Order at [0,2]-->
         <Border Grid.Row="0" Grid.Column="2" Background="#ffffff" BorderBrush="Black">
             <TextBlock Text="Current Order" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" 
                        FontSize="24" Padding="30"/>
         </Border>
 
-        <!--Hàng 2 
-         Image Items Section-->
-		<Grid x:Name="DrawerGrid" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White">
-    <Grid.RowDefinitions>
-        <RowDefinition Height="9*"/>
-        <RowDefinition Height="1*"/>
-    </Grid.RowDefinitions>
-
-    <!-- Drawer Content -->
-    <StackPanel Grid.Row="0" Background="#794730">
-        <!-- Page Buttons -->
-        <Button Name="page01Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/order.png" Width="24" Height="24" Margin="0,0,10,0" />
-                <TextBlock x:Name="page01Text" Text="Order" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-        <Button Name="page02Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/lab-beaker.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:Name="page02Text" Text="Material Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-        <Button Name="page03Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/calendar.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:Name="page03Text" Text="Event Scheduling" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-        <Button Name="page04Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/market-analysis.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:Name="page04Text" Text="Statistics" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-        <Button Name="page05Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/table.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:Name="page05Text" Text="Table Management" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-        <Button Name="page06Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/settings.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:Name="page06Text" Text="Settings" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-        <Button Name="page07Button" CornerRadius="12" Height="66" Margin="20,10,20,10"
-                HorizontalContentAlignment="Left" Background="#f0daae">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="../Assets/help.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                <TextBlock x:Name="page07Text" Text="Help" Foreground="#794730" FontSize="16" Visibility="Visible"/>
-            </StackPanel>
-        </Button>
-    </StackPanel>
-</Grid>
-
-
-
-
+        <!--Items in menu at [1,1]-->
         <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#f0daae" 
                     Name="optionsStackPanel">
             <Grid.RowDefinitions>
@@ -284,7 +238,7 @@
             </StackPanel>
         </Grid>
 
-
+        <!--Display seletedItems and preview Bill [1,2]-->
         <Border Grid.Row="1" Grid.Column="2" Background="#ffffff" BorderBrush="Black" Padding="30">
             <Grid>
                 <!-- Định nghĩa các hàng trong Grid -->
@@ -429,5 +383,7 @@
                 </Button>
             </Grid>
         </Border>
+        <!-- VisualState for compact mode -->
+        
     </Grid>
 </Page>

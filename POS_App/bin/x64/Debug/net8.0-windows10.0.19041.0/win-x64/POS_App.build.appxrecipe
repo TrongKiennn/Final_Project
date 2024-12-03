@@ -10,31 +10,31 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>0047b8f0-b3d4-40a6-89fb-c19d8d91c8af</PackageIdentityName>
     <PackageIdentityPublisher>CN=MICHAEL</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\MK\Source\Repos\Final_Project\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
+    <LayoutDir>C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
       <PackagePath>POS_App.runtimeconfig.json</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
       <PackagePath>POS_App.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>POS_App.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
@@ -49,7 +49,7 @@
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\xunit.runner.visualstudio\2.8.2\build\net6.0\xunit.runner.utility.netcoreapp10.dll">
       <PackagePath>xunit.runner.utility.netcoreapp10.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\matcha-latte.jpg">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\matcha-latte.jpg">
       <PackagePath>Assets\matcha-latte.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.8\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
@@ -742,82 +742,82 @@
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.web.webview2\1.0.2651.64\lib_manual\net6.0-windows10.0.17763.0\Microsoft.Web.WebView2.Core.Projection.dll">
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
       <PackagePath>POS_App.deps.json</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\background.jpg">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\calendar.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\calendar.png">
       <PackagePath>Assets\calendar.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\count.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\count.png">
       <PackagePath>Assets\count.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\crown.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\crown.png">
       <PackagePath>Assets\crown.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\date.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\date.png">
       <PackagePath>Assets\date.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\email.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\email.png">
       <PackagePath>Assets\email.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\employee.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\employee.png">
       <PackagePath>Assets\employee.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\lab-beaker.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\lab-beaker.png">
       <PackagePath>Assets\lab-beaker.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\latte-art.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\latte-art.png">
       <PackagePath>Assets\latte-art.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\latte-art1.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\latte-art1.png">
       <PackagePath>Assets\latte-art1.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\market-analysis.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\market-analysis.png">
       <PackagePath>Assets\market-analysis.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\name.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\name.png">
       <PackagePath>Assets\name.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\note.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\note.png">
       <PackagePath>Assets\note.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\order.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\order.png">
       <PackagePath>Assets\order.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\phone_number.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\phone_number.png">
       <PackagePath>Assets\phone_number.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\restaurant.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\restaurant.png">
       <PackagePath>Assets\restaurant.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\table.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\table.png">
       <PackagePath>Assets\table.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\time.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\time.png">
       <PackagePath>Assets\time.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

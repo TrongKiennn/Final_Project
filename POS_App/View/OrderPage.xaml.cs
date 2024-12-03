@@ -32,6 +32,7 @@ namespace POS_App.View
             this.InitializeComponent();
             ViewModel = new OrderPageViewModel();
             DataContext = ViewModel;
+            //MainNavigationView.IsPaneOpen = true;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -276,55 +277,61 @@ namespace POS_App.View
             }
         }
 
-        private bool isDrawerOpen = false;
-
-        private void ToggleDrawer()
+        // Event handler for the items in drawer menu
+        private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            // Adjust the width of the drawer
-            var drawer = DrawerGrid; // Replace with your drawer grid name
-            if (isDrawerOpen)
+            if (args.InvokedItemContainer.Tag != null)
             {
-                drawer.Width = 100;
+                string tag = args.InvokedItemContainer.Tag.ToString();
 
-                // Hide text for all buttons
-                page01Text.Visibility = Visibility.Collapsed;
-                page02Text.Visibility = Visibility.Collapsed;
-                page03Text.Visibility = Visibility.Collapsed;
-                page04Text.Visibility = Visibility.Collapsed;
-                page05Text.Visibility = Visibility.Collapsed;
-                page06Text.Visibility = Visibility.Collapsed;
-                page07Text.Visibility = Visibility.Collapsed;
+                // Navigate to corresponding page
+                switch (tag)
+                {
+                    //case "home":
+                    //    ContentFrame.Navigate(typeof(HomePage));
+                    //    break;
+                    //case "documents":
+                    //    ContentFrame.Navigate(typeof(DocumentsPage));
+                    //    break;
+                    //case "statistics":
+                    //    ContentFrame.Navigate(typeof(StatisticsPage));
+                    //    break;
+                    //case "settings":
+                    //    ContentFrame.Navigate(typeof(SettingsPage));
+                    //    break;
+                }
             }
-            else
-            {
-                drawer.Width = 305;
-
-                // Show text for all buttons
-                page01Text.Visibility = Visibility.Visible;
-                page02Text.Visibility = Visibility.Visible;
-                page03Text.Visibility = Visibility.Visible;
-                page04Text.Visibility = Visibility.Visible;
-                page05Text.Visibility = Visibility.Visible;
-                page06Text.Visibility = Visibility.Visible;
-                page07Text.Visibility = Visibility.Visible;
-            }
-
-            isDrawerOpen = !isDrawerOpen;
         }
+
+        //private void TogglePaneButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainNavigationView.IsPaneOpen = !MainNavigationView.IsPaneOpen;
+        //}
+
+        //handle the pane opening and closing events
+        private void MainNavigationView_PaneOpening(object sender, object e)
+        {
+            // Ensure the state is set correctly when the pane is opening.
+            VisualStateManager.GoToState(this, "PaneOpenState", true);
+        }
+
+        private void MainNavigationView_PaneClosing(object sender, NavigationViewPaneClosingEventArgs e)
+        {
+            // Ensure the state is set correctly when the pane is closing.
+            VisualStateManager.GoToState(this, "PaneClosedState", true);
+        }
+
+
+        //private void TogglePaneButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainNavigationView.IsPaneOpen = !MainNavigationView.IsPaneOpen;
+        //}
 
 
         // This will handle Save button click inside the ContentDialog
-        private void OnSaveClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            // You can handle saving the order here
-        }
-
+        private void OnSaveClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args) { }
         // This will handle Cancel button click inside the ContentDialog
-        private void OnCancelClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            // Handle cancellation logic if needed
-        }
-
+        private void OnCancelClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args) { }
         private void nextButton_Click(object sender, RoutedEventArgs e) { }
         private void previousButton_Click(object sender, RoutedEventArgs e) { }
         private void pagesComboBox_SelectionChanged(object sender, RoutedEventArgs e) { }

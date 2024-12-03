@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xBjsetPOITg=",
+  "dgSpecHash": "OMIj+pyuQk8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MK\\Source\\Repos\\Final_Project\\POS_App\\POS_App.csproj",
+  "projectFilePath": "C:\\Users\\MK\\Source\\Repos\\Final_Project_fix\\POS_App\\POS_App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MK\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\MK\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",

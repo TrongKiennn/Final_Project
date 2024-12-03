@@ -10,14 +10,14 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>0047b8f0-b3d4-40a6-89fb-c19d8d91c8af</PackageIdentityName>
     <PackageIdentityPublisher>CN=MICHAEL</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\MK\Source\Repos\Final_Project\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
+    <LayoutDir>C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
     <RegisteredManifestChecksum>5E82378536398793548B604A1AB9018327ED41835F33DF063EF4152BD61AC2B4</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>0047b8f0-b3d4-40a6-89fb-c19d8d91c8af_1.0.0.0_x64__xdbxp4bwtyd22</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>0047b8f0-b3d4-40a6-89fb-c19d8d91c8af_xdbxp4bwtyd22!App</RegisteredUserModeAppID>
@@ -26,28 +26,28 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-12-02T05:28:18.184</Modified>
+      <Modified>2024-12-03T17:20:48.608</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-12-02T05:28:17.849</Modified>
+      <Modified>2024-12-03T17:20:48.184</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
       <PackagePath>POS_App.runtimeconfig.json</PackagePath>
-      <Modified>2024-12-02T02:21:17.884</Modified>
+      <Modified>2024-12-02T10:33:33.260</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
       <PackagePath>POS_App.dll</PackagePath>
-      <Modified>2024-12-02T05:28:17.365</Modified>
+      <Modified>2024-12-03T17:20:47.784</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>POS_App.exe</PackagePath>
-      <Modified>2024-12-02T05:28:17.391</Modified>
+      <Modified>2024-12-03T17:20:47.804</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
@@ -65,9 +65,9 @@
       <PackagePath>xunit.runner.utility.netcoreapp10.dll</PackagePath>
       <Modified>2024-07-07T19:47:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\matcha-latte.jpg">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\matcha-latte.jpg">
       <PackagePath>Assets\matcha-latte.jpg</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MK\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.8\runtimes\win-x64\lib\net8.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -989,109 +989,109 @@
       <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
       <Modified>2024-07-20T08:33:44.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
       <PackagePath>POS_App.deps.json</PackagePath>
-      <Modified>2024-12-02T05:28:18.073</Modified>
+      <Modified>2024-12-02T10:33:34.004</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\background.jpg">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\calendar.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\calendar.png">
       <PackagePath>Assets\calendar.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\count.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\count.png">
       <PackagePath>Assets\count.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\crown.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\crown.png">
       <PackagePath>Assets\crown.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\date.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\date.png">
       <PackagePath>Assets\date.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\email.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\email.png">
       <PackagePath>Assets\email.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\employee.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\employee.png">
       <PackagePath>Assets\employee.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\lab-beaker.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\lab-beaker.png">
       <PackagePath>Assets\lab-beaker.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\latte-art.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\latte-art.png">
       <PackagePath>Assets\latte-art.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\latte-art1.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\latte-art1.png">
       <PackagePath>Assets\latte-art1.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.981</Modified>
+      <Modified>2024-12-02T10:31:27.372</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\market-analysis.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\market-analysis.png">
       <PackagePath>Assets\market-analysis.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\name.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\name.png">
       <PackagePath>Assets\name.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\note.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\note.png">
       <PackagePath>Assets\note.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\order.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\order.png">
       <PackagePath>Assets\order.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.011</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\phone_number.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\phone_number.png">
       <PackagePath>Assets\phone_number.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.025</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\restaurant.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\restaurant.png">
       <PackagePath>Assets\restaurant.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.025</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.981</Modified>
+      <Modified>2024-12-02T10:31:27.388</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.981</Modified>
+      <Modified>2024-12-02T10:31:27.388</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.981</Modified>
+      <Modified>2024-12-02T10:31:27.388</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.992</Modified>
+      <Modified>2024-12-02T10:31:27.388</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.992</Modified>
+      <Modified>2024-12-02T10:31:27.388</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\table.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\table.png">
       <PackagePath>Assets\table.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.025</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\time.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\time.png">
       <PackagePath>Assets\time.png</PackagePath>
-      <Modified>2024-12-02T16:45:21.025</Modified>
+      <Modified>2024-12-02T10:31:27.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project\POS_App\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\MK\Source\Repos\Final_Project_fix\POS_App\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
-      <Modified>2024-12-02T16:45:20.992</Modified>
+      <Modified>2024-12-02T10:31:27.388</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
