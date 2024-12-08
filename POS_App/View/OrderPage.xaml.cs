@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
+using POS_App.Model;
 using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -256,23 +257,37 @@ namespace POS_App.View
         {
             await OrderDetailDialog.ShowAsync();
 
-            //if (result == ContentDialogResult.Primary) // Save button was clicked
-            //{
-            //    // Collect the selections and note
-            //    string sugar = Sugar100.IsChecked == true ? "100%" : "50%";
-            //    string ice = NoIce.IsChecked == true ? "No Ice" :
-            //                 SeparateIce.IsChecked == true ? "Separate Ice" :
-            //                 ShareIce.IsChecked == true ? "Share Ice" :
-            //                 "Little Ice";
-            //    string takeawayOrStay = TakeAway.IsChecked == true ? "Take Away" : "Stay Here";
-            //    string note = NoteTextBox.Text;
+        }
 
-            //}
-            //else if (result == ContentDialogResult.Secondary) // Cancel button clicked
-            //{
-            //    // Optionally handle cancellation
-            //    //ToastHelper.ShowToast("Order was canceled.");
-            //}
+        private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.InvokedItemContainer.Tag != null)
+            {
+                string tag = args.InvokedItemContainer.Tag.ToString();
+
+                // Navigate to corresponding page
+                switch (tag)
+                {
+                }
+            }
+        }
+
+        //private void TogglePaneButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainNavigationView.IsPaneOpen = !MainNavigationView.IsPaneOpen;
+        //}
+
+        //handle the pane opening and closing events
+        private void MainNavigationView_PaneOpening(object sender, object e)
+        {
+            // Ensure the state is set correctly when the pane is opening.
+            VisualStateManager.GoToState(this, "PaneOpenState", true);
+        }
+
+        private void MainNavigationView_PaneClosing(object sender, NavigationViewPaneClosingEventArgs e)
+        {
+            // Ensure the state is set correctly when the pane is closing.
+            VisualStateManager.GoToState(this, "PaneClosedState", true);
         }
 
         // This will handle Save button click inside the ContentDialog
@@ -318,6 +333,18 @@ namespace POS_App.View
         private void Image_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void OnDrinkItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is Drinks clickedDrink)
+            {
+                var viewModel = DataContext as OrderPageViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.SelectedDrink = clickedDrink;
+                }
+            }
         }
     }
 }
