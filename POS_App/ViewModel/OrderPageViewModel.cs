@@ -19,7 +19,8 @@ namespace POS_App;
 
 public partial class OrderPageViewModel : INotifyPropertyChanged
 {
-    IDao _dao;
+    public IDao _dao;
+
     public ICommand FilterCommand { get; }
     public ObservableCollection<Drinks> Drinks { get; set; }
     public ObservableCollection<PageInfo> PageInfos { get; set; }
@@ -34,7 +35,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     public int TotalItems { get; set; } = 0;
     public int RowsPerPage { get; set; }
 
-    private bool _sortById = false;
+    //change from private to public for unit test
+    public bool _sortById = false;
     public bool SortById
     {
         get => _sortById;
@@ -68,7 +70,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
         LoadData();
     }
-    private void ExecuteFilter(object parameter)
+    //change from private to public for unit test
+    public void ExecuteFilter(object parameter)
     {
 
         if (parameter is string type_Name)
@@ -79,8 +82,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
         }
     }
-
-    private Dictionary<string, SortType> _sortOptions = new();
+    //change from private to public for unit test
+    public Dictionary<string, SortType> _sortOptions = new();
     public event PropertyChangedEventHandler PropertyChanged;
 
     public void GoToNextPage()
