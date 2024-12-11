@@ -128,7 +128,23 @@ Task Assignment Table
 | popup for custom an item when order                                                                                                   | handle popUp for continue payment                                                                                                    |
 | Content for Record                                                                                                                   | Video Record                                                                                                                          |
 
+- **UI/UX (20%)**  
+   - The interface should be cleaned and logically organized.
+   - When click on an items, If user does not choose any custom items, the default will be seted for this items.
 
+- **Design Patterns / Architecture (20%)**  
+   - The project follows the **MVVM architecture** to ensure a clear separation of concerns.
+   - Each function and class includes comments detailing its functionality for improved code readability.
+
+- **Teamwork - Git Flow (10%)**  
+   - The team uses **GitHub** and **Trello** to organize and track development:
+     - Trello: [Project Board](https://trello.com/b/N54ELBhQ/l%E1%BA%ADp-trinh-win)
+     - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project)
+
+- **Quality Assurance (20%)**  
+   - Unit test some functions: Search, SortByName, Loadata.
+ 
+Link Demo Milestone 2: 
 
 ### Milestone 03: Final Release (Weeks 12–15)
 *To be determined based on outcomes of previous milestones.*
