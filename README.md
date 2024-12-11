@@ -116,14 +116,14 @@ To ensure consistent progress and quality, each milestone will be assessed based
  
 ### Milestone 02: Intermediate Development (Weeks 8–11)
 
-Task Assignment Table
+Task Assignment Table:
 | 22120151                                                                                                                             | 22120167                                                                                                                             |
 |----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | FrontEnd for OrderPage                                                                                                                | BackEnd for OrderPage                                                                                                                 |
 | navigationView                                                                                                                        | filter                                                                                                                                |
 | Items view                                                                                                                            | search                                                                                                                                |
 | searchView                                                                                                                            | display items                                                                                                                         |
-| filterView                                                                                                                            | save it into database                                                                                                                 |
+| filterView                                                                                                                            | save items into database                                                                                                              |
 | popup for continue to payment                                                                                                         | handle popup for custom an item when order                                                                                            |
 | popup for custom an item when order                                                                                                   | handle popUp for continue payment                                                                                                     |
 | Content for Record                                                                                                                    | Video Record                                                                                                                          |
