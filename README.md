@@ -115,10 +115,19 @@ To ensure consistent progress and quality, each milestone will be assessed based
    - Quality assurance standards will be followed in upcoming milestones to ensure code quality, reliability, and maintainability.
  
 ### Milestone 02: Intermediate Development (Weeks 8–11)
+
+Task Assignment Table
 | 22120151                                                                                                                             | 22120167                                                                                                                             |
 |----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| FrontEnd for OrderPage (navigationView, Items view, searchView, filterView, popup for continue to payment, popup for custom an item when order) | BackEnd for OrderPage (filter, search, display items, save it into database, handle popup for custom an item when order, handle popUp for continue payment) |
+| FrontEnd for OrderPage                                                                                                                | BackEnd for OrderPage                                                                                                                |
+| navigationView                                                                                                                        | filter                                                                                                                                |
+| Items view                                                                                                                            | search                                                                                                                                |
+| searchView                                                                                                                            | display items                                                                                                                         |
+| filterView                                                                                                                            | save it into database                                                                                                                |
+| popup for continue to payment                                                                                                         | handle popup for custom an item when order                                                                                             |
+| popup for custom an item when order                                                                                                   | handle popUp for continue payment                                                                                                    |
 | Content for Record                                                                                                                   | Video Record                                                                                                                          |
+
 
 
 ### Milestone 03: Final Release (Weeks 12–15)
