@@ -16,6 +16,9 @@ using Windows.System;
 using POS_App.ViewModel;
 using POS_App.Model;
 using POS_App.View;
+using Windows.Storage;
+using System.Diagnostics;
+
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -38,10 +41,13 @@ namespace POS_App
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is Model.User user)
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+           
+            if (localSettings.Values.ContainsKey("FirstName"))
             {
-                _user = user;
-                UserNameTextBlock.Text = $"Welcome, {_user.FirstName}";
+                string FirstName = localSettings.Values["FirstName"] as string;
+                UserNameTextBlock.Text = $"Welcome, {FirstName}";
             }
         }
 
@@ -55,6 +61,5 @@ namespace POS_App
         {
             this.Frame.Navigate(typeof(Login));
         }
-
     }
 }

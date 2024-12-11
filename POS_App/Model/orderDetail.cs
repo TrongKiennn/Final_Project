@@ -8,93 +8,49 @@ using System.Threading.Tasks;
 namespace POS_App.Model;
 public class OrderDetail : INotifyPropertyChanged
 {
-    private bool _sugar100;
-    private bool _sugar50;
-    private bool _noIce;
-    private bool _separateIce;
-    private bool _shareIce;
-    private bool _littleIce;
-    private bool _takeAway;
-    private bool _stayHere;
+    private string _sugarOptions="100% sugar";
+    private string _iceOptions="Normal Ice";
+    private string _locationOptions="Take Away";
+    private int _quantity = 1;
     private string _note;
 
-    public bool Sugar100
+    public string SugarOptions
     {
-        get => _sugar100;
+        get => _sugarOptions;
         set
         {
-            _sugar100 = value;
-            OnPropertyChanged(nameof(Sugar100));
+            _sugarOptions = value;
+            OnPropertyChanged(nameof(SugarOptions));
         }
     }
 
-    public bool Sugar50
+    public string IceOptions
     {
-        get => _sugar50;
+        get => _iceOptions;
         set
         {
-            _sugar50 = value;
-            OnPropertyChanged(nameof(Sugar50));
+            _iceOptions = value;
+            OnPropertyChanged(nameof(IceOptions));
         }
     }
 
-    public bool NoIce
+    public string LocationOptions
     {
-        get => _noIce;
+        get => _locationOptions;
         set
         {
-            _noIce = value;
-            OnPropertyChanged(nameof(NoIce));
+            _locationOptions = value;
+            OnPropertyChanged(nameof(LocationOptions));
         }
     }
 
-    public bool SeparateIce
+    public int Quantity
     {
-        get => _separateIce;
+        get => _quantity;
         set
         {
-            _separateIce = value;
-            OnPropertyChanged(nameof(SeparateIce));
-        }
-    }
-
-    public bool ShareIce
-    {
-        get => _shareIce;
-        set
-        {
-            _shareIce = value;
-            OnPropertyChanged(nameof(ShareIce));
-        }
-    }
-
-    public bool LittleIce
-    {
-        get => _littleIce;
-        set
-        {
-            _littleIce = value;
-            OnPropertyChanged(nameof(LittleIce));
-        }
-    }
-
-    public bool TakeAway
-    {
-        get => _takeAway;
-        set
-        {
-            _takeAway = value;
-            OnPropertyChanged(nameof(TakeAway));
-        }
-    }
-
-    public bool StayHere
-    {
-        get => _stayHere;
-        set
-        {
-            _stayHere = value;
-            OnPropertyChanged(nameof(StayHere));
+            _quantity = value;
+            OnPropertyChanged(nameof(Quantity));
         }
     }
 

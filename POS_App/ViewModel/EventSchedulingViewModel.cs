@@ -209,7 +209,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         {
            
             Padding = new Thickness(10, 10, 10, 0),
-            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xf0, 0xda, 0xae))
+            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9))
             
         };
         Grid.SetRow(infoPanel, 0);
@@ -245,7 +245,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         completeButton.Content = new TextBlock
         {
             Text = "Complete",
-            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xf0, 0xda, 0xae)),
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)),
             FontWeight= FontWeights.Bold,
             FontSize = 16,
             HorizontalAlignment = HorizontalAlignment.Center,

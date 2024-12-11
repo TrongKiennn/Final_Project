@@ -33,197 +33,124 @@ namespace POS_App.View
             this.InitializeComponent();
             OrderPageViewModel = new OrderPageViewModel();
             DataContext = OrderPageViewModel;
+           
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    base.OnNavigatedTo(e);
-        //    //ViewModel = e.Parameter as OrderPageViewModel;
-        //    //DataContext = ViewModel;
-        //}
+        private void CashRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            
+            CashAmountStackPanel.Visibility = Visibility.Visible;
+        }
 
-        //Event handler for Continue to Payment button
+        private void CashRadioButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            
+            CashAmountStackPanel.Visibility = Visibility.Collapsed;
+        }
+
+
         private async void OnContinueToPaymentClicked(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    if (ViewModel == null || ViewModel.SelectedItems == null)
-            //    {
-            //        await new ContentDialog
-            //        {
-            //            Title = "Error",
-            //            Content = "No items selected.",
-            //            CloseButtonText = "Ok",
-            //            XamlRoot = this.XamlRoot
-            //        }.ShowAsync();
-            //        return;
-            //    }
-            //    // Create a ListView to display the selected items
-            //    ListView billListView = new ListView
-            //    {
-            //        ItemsSource = ViewModel.SelectedItems,  // Bind to SelectedItems from ViewModel
-            //        SelectionMode = ListViewSelectionMode.None
-            //    };
-
-            //    // Create and show the ContentDialog with the list of selected items
-            //    ContentDialog billDialog = new ContentDialog
-            //    {
-            //        Title = "Bill Details",
-            //        Content = new StackPanel
-            //        {
-            //            Children =
-            //            {
-            //                new TextBlock
-            //                {
-            //                    Text = "Your Selected Items:",
-            //                    FontSize = 18,
-            //                    Margin = new Thickness(0, 0, 0, 10)
-            //                },
-            //                billListView
-            //            }
-            //        },
-            //        PrimaryButtonText = "Choose Payment Method",
-            //        SecondaryButtonText = "Cancel",
-            //        DefaultButton = ContentDialogButton.Primary,
-            //        XamlRoot = this.XamlRoot
-            //    };
-
-            //    // Show the ContentDialog and handle the result
-            //    ContentDialogResult result = await billDialog.ShowAsync();
-
-            //    if (result == ContentDialogResult.Primary)
-            //    {
-            //        // Show another dialog to choose payment method
-            //        await ShowPaymentMethodDialog();
-            //    }
-            //    else
-            //    {
-            //        // Payment was canceled
-            //        await new ContentDialog
-            //        {
-            //            Title = "Payment Canceled",
-            //            Content = "Your payment was canceled.",
-            //            CloseButtonText = "Ok",
-            //            XamlRoot = this.XamlRoot
-            //        }.ShowAsync();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Handle any errors that occur
-            //    await new ContentDialog
-            //    {
-            //        Title = "Error",
-            //        Content = $"An error occurred: {ex.Message}",
-            //        CloseButtonText = "Ok",
-            //        XamlRoot = this.XamlRoot
-            //    }.ShowAsync();
-            //}
-        }
-
-        private async Task ShowPaymentMethodDialog()
-        {
-            // Create and show the Payment Method dialog
-            ContentDialog paymentMethodDialog = new ContentDialog
+            try
             {
-                Title = "Choose Payment Method",
-                Content = new StackPanel
+
+                ContentDialogResult result = await PaymentDialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
                 {
-                    Children =
-            {
-                new TextBlock
-                {
-                    Text = "Please select your payment method:",
-                    FontSize = 18,
-                    Margin = new Thickness(0, 0, 0, 10)
-                },
-                new RadioButton { Content = "Cash", GroupName = "PaymentMethod", IsChecked = true },
-                new RadioButton { Content = "Bank QR Code", GroupName = "PaymentMethod" }
-            }
-                },
-                PrimaryButtonText = "Next",
-                SecondaryButtonText = "Cancel",
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.XamlRoot
-            };
-
-            ContentDialogResult methodResult = await paymentMethodDialog.ShowAsync();
-
-            if (methodResult == ContentDialogResult.Primary)
-            {
-                // Determine the selected payment method
-                var stackPanel = (StackPanel)paymentMethodDialog.Content;
-                RadioButton cashOption = (RadioButton)stackPanel.Children[1];
-                RadioButton qrOption = (RadioButton)stackPanel.Children[2];
-
-                if (cashOption.IsChecked == true)
-                {
-                    await ShowCashPaymentDialog();
-                }
-                else if (qrOption.IsChecked == true)
-                {
-                    await ShowQRCodePaymentDialog();
-                }
-            }
-        }
-
-        private async Task ShowCashPaymentDialog()
-        {
-            TextBox amountTenderedBox = new TextBox
-            {
-                PlaceholderText = "Enter Amount Tendered",
-                Margin = new Thickness(0, 10, 0, 10)
-            };
-
-            ContentDialog cashDialog = new ContentDialog
-            {
-                Title = "Cash Payment",
-                Content = new StackPanel
-                {
-                    Children =
-            {
-                new TextBlock { Text = "Amount Tendered:", FontSize = 18 },
-                amountTenderedBox
-            }
-                },
-                PrimaryButtonText = "Confirm",
-                SecondaryButtonText = "Cancel",
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.XamlRoot
-            };
-
-            ContentDialogResult cashResult = await cashDialog.ShowAsync();
-
-            if (cashResult == ContentDialogResult.Primary)
-            {
-                // Validate and calculate change
-                if (double.TryParse(amountTenderedBox.Text, out double amountTendered))
-                {
-                    double totalBill = 100; // Replace with your method to get total bill amount
-                    double change = amountTendered - totalBill;
-
-                    await new ContentDialog
-                    {
-                        Title = "Payment Successful",
-                        Content = change >= 0
-                            ? $"Payment successful! Change: {change:C2}"
-                            : "Insufficient amount tendered.",
-                        CloseButtonText = "Ok",
-                        XamlRoot = this.XamlRoot
-                    }.ShowAsync();
+                   
                 }
                 else
                 {
+                    // Payment was canceled
                     await new ContentDialog
                     {
-                        Title = "Invalid Input",
-                        Content = "Please enter a valid number.",
+                        Title = "Payment Canceled",
+                        Content = "Your payment was canceled.",
                         CloseButtonText = "Ok",
                         XamlRoot = this.XamlRoot
                     }.ShowAsync();
                 }
             }
+            catch (Exception ex)
+            {
+                // Handle any errors that occur
+                await new ContentDialog
+                {
+                    Title = "Error",
+                    Content = $"An error occurred: {ex.Message}",
+                    CloseButtonText = "Ok",
+                    XamlRoot = this.XamlRoot
+                }.ShowAsync();
+            }
         }
+
+        private void NavigationView_SelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
+        {
+            var selectedItem = e.SelectedItem as NavigationViewItem;
+
+            if (selectedItem != null)
+            {
+                string content = selectedItem.Content.ToString();
+                switch (content)
+                {
+                    case "Order":
+                        Frame.Navigate(typeof(OrderPage));
+                        break;
+                    case "Material Management":
+                        break;
+                    case "Event Scheduling":
+                        Frame.Navigate(typeof(EventScheduling));
+                        break;
+                    case "Statistics":
+                        break;
+                    case "Table Manager":
+                        break;
+                    case "Employee Management":
+                        break;
+                    case "VIP":
+                        break;
+                }
+            }
+        }
+
+
+
+
+        //private async Task ShowCashPaymentDialog()
+        //{
+
+        //    ContentDialogResult cashResult = await cashDialog.ShowAsync();
+
+        //    if (cashResult == ContentDialogResult.Primary)
+        //    {
+        //        if (double.TryParse(amountTenderedBox.Text, out double amountTendered))
+        //        {
+        //            double totalBill = 100; // Replace with your method to get total bill amount
+        //            double change = amountTendered - totalBill;
+
+        //            await new ContentDialog
+        //            {
+        //                Title = "Payment Successful",
+        //                Content = change >= 0
+        //                    ? $"Payment successful! Change: {change:C2}"
+        //                    : "Insufficient amount tendered.",
+        //                CloseButtonText = "Ok",
+        //                XamlRoot = this.XamlRoot
+        //            }.ShowAsync();
+        //        }
+        //        else
+        //        {
+        //            await new ContentDialog
+        //            {
+        //                Title = "Invalid Input",
+        //                Content = "Please enter a valid number.",
+        //                CloseButtonText = "Ok",
+        //                XamlRoot = this.XamlRoot
+        //            }.ShowAsync();
+        //        }
+        //    }
+        //}
 
         private async Task ShowQRCodePaymentDialog()
         {
@@ -271,11 +198,6 @@ namespace POS_App.View
                 }
             }
         }
-
-        //private void TogglePaneButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainNavigationView.IsPaneOpen = !MainNavigationView.IsPaneOpen;
-        //}
 
         //handle the pane opening and closing events
         private void MainNavigationView_PaneOpening(object sender, object e)
@@ -329,7 +251,15 @@ namespace POS_App.View
         {
             OrderPageViewModel.Search();
         }
-       
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (sender is ToggleSwitch toggleSwitch)
+            {
+                OrderPageViewModel.Sort(toggleSwitch.IsOn);
+            }
+        }
+
         private void Image_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
@@ -346,5 +276,7 @@ namespace POS_App.View
                 }
             }
         }
+
+
     }
 }

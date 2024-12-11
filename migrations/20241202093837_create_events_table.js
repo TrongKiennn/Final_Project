@@ -18,7 +18,7 @@ exports.up = async function(knex) {
             phone_number varchar(50) NOT NULL DEFAULT 'null' COMMENT 'EMPTY',
             table_number int(11) DEFAULT '0',
             PRIMARY KEY (id)
-        ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
     `);
 };
 

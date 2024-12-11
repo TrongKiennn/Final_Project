@@ -44,6 +44,8 @@ namespace POS_App
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             ServiceFactory.Register(typeof(IDao),typeof(DrinkDao));
+            ServiceFactory.Register(typeof(IDao_Order_Item), typeof(Dao_Order_Item));
+            ServiceFactory.Register(typeof(IDao_Order), typeof(Dao_Order));
 
             m_window = new MainWindow();
             m_window.Activate();

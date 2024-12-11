@@ -5,7 +5,7 @@
 exports.up = async function(knex) {
     await knex.raw(`
         CREATE TABLE users (
-            id int NOT NULL AUTO_INCREMENT,
+            id int(4) NOT NULL AUTO_INCREMENT,
             email varchar(50) NOT NULL,
             fb_id varchar(50) DEFAULT NULL,
             gg_id varchar(50) DEFAULT NULL,

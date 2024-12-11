@@ -21,22 +21,37 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Services.Maps;
 using static POS_App.Service.DataAccess.IDao;
+using static POS_App.Service.DataAccess.IDao_Order;
+using static POS_App.Service.DataAccess.IDao_Order_Item;
 using MySql.Data.MySqlClient;
 using System.Data;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Drawing;
+using Windows.Storage;
+using System.IO;
+using Windows.System;
+
 
 namespace POS_App;
 
 public partial class OrderPageViewModel : INotifyPropertyChanged
 {
     IDao _dao;
+    IDao_Order _Order_Dao;
+    IDao_Order_Item _Order_Item_Dao;
+
     public ICommand FilterCommand { get; }
+
+    private readonly IDao_Drinks_Test _repository_Test;
     public ObservableCollection<Drinks> Drinks { get; set; }
+
+    public ObservableCollection<Drinks> Drinks_Test { get; set; }
     public ObservableCollection<PageInfo> PageInfos { get; set; }
-    public ObservableCollection<Order> Orders { get; set; }
+    public ObservableCollection<orderItem> ordersItems { get; set; }
 
-    public ObservableCollection<Grid> ordersGrid { get; set; }
+    public ObservableCollection<Grid> ordersItemsGrid { get; set; }
     public PageInfo SelectedPageInfoItem { get; set; }
-
+    public OrderService orderService { get; set; }
 
     private Drinks _selectedDrink=new Drinks();
     public Drinks SelectedDrink
@@ -51,8 +66,26 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         get => _orderDetails;
         set => SetProperty(ref _orderDetails, value);
     }
+
+    private Order _order;
+    public Order order
+    {
+        get => _order;
+        set
+        {
+            if (_order != value)
+            {
+                _order = value;
+                OnPropertyChanged(nameof(order));
+            }
+        }
+    }
     public ICommand CancelCommand { get; }
     public ICommand SaveCommand { get; }
+    public ICommand ConfirmPaymentCommand { get; }
+
+    public ICommand SearchCommand { get; }
+    public ICommand SortByNameCommand { get; }
     public string Keyword { get; set; } = "";
 
     public string typeName { get; set; } = null;
@@ -61,41 +94,57 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     public int TotalItems { get; set; } = 0;
     public int RowsPerPage { get; set; }
 
-    private bool _sortById = false;
-    public bool SortById
+    public bool _sortByName { get; set; } = false;
+
+    public bool SortByName
     {
-        get => _sortById;
+        get => _sortByName;
         set
         {
-            _sortById = value;
-            if (value == true)
+            if (_sortByName != value) 
             {
-                _sortOptions.Add("Name", SortType.Ascending);
-            }
-            else
-            {
-                if (_sortOptions.ContainsKey("Name"))
-                {
-                    _sortOptions.Remove("Name");
-                }
-            }
+                _sortByName = value;
 
-            LoadData();
+               
+                if (_sortByName)
+                {
+                    _sortOptions["drink_name"] = SortType.Ascending;
+                }
+                else
+                {
+                    _sortOptions.Remove("drink_name");
+                }
+
+                LoadData(); 
+            }
         }
     }
 
+    public OrderPageViewModel(IDao_Drinks_Test repository)
+    {
+        RowsPerPage = 10;
+        CurrentPage = 1;
+        _repository_Test = repository;
+        SearchCommand = new RelayCommand(_ => Search());
+        SortByNameCommand = new RelayCommand(_ => Sort(true));
+        LoadData();
+    }
     public OrderPageViewModel()
     {
         RowsPerPage = 10;
         CurrentPage = 1;
         FilterCommand = new RelayCommand(ExecuteFilter);
-        SaveCommand = new RelayCommand(_ => SaveOrder());
+        SaveCommand = new RelayCommand(_ => SaveOrderItem());
+        ConfirmPaymentCommand = new RelayCommand(_ => SaveOrderToDb());
         OrderDetails = new OrderDetail();
         CancelCommand = new RelayCommand(_=> ClearOrderDetails());
-        ordersGrid = new ObservableCollection<Grid>();
-        Orders = new ObservableCollection<Order>();
+        ordersItemsGrid = new ObservableCollection<Grid>();
+        ordersItems = new ObservableCollection<orderItem>(); 
+        order = new Order();
         _dao = ServiceFactory.GetChildOf(typeof(IDao)) as IDao;
-
+        _Order_Dao = ServiceFactory.GetChildOf(typeof(IDao_Order)) as IDao_Order;
+        _Order_Item_Dao = ServiceFactory.GetChildOf(typeof(IDao_Order_Item)) as IDao_Order_Item;
+        orderService = new OrderService(_Order_Dao, _Order_Item_Dao);
         LoadData();
     }
     private void ExecuteFilter(object parameter)
@@ -110,7 +159,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         }
     }
 
-    private Dictionary<string, SortType> _sortOptions = new();
+    public Dictionary<string, SortType> _sortOptions = new();
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -150,33 +199,54 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     public void LoadData()
     {
-
-        var (items, count) = _dao.GetDrink(
-            CurrentPage, RowsPerPage, Keyword,
-            _sortOptions, typeName
-        );
-        Drinks = new ObservableCollection<Drinks>(
-            items
-        );
-
-        if (count != TotalItems)
-        {
-            TotalItems = count;
-            TotalPages = (TotalItems / RowsPerPage) +
-                (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
-
-            PageInfos = new();
-            for (int i = 1; i <= TotalPages; i++)
+        var sortOptions = new Dictionary<string, SortType>
             {
-                PageInfos.Add(new PageInfo
-                {
-                    Page = i,
-                    Total = TotalPages
-                });
-            }
+                { "Name", SortType.Ascending }
+            };
+
+        if(_repository_Test != null)
+        {
+            var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, Keyword, sortOptions);
+            Drinks = new ObservableCollection<Drinks>(item);
         }
 
-        SelectedPageInfoItem = PageInfos[CurrentPage - 1];
+        if (_dao != null)
+        {
+
+
+            var (items, count) = _dao.GetDrink(
+                CurrentPage, RowsPerPage, Keyword,
+                _sortOptions, typeName
+            );
+
+            if (items == null || !items.Any())
+            {
+                SelectedPageInfoItem.Page = 1;
+                SelectedPageInfoItem.Total = 1;
+                Drinks = new ObservableCollection<Drinks>();
+            }
+            else
+            {
+                Drinks = new ObservableCollection<Drinks>(items);
+                if (count != TotalItems)
+                {
+                    TotalItems = count;
+                    TotalPages = (TotalItems / RowsPerPage) +
+                        (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
+
+                    PageInfos = new();
+                    for (int i = 1; i <= TotalPages; i++)
+                    {
+                        PageInfos.Add(new PageInfo
+                        {
+                            Page = i,
+                            Total = TotalPages
+                        });
+                    }
+                }
+                SelectedPageInfoItem = PageInfos[CurrentPage - 1];
+            }
+        }
     }
 
     public void GoToPage(int page)
@@ -190,64 +260,68 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         CurrentPage = 1;
         LoadData();
     }
+
+    public void Sort(bool isSort)
+    {
+        SortByName = isSort; 
+    }
     private void ClearOrderDetails()
     {
+      
         SelectedDrink = null;
         OrderDetails = new OrderDetail();
     }
 
-    private void SaveOrder()
+    private void SaveOrderItem()
     {
         if (SelectedDrink != null)
         {
-            var newOrder = new Order
+            var newOrder = new orderItem
             {
                 Drinks = SelectedDrink,
                 OrderDetail = new OrderDetail
                 {
-                    Sugar100 = OrderDetails.Sugar100,
-                    Sugar50 = OrderDetails.Sugar50,
-                    NoIce = OrderDetails.NoIce,
-                    SeparateIce = OrderDetails.SeparateIce,
-                    ShareIce = OrderDetails.ShareIce,
-                    LittleIce = OrderDetails.LittleIce,
-                    TakeAway = OrderDetails.TakeAway,
-                    StayHere = OrderDetails.StayHere,
+                    SugarOptions = OrderDetails.SugarOptions,
+                    IceOptions = OrderDetails.IceOptions,
+                    LocationOptions = OrderDetails.LocationOptions,
+                    Quantity = OrderDetails.Quantity,
                     Note = OrderDetails.Note
                 }
             };
 
-            Orders.Add(newOrder);
+            
+            order.Subtotal += newOrder.TotalPerProduct;
+            ordersItems.Add(newOrder);
             ClearOrderDetails();
-            LoadOrders(null);
+            LoadordersItems(null);
         }
     }
 
-    private void LoadOrders(object parameter)
+    private void LoadordersItems(object parameter)
     {
-        ordersGrid.Clear();
+        ordersItemsGrid.Clear();
         try
         {
-            foreach (Order order in Orders)
+            foreach (orderItem orderItem in ordersItems)
             {
-                Debug.WriteLine($"Drink: {order.Drinks.name} - {order.Drinks.price}");
-                Grid orderGrid = GenerateOrderGrids(order);
-                ordersGrid.Add(orderGrid);
+                
+                Grid orderGrid = GenerateOrderGrids(orderItem);
+                ordersItemsGrid.Add(orderGrid);
             }
-            OnPropertyChanged(nameof(ordersGrid));
+            OnPropertyChanged(nameof(ordersItemsGrid));
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine("Error retrieving orders: " + ex.Message);
+            System.Diagnostics.Debug.WriteLine("Error retrieving ordersItems: " + ex.Message);
         }
     }
 
-    private Grid GenerateOrderGrids(Order order)
+    private Grid GenerateOrderGrids(orderItem orderItem)
     {
         Grid orderGrid = new Grid
         {
             VerticalAlignment = VerticalAlignment.Center,
-            Margin = new Thickness(0, 0, 10, 0),
+            Margin = new Thickness(0, 5, 0, 5),
             Width = double.NaN
         };
 
@@ -258,22 +332,22 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         // Ảnh sản phẩm
         var imageBorder = new Border
         {
-            Width = 64,
-            Height = 64,
+            Width = 62,
+            Height = 62,
             CornerRadius = new CornerRadius(8),
             Background = new SolidColorBrush(Colors.LightGray),
-            Margin = new Thickness(0, 0, 10, 0)
+            Margin = new Thickness(0, 0, 5, 0)
         };
-        var image = new Image
+        var image = new Microsoft.UI.Xaml.Controls.Image
         {
-            Width=40,
-            Height=40,
-            Source = new BitmapImage(new Uri(order.Drinks.imageUrl)),
+            Width=60,
+            Height=60,
+            Source = new BitmapImage(new Uri(orderItem.Drinks.imageUrl)),
             Stretch = Stretch.UniformToFill
         };
         imageBorder.Child = image;
 
-        Debug.WriteLine($"ImgUrl: {order.Drinks.imageUrl}");
+        Debug.WriteLine($"ImgUrl: {orderItem.Drinks.imageUrl}");
 
         Grid.SetColumn(imageBorder, 1);
 
@@ -282,35 +356,30 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         {
             Orientation = Orientation.Vertical,
             HorizontalAlignment = HorizontalAlignment.Left,
-            MaxWidth = 150
+            Width = 120
         };
 
-        infoPanel.Children.Add(new TextBlock { Text = order.Drinks.name, FontWeight = FontWeights.Bold, FontSize = 14, MaxLines = 2, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 5) });
-        infoPanel.Children.Add(new TextBlock { Text = order.Drinks.price.ToString(), Foreground = new SolidColorBrush(Colors.Orange), FontSize = 12 });
+        infoPanel.Children.Add(new TextBlock { Text = orderItem.Drinks.name, FontWeight = FontWeights.Bold, FontSize = 14, MaxLines = 2, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 5), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)) });
+        infoPanel.Children.Add(new TextBlock { Text = $"Giá tiền: ${orderItem.Drinks.price.ToString()}", Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)), FontSize = 12 });
+        infoPanel.Children.Add(new TextBlock { Text = $"Số lượng: {orderItem.OrderDetail.Quantity.ToString()}", Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)), FontSize = 12 });
+
 
         Grid.SetColumn(infoPanel, 2);
 
         var deleteButton = new Button
         {
-            Background = new SolidColorBrush(Colors.Orange),
-            Foreground = new SolidColorBrush(Colors.White),
+            Content = "x",
+            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)),
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)),
+            FontSize = 14, // Tăng FontSize phù hợp
             Width = 32,
             Height = 32,
             CornerRadius = new CornerRadius(16),
-            Margin = new Thickness(0, 0, 5, 0),
+            Margin = new Thickness(5, 0, 5, 0),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };
-
-        var deleteText = new TextBlock
-        {
-            Text = "x",
-            FontWeight = FontWeights.Bold,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center
-        };
-        deleteButton.Content = deleteText;
-        deleteButton.Click += (s, e) => DeleteOrder(order); 
+        deleteButton.Click += (s, e) => DeleteOrder(orderItem); 
 
         Grid.SetColumn(deleteButton, 0);
 
@@ -321,10 +390,122 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         return orderGrid;
     }
 
-    private void DeleteOrder(Order order)
+    private void DeleteOrder(orderItem orderItem)
     {
-        Orders.Remove(order);
-        LoadOrders(null);
+        order.Subtotal -= orderItem.TotalPerProduct;
+        ordersItems.Remove(orderItem);
+        LoadordersItems(null);
     }
+
+    private void ClearOrder()
+    {
+       ordersItems.Clear();
+        order = new Order();
+    }
+
+    public void CreateData()
+    {
+        
+        var localSettings = ApplicationData.Current.LocalSettings;
+
+
+        int userid;
+
+
+        if (localSettings.Values.TryGetValue("UserId", out object userIdObj) && userIdObj is int userId)
+        {
+            order._user_id = userId;
+            Debug.WriteLine($"User ID retrieved: {userId}");
+        }
+        else
+        {
+            Debug.WriteLine("User ID not found or invalid in OrderPageViewModel.");
+        }
+
+
+        order.id=orderService.CreateOrderWithItems(order, ordersItems);
+    }
+
+    private void SaveOrderToDb()
+    {
+        CreateData();
+        GeneratePDF();
+        ClearOrder();
+        ClearOrderDetails();
+        LoadordersItems(null);
+    }
+
+    private void GeneratePDF()
+    {
+        string Name = $"{order.id}bill.pdf";
+        string folderPath = @"D:\C#\22120151_22120167\AllBill";
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        string pdfPath = Path.Combine(folderPath, Name);
+
+
+        using (var document = new PdfDocument())
+        {
+           
+            var page = document.AddPage();
+            var gfx = XGraphics.FromPdfPage(page);
+
+           
+            var font = new XFont("Arial", 12);
+            var boldFont = new XFont("Arial", 12, XFontStyle.Bold);
+
+           
+            gfx.DrawString("KH COFFEE", boldFont, XBrushes.Black, new XPoint(40, 40));
+            gfx.DrawString("PHIẾU THANH TOÁN", boldFont, XBrushes.Black, new XPoint(40, 60));
+            gfx.DrawString("KH - A: 82 - ĐƯỜNG VẠNH ĐAI ĐHQG", font, XBrushes.Black, new XPoint(40, 80));
+
+            // Bill number and time
+            gfx.DrawString($"Số HĐ: {order.id}", font, XBrushes.Black, new XPoint(40, 100));
+
+
+            gfx.DrawString("-------------------------------------------------", font, XBrushes.Black, new XPoint(40, 180));
+
+            // Products
+            gfx.DrawString("TT  Tên món               SL    Đ.Giá    T.Tiền", boldFont, XBrushes.Black, new XPoint(40, 200));
+
+           
+            int yPosition = 220;
+            foreach (var item in ordersItems)
+            {
+                string formattedString = $"{item.OrderDetail.Quantity,-5} {item.Drinks.name,-25} {item.OrderDetail.Quantity,-5} x {item.Drinks.price,-8} = {item.TotalPerProduct,-10}";
+                gfx.DrawString(formattedString, font, XBrushes.Black, new XPoint(40, yPosition));
+                yPosition += 20;
+            }
+
+
+            gfx.DrawString("-------------------------------------------------", font, XBrushes.Black, new XPoint(40, yPosition));
+            yPosition += 20;
+
+            
+            var total = order.Total;
+            var cusPayment = order.CusPayment; 
+            var amountOfChange = cusPayment - total;
+
+            gfx.DrawString($"Tiền Thanh Toán: {total}", boldFont, XBrushes.Black, new XPoint(40, yPosition));
+            gfx.DrawString($"Tiền khách đưa: {cusPayment}", font, XBrushes.Black, new XPoint(40, yPosition + 20));
+            gfx.DrawString($"Tiền trả lại: {amountOfChange}", font, XBrushes.Black, new XPoint(40, yPosition + 40));
+
+          
+
+            // Lưu tệp PDF
+            document.Save(pdfPath);
+        }
+
+        // Mở tệp PDF bằng trình xem mặc định
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = pdfPath,
+            UseShellExecute = true
+        });
+    }
+
 
 }

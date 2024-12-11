@@ -8,6 +8,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
 
+    <Grid>
+        <NavigationView
+            x:Name="MyNavigationView"
+                    PaneDisplayMode="LeftCompact" 
+                    IsBackButtonVisible="Collapsed"
+                    SelectionChanged="NavigationView_SelectionChanged">
+            <!-- Pane Header -->
+            <NavigationView.PaneHeader>
+                <TextBlock Text="POS Coffee" FontSize="22" HorizontalAlignment="Center" />
+            </NavigationView.PaneHeader>
+
+            <!-- Navigation Menu Items -->
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Order" Icon="OpenWith" />
+                <NavigationViewItem Content="Material Management" Icon="Manage"  />
+                <NavigationViewItem Content="Event Scheduling" Icon="Calendar" />
+                <NavigationViewItem Content="Statistics" Icon="Map"/>
+                <NavigationViewItem Content="Table Manager" Icon="Tag" />
+                <NavigationViewItem Content="Employee Management" Icon="Placeholder"/>
+                <NavigationViewItem Content="VIP" Icon="SolidStar"/>
+            </NavigationView.MenuItems>
+            <NavigationView.PaneFooter>
+                <NavigationViewItem Content="Logout" Icon="Switch" Tapped="Logout_Tapped"/>
+            </NavigationView.PaneFooter>
+
+            <!-- Nội dung chính -->
+            <NavigationView.Content>
+                <Frame x:Name="MainFrame" />
+            </NavigationView.Content>
+        </NavigationView>
+    </Grid>
 </Page>

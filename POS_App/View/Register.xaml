@@ -17,7 +17,7 @@
             <TextBlock Text="Please enter user information."
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Margin="10"
+                Margin="20,10,10,10"
                 FontSize="16" 
                        Foreground="Black"/>
         </Grid>

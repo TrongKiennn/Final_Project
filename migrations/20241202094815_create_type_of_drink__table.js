@@ -8,7 +8,7 @@ exports.up = async function(knex) {
             id int(4) NOT NULL AUTO_INCREMENT,
             type_name varchar(50) NOT NULL,
             PRIMARY KEY (id)
-        ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
     `);
 };
 

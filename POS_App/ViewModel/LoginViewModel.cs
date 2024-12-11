@@ -10,6 +10,8 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 using POS_App.Service;
 using System.ComponentModel;
+using Windows.Storage;
+using System.Diagnostics;
 
 
 namespace POS_App.ViewModel;
@@ -93,6 +95,12 @@ public class LoginViewModel
                     if(passHashed == user.PassWord)
                     {
                         OnLoginSuccessful?.Invoke(user);
+                        var localSettings = ApplicationData.Current.LocalSettings;
+
+                        Debug.WriteLine(user.Id);
+                        localSettings.Values["UserId"] = user.Id;
+                        localSettings.Values["Username"] = user.Email;
+                        localSettings.Values["FirstName"] = user.FirstName;
                     }
                     else
                     {

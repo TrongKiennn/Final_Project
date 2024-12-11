@@ -8,24 +8,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="#f0daae">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="82"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="305" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Background="#794730">
-            <Image Source="../Assets/latte.png" Width="50" Height="60" Margin="20,0,20,0"/>
-            <TextBlock Text="POS Coffee" Foreground="#f0daae" VerticalAlignment="Center" FontSize="28" Margin="10" FontWeight="Bold"/>
-        </StackPanel>
-
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*" />
@@ -33,66 +24,15 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="DashBoard" Foreground="#794730" FontWeight="Bold" VerticalAlignment="Center" FontSize="32" Grid.Column="0" Margin="30,0,0,0"/>
-            <TextBlock x:Name="UserNameTextBlock" Foreground="LightGray" VerticalAlignment="Center" FontSize="16" Grid.Column="2" Margin="0, 0, 30, 0"/>
+            <TextBlock x:Name="UserNameTextBlock" Foreground="#794730" FontWeight="Bold" VerticalAlignment="Center" FontSize="24" Grid.Column="2" Margin="0, 0, 30, 0"/>
         </Grid>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="#794730" >
-            <Button Name="page01Button" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Background="#f0daae" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/order.png" Width="24" Height="24" Margin="0,0,10,0" />
-                    <TextBlock Text="Order" Foreground="#794730" FontSize="16"/>
-                </StackPanel>
-            </Button>
-            <Button Name="page02Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Background="#f0daae">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/lab-beaker.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="Material Management" Foreground="#794730" FontSize="16"/>
-                </StackPanel>
-            </Button>
-            <Button Name="page03Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Click="eventSchedulingButtonClick" Background="#f0daae">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/calendar.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="Event Scheduling" Foreground="#794730" FontSize="16" />
-                </StackPanel>
-            </Button>
-            <Button Name="page04Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Background="#f0daae" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/market-analysis.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="Statistics" Foreground="#794730" FontSize="16" />
-                </StackPanel>
-            </Button>
-            <Button Name="page05Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Background="#f0daae">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/table.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="Table Manager" Foreground="#794730" FontSize="16" />
-                </StackPanel>
-            </Button>
-            <Button Name="page06Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10"  HorizontalContentAlignment="Left" Background="#f0daae">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/employee.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="Employee Management" Foreground="#794730" FontSize="16"/>
-                </StackPanel>
-            </Button>
-            <Button Name="page07Button" Foreground="White" CornerRadius="12" Width="265" Height="66" Margin="20,10,20,10" HorizontalContentAlignment="Left" Background="#f0daae">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../Assets/crown.png" Width="24" Height="24" Margin="0,0,10,0"/>
-                    <TextBlock Text="VIP" Foreground="#794730" FontSize="16"/>
-                </StackPanel>
-            </Button>
 
-            <Button Background="#f0daae" CornerRadius="12" Margin="0, 80,0,0" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="LogOutButton_Click">
-                <TextBlock Text="LOGOUT" Foreground="#794730" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Button>
-
-        </StackPanel>
-
-
-
-        <Border Grid.Column="1" Grid.Row="1" Background=" #986650 " BorderThickness="1" BorderBrush=" #986650 " CornerRadius="12" Margin="10">
+        <Border Grid.Row="1"  Background="#ffffdf" BorderThickness="1" BorderBrush=" #986650 " CornerRadius="12" Margin="10">
             <!-- StackPanel để xếp ảnh và text theo chiều dọc -->
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Image Source="../Assets/latte-art.png" Width="512" Height="512"/>
-                <TextBlock Text="Wellcome To DashBoard" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Foreground="#f0daae"/>
+                <TextBlock Text="Wellcome To DashBoard" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Foreground="#794730"/>
             </StackPanel>
         </Border>
 

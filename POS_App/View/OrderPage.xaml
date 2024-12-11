@@ -7,291 +7,410 @@
     xmlns:models="using:POS_App.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:localConverters="using:POS_App.Converters" 
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
+        <localConverters:RadioButtonCheckedConverter x:Key="RadioButtonCheckedConverter" />
         <DataTemplate x:Key="BillItemTemplate" x:DataType="models:SelectedItem">
             <TextBlock Text="{x:Bind ItemName}" />
         </DataTemplate>
     </Page.Resources>
 
 
-    <NavigationView 
-        PaneDisplayMode="LeftCompact" 
-        IsBackButtonVisible="Collapsed">
-        <!-- Pane Header -->
-        <NavigationView.PaneHeader>
-            <TextBlock Text="POS Coffee" FontSize="22" HorizontalAlignment="Center" />
-        </NavigationView.PaneHeader>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="8.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+        </Grid.ColumnDefinitions>
 
-        <!-- Navigation Menu Items -->
-        <NavigationView.MenuItems>
-            <NavigationViewItem Content="Order" Icon="PhoneBook" />
-            <NavigationViewItem Content="Material Management" Icon="Home" />
-            <NavigationViewItem Content="Event Scheduling" Icon="Calendar" />
-            <NavigationViewItem Content="Statistics" Icon="Map" />
-            <NavigationViewItem Content="Table Manager" Icon="Home" />
-            <NavigationViewItem Content="Employee Management" Icon="Placeholder" />
-            <NavigationViewItem Content="VIP" Icon="Character" />
-        </NavigationView.MenuItems>
-
-        <!-- Main Content -->
-        <NavigationView.Content>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="8.5*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="7.5*"/>
-                    <ColumnDefinition Width="2.5*"/>
-                </Grid.ColumnDefinitions>
-
-                <ContentDialog x:Name="PaymentDialog"
-                       Title="Payment Options"
-                       CloseButtonText="Cancel"
-                       PrimaryButtonText="Confirm Payment"
-                       DefaultButton="Primary">
-                    <StackPanel Spacing="20" Padding="10">
-                        <!-- Bill Summary -->
-                        <TextBlock Text="Bill Summary" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,5">
-                            <TextBlock Text="Subtotal:" Width="150"/>
-                            <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,5">
-                            <TextBlock Text="Discount:" Width="150"/>
-                            <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,5">
-                            <TextBlock Text="Tax:" Width="150"/>
-                            <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,5">
-                            <TextBlock Text="Total:" Width="150" FontWeight="Bold"/>
-                            <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                        </StackPanel>
-
-                        <!-- Payment Options -->
-                        <TextBlock Text="Choose Payment Method" FontWeight="Bold" FontSize="18" Margin="10,20,10,10"/>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <RadioButton Content="Cash" GroupName="PaymentMethod" Margin="10"/>
-                            <RadioButton Content="Scan Code" GroupName="PaymentMethod" Margin="10"/>
-                        </StackPanel>
-                    </StackPanel>
-                </ContentDialog>
-
-                <!-- ContentDialog.xaml -->
-                <ContentDialog x:Name="OrderDetailDialog"
-                    Title="Order Details"
-                    PrimaryButtonText="Save"
-                    PrimaryButtonCommand="{Binding SaveCommand}"
-                    SecondaryButtonText="Cancel"
-                    SecondaryButtonCommand="{Binding CancelCommand}">
-
-                    <StackPanel>
-                        <!-- Sugar options -->
-                        <TextBlock Text="Sugar" />
-                        <RadioButton Content="100%" IsChecked="{Binding OrderDetails.Sugar100, Mode=TwoWay}" GroupName="SugarOptions" />
-                        <RadioButton Content="50%" IsChecked="{Binding OrderDetails.Sugar50, Mode=TwoWay}" GroupName="SugarOptions" />
-
-                        <!-- Ice options -->
-                        <TextBlock Text="Ice" />
-                        <RadioButton Content="No Ice" IsChecked="{Binding OrderDetails.NoIce, Mode=TwoWay}" GroupName="IceOptions" />
-                        <RadioButton Content="Separate Ice" IsChecked="{Binding OrderDetails.SeparateIce, Mode=TwoWay}" GroupName="IceOptions" />
-                        <RadioButton Content="Share Ice" IsChecked="{Binding OrderDetails.ShareIce, Mode=TwoWay}" GroupName="IceOptions" />
-                        <RadioButton Content="Little Ice" IsChecked="{Binding OrderDetails.LittleIce, Mode=TwoWay}" GroupName="IceOptions" />
-
-                        <!-- Take Away or Stay Here -->
-                        <TextBlock Text="Take Away or Stay Here" />
-                        <RadioButton Content="Take Away" IsChecked="{Binding OrderDetails.TakeAway, Mode=TwoWay}" GroupName="LocationOptions" />
-                        <RadioButton Content="Stay Here" IsChecked="{Binding OrderDetails.StayHere, Mode=TwoWay}" GroupName="LocationOptions" />
-
-                        <!-- Note -->
-                        <TextBlock Text="Note" />
-                        <TextBox Text="{Binding OrderDetails.Note, Mode=TwoWay}" />
-                    </StackPanel>
-                </ContentDialog>
-
-
-
-
-
-                <Grid Grid.Row="0" Grid.Column="0" Padding="30,30,0,30" Background="#f0daae" BorderBrush="Black">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <TextBlock Text="Welcome, Menu" HorizontalAlignment="Left" FontWeight="Bold" FontSize="28"/>
-                        <TextBlock Text="Discover whatever you need easily" HorizontalAlignment="Left" FontSize="18"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <TextBox Name="keyword" VerticalAlignment="Center" Text="{x:Bind OrderPageViewModel.Keyword, 
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" HorizontalAlignment="Right"/>
-                        <Button Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
-                                Content="Search" Click="searchButton_Click" Margin="0,0,10,0"/>
-                        <ToggleSwitch Width="100"  
-                                    HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort"/>
-                    </StackPanel>
-                </Grid>
-
-                <Border Grid.Row="0" Grid.Column="1" Background="#ffffff" BorderBrush="Black">
-                    <TextBlock Text="Current Order" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" 
-                        FontSize="24" Padding="30"/>
-                </Border>
-
-
-
-                <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#f0daae" 
-                         Name="optionsStackPanel">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="9*" />
-                        <!-- Nội dung chính -->
-                        <RowDefinition Height="1*" />
-                        <!-- Hàng chứa Previous/Next -->
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+        <ContentDialog x:Name="PaymentDialog"
+                Title="Payment"
+                PrimaryButtonText = "Confirm Payment"
+                PrimaryButtonCommand="{Binding ConfirmPaymentCommand}"
+                SecondaryButtonText = "Cancel"
+                Background="#000">
+            <ScrollViewer Grid.Row="1" Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+                    <Grid>
+                        <!-- Chia hàng cho tiêu đề và danh sách -->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="9*" />
+                            <RowDefinition Height="Auto" />
+                            <!-- Hàng cho tiêu đề -->
+                            <RowDefinition Height="*" />
+                            <!-- Hàng cho danh sách -->
                         </Grid.RowDefinitions>
-                        <!-- Hàng chứa các nút -->
-                    <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#f0daae" Orientation="Horizontal">
-                        <Button Content="Coffee" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Coffee"/>
-                        <Button Content="MilkTea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="MilkTea"/>
-                        <Button Content="Croissant" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Croissant"/>
-                        <Button Content="Smoothie" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Smoothie"/>
-                        <Button Content="Juice" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Juice"/>
-                        <Button Content="Tea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Tea"/>
-                        <Button Content="All" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="All"/>
-                    </StackPanel>
 
+                        <!-- Thanh tiêu đề -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal"  Padding="0,5,0,5" Width="360">
+                            <TextBlock Text="Product Name" FontWeight="Bold" FontSize="12" Foreground="White" 
+            Width="150" HorizontalAlignment="Center" />
+                            <TextBlock Text="Quantity" FontWeight="Bold" FontSize="12" Foreground="White" Margin="0,0,10,0"
+            Width="60" HorizontalAlignment="Center" />
+                            <TextBlock Text="Price" FontWeight="Bold" FontSize="12" Foreground="White" 
+            Width="50" HorizontalAlignment="Center" />
+                            <TextBlock Text="Total Per Product" FontWeight="Bold" FontSize="12" Foreground="White" Margin="0,0,20,0"
+            Width="80" HorizontalAlignment="Center" />
+                        </StackPanel>
 
-                <!-- This place use for display all items of categories-->
-                        <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick">
-                            <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
-                            <GridView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" />
-                                </ItemsPanelTemplate>
-                            </GridView.ItemsPanel>
-
-                            <!-- Item container style to set margins and alignment -->
-                            <GridView.ItemContainerStyle>
-                                <Style TargetType="GridViewItem">
-                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="5"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-
-                            <!-- Template for each item -->
+                        <!-- Danh sách các sản phẩm -->
+                        <GridView Grid.Row="1" Margin="0,0,0,0" ItemsSource="{Binding ordersItems}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick">
                             <GridView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Vertical" Background="White" Width="198" HorizontalAlignment="Stretch" Tapped="OnProductTapped">
-                                        <!-- Product Image -->
-                                        <Border Width="180" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
-                                            <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>
-                                        </Border>
+                                    <StackPanel Grid.Column="0" Margin="0,0,10,0" VerticalAlignment="Center">
+                                        <Grid  HorizontalAlignment="Stretch" Padding="0,5,0,5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150" />
+                                                <!-- Product Name -->
+                                                <ColumnDefinition Width="60" />
+                                                <!-- Quantity -->
+                                                <ColumnDefinition Width="50" />
+                                                <!-- Price -->
+                                                <ColumnDefinition Width="80" />
+                                                <!-- Total -->
+                                            </Grid.ColumnDefinitions>
 
-                                        <!-- Product Name -->
-                                        <TextBlock Text="{Binding name}" MaxLines="2" TextWrapping="Wrap" Foreground="Black"
-                               FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                            <!-- Product Name -->
+                                            <TextBlock Text="{Binding Drinks.name}" Grid.Column="0" TextWrapping="Wrap" Foreground="White"
+                                              FontWeight="Bold" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
-                                        <!-- Product Price -->
-                                        <TextBlock Text="{Binding price}" FontSize="14" FontWeight="SemiBold" Foreground="Black"
-                               HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                            <!-- Quantity -->
+                                            <TextBlock Text="{Binding OrderDetail.Quantity}" Grid.Column="1" Foreground="White" FontSize="14"
+                                              VerticalAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Center"/>
+
+                                            <!-- Price -->
+                                            <TextBlock Text="{Binding Drinks.price}" Grid.Column="2" Foreground="White" FontSize="14"
+                                              VerticalAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Center"/>
+
+                                            <!-- Total Per Product -->
+                                            <TextBlock Text="{Binding TotalPerProduct}" Grid.Column="3" Foreground="White" FontSize="14"
+                                              VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                        <Grid  HorizontalAlignment="Stretch" Padding="0,5,0,5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="80" />
+                                                <!-- Product Name -->
+                                                <ColumnDefinition Width="80" />
+                                                <!-- Quantity -->
+                                                <ColumnDefinition Width="80" />
+                                                <!-- Price -->
+                                                <ColumnDefinition Width="80" />
+                                                <!-- Total -->
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Product Name -->
+                                            <TextBlock Text="{Binding OrderDetail.SugarOptions}" Grid.Column="0" TextWrapping="Wrap" Foreground="White"
+FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+                                            <!-- Quantity -->
+                                            <TextBlock Text="{Binding OrderDetail.IceOptions}" Grid.Column="1" Foreground="White" FontSize="10"
+  VerticalAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Center"/>
+
+                                            <!-- Price -->
+                                            <TextBlock Text="{Binding OrderDetail.LocationOptions}" Grid.Column="2" Foreground="White" FontSize="10"
+  VerticalAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Center"/>
+
+                                            <!-- Total Per Product -->
+                                            <TextBlock Text="{Binding OrderDetail.Note}" Grid.Column="3" Foreground="White" FontSize="10"
+  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+
+                                        </Grid>
+
+                                        <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
                                     </StackPanel>
+
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
 
                     </Grid>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                        <Button Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
-            Click="previousButton_Click"/>
-                        <ComboBox ItemsSource="{x:Bind OrderPageViewModel.PageInfos, Mode=OneWay}"
-                SelectedItem="{x:Bind OrderPageViewModel.SelectedPageInfoItem, Mode=OneWay}"
-                SelectionChanged="pagesComboBox_SelectionChanged"
-                Margin="5" Name="pagesComboBox" Width="100" Height="35">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock >
-                    <Run Text="{Binding Page}"/>/<Run Text="{Binding Total}"/>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <Button Margin="5" Content=">" Width="80" Height="35" Name="nextButton" Click="nextButton_Click"/>
-                    </StackPanel>
-                </Grid>
 
-                <!--Display seletedItems and preview Bill [1,2]-->
-                <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30" Background="#ffffff">
-                    
-                    <Grid>
-                        
-                        
-                        <!-- Định nghĩa các hàng trong Grid -->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"/>
-                            <!-- Dành cho danh sách các item -->
-                            <RowDefinition Height="2*"/>
-                            <!-- Dành cho tổng hợp giá -->
-                            <RowDefinition Height="Auto"/>
-                            <!-- Dành cho nút -->
-                        </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" BorderThickness="1">
-                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="#794730">
-                                <StackPanel>
-                                    <ItemsControl ItemsSource="{Binding ordersGrid}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <ContentPresenter Content="{Binding}" />
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </Grid>
-                       
-                        <!-- Tổng hợp giá trị đơn hàng -->
-                        <StackPanel Grid.Row="1" Background="LightGray" Padding="10" Margin="0,0,0,15" CornerRadius="8">
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="Subtotal:" Width="150"/>
-                                <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="Discount sales:" Width="150"/>
-                                <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="Total salve tax:"  Width="150"/>
-                                <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right"/>
-                            </StackPanel>
+                    <StackPanel Spacing="20" Padding="5">
+                        <!-- Bill Summary -->
+                        <TextBlock Text="Bill Summary" FontWeight="Bold" FontSize="16" Margin="0,0,0,0" Foreground="White"/>
 
-                            <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
-
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="Total:" FontWeight="Bold" Width="150"/>
-                                <TextBlock Text="0" Width="100" TextAlignment="Right"/>
-                            </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Subtotal:" Width="230" Foreground="White"/>
+                            <TextBlock Text="{Binding order.Subtotal}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="White"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Discount sales:" Width="230" Foreground="White"/>
+                            <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="White"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Total sales tax:" Width="230" Foreground="White"/>
+                            <TextBlock Text="{Binding order.TotalSalesTax}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="White"/>
                         </StackPanel>
 
-                        <!-- Nút tiếp tục thanh toán -->
-                        <Button Grid.Row="2" Width="auto" Height="50" Background="Orange" HorizontalAlignment="Center" 
-            CornerRadius="12" Click="OnContinueToPaymentClicked">
-                            <TextBlock Text="Continue to Payment" FontWeight="Bold" Foreground="White" />
-                        </Button>
-                    </Grid>
-                </Border>
-                <!-- VisualState for compact mode -->
+                        <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Total:" FontWeight="Bold" Width="230" Foreground="White"/>
+                            <TextBlock Text="{Binding order.Total}" Width="100" TextAlignment="Right" Foreground="White"  FontWeight="Bold"/>
+                        </StackPanel>
+
+                        <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
+
+                        <TextBlock Text="Customer phone" FontWeight="Bold" FontSize="16" Margin="0,0,0,0" Foreground="White"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,5" x:Name="VIPCustomer" >
+                            <TextBox PlaceholderText="Enter the phone number " Width="340" Foreground="White"/>
+                        </StackPanel>
+
+                        <!-- Payment Options -->
+                        <TextBlock Text="Choose Payment Method" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Foreground="White"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <RadioButton Content="Cash" GroupName="PaymentMethod" Name="CashRadioButton" Checked="CashRadioButton_Checked" Unchecked="CashRadioButton_Unchecked" Foreground="White"/>
+                            <RadioButton Content="Banking" GroupName="PaymentMethod" Foreground="White"/>
+                        </StackPanel>
+
+                        <!-- TextBox for cash payment -->
+                        <StackPanel Orientation="Horizontal" Margin="0,5" x:Name="CashAmountStackPanel" Visibility="Collapsed" >
+                            <TextBox PlaceholderText="Enter the amount of money" Width="340" Foreground="White" Text="{Binding order.CusPayment, Mode=TwoWay}"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </ContentDialog>
+
+        <!-- ContentDialog.xaml -->
+        <ContentDialog x:Name="OrderDetailDialog"
+               Title="Order Details"
+               PrimaryButtonText="Save"
+               PrimaryButtonCommand="{Binding SaveCommand}"
+               SecondaryButtonText="Cancel"
+               SecondaryButtonCommand="{Binding CancelCommand}">
+
+            <ContentDialog.Resources>
+                <localConverters:RadioButtonCheckedConverter x:Key="RadioButtonCheckedConverter" />
+            </ContentDialog.Resources>
+
+            <StackPanel>
+                <!-- Sugar options -->
+                <TextBlock Text="Sugar" />
+                <RadioButton Content="100% sugar" 
+              IsChecked="{Binding OrderDetails.SugarOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=100% sugar, Mode=TwoWay}" 
+              GroupName="SugarOptions" />
+                <RadioButton Content="50% ice" 
+              IsChecked="{Binding OrderDetails.SugarOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=50% sugar, Mode=TwoWay}" 
+              GroupName="SugarOptions" />
+
+                <!-- Ice options -->
+                <TextBlock Text="Ice" />
+                <RadioButton Content="Normal Ice" 
+             IsChecked="{Binding OrderDetails.IceOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Normal Ice, Mode=TwoWay}" 
+             GroupName="IceOptions" />
+                <RadioButton Content="No Ice" 
+              IsChecked="{Binding OrderDetails.IceOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=No Ice, Mode=TwoWay}" 
+              GroupName="IceOptions" />
+                <RadioButton Content="Separate Ice" 
+              IsChecked="{Binding OrderDetails.IceOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Separate Ice, Mode=TwoWay}" 
+              GroupName="IceOptions" />
+                <RadioButton Content="Share Ice" 
+              IsChecked="{Binding OrderDetails.IceOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Share Ice, Mode=TwoWay}" 
+              GroupName="IceOptions" />
+                <RadioButton Content="Little Ice" 
+              IsChecked="{Binding OrderDetails.IceOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Little Ice, Mode=TwoWay}" 
+              GroupName="IceOptions" />
+
+                <!-- Take Away or Stay Here -->
+                <TextBlock Text="Take Away or Stay Here" />
+                <RadioButton Content="Take Away" 
+              IsChecked="{Binding OrderDetails.LocationOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Take Away, Mode=TwoWay}" 
+              GroupName="LocationOptions" />
+                <RadioButton Content="Stay Here" 
+              IsChecked="{Binding OrderDetails.LocationOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Stay Here, Mode=TwoWay}" 
+              GroupName="LocationOptions" />
+
+                <!-- Quantity -->
+                <TextBlock Text="Quantity" />
+                <TextBox Text="{Binding OrderDetails.Quantity, Mode=TwoWay}" />
+
+                <!-- Note -->
+                <TextBlock Text="Note" />
+                <TextBox Text="{Binding OrderDetails.Note, Mode=TwoWay}" />
+            </StackPanel>
+        </ContentDialog>
+
+        <Grid Grid.Row="0" Grid.Column="0" Padding="30,30,0,30" Background="#986650" BorderBrush="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <TextBlock Text="Welcome, Menu" HorizontalAlignment="Left" FontWeight="Bold" FontSize="28" Foreground="#ffffd9"/>
+                <TextBlock Text="Discover whatever you need easily" HorizontalAlignment="Left" FontSize="18" Foreground="#ffffd9"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBox Name="keyword" Height="35" VerticalAlignment="Center" Text="{x:Bind OrderPageViewModel.Keyword, 
+                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" HorizontalAlignment="Right" Foreground="#794730" Background="#ffffd9"/>
+                <Button Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                         Content="Search" Click="searchButton_Click" Margin="0,0,10,0" Foreground="#794730" Background="#ffffd9"/>
+                <ToggleSwitch Width="100"  
+                             HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort" Foreground="#ffffd9" Toggled="ToggleSwitch_Toggled"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="0" Grid.Column="1" Background="#986650" BorderBrush="Black">
+            <TextBlock Text="Current Order" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" Foreground="#ffffd9"
+                 FontSize="24" Padding="30"/>
+        </Border>
+
+        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#794730" 
+                  Name="optionsStackPanel">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*" />
+                <!-- Nội dung chính -->
+                <RowDefinition Height="1*" />
+                <!-- Hàng chứa Previous/Next -->
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="9*" />
+                </Grid.RowDefinitions>
+                <!-- Hàng chứa các nút -->
+                <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#794730" Orientation="Horizontal"  Margin="0,20,0,0">
+                    <Button Content="Coffee" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Coffee" Foreground="#794730" Background="#ffffd9"/>
+                    <Button Content="MilkTea" Width="100" Height="35"  Margin="5" Command="{Binding FilterCommand}" CommandParameter="MilkTea" Foreground="#794730" Background="#ffffd9"/>
+                    <Button Content="Croissant" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Croissant" Foreground="#794730" Background="#ffffd9"/>
+                    <Button Content="Smoothie" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Smoothie" Foreground="#794730" Background="#ffffd9"/>
+                    <Button Content="Juice" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Juice" Foreground="#794730" Background="#ffffd9"/>
+                    <Button Content="Tea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Tea" Foreground="#794730" Background="#ffffd9"/>
+                    <Button Content="All" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="All" Foreground="#794730" Background="#ffffd9"/>
+                </StackPanel>
+
+
+                <!-- This place use for display all items of categories-->
+                <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick" HorizontalAlignment="Center">
+                    <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+
+                    <!-- Item container style to set margins and alignment -->
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+
+                    <!-- Template for each item -->
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" CornerRadius="6" Background="#fffdd9" Width="auto" HorizontalAlignment="Stretch" Tapped="OnProductTapped">
+                                <!-- Product Image -->
+                                <Border Width="190" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
+                                    <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>
+                                </Border>
+
+                                <!-- Product Name -->
+                                <TextBlock Text="{Binding name}" MaxLines="2" TextWrapping="Wrap" Foreground="#794730"
+                        FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+
+                                <!-- Product Price -->
+                                <TextBlock Text="{Binding price}" FontSize="14" FontWeight="SemiBold" Foreground="#794730"
+                        HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
 
             </Grid>
-        </NavigationView.Content>
-    </NavigationView>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                <Button Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
+     Click="previousButton_Click"  Foreground="#794730" Background="#ffffd9"/>
+                <ComboBox ItemsSource="{x:Bind OrderPageViewModel.PageInfos, Mode=OneWay}"
+         SelectedItem="{x:Bind OrderPageViewModel.SelectedPageInfoItem, Mode=OneWay}"
+         SelectionChanged="pagesComboBox_SelectionChanged"
+         Margin="5" Name="pagesComboBox" Width="100" Height="35"  Foreground="#794730" Background="#ffffd9">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock >
+             <Run Text="{Binding Page}"/>/<Run Text="{Binding Total}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Margin="5" Content=">" Width="80" Height="35" Name="nextButton" Click="nextButton_Click"  Foreground="#794730" Background="#ffffd9"/>
+            </StackPanel>
+        </Grid>
+
+        <!--Display seletedItems and preview Bill [1,2]-->
+        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30" Background="#986650">
+
+            <Grid>
+
+
+                <!-- Định nghĩa các hàng trong Grid -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <!-- Dành cho danh sách các item -->
+                    <RowDefinition Height="2*"/>
+                    <!-- Dành cho tổng hợp giá -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Dành cho nút -->
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="#794730" CornerRadius="12,12,0,0">
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding ordersItemsGrid}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <ContentPresenter Content="{Binding}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <!-- Tổng hợp giá trị đơn hàng -->
+                <StackPanel Grid.Row="1" Background="#ffffd9" Padding="10" Margin="0,0,0,15" CornerRadius="0,0,12,12">
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Subtotal:" Width="150" Foreground="#794730" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding order.Subtotal}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Discount sales:" Width="150" Foreground="#794730" FontWeight="Bold"/>
+                        <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5" >
+                        <TextBlock Text="Total sales tax:" Width="150" Foreground="#794730" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding order.TotalSalesTax}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
+                    </StackPanel>
+
+                    <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <TextBlock Text="Total:" FontWeight="Bold" Width="150" Foreground="#794730"/>
+                        <TextBlock Text="{Binding order.Total}" Width="100" TextAlignment="Right" Foreground="#794730" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Nút tiếp tục thanh toán -->
+                <Button Grid.Row="2" Width="auto" Height="50" Background="#794730" HorizontalAlignment="Center" 
+CornerRadius="12" Click="OnContinueToPaymentClicked" Margin="0,20,0,0">
+                    <TextBlock Text="Continue to Payment" FontWeight="Bold" Foreground="#ffffd9" />
+                </Button>
+            </Grid>
+            
+        </Border>
+        
+        <!-- VisualState for compact mode -->
+
+    </Grid>
 </Page>

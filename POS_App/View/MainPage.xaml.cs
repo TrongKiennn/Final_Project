@@ -1,26 +1,66 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using POS_App.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using POS_App.View;
+using Windows.Storage;
 
 namespace POS_App
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-   
+    public sealed partial class MainPage : Page
+    {
+        public MainPage()
+        {
+            this.InitializeComponent();
+            MainFrame.Navigate(typeof(DashBoardPage)); 
+        }
+
+        private async void NavigationView_SelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
+        {
+            var selectedItem = e.SelectedItem as NavigationViewItem;
+
+            if (selectedItem != null)
+            {
+                string content = selectedItem.Content.ToString();
+
+                switch (content)
+                {
+                    case "Order":
+                        MainFrame.Navigate(typeof(OrderPage));
+                        break;
+                    case "Material Management":
+                        
+                        break;
+                    case "Event Scheduling":
+                        MainFrame.Navigate(typeof(EventScheduling)); 
+                        break;
+                    case "Statistics":
+                        
+                        break;
+                    case "Table Manager":
+                        
+                        break;
+                    case "Employee Management":
+                        
+                        break;
+                    case "VIP":
+                        
+                        break;
+                    default:
+                        
+                        break;
+                }
+            }
+        }
+
+        private void Logout_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+          
+           
+
+            var localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values.Clear();
+            MainFrame.Navigate(typeof(Login));
+        }
+
+    }
 }

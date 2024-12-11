@@ -19,9 +19,10 @@
             <TextBlock Text="Please enter user information."
                        HorizontalAlignment="Left"
                        VerticalAlignment="Bottom"
-                       Margin="10"
+                       Margin="50,10,10,10"
                        FontSize="16"
-                       Foreground="Black"/>
+                       Foreground="Black"
+                       />
         </Grid>
         <StackPanel Background="#EBE8E6" Width="400">
             <StackPanel>

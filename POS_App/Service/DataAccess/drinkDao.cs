@@ -32,9 +32,9 @@ public class DrinkDao : IDao
     foreach (var item in sortOptions)
     {
         useDefault = false;
-        if (item.Key == "Name")
+        if (item.Key == "drink_name")
         {
-            sortString += item.Value == SortType.Ascending ? "Name ASC " : "Name DESC ";
+            sortString += item.Value == SortType.Ascending ? "drink_name ASC " : "drink_name DESC ";
         }
     }
     if (useDefault)

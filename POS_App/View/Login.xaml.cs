@@ -40,7 +40,7 @@ namespace POS_App
         private void NavigateToDashboard(Model.User user)
         {
             DashBoardPage dashboardPage = new DashBoardPage();
-            Frame.Navigate(typeof(DashBoardPage), user);
+            Frame.Navigate(typeof(MainPage), user);
         }
         private void registerButtonClick(object sender, RoutedEventArgs e)
         {

@@ -34,11 +34,8 @@ namespace POS_App
 
             if (content.Content == null)
             {
-
-                content.Navigate(typeof(OrderPage));
+                content.Navigate(typeof(Login));
             }
-           
-
         }
     }
 
