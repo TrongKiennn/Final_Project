@@ -131,6 +131,7 @@ Task Assignment Table
 - **UI/UX (20%)**  
    - The interface should be cleaned and logically organized.
    - When click on an items, If user does not choose any custom items, the default will be seted for this items.
+   - UI: [UI link check] (https://docs.google.com/document/d/1XnmnEVnmcCzOUzSOjxavhJ2Yj78g9KM-R-ONCt2x0Jw/edit?usp=sharing)
 
 - **Design Patterns / Architecture (20%)**  
    - The project follows the **MVVM architecture** to ensure a clear separation of concerns.
