@@ -115,6 +115,12 @@ To ensure consistent progress and quality, each milestone will be assessed based
    - Quality assurance standards will be followed in upcoming milestones to ensure code quality, reliability, and maintainability.
  
 ### Milestone 02: Intermediate Development (Weeks 8–11)
+The team has completed 7 hours of work for **Milestone 2**, focusing on two main features:
+
+1. **OrderPage (4 hours):** Developed the interface for placing orders, customizing products, displaying order details, and supporting payment via pop-ups.  
+2. **Search and Sort (3 hours):** Implemented functionality to search and sort products by name.  [ProjectProposal](https://docs.google.com/document/d/1kSat9CqWG8-aWRFB-62Lu82mtGdHkVtC2Y2KuRkuEpE/edit?usp=sharing)
+
+Both features have been thoroughly tested and are operating as expected, meeting the milestone timeline.
 
 Task Assignment Table:
 | 22120151                                                                                                                             | 22120167                                                                                                                             |
@@ -136,6 +142,10 @@ Task Assignment Table:
 - **Design Patterns / Architecture (20%)**  
    - The project follows the **MVVM architecture** to ensure a clear separation of concerns.
    - Each function and class includes comments detailing its functionality for improved code readability.
+ 
+- **Advantage Topic**
+   - Use NavigationView to navigate between pages.
+   - Export bills to PDF files.
 
 - **Teamwork - Git Flow (10%)**  
    - The team uses **GitHub** and **Trello** to organize and track development:
