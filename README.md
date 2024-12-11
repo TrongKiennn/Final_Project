@@ -145,7 +145,7 @@ Task Assignment Table:
 - **Quality Assurance (20%)**  
    - Unit test some functions: Search, SortByName, Loadata.
  
-Link Demo Milestone 2: 
+Link Video Demo Milestone 2: 
 
 ### Milestone 03: Final Release (Weeks 12–15)
 *To be determined based on outcomes of previous milestones.*
