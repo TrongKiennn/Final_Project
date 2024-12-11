@@ -92,7 +92,9 @@ Launch Visual Studio and open the cloned project folder.
 ## Milestone Evaluation Criteria
 
 To ensure consistent progress and quality, each milestone will be assessed based on the following criteria:
-###Milestone 1
+
+### Milestone 01: Initial Release (Weeks 4–7)
+
 - **UI/UX (20%)**  
    - The interface should be clean and logically organized.
    - On login, if the user enters an incorrect username or password, display:  
@@ -111,6 +113,15 @@ To ensure consistent progress and quality, each milestone will be assessed based
 
 - **Quality Assurance (20%)**  
    - Quality assurance standards will be followed in upcoming milestones to ensure code quality, reliability, and maintainability.
-###Milestone 2
+ 
+### Milestone 02: Intermediate Development (Weeks 8–11)
+*To be detailed as the project progresses.*
 
-These criteria will help guide development and provide benchmarks for success in each milestone.
+---
+
+### Milestone 03: Final Release (Weeks 12–15)
+*To be determined based on outcomes of previous milestones.*
+
+---
+
+By setting clear and actionable criteria, we aim to ensure each milestone meets its objectives while maintaining high standards for usability, reliability, and scalability.
