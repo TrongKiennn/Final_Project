@@ -5,11 +5,5 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
-    <None Update="UnitTestApp.xaml">
-      <SubType>Designer</SubType>
-    </None>
-    <None Update="UnitTestAppWindow.xaml">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
 </Project>

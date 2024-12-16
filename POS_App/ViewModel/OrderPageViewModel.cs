@@ -199,54 +199,54 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     public void LoadData()
     {
-        var sortOptions = new Dictionary<string, SortType>
-            {
-                { "Name", SortType.Ascending }
-            };
+        //var sortOptions = new Dictionary<string, SortType>
+        //    {
+        //        { "Name", SortType.Ascending }
+        //    };
 
-        if(_repository_Test != null)
-        {
-            var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, Keyword, sortOptions);
-            Drinks = new ObservableCollection<Drinks>(item);
-        }
+        //if (_repository_Test != null)
+        //{
+        //    var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, Keyword, sortOptions);
+        //    Drinks = new ObservableCollection<Drinks>(item);
+        //}
 
-        if (_dao != null)
-        {
+        //if (_dao != null)
+        //{
 
 
-            var (items, count) = _dao.GetDrink(
-                CurrentPage, RowsPerPage, Keyword,
-                _sortOptions, typeName
-            );
+        //    var (items, count) = _dao.GetDrink(
+        //        CurrentPage, RowsPerPage, Keyword,
+        //        _sortOptions, typeName
+        //    );
 
-            if (items == null || !items.Any())
-            {
-                SelectedPageInfoItem.Page = 1;
-                SelectedPageInfoItem.Total = 1;
-                Drinks = new ObservableCollection<Drinks>();
-            }
-            else
-            {
-                Drinks = new ObservableCollection<Drinks>(items);
-                if (count != TotalItems)
-                {
-                    TotalItems = count;
-                    TotalPages = (TotalItems / RowsPerPage) +
-                        (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
+        //    if (items == null || !items.Any())
+        //    {
+        //        SelectedPageInfoItem.Page = 1;
+        //        SelectedPageInfoItem.Total = 1;
+        //        Drinks = new ObservableCollection<Drinks>();
+        //    }
+        //    else
+        //    {
+        //        Drinks = new ObservableCollection<Drinks>(items);
+        //        if (count != TotalItems)
+        //        {
+        //            TotalItems = count;
+        //            TotalPages = (TotalItems / RowsPerPage) +
+        //                (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
 
-                    PageInfos = new();
-                    for (int i = 1; i <= TotalPages; i++)
-                    {
-                        PageInfos.Add(new PageInfo
-                        {
-                            Page = i,
-                            Total = TotalPages
-                        });
-                    }
-                }
-                SelectedPageInfoItem = PageInfos[CurrentPage - 1];
-            }
-        }
+        //            PageInfos = new();
+        //            for (int i = 1; i <= TotalPages; i++)
+        //            {
+        //                PageInfos.Add(new PageInfo
+        //                {
+        //                    Page = i,
+        //                    Total = TotalPages
+        //                });
+        //            }
+        //        }
+        //        SelectedPageInfoItem = PageInfos[CurrentPage - 1];
+        //    }
+        //}
     }
 
     public void GoToPage(int page)
