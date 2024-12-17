@@ -37,7 +37,7 @@ namespace POS_App
                         
                         break;
                     case "Table Manager":
-                        
+                        MainFrame.Navigate(typeof(TableManagement));
                         break;
                     case "Employee Management":
                         
