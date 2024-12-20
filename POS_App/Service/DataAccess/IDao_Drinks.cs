@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace POS_App.Service.DataAccess;
 
-public interface IDao
+public interface IDao_Drinks
 {
     public enum SortType
     {
@@ -20,7 +20,7 @@ public interface IDao
         Dictionary<string, SortType> sortOptions,
          string typeName = null
     );
-
+    
 }
 
 

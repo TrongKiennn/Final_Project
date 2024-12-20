@@ -10,13 +10,13 @@ exports.up = async function(knex) {
             event_name varchar(50) NOT NULL,
             date datetime NOT NULL,
             customer_name varchar(50) NOT NULL,
-            status int(11) NOT NULL DEFAULT '0',
-            created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            status ENUM('upcoming', 'complete', 'near_due') DEFAULT 'upcoming',
             note varchar(50) DEFAULT 'Không có ghi chú!' COMMENT 'empty',
             email varchar(50) NOT NULL DEFAULT 'null' COMMENT 'empty',
             phone_number varchar(50) NOT NULL DEFAULT 'null' COMMENT 'EMPTY',
             table_number int(11) DEFAULT '0',
+            created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY (id)
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
     `);

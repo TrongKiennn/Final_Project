@@ -46,7 +46,7 @@
         <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="#794730">
             <StackPanel>
                 <!-- Nội dung ItemsControl ban đầu -->
-                <ItemsControl ItemsSource="{Binding Orders}">
+                <ItemsControl ItemsSource="{Binding Events}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <ContentPresenter Content="{Binding}" />

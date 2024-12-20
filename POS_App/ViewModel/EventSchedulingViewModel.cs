@@ -48,7 +48,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
     public ICommand SaveCommand { get; private set; }
 
     public ICommand ReturnCommand { get; private set; }
-    public ObservableCollection<Grid> Orders { get; set; }
+    public ObservableCollection<Grid> Events { get; set; }
 
     public event Action OnEventSchedulingSuccessful;
 
@@ -92,12 +92,12 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
 
         ReturnCommand = new RelayCommand(ReturnEventSchedulingPage);
 
-        Orders = new ObservableCollection<Grid>();
+        Events = new ObservableCollection<Grid>();
 
         IsDefaultViewVisible = true;
         IsEventViewVisible = false;
 
-        LoadOrders(null);
+        LoadEvents(null);
     }
 
     private void ExecuteEvent(object parameter)
@@ -154,22 +154,22 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
                 }
                 OnEventSchedulingSuccessful?.Invoke();
 
-                LoadOrders(null);
+                LoadEvents(null);
                 ResetForm(null);
                 connection.Close();
             }
         }
     }
 
-    private void LoadOrders(object parameter)
+    private void LoadEvents(object parameter)
     {
-        Orders.Clear(); 
+        Events.Clear(); 
         try
         {
             var connection = _dbManager.GetConnection();
             if (connection != null)
             {
-                string query = "SELECT * FROM events WHERE status='0'";
+                string query = "SELECT * FROM events WHERE status='upcoming' or status='near_due'";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     DataTable dt = new DataTable();
@@ -180,21 +180,21 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
 
                     foreach (DataRow row in dt.Rows)
                     {
-                        Grid orderGrid = CreateOrderGrid(row);
-                        Orders.Add(orderGrid); 
+                        Grid eventGrid = CreateEventGrid(row);
+                        Events.Add(eventGrid); 
                     }
                 }
             }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine("Error retrieving orders: " + ex.Message);
+            System.Diagnostics.Debug.WriteLine("Error retrieving Events: " + ex.Message);
         }
     }
 
-    private Grid CreateOrderGrid(DataRow row)
+    private Grid CreateEventGrid(DataRow row)
     {
-        Grid orderGrid = new Grid
+        Grid eventGrid = new Grid
         {
             Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x98, 0x66, 0x50)),
             Height = 150,
@@ -202,8 +202,8 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
             CornerRadius = new CornerRadius(12)
         };
 
-        orderGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
-        orderGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
+        eventGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
+        eventGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
 
         StackPanel infoPanel = new StackPanel
         {
@@ -221,7 +221,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         infoPanel.PointerPressed += OnStackPanelPressed;
 
         infoPanel.Tag = row["id"].ToString();
-        orderGrid.Children.Add(infoPanel);
+        eventGrid.Children.Add(infoPanel);
 
         StackPanel buttonPanel = new StackPanel
         {
@@ -253,9 +253,9 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         };
 
         buttonPanel.Children.Add(completeButton);
-        orderGrid.Children.Add(buttonPanel);
+        eventGrid.Children.Add(buttonPanel);
 
-        return orderGrid;
+        return eventGrid;
     }
 
     
@@ -275,18 +275,20 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
     private void CompleteButton_Click(object sender, RoutedEventArgs e)
     {
         int id = Convert.ToInt32((sender as Button).Tag);
-        string query = "UPDATE events SET status=1 WHERE id = @id";
+        string query = "UPDATE events SET status=@status WHERE id = @id";
+
 
         using (var connection = _dbManager.GetConnection())
         {
             using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
                 cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@status", "complete");
                 cmd.ExecuteNonQuery();
             }
         }
 
-        LoadOrders(null);
+        LoadEvents(null);
     }
 
     public void OnStackPanelPressed(object sender, PointerRoutedEventArgs e)
@@ -344,7 +346,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         {
             IsDefaultViewVisible = true;
             IsEventViewVisible = false;
-            //LoadOrders(null);
+            //LoadEvents(null);
         }
     }
 

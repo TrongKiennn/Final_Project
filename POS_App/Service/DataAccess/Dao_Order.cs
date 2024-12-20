@@ -45,4 +45,42 @@ public class Dao_Order : IDao_Order
 
         return -1;
     }
+    public int GetTableId()
+    {
+        try
+        {
+            var connectionString = GetConnectionString();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string query = @"SELECT id FROM tableManager WHERE status = 'available' LIMIT 1;";
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                connection.Open();  
+                var result = command.ExecuteScalar();  
+
+                if (result != null)
+                {
+                    return Convert.ToInt32(result);  
+                }
+            }
+        }
+        catch
+        {
+            throw;
+        }
+
+        return -1;  
+    }
+
+    private static string GetConnectionString()
+    {
+        var connectionString = "" +
+            "Server=localhost;" +
+            "Database=pos_manager;" +
+            "User=root;" +
+            "Password=1234;";
+
+        return connectionString;
+    }
+
 }

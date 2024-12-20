@@ -6,10 +6,12 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
+using Mysqlx.Crud;
 using POS_App.Model;
 using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -44,10 +46,21 @@ namespace POS_App.View
 
         private void CashRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            
+
             CashAmountStackPanel.Visibility = Visibility.Collapsed;
         }
 
+        private void StayHereButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+            TableNumberStackPanel.Visibility = Visibility.Visible;
+        }
+
+        private void TakeAwayButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+            TableNumberStackPanel.Visibility = Visibility.Collapsed;
+        }
 
         private async void OnContinueToPaymentClicked(object sender, RoutedEventArgs e)
         {
@@ -115,75 +128,10 @@ namespace POS_App.View
         }
 
 
-
-
-        //private async Task ShowCashPaymentDialog()
-        //{
-
-        //    ContentDialogResult cashResult = await cashDialog.ShowAsync();
-
-        //    if (cashResult == ContentDialogResult.Primary)
-        //    {
-        //        if (double.TryParse(amountTenderedBox.Text, out double amountTendered))
-        //        {
-        //            double totalBill = 100; // Replace with your method to get total bill amount
-        //            double change = amountTendered - totalBill;
-
-        //            await new ContentDialog
-        //            {
-        //                Title = "Payment Successful",
-        //                Content = change >= 0
-        //                    ? $"Payment successful! Change: {change:C2}"
-        //                    : "Insufficient amount tendered.",
-        //                CloseButtonText = "Ok",
-        //                XamlRoot = this.XamlRoot
-        //            }.ShowAsync();
-        //        }
-        //        else
-        //        {
-        //            await new ContentDialog
-        //            {
-        //                Title = "Invalid Input",
-        //                Content = "Please enter a valid number.",
-        //                CloseButtonText = "Ok",
-        //                XamlRoot = this.XamlRoot
-        //            }.ShowAsync();
-        //        }
-        //    }
-        //}
-
-        private async Task ShowQRCodePaymentDialog()
-        {
-            Image qrCodeImage = new Image
-            {
-                Source = new BitmapImage(new Uri("ms-appx:///Assets/qr-code-sample.png")), // Replace with your QR code image
-                Stretch = Stretch.Uniform,
-                Height = 200
-            };
-
-            ContentDialog qrDialog = new ContentDialog
-            {
-                Title = "Bank QR Code Payment",
-                Content = new StackPanel
-                {
-                    Children =
-            {
-                new TextBlock { Text = "Scan the QR code to complete your payment.", FontSize = 18, Margin = new Thickness(0, 0, 0, 10) },
-                qrCodeImage
-            }
-                },
-                CloseButtonText = "Ok",
-                DefaultButton = ContentDialogButton.Close,
-                XamlRoot = this.XamlRoot
-            };
-
-            await qrDialog.ShowAsync();
-        }
-
+     
         private async void OnProductTapped(object sender, RoutedEventArgs e)
         {
             await OrderDetailDialog.ShowAsync();
-
         }
 
         private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

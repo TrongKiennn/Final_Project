@@ -43,10 +43,11 @@ namespace POS_App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            ServiceFactory.Register(typeof(IDao),typeof(DrinkDao));
+            ServiceFactory.Register(typeof(IDao_Drinks),typeof(Dao_Drinks));
             ServiceFactory.Register(typeof(IDao_Order_Item), typeof(Dao_Order_Item));
             ServiceFactory.Register(typeof(IDao_Order), typeof(Dao_Order));
-
+            ServiceFactory.Register(typeof(IDao_Tables), typeof(Dao_Table));
+            ServiceFactory.Register(typeof(IDao_Events), typeof(Dao_Events));
             m_window = new MainWindow();
             m_window.Activate();
         }

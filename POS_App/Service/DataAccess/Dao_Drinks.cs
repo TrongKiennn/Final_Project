@@ -9,10 +9,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static POS_App.Service.DataAccess.IDao;
+using static POS_App.Service.DataAccess.IDao_Drinks;
 namespace POS_App.Service.DataAccess;
 
-public class DrinkDao : IDao
+public class Dao_Drinks : IDao_Drinks
 {
    
     public Tuple<List<Drinks>, int> GetDrink(
@@ -80,7 +80,7 @@ public class DrinkDao : IDao
                 id = reader.GetInt32("ID"),
                 name = reader.GetString("Name"),
                 imageUrl = reader.IsDBNull("ImageUrl") ? "/Assets/default_drink.jpg" : reader.GetString("ImageUrl"),
-                price = (int)reader.GetDecimal("Price")
+                price = reader.GetDecimal("Price")
             };
 
             result.Add(drink);
@@ -96,8 +96,9 @@ public class DrinkDao : IDao
     connection.Close();
 
     return new Tuple<List<Drinks>, int>(result, count);
-}
+    }
 
+   
     private static string GetConnectionString()
     {
         var connectionString = "" +

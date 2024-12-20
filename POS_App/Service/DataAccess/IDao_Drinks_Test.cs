@@ -1,7 +1,7 @@
 ﻿using POS_App.Model;
 using System;
 using System.Collections.Generic;
-using static POS_App.Service.DataAccess.IDao;
+using static POS_App.Service.DataAccess.IDao_Drinks;
 
 namespace POS_App.Service.DataAccess
 {

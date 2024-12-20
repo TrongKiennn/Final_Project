@@ -36,7 +36,7 @@ public class LoginViewModel
     private DatabaseManager _dbManager;
 
     public ICommand LoginCommand { get; private set; }
-    public event Action<Model.User> OnLoginSuccessful;
+    public event Action OnLoginSuccessful;
        
   
     public LoginParameters LoginParams { get; set; }
@@ -94,13 +94,13 @@ public class LoginViewModel
 
                     if(passHashed == user.PassWord)
                     {
-                        OnLoginSuccessful?.Invoke(user);
                         var localSettings = ApplicationData.Current.LocalSettings;
+                        localSettings.Values.Clear();
 
-                        Debug.WriteLine(user.Id);
                         localSettings.Values["UserId"] = user.Id;
                         localSettings.Values["Username"] = user.Email;
                         localSettings.Values["FirstName"] = user.FirstName;
+                        OnLoginSuccessful?.Invoke();
                     }
                     else
                     {

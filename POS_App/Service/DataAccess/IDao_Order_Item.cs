@@ -14,5 +14,6 @@ public interface IDao_Order_Item
     {
         return true;
     }
+    List<orderItem> GetOrderItemByOrderId(int orderId);
 }
 

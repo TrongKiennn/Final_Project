@@ -37,10 +37,9 @@ namespace POS_App
             DataContext = uVm; 
         }
 
-        private void NavigateToDashboard(Model.User user)
+        private void NavigateToDashboard()
         {
-            DashBoardPage dashboardPage = new DashBoardPage();
-            Frame.Navigate(typeof(MainPage), user);
+            Frame.Navigate(typeof(MainPage));
         }
         private void registerButtonClick(object sender, RoutedEventArgs e)
         {

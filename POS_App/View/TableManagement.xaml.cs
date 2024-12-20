@@ -5,8 +5,11 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using POS_App.Model;
+using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,51 +28,28 @@ namespace POS_App.View
     {
 
         // Mock data for preview
-        public List<Table> Tables { get; set; }
+        public TableManagerViewModel TableManagerViewModel { get; set; }
         public TableManagement()
         {
             this.InitializeComponent();
+            TableManagerViewModel = new TableManagerViewModel();
+            DataContext = TableManagerViewModel;
 
-            // Initialize mock data
-            Tables = new List<Table>
-            {
-                new Table { TableNumber = "1", OrderCount = 3 },
-                new Table { TableNumber = "2", OrderCount = 0 },
-                new Table { TableNumber = "3", OrderCount = 2 },
-                new Table { TableNumber = "4", OrderCount = 1 },
-                new Table { TableNumber = "5", OrderCount = 0 },
-                new Table { TableNumber = "6", OrderCount = 6 }
-            };
-
-            // Set DataContext for binding
-            this.DataContext = this;
         }
 
-        //private void GridView_ItemClick(object sender, ItemClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        var clickedItem = e.ClickedItem as Table;
-        //        if (clickedItem != null && clickedItem.TableNumber == "0") // "Add New" item
-        //        {
-        //            Tables.Insert(Tables.Count - 1, new Table
-        //            {
-        //                TableNumber = (Tables.Count).ToString(), // Assign next table number
-        //                OrderCount = 0
-        //            });
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception (you can use any logging mechanism you prefer)
-        //        System.Diagnostics.Debug.WriteLine($"Exception in GridView_ItemClick: {ex.Message}");
-        //    }
-        //}
-
-        public class Table
+        private void OnTableItemClick(object sender, ItemClickEventArgs e)
         {
-            public string TableNumber { get; set; }
-            public int OrderCount { get; set; }
+            if (e.ClickedItem is Table clickedTable)
+            {
+                var viewModel = DataContext as TableManagerViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.SelectedTable = clickedTable;
+                }
+
+                viewModel.SelectTableCommand.Execute(clickedTable);
+            }
         }
+
     }
 }

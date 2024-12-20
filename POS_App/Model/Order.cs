@@ -10,6 +10,31 @@ namespace POS_App.Model;
 public class Order : INotifyPropertyChanged
 {
     private int _id { get; set; }
+    private int user_id { get; set; }
+    private int customerId { get; set; }
+
+    private decimal _subtotal;
+    public decimal TotalSalesTax => Subtotal * 0.1m;
+
+    public decimal Total => Subtotal + TotalSalesTax;
+
+    public decimal CusPayment => Total;
+
+    private string _locationOptions = "Take Away";
+    private int _table_id { get; set; }
+
+    public int table_id
+    {
+        get => _table_id;
+        set
+        {
+            if (_table_id != value)
+            {
+                _table_id = value;
+                OnPropertyChanged(nameof(table_id));
+            }
+        }
+    }
     public int id
     {
         get => _id;
@@ -22,10 +47,6 @@ public class Order : INotifyPropertyChanged
             }
         }
     }
-    private int user_id { get; set; }
-    private int customerId { get; set; }
-
-    private decimal _subtotal;
     public decimal Subtotal
     {
         get => _subtotal;
@@ -54,12 +75,15 @@ public class Order : INotifyPropertyChanged
 
         }
     }
-
-    public decimal TotalSalesTax => Subtotal * 0.1m;
-
-    public decimal Total => Subtotal + TotalSalesTax;
-
-    public decimal CusPayment => Total;
+    public string LocationOptions
+    {
+        get => _locationOptions;
+        set
+        {
+            _locationOptions = value;
+            OnPropertyChanged(nameof(LocationOptions));
+        }
+    }
 
     public event PropertyChangedEventHandler PropertyChanged;
 

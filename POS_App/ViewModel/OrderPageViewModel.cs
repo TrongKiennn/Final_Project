@@ -20,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Services.Maps;
-using static POS_App.Service.DataAccess.IDao;
+using static POS_App.Service.DataAccess.IDao_Drinks;
 using static POS_App.Service.DataAccess.IDao_Order;
 using static POS_App.Service.DataAccess.IDao_Order_Item;
 using MySql.Data.MySqlClient;
@@ -36,19 +36,17 @@ namespace POS_App;
 
 public partial class OrderPageViewModel : INotifyPropertyChanged
 {
-    IDao _dao;
+    IDao_Drinks _dao;
     IDao_Order _Order_Dao;
     IDao_Order_Item _Order_Item_Dao;
-
+    IDao_Tables _Table_Dao;
     public ICommand FilterCommand { get; }
 
     private readonly IDao_Drinks_Test _repository_Test;
     public ObservableCollection<Drinks> Drinks { get; set; }
-
     public ObservableCollection<Drinks> Drinks_Test { get; set; }
     public ObservableCollection<PageInfo> PageInfos { get; set; }
     public ObservableCollection<orderItem> ordersItems { get; set; }
-
     public ObservableCollection<Grid> ordersItemsGrid { get; set; }
     public PageInfo SelectedPageInfoItem { get; set; }
     public OrderService orderService { get; set; }
@@ -75,6 +73,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         {
             if (_order != value)
             {
+               
                 _order = value;
                 OnPropertyChanged(nameof(order));
             }
@@ -86,6 +85,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     public ICommand SearchCommand { get; }
     public ICommand SortByNameCommand { get; }
+
+    public ICommand ContinueToPaymentCommand { get; }
     public string Keyword { get; set; } = "";
 
     public string typeName { get; set; } = null;
@@ -138,14 +139,30 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         ConfirmPaymentCommand = new RelayCommand(_ => SaveOrderToDb());
         OrderDetails = new OrderDetail();
         CancelCommand = new RelayCommand(_=> ClearOrderDetails());
+        ContinueToPaymentCommand = new RelayCommand(_ => AddTableIdToOrder());
+
         ordersItemsGrid = new ObservableCollection<Grid>();
         ordersItems = new ObservableCollection<orderItem>(); 
         order = new Order();
-        _dao = ServiceFactory.GetChildOf(typeof(IDao)) as IDao;
+        _dao = ServiceFactory.GetChildOf(typeof(IDao_Drinks)) as IDao_Drinks;
         _Order_Dao = ServiceFactory.GetChildOf(typeof(IDao_Order)) as IDao_Order;
         _Order_Item_Dao = ServiceFactory.GetChildOf(typeof(IDao_Order_Item)) as IDao_Order_Item;
+        _Table_Dao = ServiceFactory.GetChildOf(typeof(IDao_Tables)) as IDao_Tables;
         orderService = new OrderService(_Order_Dao, _Order_Item_Dao);
         LoadData();
+    }
+
+    private void AddTableIdToOrder()
+    {
+       
+        if (order.LocationOptions == "Stay Here")
+        {
+            order.table_id = _Order_Dao.GetTableId();
+        }
+        else
+        {
+            order.table_id = 0;
+        }
     }
     private void ExecuteFilter(object parameter)
     {
@@ -199,54 +216,54 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     public void LoadData()
     {
-        //var sortOptions = new Dictionary<string, SortType>
-        //    {
-        //        { "Name", SortType.Ascending }
-        //    };
+        var sortOptions = new Dictionary<string, SortType>
+            {
+                { "Name", SortType.Ascending }
+            };
 
-        //if (_repository_Test != null)
-        //{
-        //    var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, Keyword, sortOptions);
-        //    Drinks = new ObservableCollection<Drinks>(item);
-        //}
+        if (_repository_Test != null)
+        {
+            var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, Keyword, sortOptions);
+            Drinks = new ObservableCollection<Drinks>(item);
+        }
 
-        //if (_dao != null)
-        //{
+        if (_dao != null)
+        {
 
 
-        //    var (items, count) = _dao.GetDrink(
-        //        CurrentPage, RowsPerPage, Keyword,
-        //        _sortOptions, typeName
-        //    );
+            var (items, count) = _dao.GetDrink(
+                CurrentPage, RowsPerPage, Keyword,
+                _sortOptions, typeName
+            );
 
-        //    if (items == null || !items.Any())
-        //    {
-        //        SelectedPageInfoItem.Page = 1;
-        //        SelectedPageInfoItem.Total = 1;
-        //        Drinks = new ObservableCollection<Drinks>();
-        //    }
-        //    else
-        //    {
-        //        Drinks = new ObservableCollection<Drinks>(items);
-        //        if (count != TotalItems)
-        //        {
-        //            TotalItems = count;
-        //            TotalPages = (TotalItems / RowsPerPage) +
-        //                (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
+            if (items == null || !items.Any())
+            {
+                SelectedPageInfoItem.Page = 1;
+                SelectedPageInfoItem.Total = 1;
+                Drinks = new ObservableCollection<Drinks>();
+            }
+            else
+            {
+                Drinks = new ObservableCollection<Drinks>(items);
+                if (count != TotalItems)
+                {
+                    TotalItems = count;
+                    TotalPages = (TotalItems / RowsPerPage) +
+                        (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
 
-        //            PageInfos = new();
-        //            for (int i = 1; i <= TotalPages; i++)
-        //            {
-        //                PageInfos.Add(new PageInfo
-        //                {
-        //                    Page = i,
-        //                    Total = TotalPages
-        //                });
-        //            }
-        //        }
-        //        SelectedPageInfoItem = PageInfos[CurrentPage - 1];
-        //    }
-        //}
+                    PageInfos = new();
+                    for (int i = 1; i <= TotalPages; i++)
+                    {
+                        PageInfos.Add(new PageInfo
+                        {
+                            Page = i,
+                            Total = TotalPages
+                        });
+                    }
+                }
+                SelectedPageInfoItem = PageInfos[CurrentPage - 1];
+            }
+        }
     }
 
     public void GoToPage(int page)
@@ -283,7 +300,6 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
                 {
                     SugarOptions = OrderDetails.SugarOptions,
                     IceOptions = OrderDetails.IceOptions,
-                    LocationOptions = OrderDetails.LocationOptions,
                     Quantity = OrderDetails.Quantity,
                     Note = OrderDetails.Note
                 }
@@ -424,6 +440,10 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
 
         order.id=orderService.CreateOrderWithItems(order, ordersItems);
+        if(order.LocationOptions=="Stay Here")
+        {
+            _Table_Dao.UpdateTableStatus(order.table_id, "reserved",order.id);
+        }
     }
 
     private void SaveOrderToDb()

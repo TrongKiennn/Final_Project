@@ -16,7 +16,84 @@
         <DataTemplate x:Key="BillItemTemplate" x:DataType="models:SelectedItem">
             <TextBlock Text="{x:Bind ItemName}" />
         </DataTemplate>
+        <Style x:Key="CustomRadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="#794730" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                        
+                                <ColumnDefinition Width="*"/>
+                         
+                            </Grid.ColumnDefinitions>
+
+                       
+                            <Ellipse x:Name="CircleBorder"
+                                     Width="16" Height="16"
+                                     Stroke="#794730"
+                                     StrokeThickness="2"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"/>
+
+                      
+                            <Ellipse x:Name="CircleFill"
+                                     Width="8" Height="8"
+                                     Fill="#794730"
+                                     Visibility="Collapsed"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"/>
+
+                         
+                            <ContentPresenter x:Name="RadioContent"
+                                              Content="{TemplateBinding Content}"
+                                              Grid.Column="1"
+                                              VerticalAlignment="Center"
+                                              Margin="5,0,0,0" />
+
+                         
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                 
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="RadioContent">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#000000" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="CircleBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#000000" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Normal" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                 
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="CircleFill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="CircleFill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
+    
 
 
     <Grid>
@@ -36,7 +113,14 @@
                 SecondaryButtonText = "Cancel"
                 Background="#000">
             <ScrollViewer Grid.Row="1" Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                
                 <StackPanel>
+                    <StackPanel Orientation="Horizontal" x:Name="TableNumberStackPanel" Visibility="Collapsed" >
+                        <TextBlock Text="Table: " FontWeight="Bold" FontSize="14" Margin="0,0,0,0" Foreground="White"/>
+                        <TextBlock Text="{Binding order.table_id}" FontWeight="Bold" FontSize="14" Margin="5,0,0,0" Foreground="White"/>
+                    </StackPanel>
+                   
+
                     <Grid>
                         <!-- Chia hàng cho tiêu đề và danh sách -->
                         <Grid.RowDefinitions>
@@ -220,21 +304,12 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
               IsChecked="{Binding OrderDetails.IceOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Little Ice, Mode=TwoWay}" 
               GroupName="IceOptions" />
 
-                <!-- Take Away or Stay Here -->
-                <TextBlock Text="Take Away or Stay Here" />
-                <RadioButton Content="Take Away" 
-              IsChecked="{Binding OrderDetails.LocationOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Take Away, Mode=TwoWay}" 
-              GroupName="LocationOptions" />
-                <RadioButton Content="Stay Here" 
-              IsChecked="{Binding OrderDetails.LocationOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Stay Here, Mode=TwoWay}" 
-              GroupName="LocationOptions" />
-
                 <!-- Quantity -->
-                <TextBlock Text="Quantity" />
+                <TextBlock Text="Quantity" Margin="0,10,0,5"/>
                 <TextBox Text="{Binding OrderDetails.Quantity, Mode=TwoWay}" />
 
                 <!-- Note -->
-                <TextBlock Text="Note" />
+                <TextBlock Text="Note" Margin="0,10,0,5" />
                 <TextBox Text="{Binding OrderDetails.Note, Mode=TwoWay}" />
             </StackPanel>
         </ContentDialog>
@@ -380,30 +455,54 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
                 <!-- Tổng hợp giá trị đơn hàng -->
                 <StackPanel Grid.Row="1" Background="#ffffd9" Padding="10" Margin="0,0,0,15" CornerRadius="0,0,12,12">
+                   
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Subtotal:" Width="150" Foreground="#794730" FontWeight="Bold"/>
                         <TextBlock Text="{Binding order.Subtotal}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
                     </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Discount sales:" Width="150" Foreground="#794730" FontWeight="Bold"/>
                         <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
                     </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal" Margin="0,5" >
                         <TextBlock Text="Total sales tax:" Width="150" Foreground="#794730" FontWeight="Bold"/>
                         <TextBlock Text="{Binding order.TotalSalesTax}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
                     </StackPanel>
 
-                    <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
+                    <Border Height="1" Background="Gray" Margin="0,10,0,5"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Total:" FontWeight="Bold" Width="150" Foreground="#794730"/>
                         <TextBlock Text="{Binding order.Total}" Width="100" TextAlignment="Right" Foreground="#794730" FontWeight="Bold"/>
                     </StackPanel>
+
+                    <Border Height="1" Background="Gray" Margin="0,5,0,5"/>
+
+                    <StackPanel Orientation="Vertical" Margin="0,5">
+                        <TextBlock Text="Take Away or Stay Here" Foreground="#794730" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <RadioButton Content="Take Away"
+                                 Style="{StaticResource CustomRadioButtonStyle}"
+                                Checked="TakeAwayButton_Checked"
+                                 Foreground="#794730" FontWeight="Bold"
+                                 IsChecked="{Binding order.LocationOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Take Away, Mode=TwoWay}" 
+                                 GroupName="LocationOptions" />
+                            <RadioButton Content="Stay Here" 
+                                Checked="StayHereButton_Checked"
+                                 Style="{StaticResource CustomRadioButtonStyle}"
+                                 Foreground="#794730" FontWeight="Bold"
+                                 IsChecked="{Binding order.LocationOptions, Converter={StaticResource RadioButtonCheckedConverter}, ConverterParameter=Stay Here, Mode=TwoWay}" 
+                                 GroupName="LocationOptions" />
+                        </StackPanel>
+                    </StackPanel>
+                   
                 </StackPanel>
 
                 <!-- Nút tiếp tục thanh toán -->
                 <Button Grid.Row="2" Width="auto" Height="50" Background="#794730" HorizontalAlignment="Center" 
-CornerRadius="12" Click="OnContinueToPaymentClicked" Margin="0,20,0,0">
+CornerRadius="12" Click="OnContinueToPaymentClicked" Margin="0,20,0,0" Command="{Binding ContinueToPaymentCommand}">
                     <TextBlock Text="Continue to Payment" FontWeight="Bold" Foreground="#ffffd9" />
                 </Button>
             </Grid>
@@ -413,4 +512,7 @@ CornerRadius="12" Click="OnContinueToPaymentClicked" Margin="0,20,0,0">
         <!-- VisualState for compact mode -->
 
     </Grid>
+    
 </Page>
+
+

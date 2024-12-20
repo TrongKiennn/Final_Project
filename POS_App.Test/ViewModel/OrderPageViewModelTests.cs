@@ -25,7 +25,7 @@ namespace POS_App.Tests
             };
 
             mockRepository.Setup(repo => repo.GetDrink(
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<Dictionary<string, IDao.SortType>>(), null))
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<Dictionary<string, IDao_Drinks.SortType>>(), null))
                 .Returns(new Tuple<List<Drinks>, int>(testDrinks, testDrinks.Count));
 
             var viewModel = new OrderPageViewModel(mockRepository.Object);
@@ -50,7 +50,7 @@ namespace POS_App.Tests
             };
 
             mockRepository.Setup(repo => repo.GetDrink(
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<Dictionary<string, IDao.SortType>>(), null))
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<Dictionary<string, IDao_Drinks.SortType>>(), null))
                 .Returns(new Tuple<List<Drinks>, int>(testDrinks, testDrinks.Count));
 
             var viewModel = new OrderPageViewModel(mockRepository.Object)
@@ -78,7 +78,7 @@ namespace POS_App.Tests
             };
 
             mockRepository.Setup(repo => repo.GetDrink(
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.Is<Dictionary<string, IDao.SortType>>(sortOptions => sortOptions.ContainsKey("Name") && sortOptions["Name"] == IDao.SortType.Ascending), null))
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.Is<Dictionary<string, IDao_Drinks.SortType>>(sortOptions => sortOptions.ContainsKey("Name") && sortOptions["Name"] == IDao_Drinks.SortType.Ascending), null))
                 .Returns(new Tuple<List<Drinks>, int>(new List<Drinks>
                 {
                     new Drinks { id = 2, name = "An", price = 6, imageUrl = "/latte.jpg" },

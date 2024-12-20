@@ -40,6 +40,60 @@ public class Dao_Order_Item : IDao_Order_Item
         }
     }
 
+    public List<orderItem> GetOrderItemByOrderId(int orderId)
+    {
+        List<orderItem> orderItems = new List<orderItem>();
+        Drinks drinkItem = new Drinks();
+        int Quantity = 0;
+        var connectionString = GetConnectionString();
+        MySqlConnection connection = new MySqlConnection(connectionString);
+        connection.Open();
+        string query = @"
+                SELECT d.id AS drink_id, d.drink_name, d.price, d.drink_img_url AS imageUrl,oi.quantity
+                FROM orderItems oi
+                JOIN drinks d ON oi.drink_id = d.id
+                WHERE oi.order_id = @orderId";
 
+        using (var cmd = new MySqlCommand(query, connection))
+        {
+            cmd.Parameters.AddWithValue("@orderId", orderId);
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    drinkItem= new Drinks
+                    {
+                        id = reader.GetInt32("drink_id"),
+                        name = reader.GetString("drink_name"),
+                        price = reader.GetDecimal("price"),
+                        imageUrl = reader.GetString("imageUrl"),
+                    };
+                    Quantity = reader.GetInt32("quantity");
+                    orderItems.Add(new orderItem
+                    {
+                        Drinks = drinkItem,
+                        OrderDetail = new OrderDetail
+                        {
+                            Quantity = Quantity
+                        }
+                    });
+                }
+            }
+        }
+
+        return orderItems;
+    }
+
+    private static string GetConnectionString()
+    {
+        var connectionString = "" +
+            "Server=localhost;" +
+            "Database=pos_manager;" +
+            "User=root;" +
+            "Password=1234;";
+
+        return connectionString;
+    }
 }
 

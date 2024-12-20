@@ -10,7 +10,6 @@ public class OrderDetail : INotifyPropertyChanged
 {
     private string _sugarOptions="100% sugar";
     private string _iceOptions="Normal Ice";
-    private string _locationOptions="Take Away";
     private int _quantity = 1;
     private string _note;
 
@@ -34,16 +33,7 @@ public class OrderDetail : INotifyPropertyChanged
         }
     }
 
-    public string LocationOptions
-    {
-        get => _locationOptions;
-        set
-        {
-            _locationOptions = value;
-            OnPropertyChanged(nameof(LocationOptions));
-        }
-    }
-
+ 
     public int Quantity
     {
         get => _quantity;
