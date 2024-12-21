@@ -28,7 +28,7 @@ namespace POS_App
                         MainFrame.Navigate(typeof(OrderPage));
                         break;
                     case "Material Management":
-                        
+                        MainFrame.Navigate(typeof(MaterialManagement));
                         break;
                     case "Event Scheduling":
                         MainFrame.Navigate(typeof(EventScheduling)); 

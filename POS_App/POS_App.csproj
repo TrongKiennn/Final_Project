@@ -35,6 +35,7 @@
     <None Remove="Login.xaml" />
     <None Remove="MainPage.xaml" />
     <None Remove="View\EventScheduling.xaml" />
+    <None Remove="View\MaterialManagement.xaml" />
     <None Remove="View\OrderPage.xaml" />
     <None Remove="View\Register.xaml" />
     <None Remove="View\TableManagement.xaml" />
@@ -77,6 +78,9 @@
     <None Update="Assets\matcha-latte.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\MaterialManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\TableManagement.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
