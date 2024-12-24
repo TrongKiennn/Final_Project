@@ -43,7 +43,7 @@ namespace POS_App
                         
                         break;
                     case "VIP":
-                        
+                        MainFrame.Navigate(typeof(VIPCustomer));
                         break;
                     default:
                         

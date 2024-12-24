@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="POS_App.View.VIPCustomer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:POS_App.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#794730">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0: Tổng số khách hàng -->
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="#986650" CornerRadius="12" Margin="10" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Cột 0: Tiêu đề -->
+                <TextBlock Text="VIP Management" Grid.Column="0" Foreground="#ffffd9" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" Margin="10" />
+
+                <!-- Cột 1: Customers/Day -->
+                <Border Grid.Column="1" Background="#ffffd9" CornerRadius="12" Margin="5">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Customers/Day" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="50" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Cột 2: Customers/Month -->
+                <Border Grid.Column="2" Background="#ffffd9" CornerRadius="12" Margin="5">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Customers/Month" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="200" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Cột 3: VIP Customers -->
+                <Border Grid.Column="3" Background="#ffffd9" CornerRadius="12" Margin="5">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="VIP Customers" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="30" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+
+        <!-- Row 1, Column 0: Danh sách khách hàng thân thiết -->
+        <Border Grid.Row="1" Grid.Column="0" Background="#986650" CornerRadius="12" Margin="10,0,10,10" Padding="10">
+            <StackPanel>
+                <!-- Tiêu đề -->
+                <TextBlock Text="List of VIP customers" Foreground="#ffffd9" FontSize="20" FontWeight="Bold" Margin="15,0,15,10"/>
+
+                <!-- Thanh tìm kiếm -->
+                <TextBox Name="SearchBox" PlaceholderText="Search by name..." FontSize="16" Margin="15,0,15,10" Padding="5" />
+
+                <!-- Danh sách khách hàng VIP -->
+                <ListView>
+                    <!-- Bronze VIP -->
+                    <ListViewItem>
+                        <Border Background="#CD7F32" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <!-- Bronze background -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Nguyễn Văn A" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
+                                <TextBlock Text="1200" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+
+                    <!-- Silver VIP -->
+                    <ListViewItem>
+                        <Border Background="#C0C0C0" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <!-- Silver background -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Trần Thị B" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
+                                <TextBlock Text="950" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+
+                    <!-- Gold VIP -->
+                    <ListViewItem>
+                        <Border Background="#FFD700" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <!-- Gold background -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Lê Hoàng C" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
+                                <TextBlock Text="780" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+
+                    <!-- Bronze VIP -->
+                    <ListViewItem>
+                        <Border Background="#CD7F32" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <!-- Bronze background -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Phạm Văn D" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
+                                <TextBlock Text="650" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Border>
+
+        <!-- Row 1, Column 1: Ô nhập thông tin -->
+        <Border Grid.Row="1" Grid.Column="1" Background="#794730" CornerRadius="5" Margin="10" Padding="10">
+            <StackPanel>
+                <!-- Title -->
+
+                <!-- Default state content -->
+                <StackPanel x:Name="DefaultStatePanel">
+                    <TextBlock Text="Customer Information" FontSize="24" Foreground="#FFFFD9" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Fullname:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter fullname" Margin="0,5"/>
+                    <TextBlock Text="Phone number:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter phone number" Margin="0,5"/>
+                    <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter email" Margin="0,5"/>
+                    <TextBlock Text="Reward points:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter reward points" Margin="0,5"/>
+                    <Button Content="Save Info" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                    <Button Content="VIP Ranking Settings" HorizontalAlignment="Right" Margin="0,10,0,0" Click="OnSettingButtonClick"/>
+                </StackPanel>
+
+                <!-- Setting state content -->
+                <StackPanel x:Name="SettingStatePanel" Visibility="Collapsed">
+                    <TextBlock Text="Set VIP ranking" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Bronze Tier Points:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter bronze tier points" Margin="0,5"/>
+                    <TextBlock Text="Bronze Tier Discount (%):" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter bronze tier discount" Margin="0,5"/>
+
+                    <TextBlock Text="Silver Tier Points:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter silver tier points" Margin="0,5"/>
+                    <TextBlock Text="Silver Tier Discount (%):" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter silver tier discount" Margin="0,5"/>
+
+                    <TextBlock Text="Gold Tier Points:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter gold tier points" Margin="0,5"/>
+                    <TextBlock Text="Gold Tier Discount (%):" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter gold tier discount" Margin="0,5"/>
+                    <TextBlock Text="Point of each order:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter point of each order" Margin="0,5"/>
+
+                    <Button Content="Save Settings" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                    <Button Content="Go Back" HorizontalAlignment="Right" Margin="0,10,0,0" Click="OnBackButtonClick"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+
+    </Grid>
+</Page>
+
