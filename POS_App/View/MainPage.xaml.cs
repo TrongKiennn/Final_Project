@@ -40,13 +40,12 @@ namespace POS_App
                         MainFrame.Navigate(typeof(TableManagement));
                         break;
                     case "Employee Management":
-                        
+                        MainFrame.Navigate(typeof(EmployeeManagement));
                         break;
                     case "VIP":
-                        
+                        MainFrame.Navigate(typeof(VIPCustomer));
                         break;
                     default:
-                        
                         break;
                 }
             }

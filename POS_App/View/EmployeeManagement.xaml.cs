@@ -5,8 +5,6 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Mysqlx.Crud;
-using POS_App.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,26 +16,28 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace POS_App
+namespace POS_App.View
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class EmployeeManagement : Page
     {
-        public MainWindow()
+        public EmployeeManagement()
         {
             this.InitializeComponent();
         }
 
-        private void Window_Activated(object sender, WindowActivatedEventArgs args)
+        private void OnSettingButtonClick(object sender, RoutedEventArgs e)
         {
+            DefaultStatePanel.Visibility = Visibility.Collapsed;
+            SettingStatePanel.Visibility = Visibility.Visible;
+        }
 
-            if (content.Content == null)
-            {
-                content.Navigate(typeof(EmployeeManagement));
-            }
+        private void OnBackButtonClick(object sender, RoutedEventArgs e)
+        {
+            DefaultStatePanel.Visibility = Visibility.Visible;
+            SettingStatePanel.Visibility = Visibility.Collapsed;
         }
     }
-
 }

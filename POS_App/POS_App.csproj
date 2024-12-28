@@ -34,12 +34,14 @@
     <None Remove="Assets\time.png" />
     <None Remove="Login.xaml" />
     <None Remove="MainPage.xaml" />
+    <None Remove="View\EmployeeManagement.xaml" />
     <None Remove="View\DrinkIngredientPage.xaml" />
     <None Remove="View\EventScheduling.xaml" />
     <None Remove="View\MaterialManagement.xaml" />
     <None Remove="View\OrderPage.xaml" />
     <None Remove="View\Register.xaml" />
     <None Remove="View\TableManagement.xaml" />
+    <None Remove="View\VIPCustomer.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +81,12 @@
     <None Update="Assets\matcha-latte.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\EmployeeManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="View\VIPCustomer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\DrinkIngredientPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
