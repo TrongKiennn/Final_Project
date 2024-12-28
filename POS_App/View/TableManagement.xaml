@@ -39,13 +39,12 @@
         <Grid  Grid.Row="0" Grid.Column="1" Padding="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Table's Order" Foreground="#ffffd9" Padding="20,0,0,0"
-                       FontSize="32" FontWeight="Bold" Margin="0,0,10,0"
-                       VerticalAlignment="Center"/>
-            <Button Margin="0,0,20,0" Grid.Column="1" Content="Add new order" Background="#ffffd9" Width="80" Height="30" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Column="0" Text="Table's Order" Foreground="#ffffd9" 
+                       FontSize="32" FontWeight="Bold"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+           
         </Grid>
 
         <!-- Row 1, Column 0: List of tables -->
@@ -100,32 +99,13 @@
 
 
         <!-- Row 1, Column 1: Order details of a table -->
-        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30">
+        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30" HorizontalAlignment="Center" >
 
             <Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0">
-                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="#794730" CornerRadius="12,12,0,0">
-                        <StackPanel>
-                            <ItemsControl ItemsSource="{Binding ordersItemsGrid}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <ContentPresenter Content="{Binding}"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </StackPanel>
-                    </ScrollViewer>
-                </Grid>
-
+       
                 <!-- Tổng hợp giá trị đơn hàng -->
-                <StackPanel Grid.Row="1" Background="#ffffd9" Padding="10" Margin="0,0,0,0" CornerRadius="0,0,12,12">
+                <StackPanel  Background="#ffffd9" Padding="10" Margin="0,0,0,0" CornerRadius="0,0,12,12">
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Subtotal:" Width="150" Foreground="#794730" FontWeight="Bold"/>
                         <TextBlock Text="{Binding order.Subtotal}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
@@ -145,13 +125,15 @@
                         <TextBlock Text="Total:" FontWeight="Bold" Width="150" Foreground="#794730"/>
                         <TextBlock Text="{Binding order.Total}" Width="100" TextAlignment="Right" Foreground="#794730" FontWeight="Bold"/>
                     </StackPanel>
+                    <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
+                    <Button Grid.Row="2" Width="150" Height="50"  Background="#794730" HorizontalAlignment="Center" 
+        CornerRadius="12" Margin="0,10,0,0" Command="{Binding ClearTableCommand}">
+                        <TextBlock Text="Clear table" FontWeight="Bold" Foreground="#ffffd9" />
+                    </Button>
                 </StackPanel>
 
-                <!-- Nút tiếp tục thanh toán -->
-                <Button Grid.Row="2" Width="auto" Height="50" Background="#ffffd9" HorizontalAlignment="Center" 
-                        CornerRadius="12" Margin="0,10,0,0" Command="{Binding ClearTableCommand}">
-                    <TextBlock Text="Clear table" FontWeight="Bold" Foreground="#794730" />
-                </Button>
+        
+                
             </Grid>
 
         </Border>

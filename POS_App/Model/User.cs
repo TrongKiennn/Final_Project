@@ -18,6 +18,8 @@ public class User : INotifyPropertyChanged
 
     public string Salt {  get; set; }
 
+    public string Role { get; set; }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
 }

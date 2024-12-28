@@ -14,7 +14,26 @@ public class Drinks : INotifyPropertyChanged
     public decimal price { get; set; }
     public string imageUrl { get; set; }
 
+    private string _status { get; set; }
+
+    public string status
+    {
+        get => _status;
+        set
+        {
+            if (_status != value)
+            {
+                _status = value;
+                OnPropertyChanged(nameof(status));
+            }
+        }
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
 

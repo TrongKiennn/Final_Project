@@ -1,0 +1,1 @@
+D:\C#\22120151_22120167\POS_App\POS_App\POS_App.csproj;x64

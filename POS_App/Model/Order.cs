@@ -22,6 +22,7 @@ public class Order : INotifyPropertyChanged
 
     private string _locationOptions = "Take Away";
     private int _table_id { get; set; }
+   
 
     public int table_id
     {
@@ -61,6 +62,8 @@ public class Order : INotifyPropertyChanged
             }
         }
     }
+
+
 
     public int _user_id
     {

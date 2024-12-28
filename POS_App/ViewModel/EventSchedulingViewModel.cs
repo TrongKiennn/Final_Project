@@ -214,9 +214,9 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         };
         Grid.SetRow(infoPanel, 0);
 
-        infoPanel.Children.Add(new TextBlock { Text = "Tên sự kiện: " + row["event_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize=16 });
-        infoPanel.Children.Add(new TextBlock { Text = "Ngày Giờ: " + row["date"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
-        infoPanel.Children.Add(new TextBlock { Text = "Người đặt: " + row["customer_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
+        infoPanel.Children.Add(new TextBlock { Text = "Event Name: " + row["event_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize=16 });
+        infoPanel.Children.Add(new TextBlock { Text = "Appointment: " + row["date"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
+        infoPanel.Children.Add(new TextBlock { Text = "Booker: " + row["customer_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
 
         infoPanel.PointerPressed += OnStackPanelPressed;
 

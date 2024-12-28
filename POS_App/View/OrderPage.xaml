@@ -92,6 +92,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <localConverters:StatusDrinkToColorConverter x:Key="StatusDrinkToColorConverter"/>
+        
     </Page.Resources>
     
 
@@ -314,6 +317,11 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
             </StackPanel>
         </ContentDialog>
 
+        <ContentDialog x:Name="UnAvailableOrderDetailDialog"
+                Title="Hết nguyên liệu để làm món!"
+                PrimaryButtonText="Cancel">
+        </ContentDialog>
+
         <Grid Grid.Row="0" Grid.Column="0" Padding="30,30,0,30" Background="#986650" BorderBrush="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -383,9 +391,9 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     </GridView.ItemContainerStyle>
 
                     <!-- Template for each item -->
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical" CornerRadius="6" Background="#fffdd9" Width="auto" HorizontalAlignment="Stretch" Tapped="OnProductTapped">
+                    <GridView.ItemTemplate >
+                        <DataTemplate >
+                            <StackPanel Orientation="Vertical" CornerRadius="6" Background="{Binding status, Converter={StaticResource StatusDrinkToColorConverter}}" Width="auto" HorizontalAlignment="Stretch">
                                 <!-- Product Image -->
                                 <Border Width="190" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
                                     <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>

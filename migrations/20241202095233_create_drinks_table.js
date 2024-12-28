@@ -10,6 +10,7 @@ exports.up = async function(knex) {
             typeId int(4) NOT NULL,
             price decimal(10, 2) NOT NULL,
             drink_img_url VARCHAR(255) NOT NULL,
+            status ENUM('available', 'unavailable') DEFAULT 'available',
             created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
             updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY (id),

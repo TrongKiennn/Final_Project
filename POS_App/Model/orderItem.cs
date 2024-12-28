@@ -32,6 +32,20 @@ public class orderItem : INotifyPropertyChanged
         }
     }
 
+    private List<Drink_Ingredient> _drinkIngredients;
+    public List<Drink_Ingredient> DrinkIngredients
+    {
+        get => _drinkIngredients;
+        set
+        {
+            if (_drinkIngredients != value)
+            {
+                _drinkIngredients = value;
+                OnPropertyChanged(nameof(DrinkIngredients));
+            }
+        }
+    }
+
     private OrderDetail _orderDetail;
     public OrderDetail OrderDetail
     {

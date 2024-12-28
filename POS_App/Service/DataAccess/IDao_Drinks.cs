@@ -20,7 +20,10 @@ public interface IDao_Drinks
         Dictionary<string, SortType> sortOptions,
          string typeName = null
     );
-    
+
+    List<Drinks> GetDrinkWithoutFilter();
+    public void UpdateDrinkStatus(int drinkId, string status);
+
 }
 
 

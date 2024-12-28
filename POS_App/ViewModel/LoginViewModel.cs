@@ -77,7 +77,8 @@ public class LoginViewModel
                             Email = reader.GetString("email"),
                             PassWord = reader.GetString("password"),
                             Salt=reader.GetString("salt"),
-                            FirstName=reader.GetString("first_name")
+                            FirstName=reader.GetString("first_name"),
+                            Role= reader.GetString("role")
                         };
                     }
                 }
@@ -100,6 +101,7 @@ public class LoginViewModel
                         localSettings.Values["UserId"] = user.Id;
                         localSettings.Values["Username"] = user.Email;
                         localSettings.Values["FirstName"] = user.FirstName;
+                        localSettings.Values["Role"] = user.Role;
                         OnLoginSuccessful?.Invoke();
                     }
                     else

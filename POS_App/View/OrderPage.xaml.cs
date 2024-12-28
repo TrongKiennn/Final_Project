@@ -129,10 +129,10 @@ namespace POS_App.View
 
 
      
-        private async void OnProductTapped(object sender, RoutedEventArgs e)
-        {
-            await OrderDetailDialog.ShowAsync();
-        }
+        //private async void OnProductTapped(object sender, RoutedEventArgs e)
+        //{
+        //    await OrderDetailDialog.ShowAsync();
+        //}
 
         private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
@@ -213,14 +213,23 @@ namespace POS_App.View
             throw new NotImplementedException();
         }
 
-        private void OnDrinkItemClick(object sender, ItemClickEventArgs e)
+        private async void OnDrinkItemClick(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is Drinks clickedDrink)
             {
+
                 var viewModel = DataContext as OrderPageViewModel;
                 if (viewModel != null)
                 {
-                    viewModel.SelectedDrink = clickedDrink;
+                    viewModel.DrinkClickCommand.Execute(clickedDrink);
+                    if (viewModel.IsAvailable == true)
+                    {
+                        await OrderDetailDialog.ShowAsync();
+                    }
+                    else
+                    {
+                        await UnAvailableOrderDetailDialog.ShowAsync();
+                    }
                 }
             }
         }

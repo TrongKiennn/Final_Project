@@ -159,8 +159,9 @@ public partial class TableManagerViewModel : INotifyPropertyChanged
         Grid orderGrid = new Grid
         {
             VerticalAlignment = VerticalAlignment.Center,
-            Margin = new Thickness(0, 5, 0, 5),
+            Margin = new Thickness(10, 5, 10, 5),
             Width = double.NaN
+
         };
 
         orderGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
@@ -173,7 +174,7 @@ public partial class TableManagerViewModel : INotifyPropertyChanged
             Height = 62,
             CornerRadius = new CornerRadius(8),
             Background = new SolidColorBrush(Colors.LightGray),
-            Margin = new Thickness(0, 0, 5, 0)
+            Margin = new Thickness(15, 0, 5, 0)
         };
         var image = new Microsoft.UI.Xaml.Controls.Image
         {
@@ -193,7 +194,8 @@ public partial class TableManagerViewModel : INotifyPropertyChanged
         {
             Orientation = Orientation.Vertical,
             HorizontalAlignment = HorizontalAlignment.Left,
-            Width = 150
+            Width = 150,
+            Margin= new Thickness(10,0,0,0)
         };
 
         infoPanel.Children.Add(new TextBlock { Text = orderItem.Drinks.name, FontWeight = FontWeights.Bold, FontSize = 14, MaxLines = 2, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 5), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)) });
@@ -240,6 +242,7 @@ public partial class TableManagerViewModel : INotifyPropertyChanged
                         await _Table_Dao.UpdateTableStatusAsync(availableTables[i]);
                     }
                     await _Dao_Events.UpdateEventStatus(ev.Id, "near_due");
+                    LoadData();
                 }
                 else
                 {
@@ -248,7 +251,7 @@ public partial class TableManagerViewModel : INotifyPropertyChanged
                 }
             }
 
-            LoadData();
+            
         }
         catch (Exception ex)
         {

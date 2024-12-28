@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Mysqlx.Crud;
 using POS_App.View;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace POS_App
 
             if (content.Content == null)
             {
-                content.Navigate(typeof(MaterialManagement));
+                content.Navigate(typeof(DrinkIngredientPage));
             }
         }
     }

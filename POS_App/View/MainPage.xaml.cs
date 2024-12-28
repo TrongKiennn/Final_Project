@@ -54,8 +54,7 @@ namespace POS_App
 
         private void Logout_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-          
-           
+         
 
             var localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values.Clear();

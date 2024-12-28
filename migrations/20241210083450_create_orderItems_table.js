@@ -15,6 +15,7 @@ exports.up = async function(knex) {
             PRIMARY KEY (id),
             FOREIGN KEY (order_id) REFERENCES orders(id),
             FOREIGN KEY (drink_id) REFERENCES drinks(id)
+            ON DELETE CASCADE ON UPDATE CASCADE  
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
     `);
 };
