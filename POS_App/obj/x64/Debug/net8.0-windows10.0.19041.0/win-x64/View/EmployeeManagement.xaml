@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="POS_App.View.EmployeeManagement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:POS_App.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#794730">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="#986650" CornerRadius="12" Margin="10" Padding="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Employees Management" Grid.Column="0" Foreground="#ffffd9" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" Margin="10" />
+
+                <Border Grid.Column="3" Background="#ffffd9" CornerRadius="12" Margin="5">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Employees" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="10" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+
+        <Border Grid.Row="1" Grid.Column="0" Background="#986650" CornerRadius="12" Margin="10,0,10,10" Padding="10">
+            <StackPanel>
+                <TextBlock Text="All employees" Foreground="#ffffd9" FontSize="20" FontWeight="Bold" Margin="15,0,15,10"/>
+
+                <TextBox x:ConnectionId='6' Name="SearchBox" PlaceholderText="Search employees..." FontSize="16" Margin="15,0,15,10" Padding="5" />
+
+                <ListView>
+                    <ListViewItem>
+                        <Border Background="#FFD700" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Nguyễn Văn A" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
+                                <TextBlock Text="1200" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+
+                    <ListViewItem>
+                        <Border Background="#C0C0C0" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Trần Thị B" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
+                                <TextBlock Text="950" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+
+                    <ListViewItem>
+                        <Border Background="#FFD700" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Lê Hoàng C" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
+                                <TextBlock Text="780" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+
+                    <ListViewItem>
+                        <Border Background="#C0C0C0" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Phạm Văn D" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
+                                <TextBlock Text="650" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Border>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1" Background="#794730" CornerRadius="5" Margin="10" Padding="10">
+            <StackPanel>
+                <Grid x:ConnectionId='2' x:Name="DefaultStatePanel" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2.5*" />
+                        <RowDefinition Height="2.5*" />
+                        <RowDefinition Height="2.5*" />
+                        <RowDefinition Height="2.5*" />
+                    </Grid.RowDefinitions>
+                    <!-- Box 1: Position -->
+                    <Border Grid.Column="1" Grid.Row="2" Background="#ffffd9" CornerRadius="12" Margin="5" Height="140">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Position" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="Employee" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Box 2: Paid Leave -->
+                    <Border Grid.Row="1" Grid.Column="0" Height="140" Background="#ffffd9" CornerRadius="12" Margin="5">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Employee category" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="Part-time" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Box 3: Public Holidays -->
+                    <Border Grid.Row="2" Height="140" Grid.Column="0" VerticalAlignment="Stretch" Background="#ffffd9" CornerRadius="12" Margin="5">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Public Holidays" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="2" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Box 4: Working Hours -->
+                    <Border Grid.Row="0" Grid.Column="1" Background="#ffffd9" CornerRadius="12" Margin="5">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Working Hours/Week" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="40" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Box 5: Working Days/Month -->
+                    <Border Grid.Row="1" Grid.Column="1" Background="#ffffd9" CornerRadius="12" Margin="5">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Working Days/Month" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="22" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Box 6: Full Name -->
+                    <Border Grid.Row="0" Grid.Column="0" Background="#ffffd9" CornerRadius="12" Margin="5" Height="140">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Full Name" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="John Doe" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Grid.Column="0" Grid.Row="3" Margin="5" Orientation="Horizontal">
+                        <Button Content="Attended tracking" Height="100" Width="165"  CornerRadius="12" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                        <Button Content="Delete" Height="100" Width="165" CornerRadius="12" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="3" Margin="5">
+                        <Button x:ConnectionId='5' Content="Add new employee" Height="100" Width="330" CornerRadius="12" HorizontalAlignment="Right" Margin="0,10,0,0"                             />
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel x:ConnectionId='3' x:Name="SettingStatePanel" Visibility="Collapsed" >
+                    <TextBlock Text="Employee Information" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Full Name:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter full name" Margin="0,5"/>
+                    <TextBlock Text="Employee ID:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter employee ID" Margin="0,5"/>
+
+                    <TextBlock Text="Date of Birth:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <DatePicker Margin="0,5" HorizontalAlignment="Stretch" Width="Auto"/>
+
+                        <TextBlock Text="Phone Number:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter phone number" Margin="0,5"/>
+
+                    <TextBlock Text="Gender:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <ComboBox Margin="0,5" HorizontalAlignment="Stretch" Width="Auto">
+                        <ComboBoxItem Content="Male"/>
+                        <ComboBoxItem Content="Female"/>
+                        <ComboBoxItem Content="Other"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Employment Type:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <ComboBox Margin="0,5" HorizontalAlignment="Stretch" Width="Auto">
+                        <ComboBoxItem Content="Full-time"/>
+                        <ComboBoxItem Content="Part-time"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Position:" Foreground="#FFFFD9" Margin="0,5"/>
+                    <TextBox PlaceholderText="Enter position" Margin="0,5"/>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button Content="Save employee" Margin="0,0,10,0"/>
+                        <Button x:ConnectionId='4' Content="Back"                          />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
+
