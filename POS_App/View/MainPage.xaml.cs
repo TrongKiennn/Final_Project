@@ -34,7 +34,7 @@ namespace POS_App
                         MainFrame.Navigate(typeof(EventScheduling)); 
                         break;
                     case "Statistics":
-                        
+                        MainFrame.Navigate(typeof(Statistic));
                         break;
                     case "Table Manager":
                         MainFrame.Navigate(typeof(TableManagement));

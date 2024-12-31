@@ -18,9 +18,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\calendar.png" />
+    <None Remove="Assets\chart.png" />
     <None Remove="Assets\count.png" />
     <None Remove="Assets\crown.png" />
     <None Remove="Assets\date.png" />
+    <None Remove="Assets\dollar.png" />
     <None Remove="Assets\email.png" />
     <None Remove="Assets\employee.png" />
     <None Remove="Assets\lab-beaker.png" />
@@ -40,6 +42,7 @@
     <None Remove="View\MaterialManagement.xaml" />
     <None Remove="View\OrderPage.xaml" />
     <None Remove="View\Register.xaml" />
+    <None Remove="View\Statistic.xaml" />
     <None Remove="View\TableManagement.xaml" />
     <None Remove="View\VIPCustomer.xaml" />
   </ItemGroup>
@@ -81,6 +84,9 @@
     <None Update="Assets\matcha-latte.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="View\Statistic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="View\EmployeeManagement.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
