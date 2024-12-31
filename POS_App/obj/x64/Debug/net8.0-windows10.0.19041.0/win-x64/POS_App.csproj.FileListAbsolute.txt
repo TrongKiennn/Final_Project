@@ -7,6 +7,7 @@ D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\App.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DashBoardPage.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DrinkIngredientPage.xbf
+D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EmployeeManagement.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EventScheduling.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Login.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\MainPage.xbf
@@ -15,6 +16,7 @@ D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Register.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\TableManagement.xbf
+D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\VIPCustomer.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json
 D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll
@@ -262,6 +264,8 @@ D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DashBoardPage.g.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DrinkIngredientPage.g.i.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DrinkIngredientPage.g.cs
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EmployeeManagement.g.i.cs
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EmployeeManagement.g.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EventScheduling.g.i.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EventScheduling.g.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Login.g.i.cs
@@ -278,10 +282,13 @@ D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Register.g.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\TableManagement.g.i.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\TableManagement.g.cs
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\VIPCustomer.g.i.cs
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\VIPCustomer.g.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\XamlTypeInfo.g.cs
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\App.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DashBoardPage.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DrinkIngredientPage.xaml
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EmployeeManagement.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EventScheduling.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Login.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\MainPage.xaml
@@ -290,9 +297,11 @@ D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Register.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\TableManagement.xaml
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\VIPCustomer.xaml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\App.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DashBoardPage.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\DrinkIngredientPage.xbf
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EmployeeManagement.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\EventScheduling.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Login.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\MainPage.xbf
@@ -301,6 +310,7 @@ D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\OrderPage.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\Register.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\TableManagement.xbf
+D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\View\VIPCustomer.xbf
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\XamlSaveStateFile.xml
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.GeneratedMSBuildEditorConfig.editorconfig
 D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.AssemblyInfoInputs.cache

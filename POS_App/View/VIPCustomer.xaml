@@ -28,26 +28,26 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Quản lý khach hang VIP" Grid.Column="0" Foreground="#ffffd9" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" Margin="10" />
+                <TextBlock Text="VIP Customer Manager" Grid.Column="0" Foreground="#ffffd9" FontSize="38" FontWeight="Bold" VerticalAlignment="Center" Margin="10" />
 
                 <Border Grid.Column="1" Background="#ffffd9" CornerRadius="12" Margin="5">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-                        <TextBlock Text="Khách hàng/ngày" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                        <TextBlock Text="50" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        <TextBlock Text="Bronze Customer" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="{Binding TotalBronze }" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="2" Background="#ffffd9" CornerRadius="12" Margin="5">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-                        <TextBlock Text="Khách hàng/tháng" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                        <TextBlock Text="200" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        <TextBlock Text="Silver Customer" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="{Binding TotalSilver }" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="3" Background="#ffffd9" CornerRadius="12" Margin="5">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-                        <TextBlock Text="Khách hàng VIP" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                        <TextBlock Text="30" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        <TextBlock Text="Gold Customer" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="{Binding TotalGold }" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                     </StackPanel>
                 </Border>
             </Grid>
@@ -56,109 +56,135 @@
 
         <Border Grid.Row="1" Grid.Column="0" Background="#986650" CornerRadius="12" Margin="10,0,10,10" Padding="10">
             <StackPanel>
-                <TextBlock Text="Danh sách khách hàng VIP" Foreground="#ffffd9" FontSize="20" FontWeight="Bold" Margin="15,0,15,10"/>
+                <TextBlock Text="Customer VIP List" Foreground="#ffffd9" FontSize="20" FontWeight="Bold" Margin="15,0,15,10"/>
 
-                <TextBox Name="SearchBox" PlaceholderText="Tìm kiếm theo khach hang VIP..." FontSize="16" Margin="15,0,15,10" Padding="5" />
+                <TextBox Name="SearchBox" PlaceholderText="Search VIP Customer..." FontSize="16" Margin="15,0,15,10" Padding="5"  Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <ListView>
-                    <ListViewItem>
-                        <Border Background="#CD7F32" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Nguyễn Văn A" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
-                                <TextBlock Text="1200" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <Border Background="#C0C0C0" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Trần Thị B" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
-                                <TextBlock Text="950" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <Border Background="#FFD700" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Lê Hoàng C" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
-                                <TextBlock Text="780" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <Border Background="#CD7F32" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Phạm Văn D" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
-                                <TextBlock Text="650" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
+                <ListView ItemsSource="{Binding Customers}" CornerRadius="12" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#ffffd9" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding FullName}" FontSize="16" FontWeight="Bold" Foreground="#794730" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Rank}" FontSize="16" FontWeight="Bold" Foreground="#794730" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </Border>
 
-        <Border Grid.Row="1" Grid.Column="1" Background="#794730" CornerRadius="5" Margin="10" Padding="10">
-            <StackPanel>
+        <Border Grid.Row="1" Grid.Column="1" Background="#794730" CornerRadius="5" Margin="10,0,10,0" Padding="10">
+            <StackPanel VerticalAlignment="Center">
+                <Grid  x:Name="SettingVIPRank" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <StackPanel x:Name="DefaultStatePanel">
-                    <TextBlock Text="Thông tin khách hàng" FontSize="24" Foreground="#FFFFD9" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        <TextBlock Text="Setting VIP Rank" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
 
-                    <TextBlock Text="Họ và tên:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập họ tên" Margin="0,5"/>
-                    <TextBlock Text="Số điện thoại:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập số điện thoại" Margin="0,5"/>
-                    <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập email" Margin="0,5"/>
-                    <TextBlock Text="Điểm thưởng:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập điểm thưởng" Margin="0,5"/>
-                    <Button Content="Lưu thông tin" HorizontalAlignment="Right" Margin="0,10,0,0"/>
-                    <Button Content="Cài đặt xếp hạng VIP" HorizontalAlignment="Right" Margin="0,10,0,0" Click="OnSettingButtonClick"/>
-                </StackPanel>
+                        <TextBlock Text="Bronze Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter Bronze Point" Text="{Binding BronzeRank.Point}" Margin="0,5"/>
+                        <TextBlock Text="Bronze Discount(%):" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter Bronze Discount" Text="{Binding BronzeRank.Discount}" Margin="0,5"/>
 
-                <StackPanel x:Name="SettingStatePanel" Visibility="Collapsed">
-                    <TextBlock Text="Cài đặt xếp hạng VIP" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
+                        <TextBlock Text="Silver Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter Silver Point" Text="{Binding SilverRank.Point}" Margin="0,5"/>
+                        <TextBlock Text="Silver Discount(%):" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter Silver Discount" Text="{Binding SilverRank.Discount}" Margin="0,5"/>
 
-                    <TextBlock Text="Điểm hạng Đồng:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập điểm hạng Đồng" Margin="0,5"/>
-                    <TextBlock Text="Chiết khấu hạng Đồng (%):" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập chiết khấu hạng Đồng" Margin="0,5"/>
-
-                    <TextBlock Text="Điểm hạng Bạc:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập điểm hạng Bạc" Margin="0,5"/>
-                    <TextBlock Text="Chiết khấu hạng Bạc (%):" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập chiết khấu hạng Bạc" Margin="0,5"/>
-
-                    <TextBlock Text="Điểm hạng Vàng:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập điểm hạng Vàng" Margin="0,5"/>
-                    <TextBlock Text="Chiết khấu hạng Vàng (%):" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập chiết khấu hạng Vàng" Margin="0,5"/>
-                    <TextBlock Text="Điểm cho mỗi đơn hàng:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Nhập điểm cho mỗi đơn hàng" Margin="0,5"/>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                        <Button Content="Lưu cài đặt" Margin="0,0,10,0"/>
-                        <Button Content="Quay lại" Click="OnBackButtonClick"/>
+                        <TextBlock Text="Gold Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter Gold Point" Text="{Binding GoldRank.Point}" Margin="0,5"/>
+                        <TextBlock Text="Gold Discount(%):" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter Gold Discount" Text="{Binding GoldRank.Discount}" Margin="0,5"/>
+                        
+                        <TextBlock Text="Point Per Dollar:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter point per dollar" Text="{Binding PointPerDollar}" Margin="0,5"/>
                     </StackPanel>
-                </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Back" Margin="0,0,10,0" Width="120"  Click="ReturnToCustomerInformation"/>
+                        <Button Content="Save Setting" Width="120" Command="{Binding SaveSettingCommand}"/>
+                    </StackPanel>
+                </Grid>
+
+
+                <Grid  x:Name="AddCustomerInformation" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        <TextBlock Text="Add Customer" FontSize="32" Foreground="#FFFFD9" FontWeight="Bold" Margin="0,0,0,20"/>
+                        <TextBlock Text="Full Name:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter full name" Text="{Binding NewCustomer.FullName, Mode=TwoWay}" Margin="0,5"/>
+                        <TextBlock Text="Phone Number:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter phone number" Text="{Binding NewCustomer.PhoneNumber, Mode=TwoWay}" Margin="0,5"/>
+                        <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter email" Text="{Binding NewCustomer.Email, Mode=TwoWay}" Margin="0,5"/>
+                        <TextBlock Text="Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter point" Text="{Binding NewCustomer.Point}" Margin="0,5"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Back"  Margin="0,0,10,0" Width="120" Click="ReturnToCustomerInformation"/>
+                        <Button Content="Add Customer" Width="120" Click="GoToSeccessCustomer"/>
+                    </StackPanel>
+                </Grid>
+
+                
+                <Grid x:Name="createCustomerSuccessful" Visibility="Collapsed" Height="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Customer information have been successfully created!" FontSize="38" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"  TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Back" Margin="0,0,10,0" Width="120" Click="ReturnToAddCustomer"/>
+                        <Button Content="Finish" Width="120" Click="ReturnToCustomerInformation"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid  x:Name="CustomerInformation" Visibility="Visible">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        
+                        <TextBlock Text="Customer Information" FontSize="24" Foreground="#FFFFD9" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Full Name:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter full name" Text="{Binding SelectedCustomer.FullName, Mode=TwoWay}" Margin="0,5"/>
+                        <TextBlock Text="Phone Number:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter phone mumber" Text="{Binding SelectedCustomer.PhoneNumber, Mode=TwoWay}" Margin="0,5"/>
+                        <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter email" Text="{Binding SelectedCustomer.Email, Mode=TwoWay}" Margin="0,5"/>
+                        <TextBlock Text="Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter point" Text="{Binding SelectedCustomer.Point}" Margin="0,5"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Update Customer"  Margin="0,0,10,0" Width="140" Command="{Binding UpdateCustomerCommand}"/>
+                        <Button Content="Add New Customer" Width="140" Margin="0,0,10,0" Click="GoToAddCustomer"/>
+                        <Button Content="VIP Setting" Width="140" Click="GoToVIPSetting"/>
+                    </StackPanel>
+                </Grid>
+
             </StackPanel>
         </Border>
     </Grid>

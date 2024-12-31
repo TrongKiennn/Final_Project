@@ -245,11 +245,6 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
                         <Border Height="1" Background="Gray" Margin="0,10,0,10"/>
 
-                        <TextBlock Text="Customer phone" FontWeight="Bold" FontSize="16" Margin="0,0,0,0" Foreground="White"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,5" x:Name="VIPCustomer" >
-                            <TextBox PlaceholderText="Enter the phone number " Width="340" Foreground="White"/>
-                        </StackPanel>
-
                         <!-- Payment Options -->
                         <TextBlock Text="Choose Payment Method" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Foreground="White"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -435,13 +430,12 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
         <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30" Background="#986650">
 
             <Grid>
-
-
                 <!-- Định nghĩa các hàng trong Grid -->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="4*"/>
                     <!-- Dành cho danh sách các item -->
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
                     <!-- Dành cho tổng hợp giá -->
                     <RowDefinition Height="Auto"/>
                     <!-- Dành cho nút -->
@@ -462,7 +456,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 </Grid>
 
                 <!-- Tổng hợp giá trị đơn hàng -->
-                <StackPanel Grid.Row="1" Background="#ffffd9" Padding="10" Margin="0,0,0,15" CornerRadius="0,0,12,12">
+                <StackPanel Grid.Row="1" Background="#ffffd9" Padding="10" CornerRadius="0,0,12,12">
                    
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Subtotal:" Width="150" Foreground="#794730" FontWeight="Bold"/>
@@ -471,7 +465,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Discount sales:" Width="150" Foreground="#794730" FontWeight="Bold"/>
-                        <TextBlock Text="0" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
+                        <TextBlock Text="{Binding order.DiscountSalesTax}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal" Margin="0,5" >
@@ -508,9 +502,17 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                    
                 </StackPanel>
 
+                <Grid Grid.Row="2" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Content="Check!" Background="#ffffd9" Foreground="#794730" FontWeight="Bold" Margin="5,0,0,0" Command="{Binding CheckCustomerCommand}"></Button>
+                    <TextBox Grid.Column="0" PlaceholderText="Enter customer phone mumber" Text="{Binding Customer.PhoneNumber, Mode=TwoWay}" Foreground="#794730" Background="#ffffd9" CornerRadius="6" PlaceholderForeground="#794730" FontWeight="Bold" FontSize="13"></TextBox>
+                </Grid>
                 <!-- Nút tiếp tục thanh toán -->
-                <Button Grid.Row="2" Width="auto" Height="50" Background="#794730" HorizontalAlignment="Center" 
-CornerRadius="12" Click="OnContinueToPaymentClicked" Margin="0,20,0,0" Command="{Binding ContinueToPaymentCommand}">
+                <Button Grid.Row="3" Width="auto" Height="50" Background="#794730" HorizontalAlignment="Center" 
+CornerRadius="12" Click="OnContinueToPaymentClicked" Command="{Binding ContinueToPaymentCommand}">
                     <TextBlock Text="Continue to Payment" FontWeight="Bold" Foreground="#ffffd9" />
                 </Button>
             </Grid>

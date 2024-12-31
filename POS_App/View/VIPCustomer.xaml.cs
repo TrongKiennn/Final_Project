@@ -5,6 +5,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using POS_App.Model;
+using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,23 +25,60 @@ namespace POS_App.View
     /// </summary>
     public sealed partial class VIPCustomer : Page
     {
+        public CustomerViewModel ViewModel { get; set; }
         public VIPCustomer()
         {
             this.InitializeComponent();
+            ViewModel = new CustomerViewModel();
+            this.DataContext = ViewModel;
         }
 
-
-        private void OnSettingButtonClick(object sender, RoutedEventArgs e)
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DefaultStatePanel.Visibility = Visibility.Collapsed;
-            SettingStatePanel.Visibility = Visibility.Visible;
+            if (e.ClickedItem is Model.Customer clickedCustomer)
+            {
+
+                var viewModel = DataContext as CustomerViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.CustomerClickCommand.Execute(clickedCustomer);
+                }
+            }
         }
 
-        private void OnBackButtonClick(object sender, RoutedEventArgs e)
+
+        private void GoToVIPSetting(object sender, RoutedEventArgs e)
         {
-            DefaultStatePanel.Visibility = Visibility.Visible;
-            SettingStatePanel.Visibility = Visibility.Collapsed;
+            CustomerInformation.Visibility = Visibility.Collapsed;
+            SettingVIPRank.Visibility = Visibility.Visible;
         }
 
+        private void GoToAddCustomer(object sender, RoutedEventArgs e)
+        {
+            CustomerInformation.Visibility = Visibility.Collapsed;
+            AddCustomerInformation.Visibility = Visibility.Visible;
+        }
+
+        private void ReturnToCustomerInformation(object sender, RoutedEventArgs e)
+        {
+            CustomerInformation.Visibility = Visibility.Visible;
+            AddCustomerInformation.Visibility = Visibility.Collapsed;
+            createCustomerSuccessful.Visibility = Visibility.Collapsed;
+            SettingVIPRank.Visibility = Visibility.Collapsed;
+        }
+
+        private void ReturnToAddCustomer(object sender, RoutedEventArgs e)
+        {
+            createCustomerSuccessful.Visibility = Visibility.Collapsed;
+            AddCustomerInformation.Visibility = Visibility.Visible;
+
+        }
+
+        private void GoToSeccessCustomer(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SaveCustomerCommand.Execute(null);
+            AddCustomerInformation.Visibility = Visibility.Collapsed;
+            createCustomerSuccessful.Visibility = Visibility.Visible;
+        }
     }
 }

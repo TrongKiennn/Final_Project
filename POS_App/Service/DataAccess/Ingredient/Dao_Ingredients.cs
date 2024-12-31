@@ -44,9 +44,6 @@ public class Dao_Ingredients : IDao_Ingredients
 
            
         }
-
-        connection.Close();
-
         return result;
     }
 
@@ -65,8 +62,6 @@ public class Dao_Ingredients : IDao_Ingredients
                     command.Parameters.AddWithValue("@ingredientId", ingredientId);
                     command.ExecuteNonQuery();
                 }
-
-                connection.Close();
             }
         }
         catch (MySqlException ex)
@@ -97,8 +92,6 @@ public class Dao_Ingredients : IDao_Ingredients
                     command.Parameters.AddWithValue("@stock", stock);
                     command.ExecuteNonQuery();
                 }
-
-                connection.Close();
             }
         }
         catch (MySqlException ex)
@@ -130,8 +123,6 @@ public class Dao_Ingredients : IDao_Ingredients
                     command.Parameters.AddWithValue("@stock", ingredient.stock);
                     command.ExecuteNonQuery();
                 }
-
-                connection.Close();
             }
         }
         catch (MySqlException ex)
@@ -170,7 +161,6 @@ public class Dao_Ingredients : IDao_Ingredients
                         }
                     }
                 }
-                connection.Close();
             }
            
         }
@@ -216,7 +206,6 @@ public class Dao_Ingredients : IDao_Ingredients
                         }
                     }
                 }
-                connection.Close();
             }
         }
         catch (MySqlException ex)

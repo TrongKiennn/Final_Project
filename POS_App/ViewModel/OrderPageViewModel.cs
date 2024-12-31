@@ -42,6 +42,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     IDao_Tables _Table_Dao;
     IDao_Ingredients _Dao_Ingredients;
     IDao_Drink_Ingredient _Dao_Drink_Ingredient;
+    IDao_Customer _Dao_Customer;
     public ICommand FilterCommand { get; }
 
     private readonly IDao_Drinks_Test _repository_Test;
@@ -54,6 +55,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     public ObservableCollection<Drink_Ingredient> Drink_Ingredients { get; set; }
     public PageInfo SelectedPageInfoItem { get; set; }
     public OrderService orderService { get; set; }
+
+    public Model.Customer Customer { get; set; }
 
     private Drinks _selectedDrink=new Drinks();
 
@@ -96,6 +99,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     public ICommand SortByNameCommand { get; }
     public ICommand ContinueToPaymentCommand { get; }
     public ICommand DrinkClickCommand { get; set; }
+    public ICommand CheckCustomerCommand { get; set; }
     public string Keyword { get; set; } = "";
 
     public string typeName { get; set; } = null;
@@ -143,12 +147,14 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     {
         RowsPerPage = 10;
         CurrentPage = 1;
+        Customer= new Model.Customer();
         FilterCommand = new RelayCommand(ExecuteFilter);
         SaveCommand = new RelayCommand(_ => SaveOrderItem());
         ConfirmPaymentCommand = new RelayCommand(_ => SaveOrderToDb());
         CancelCommand = new RelayCommand(_=> ClearOrderDetails());
         ContinueToPaymentCommand = new RelayCommand(_ => AddTableIdToOrder());
         DrinkClickCommand = new RelayCommand<Drinks>(OnDrinkClick);
+        CheckCustomerCommand = new RelayCommand(_ => CheckCustomer());
 
         ordersItemsGrid = new ObservableCollection<Grid>();
         ordersItems = new ObservableCollection<orderItem>(); 
@@ -161,6 +167,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         _Table_Dao = ServiceFactory.GetChildOf(typeof(IDao_Tables)) as IDao_Tables;
         _Dao_Ingredients = ServiceFactory.GetChildOf(typeof(IDao_Ingredients)) as IDao_Ingredients;
         _Dao_Drink_Ingredient = ServiceFactory.GetChildOf(typeof(IDao_Drink_Ingredient)) as IDao_Drink_Ingredient;
+        _Dao_Customer = ServiceFactory.GetChildOf(typeof(IDao_Customer)) as IDao_Customer;
         orderService = new OrderService(_Order_Dao, _Order_Item_Dao);
         LoadData();
     }
@@ -495,13 +502,37 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
        
     }
 
+    private void CheckCustomer()
+    {
+  
+       
+        if (Customer.PhoneNumber!=null)
+        {
+            var FindCustomer = _Dao_Customer.FindCustomerByPhone(Customer.PhoneNumber);
+            if (FindCustomer == null)
+            {
+                return;
+            }
+            else
+            {
+                Customer = FindCustomer;
+               
+                Customer.Point = (int)(order.CusPayment*Customer.PointPerDollar);
+
+                order.DiscountSalesTax = Math.Round(order.CusPayment * Customer.RankDiscount, 2);
+
+            }
+        }
+    }
     private void SaveOrderToDb()
     {
+        _Dao_Customer.UpdateCustomerPoint(Customer.PhoneNumber, Customer.Point);
         CreateData();
         GeneratePDF();
         ClearOrder();
         ClearOrderDetails();
         LoadordersItems(null);
+        Customer = new Model.Customer();
     }
 
     private void GeneratePDF()

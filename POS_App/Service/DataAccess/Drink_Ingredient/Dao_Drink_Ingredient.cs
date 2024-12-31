@@ -44,7 +44,7 @@ public class Dao_Drink_Ingredient : IDao_Drink_Ingredient
 
         }
 
-        connection.Close();
+     
 
         return result;
     }
@@ -65,7 +65,6 @@ public class Dao_Drink_Ingredient : IDao_Drink_Ingredient
 
                 command.ExecuteNonQuery();
 
-                connection.Close();
             }
         }
         catch (MySqlException ex)
@@ -100,7 +99,7 @@ public class Dao_Drink_Ingredient : IDao_Drink_Ingredient
 
                 command.ExecuteNonQuery();
 
-                connection.Close();
+              
             }
         }
         catch (MySqlException ex)
@@ -132,7 +131,7 @@ public class Dao_Drink_Ingredient : IDao_Drink_Ingredient
                     command.Parameters.AddWithValue("@quantity", quantity);
                     command.ExecuteNonQuery();
                 }
-                connection.Close();
+     
             }
         }
         catch (MySqlException ex)

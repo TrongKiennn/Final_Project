@@ -30,25 +30,25 @@
     <AppXManifest Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-12-26T14:04:39.247</Modified>
+      <Modified>2024-12-31T08:20:53.304</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-12-26T14:04:39.054</Modified>
+      <Modified>2024-12-31T08:12:35.962</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.runtimeconfig.json">
       <PackagePath>POS_App.runtimeconfig.json</PackagePath>
-      <Modified>2024-12-26T13:43:18.180</Modified>
+      <Modified>2024-12-28T07:52:24.636</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.dll">
       <PackagePath>POS_App.dll</PackagePath>
-      <Modified>2024-12-26T14:04:38.946</Modified>
+      <Modified>2024-12-31T08:20:53.063</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
       <PackagePath>POS_App.exe</PackagePath>
-      <Modified>2024-12-26T14:04:38.963</Modified>
+      <Modified>2024-12-31T08:20:53.084</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MICHAEL\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
@@ -1012,7 +1012,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\POS_App.deps.json">
       <PackagePath>POS_App.deps.json</PackagePath>
-      <Modified>2024-12-26T13:43:18.566</Modified>
+      <Modified>2024-12-31T07:31:56.816</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\C#\22120151_22120167\POS_App\POS_App\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>

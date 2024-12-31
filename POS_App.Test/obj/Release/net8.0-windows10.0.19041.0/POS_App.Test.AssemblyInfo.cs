@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("POS_App.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8a5279fcd813efefc4e605abaf5a791b1ada853")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+654ebbf3a5d35e40f62671ce8c488d575a2a291d")]
 [assembly: System.Reflection.AssemblyProductAttribute("POS_App.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("POS_App.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

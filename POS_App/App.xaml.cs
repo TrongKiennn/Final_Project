@@ -50,6 +50,11 @@ namespace POS_App
             ServiceFactory.Register(typeof(IDao_Events), typeof(Dao_Events));
             ServiceFactory.Register(typeof(IDao_Ingredients), typeof(Dao_Ingredients));
             ServiceFactory.Register(typeof(IDao_Drink_Ingredient), typeof(Dao_Drink_Ingredient));
+            ServiceFactory.Register(typeof(IDao_Employee_Attendance), typeof(Dao_Employee_Attendance));
+            ServiceFactory.Register(typeof(IDao_Employee_Information), typeof(Dao_Employee_Information));
+            ServiceFactory.Register(typeof(IDao_User), typeof(Dao_User));
+            ServiceFactory.Register(typeof(IDao_Customer), typeof(Dao_Customer));
+            ServiceFactory.Register(typeof(IDao_Rank), typeof(Dao_Rank));
             m_window = new MainWindow();
             m_window.Activate();
         }

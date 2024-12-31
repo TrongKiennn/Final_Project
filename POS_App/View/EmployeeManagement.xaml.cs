@@ -5,10 +5,13 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using POS_App.Model;
+using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,21 +26,98 @@ namespace POS_App.View
     /// </summary>
     public sealed partial class EmployeeManagement : Page
     {
+        public EmployeeManagementViewModel ViewModel { get; set; }
         public EmployeeManagement()
         {
             this.InitializeComponent();
+            ViewModel = new EmployeeManagementViewModel();
+            this.DataContext = ViewModel;
         }
 
-        private void OnSettingButtonClick(object sender, RoutedEventArgs e)
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is employeeInfo clickedEmployee)
+            {
+
+                var viewModel = DataContext as EmployeeManagementViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.EmployeeClickCommand.Execute(clickedEmployee);
+                }
+            }
+        }
+
+        private void OnCreateEmployeeButtonClick(object sender, RoutedEventArgs e)
         {
             DefaultStatePanel.Visibility = Visibility.Collapsed;
-            SettingStatePanel.Visibility = Visibility.Visible;
+            createAccount.Visibility = Visibility.Visible;
         }
 
-        private void OnBackButtonClick(object sender, RoutedEventArgs e)
+        private void OnNextButtonClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.TemporarySaveEmployeeAccount.Execute(null);
+
+            if (ViewModel.IsCheckAccount)
+            {
+                DefaultStatePanel.Visibility = Visibility.Collapsed;
+                createAccount.Visibility = Visibility.Collapsed;
+                SetInformationToEmployee.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void OnBackToDefaultButtonClick(object sender, RoutedEventArgs e)
         {
             DefaultStatePanel.Visibility = Visibility.Visible;
-            SettingStatePanel.Visibility = Visibility.Collapsed;
+            createAccount.Visibility = Visibility.Collapsed;
+            SetInformationToEmployee.Visibility = Visibility.Collapsed;
+        }
+
+        private void OnBackToCreateAccountButtonClick(object sender, RoutedEventArgs e)
+        {
+            createAccount.Visibility = Visibility.Visible;
+            SetInformationToEmployee.Visibility = Visibility.Collapsed;
+        }
+
+        private void OnSaveEmployeeInfoButtonClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SaveEmployeeInfoAndAccount.Execute(null);
+
+            if (ViewModel.IsCheckAccount)
+            {
+                SetInformationToEmployee.Visibility = Visibility.Collapsed;
+                createAccountSuccessful.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        private void OnBackToSetInformationButtonClick(object sender, RoutedEventArgs e)
+        {
+            SetInformationToEmployee.Visibility = Visibility.Visible;
+            createAccountSuccessful.Visibility = Visibility.Collapsed;
+        }
+        private void OnReturnDefaultButtonClick(object sender, RoutedEventArgs e)
+        {
+            DefaultStatePanel.Visibility = Visibility.Visible;
+            createAccountSuccessful.Visibility = Visibility.Collapsed;
+        }
+
+        private async void OnContinueToDeleteClicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ContentDialogResult result = await ConfirmDialog.ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                await new ContentDialog
+                {
+                    Title = "Error",
+                    Content = $"An error occurred: {ex.Message}",
+                    CloseButtonText = "Ok",
+                    XamlRoot = this.XamlRoot
+                }.ShowAsync();
+            }
         }
     }
 }

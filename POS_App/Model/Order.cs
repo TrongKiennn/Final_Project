@@ -16,9 +16,27 @@ public class Order : INotifyPropertyChanged
     private decimal _subtotal;
     public decimal TotalSalesTax => Subtotal * 0.1m;
 
-    public decimal Total => Subtotal + TotalSalesTax;
+    public decimal Total => Subtotal + TotalSalesTax- DiscountSalesTax;
 
-    public decimal CusPayment => Total;
+    private decimal _discountSalesTax=0;
+    public decimal DiscountSalesTax
+    {
+        get => _discountSalesTax;
+        set
+        {
+            if (_discountSalesTax != value)
+            {
+                _discountSalesTax = value;
+                OnPropertyChanged(nameof(DiscountSalesTax));
+            }
+        }
+    }
+
+
+    public decimal CusPayment
+    {
+        get { return Total; }
+    }
 
     private string _locationOptions = "Take Away";
     private int _table_id { get; set; }
@@ -57,8 +75,6 @@ public class Order : INotifyPropertyChanged
             {
                 _subtotal = value;
                 OnPropertyChanged(nameof(Subtotal));
-                OnPropertyChanged(nameof(TotalSalesTax));
-                OnPropertyChanged(nameof(Total));
             }
         }
     }

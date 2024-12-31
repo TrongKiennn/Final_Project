@@ -13,9 +13,8 @@ exports.up = async function(knex) {
             created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             PRIMARY KEY (id),
-            FOREIGN KEY (order_id) REFERENCES orders(id),
-            FOREIGN KEY (drink_id) REFERENCES drinks(id)
-            ON DELETE CASCADE ON UPDATE CASCADE  
+            FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+            FOREIGN KEY (drink_id) REFERENCES drinks(id) ON DELETE CASCADE ON UPDATE CASCADE  
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
     `);
 };

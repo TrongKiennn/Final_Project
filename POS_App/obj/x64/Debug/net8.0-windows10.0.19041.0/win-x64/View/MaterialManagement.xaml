@@ -31,7 +31,7 @@
         </Grid.RowDefinitions>
 
              <ContentDialog x:ConnectionId='2' x:Name="ConfirmDialog"
-             Title="Xác nhận xóa!"
+             Title="Confirm Delete!"
              PrimaryButtonText = "Confirm Delete"
              PrimaryButtonCommand="{Binding ConfirmDeleteCommand}"
              SecondaryButtonText = "Cancel"

@@ -9,8 +9,7 @@ exports.up = async function(knex) {
         status ENUM('occupied', 'available', 'reserved') DEFAULT 'available',
         order_id int(4) ,
         PRIMARY KEY (id),
-        FOREIGN KEY (order_id) REFERENCES orders(id)
-        ON DELETE CASCADE ON UPDATE CASCADE  
+        FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
     `);
 };

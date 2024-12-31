@@ -18,7 +18,13 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-
+        <ContentDialog x:Name="ConfirmDialog"
+             Title="Confirm Delete!"
+             PrimaryButtonText = "Confirm Delete"
+             PrimaryButtonCommand="{Binding ConfirmDeleteCommand}"
+             SecondaryButtonText = "Cancel"
+             Background="#000">
+        </ContentDialog>
         <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="#986650" CornerRadius="12" Margin="10" Padding="10">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -32,8 +38,8 @@
 
                 <Border Grid.Column="3" Background="#ffffd9" CornerRadius="12" Margin="5">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-                        <TextBlock Text="Employees" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                        <TextBlock Text="10" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        <TextBlock Text="Number of Employees" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                        <TextBlock Text="{Binding TotalEmployees}" FontSize="20" FontWeight="Bold" Foreground="#794730" TextAlignment="Center" />
                     </StackPanel>
                 </Border>
             </Grid>
@@ -44,67 +50,32 @@
             <StackPanel>
                 <TextBlock Text="All employees" Foreground="#ffffd9" FontSize="20" FontWeight="Bold" Margin="15,0,15,10"/>
 
-                <TextBox Name="SearchBox" PlaceholderText="Search employees..." FontSize="16" Margin="15,0,15,10" Padding="5" />
+                <TextBox Name="SearchBox" PlaceholderText="Search employees..." FontSize="16" Margin="15,0,15,10" Padding="5"  Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <ListView>
-                    <ListViewItem>
-                        <Border Background="#FFD700" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Nguyễn Văn A" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
-                                <TextBlock Text="1200" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <Border Background="#C0C0C0" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Trần Thị B" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
-                                <TextBlock Text="950" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <Border Background="#FFD700" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Lê Hoàng C" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" />
-                                <TextBlock Text="780" FontSize="16" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
-
-                    <ListViewItem>
-                        <Border Background="#C0C0C0" CornerRadius="10" Margin="0,5,0,5" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="Phạm Văn D" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" />
-                                <TextBlock Text="650" FontSize="16" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
-                            </Grid>
-                        </Border>
-                    </ListViewItem>
+                <ListView ItemsSource="{Binding Employees}" CornerRadius="12" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#ffffd9" CornerRadius="10" Margin="0,5,0,5" Padding="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding FullName}" FontSize="16" FontWeight="Bold" Foreground="#794730" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Position}" FontSize="16" FontWeight="Bold" Foreground="#794730" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
+
+
             </StackPanel>
         </Border>
 
         <Border Grid.Row="1" Grid.Column="1" Background="#794730" CornerRadius="5" Margin="10" Padding="10">
-            <StackPanel>
-                <Grid x:Name="DefaultStatePanel" >
+            <StackPanel VerticalAlignment="Center">
+                <Grid x:Name="DefaultStatePanel" RowSpacing="10" ColumnSpacing="10" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -115,101 +86,177 @@
                         <RowDefinition Height="2.5*" />
                         <RowDefinition Height="2.5*" />
                         <RowDefinition Height="2.5*" />
+                        <RowDefinition Height="2.5*" />
                     </Grid.RowDefinitions>
-                    <!-- Box 1: Position -->
-                    <Border Grid.Column="1" Grid.Row="2" Background="#ffffd9" CornerRadius="12" Margin="5" Height="140">
+                    <!-- Box 2: Position -->
+                    <Border Grid.Column="1" Grid.Row="0" Background="#ffffd9" CornerRadius="12" Margin="5" >
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                             <TextBlock Text="Position" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                            <TextBlock Text="Employee" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                            <TextBlock Text="{Binding SelectedEmployee.Position}" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                         </StackPanel>
                     </Border>
 
-                    <!-- Box 2: Paid Leave -->
-                    <Border Grid.Row="1" Grid.Column="0" Height="140" Background="#ffffd9" CornerRadius="12" Margin="5">
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-                            <TextBlock Text="Employee category" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                            <TextBlock Text="Part-time" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-                    <!-- Box 3: Public Holidays -->
-                    <Border Grid.Row="2" Height="140" Grid.Column="0" VerticalAlignment="Stretch" Background="#ffffd9" CornerRadius="12" Margin="5">
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-                            <TextBlock Text="Public Holidays" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                            <TextBlock Text="2" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-
-                    <!-- Box 4: Working Hours -->
-                    <Border Grid.Row="0" Grid.Column="1" Background="#ffffd9" CornerRadius="12" Margin="5">
+                    <!-- Box 3: Working Hours -->
+                    <Border Grid.Column="0" Grid.Row="1"  Background="#ffffd9" CornerRadius="12" Margin="5" Height="120">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                             <TextBlock Text="Working Hours/Week" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                            <TextBlock Text="40" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                            <TextBlock Text="{Binding SelectedEmployeeAttend.TotalHours}" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                         </StackPanel>
                     </Border>
 
-                    <!-- Box 5: Working Days/Month -->
-                    <Border Grid.Row="1" Grid.Column="1" Background="#ffffd9" CornerRadius="12" Margin="5">
+                    <!-- Box 4: Working Days/Month -->
+                    <Border  Grid.Column="1" Grid.Row="1"  Background="#ffffd9" CornerRadius="12" Margin="5">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                             <TextBlock Text="Working Days/Month" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                            <TextBlock Text="22" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                            <TextBlock Text="{Binding SelectedEmployeeAttend.MonthlyAttendance}" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                         </StackPanel>
                     </Border>
 
-                    <!-- Box 6: Full Name -->
-                    <Border Grid.Row="0" Grid.Column="0" Background="#ffffd9" CornerRadius="12" Margin="5" Height="140">
+                    <!-- Box 1: Full Name -->
+                    <Border Grid.Column="0" Grid.Row="0"  Background="#ffffd9" CornerRadius="12" Margin="5" Height="120">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                             <TextBlock Text="Full Name" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                            <TextBlock Text="John Doe" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                            <TextBlock Text="{Binding SelectedEmployee.FullName}" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <!-- Box 5:  -->
+                    <Border Grid.Column="0" Grid.Row="2"  Background="#ffffd9" CornerRadius="12" Margin="5" Height="120">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Check In Time" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="{Binding SelectedEmployeeAttend.CheckInTime}" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
                         </StackPanel>
                     </Border>
 
-                    <StackPanel Grid.Column="0" Grid.Row="3" Margin="5" Orientation="Horizontal">
-                        <Button Content="Attended tracking" Height="100" Width="165"  CornerRadius="12" HorizontalAlignment="Right" Margin="0,10,0,0"/>
-                        <Button Content="Delete" Height="100" Width="165" CornerRadius="12" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                    <!-- Box 6:  -->
+                    <Border  Grid.Column="1" Grid.Row="2"  Background="#ffffd9" CornerRadius="12" Margin="5">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                            <TextBlock Text="Check Out Time" Foreground="#794730" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                            <TextBlock Text="{Binding SelectedEmployeeAttend.CheckOutTime}" FontSize="20" FontWeight="Bold" Foreground="Blue" TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Background="#ffffd9" Grid.Row="3" Grid.ColumnSpan="2" Margin="5" CornerRadius="12">
+                        <TextBlock Text="{Binding  ErrorHandling.ErrorMessage}" Foreground="#A64D4A" FontSize="18" FontWeight="Bold" Padding="0,5" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Grid.Row="3" Margin="5">
-                        <Button Content="Add new employee" Height="100" Width="330" CornerRadius="12" HorizontalAlignment="Right" Margin="0,10,0,0" Click="OnSettingButtonClick"/>
+                    <StackPanel Grid.Column="0" Grid.Row="4" Margin="5" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Start Shift" Height="100" Width="160"  CornerRadius="12" HorizontalAlignment="Left" Command="{Binding CheckInCommand}"/>
+                            <Button Grid.Column="1" Content="End Shift" Height="100" Width="160" CornerRadius="12" HorizontalAlignment="Right" Command="{Binding CheckOutCommand}"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="4" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Add New Employee" Height="100" Width="160"  CornerRadius="12" HorizontalAlignment="Left" Click="OnCreateEmployeeButtonClick" />
+                            <Button Grid.Column="1" Content="Delete Employee" Height="100" Width="160" CornerRadius="12" HorizontalAlignment="Right" Click="OnContinueToDeleteClicked"/>
+                        </Grid>
                     </StackPanel>
                 </Grid>
 
-                <StackPanel x:Name="SettingStatePanel" Visibility="Collapsed" >
-                    <TextBlock Text="Employee Information" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
+                <Grid  x:Name="SetInformationToEmployee" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                    <TextBlock Text="Full Name:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Enter full name" Margin="0,5"/>
-                    <TextBlock Text="Employee ID:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Enter employee ID" Margin="0,5"/>
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        <TextBlock Text="Employee Information" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
 
-                    <TextBlock Text="Date of Birth:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <DatePicker Margin="0,5" HorizontalAlignment="Stretch" Width="Auto"/>
+                        <TextBlock Text="Full Name:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter full name" Text="{Binding NewEmployeeInfo.FullName, Mode=TwoWay}" Margin="0,5"/>
+
+                        <TextBlock Text="Date of Birth:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <DatePicker Margin="0,5" HorizontalAlignment="Stretch" Width="Auto" Date="{Binding NewEmployeeInfo.DateOfBirth, Mode=TwoWay}"/>
 
                         <TextBlock Text="Phone Number:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Enter phone number" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter phone number" Margin="0,5" Text="{Binding NewEmployeeInfo.PhoneNumber, Mode=TwoWay}"/>
 
-                    <TextBlock Text="Gender:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <ComboBox Margin="0,5" HorizontalAlignment="Stretch" Width="Auto">
-                        <ComboBoxItem Content="Male"/>
-                        <ComboBoxItem Content="Female"/>
-                        <ComboBoxItem Content="Other"/>
-                    </ComboBox>
+                        <TextBlock Text="Gender:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox Margin="0,5" PlaceholderText="Enter gender Male, Female or Other" Width="Auto" Text="{Binding NewEmployeeInfo.Gender, Mode=TwoWay}"/>
 
-                    <TextBlock Text="Employment Type:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <ComboBox Margin="0,5" HorizontalAlignment="Stretch" Width="Auto">
-                        <ComboBoxItem Content="Full-time"/>
-                        <ComboBoxItem Content="Part-time"/>
-                    </ComboBox>
+                        <TextBlock Text="Position:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter position" Margin="0,5" Text="{Binding NewEmployeeInfo.Position, Mode=TwoWay}"/>
 
-                    <TextBlock Text="Position:" Foreground="#FFFFD9" Margin="0,5"/>
-                    <TextBox PlaceholderText="Enter position" Margin="0,5"/>
-
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                        <Button Content="Save employee" Margin="0,0,10,0"/>
-                        <Button Content="Back" Click="OnBackButtonClick"/>
+                        <TextBlock Text="{Binding CheckEmployeeInfo.ErrorMessage}" Foreground="#ff6347" FontSize="16" Margin="0,0,0,10" TextWrapping="Wrap"/>
                     </StackPanel>
-                </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Back"  Click="OnBackToCreateAccountButtonClick" Margin="0,0,10,0" Width="100"/>
+                        <Button Content="Save employee" Click="OnSaveEmployeeInfoButtonClick"/>
+                    </StackPanel>
+                </Grid>
+
+
+                <Grid  x:Name="createAccount" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                        <TextBlock Text="Register Employee Account" FontSize="20" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter email" Text="{Binding NewEmployee.Email,Mode=TwoWay}" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Password:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter password" Text="{Binding NewEmployee.PassWord, Mode=TwoWay}" Margin="0,0,0,10"/>
+
+                        <TextBlock Text="Confirm Password:" Foreground="#FFFFD9" Margin="0,5"/>
+                        <TextBox PlaceholderText="Enter confirm password" Text="{Binding NewEmployee.ConfirmPassword,Mode=TwoWay}" Margin="0,0,0,10"/>
+
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                                <TextBlock Text="First Name:" Foreground="#FFFFD9" Margin="0,5"/>
+                                <TextBox PlaceholderText="Enter first name" Text="{Binding NewEmployee.FirstName,Mode=TwoWay}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                                <TextBlock Text="Last Name:" Foreground="#FFFFD9" Margin="0,5"/>
+                                <TextBox PlaceholderText="Enter last name" Text="{Binding NewEmployee.LastName,Mode=TwoWay}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Text="Position:" Foreground="#FFFFD9" Margin="0,10,0,0"/>
+                        <TextBox PlaceholderText="Enter position" Margin="0,0,0,10" Text="{Binding NewEmployee.Role,Mode=TwoWay}"/>
+
+                        <TextBlock Text="{Binding CheckAccountInfo.ErrorMessage}" Foreground="#ff6347" FontSize="16" Margin="0,0,0,20" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Back" Click="OnBackToDefaultButtonClick" Margin="0,0,10,0" Width="100"/>
+                        <Button Content="Next" Click="OnNextButtonClick" Width="100" />
+                    </StackPanel>
+                </Grid>
+
+
+                <Grid x:Name="createAccountSuccessful" Visibility="Collapsed" Height="470">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Employee account and information have been successfully created!" FontSize="38" FontWeight="Bold" Foreground="#FFFFD9" Margin="0,0,0,10"  TextWrapping="Wrap"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Grid.Row="1" Margin="0,10,0,0">
+                        <Button Content="Back" Click="OnBackToSetInformationButtonClick" Margin="0,0,10,0" Width="100"/>
+                        <Button Content="Finish" Click="OnReturnDefaultButtonClick" Width="100" />
+                    </StackPanel>
+                </Grid>
+               
             </StackPanel>
         </Border>
     </Grid>
