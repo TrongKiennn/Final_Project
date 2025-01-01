@@ -15,6 +15,43 @@ namespace POS_App.Service.DataAccess;
 
 public class Dao_Order_Item : IDao_Order_Item
 {
+    public List<Drinks> GetTopSellingDrinks()
+    {
+        var result = new List<Drinks>();
+
+        var connectionString = GetConnectionString();
+
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
+
+            var sql = @"
+                SELECT  d.drink_name, SUM(oi.quantity) AS total_sold
+                FROM orderItems oi
+                JOIN drinks d ON oi.drink_id = d.id
+                GROUP BY d.id
+                ORDER BY total_sold DESC
+                LIMIT 3;";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var drinkSalesInfo = new Drinks
+                        {
+                            name = reader.GetString("drink_name"),
+                        };
+                        result.Add(drinkSalesInfo);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
     public bool CreateOrderItem(int orderId, orderItem info, MySqlTransaction transaction)
     {
         try

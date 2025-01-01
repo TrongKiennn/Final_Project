@@ -15,6 +15,62 @@ namespace POS_App.Service.DataAccess;
 
 public class Dao_Order : IDao_Order
 {
+    public Tuple<decimal, decimal, decimal, int, int> GetTotalAmountAndOrdersByDate(DateTimeOffset selectedDay)
+    {
+        decimal totalByDay = 0;
+        decimal totalByMonth = 0;
+        decimal totalByYear = 0;
+        int totalOrdersByDay = 0;
+        int totalOrdersByMonth = 0;
+        
+
+        string connectionString = GetConnectionString();
+
+        using (MySqlConnection connection = new MySqlConnection(connectionString))
+        {
+            try
+            {
+                connection.Open();
+
+                string query = @"
+            SELECT 
+                (SELECT IFNULL(SUM(total_amount), 0) FROM orders WHERE DATE(created_at) = @SelectedDate) AS TotalByDay,
+                (SELECT IFNULL(SUM(total_amount), 0) FROM orders WHERE YEAR(created_at) = @SelectedYear AND MONTH(created_at) = @SelectedMonth) AS TotalByMonth,
+                (SELECT IFNULL(SUM(total_amount), 0) FROM orders WHERE YEAR(created_at) = @SelectedYear) AS TotalByYear,
+                (SELECT IFNULL(COUNT(*), 0) FROM orders WHERE DATE(created_at) = @SelectedDate) AS TotalOrdersByDay,
+                (SELECT IFNULL(COUNT(*), 0) FROM orders WHERE YEAR(created_at) = @SelectedYear AND MONTH(created_at) = @SelectedMonth) AS TotalOrdersByMonth
+            ";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SelectedDate", selectedDay.Date);
+                    command.Parameters.AddWithValue("@SelectedYear", selectedDay.Year);
+                    command.Parameters.AddWithValue("@SelectedMonth", selectedDay.Month);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            totalByDay = reader.GetDecimal(0);
+                            totalByMonth = reader.GetDecimal(1);
+                            totalByYear = reader.GetDecimal(2);
+                            totalOrdersByDay = reader.GetInt32(3);
+                            totalOrdersByMonth = reader.GetInt32(4);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                throw;
+            }
+        }
+
+        return new Tuple<decimal, decimal, decimal, int, int>(totalByDay, totalByMonth, totalByYear, totalOrdersByDay, totalOrdersByMonth);
+    }
+
+
     public int CreateOrder(Order info, MySqlTransaction transaction)
     {
         try

@@ -9,6 +9,7 @@ namespace POS_App.Service.DataAccess;
 
 public interface IDao_Order
 {
+    Tuple<decimal, decimal, decimal, int, int> GetTotalAmountAndOrdersByDate(DateTimeOffset selectedDay);
     public int CreateOrder(Order info, MySqlTransaction transaction){
         return -1;
     }

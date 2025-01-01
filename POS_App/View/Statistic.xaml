@@ -36,6 +36,7 @@
                 <Image Source="../Assets/calendar.png" Width="50" Height="50" />
                 <DatePicker x:Name="DatePickerControl" 
                             Margin="0,5,0,0"
+                            SelectedDate="{Binding SelectedDay,Mode=TwoWay}"
                     FontSize="20"
                     Background="#986650"
                     Foreground="#ffffd9" 
@@ -70,7 +71,7 @@
         <Border Grid.Row="2" Grid.Column="0" Background="#CDA566" BorderThickness="1" BorderBrush="#794730" CornerRadius="12" Margin="10,8,8,8">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Revenue/Day" FontSize="24" FontWeight="Bold" Foreground="#794730"  TextAlignment="Center" />
-                <TextBlock Text="$1,000" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" />
+                <TextBlock Text="{Binding TotalByDay}" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" />
             </StackPanel>
         </Border>
 
@@ -78,7 +79,7 @@
         <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="#794730" Background="#CDA566" CornerRadius="12" Margin="8">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Revenue/Month" FontSize="24" FontWeight="Bold" Foreground="#794730"  TextAlignment="Center" />
-                <TextBlock Text="$30,000" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" />
+                <TextBlock Text="{Binding TotalByMonth}" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" />
             </StackPanel>
         </Border>
 
@@ -86,7 +87,7 @@
         <Border Grid.Row="2" Grid.Column="2"  Background="#CDA566" BorderThickness="1" BorderBrush="#794730" CornerRadius="12" Margin="8, 10, 10, 10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Revenue/Year" FontSize="24" Foreground="#794730"  FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock Text="$360,000" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" />
+                <TextBlock Text="{Binding TotalByYear}" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" />
             </StackPanel>
         </Border>
 
@@ -97,28 +98,33 @@
             </StackPanel>
         </Border>
 
-        <!-- Ô thứ 1: Most Liked Item -->
+
         <Border Grid.Row="4" Grid.Column="0" BorderThickness="1" BorderBrush="#794730" Background="#CDA566" CornerRadius="12" Margin="10,8,8,10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Most Liked Item" FontSize="24" Foreground="#794730"  FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock Text="Top 1: Black" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
-                <TextBlock Text="Top 2: Americano" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
-                <TextBlock Text="Top 3: Milk Tea" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
+                <TextBlock Text="Most Liked Items" FontSize="24" Foreground="#794730" FontWeight="Bold" TextAlignment="Center" />
+                <ListBox ItemsSource="{Binding Drinks}" Background="#CDA566" HorizontalAlignment="Center">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}" FontSize="20" FontWeight="SemiBold" TextAlignment="Center" Width="400" Margin="5"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </Border>
+
 
         <!-- Ô thứ 1: Number of Orders/Day -->
         <Border Grid.Row="4" Grid.Column="1" BorderThickness="1" BorderBrush="#794730" Background="#CDA566" CornerRadius="12" Margin="8,8,8,10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Number of Orders/Day" Foreground="#794730"  FontSize="24" FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock Text="100" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
+                <TextBlock Text="{Binding TotalOrdersByDay}" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
             </StackPanel>
         </Border>
 
         <Border Grid.Row="4" Grid.Column="2" BorderThickness="1" BorderBrush="#794730" Background="#CDA566" CornerRadius="12" Margin="8, 10, 10, 10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Number of Orders/Month" Foreground="#794730"  FontSize="24" FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock Text="100" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
+                <TextBlock Text="{Binding TotalOrdersByMonth}" FontSize="24" FontWeight="SemiBold" TextAlignment="Center" Margin="5"/>
             </StackPanel>
         </Border>
     </Grid>

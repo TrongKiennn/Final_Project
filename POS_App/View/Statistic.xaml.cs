@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,14 +19,17 @@ using Windows.Foundation.Collections;
 
 namespace POS_App.View
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class Statistic : Page
     {
+        public StatisticViewModel ViewModel { get; set; }
+
         public Statistic()
         {
             this.InitializeComponent();
+            ViewModel = new StatisticViewModel();
+            this.DataContext = ViewModel;
         }
+
     }
 }
