@@ -14,7 +14,8 @@
             x:Name="MyNavigationView"
                     PaneDisplayMode="LeftCompact" 
                     IsBackButtonVisible="Collapsed"
-                    SelectionChanged="NavigationView_SelectionChanged">
+                    SelectionChanged="NavigationView_SelectionChanged"
+                    Visibility="Visible">
             <!-- Pane Header -->
             <NavigationView.PaneHeader>
                 <TextBlock Text="POS Coffee" FontSize="22" HorizontalAlignment="Center" />

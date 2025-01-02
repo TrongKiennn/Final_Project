@@ -47,10 +47,5 @@ namespace POS_App
             Frame.Navigate(typeof(Register));
         }
 
-        private void OnLoginSuccess()
-        {
-            var mainPage = (MainPage)Window.Current.Content;
-            mainPage.Login_Success();
-        }
     }
 }
