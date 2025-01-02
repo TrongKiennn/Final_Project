@@ -23,6 +23,7 @@
             <!-- Navigation Menu Items -->
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Order" Icon="OpenWith" />
+                <NavigationViewItem Content="Drink IngredientPage" Icon="Import"/>
                 <NavigationViewItem Content="Material Management" Icon="Manage"  />
                 <NavigationViewItem Content="Event Scheduling" Icon="Calendar" />
                 <NavigationViewItem Content="Statistics" Icon="Map"/>

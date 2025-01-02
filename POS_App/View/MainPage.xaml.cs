@@ -27,6 +27,9 @@ namespace POS_App
                     case "Order":
                         MainFrame.Navigate(typeof(OrderPage));
                         break;
+                    case "Drink IngredientPage":
+                        MainFrame.Navigate(typeof(DrinkIngredientPage));
+                        break;
                     case "Material Management":
                         MainFrame.Navigate(typeof(MaterialManagement));
                         break;
@@ -58,7 +61,14 @@ namespace POS_App
             var localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values.Clear();
             MainFrame.Navigate(typeof(Login));
+            MyNavigationView.Visibility = Visibility.Collapsed;
         }
 
+        public void Login_Success()
+        {
+            MyNavigationView.Visibility = Visibility.Visible;
+
+            MainFrame.Navigate(typeof(MainPage));
+        }
     }
 }

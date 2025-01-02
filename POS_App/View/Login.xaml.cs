@@ -46,5 +46,11 @@ namespace POS_App
             Register register = new Register();
             Frame.Navigate(typeof(Register));
         }
+
+        private void OnLoginSuccess()
+        {
+            var mainPage = (MainPage)Window.Current.Content;
+            mainPage.Login_Success();
+        }
     }
 }
