@@ -35,7 +35,7 @@ namespace POS_App
 
             if (content.Content == null)
             {
-                content.Navigate(typeof(Login));
+                content.Navigate(typeof(UpdateProduct));
             }
         }
     }
