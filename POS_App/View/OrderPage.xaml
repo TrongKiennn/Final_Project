@@ -96,10 +96,9 @@
         <localConverters:StatusDrinkToColorConverter x:Key="StatusDrinkToColorConverter"/>
         
     </Page.Resources>
-    
 
 
-    <Grid>
+    <Grid Background="#986650">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="8.5*"/>
@@ -335,6 +334,8 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                          Content="Search" Click="searchButton_Click" Margin="0,0,10,0" Foreground="#794730" Background="#ffffd9"/>
                 <ToggleSwitch Width="100"  
                              HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort" Foreground="#ffffd9" Toggled="ToggleSwitch_Toggled"/>
+                <Button Content="+" Padding="0" FontSize="25" Width="43" Height="43" CornerRadius="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Click="SwitchToInterfaceB_Click"/>
+
             </StackPanel>
         </Grid>
 
@@ -343,89 +344,143 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                  FontSize="24" Padding="30"/>
         </Border>
 
-        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#794730" 
+        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12" Margin="10,0,0,10" Background="#794730" 
                   Name="optionsStackPanel">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="9*" />
-                <!-- Nội dung chính -->
-                <RowDefinition Height="1*" />
-                <!-- Hàng chứa Previous/Next -->
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="9*" />
-                </Grid.RowDefinitions>
-                <!-- Hàng chứa các nút -->
-                <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#794730" Orientation="Horizontal"  Margin="0,20,0,0">
-                    <Button Content="Coffee" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Coffee" Foreground="#794730" Background="#ffffd9"/>
-                    <Button Content="MilkTea" Width="100" Height="35"  Margin="5" Command="{Binding FilterCommand}" CommandParameter="MilkTea" Foreground="#794730" Background="#ffffd9"/>
-                    <Button Content="Croissant" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Croissant" Foreground="#794730" Background="#ffffd9"/>
-                    <Button Content="Smoothie" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Smoothie" Foreground="#794730" Background="#ffffd9"/>
-                    <Button Content="Juice" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Juice" Foreground="#794730" Background="#ffffd9"/>
-                    <Button Content="Tea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Tea" Foreground="#794730" Background="#ffffd9"/>
-                    <Button Content="All" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="All" Foreground="#794730" Background="#ffffd9"/>
-                </StackPanel>
+            <!--<StackPanel >-->
+            <Grid x:Name="InterfaceA" Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12"  Background="#794730" 
+                  >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9*" />
+                        <!-- Nội dung chính -->
+                        <RowDefinition Height="1*" />
+                        <!-- Hàng chứa Previous/Next -->
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="9*" />
+                        </Grid.RowDefinitions>
+                        <!-- Hàng chứa các nút -->
+                        <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Background="#794730" Orientation="Horizontal"  Margin="0,20,0,0">
+                            <Button Content="Coffee" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Coffee" Foreground="#794730" Background="#ffffd9"/>
+                            <Button Content="MilkTea" Width="100" Height="35"  Margin="5" Command="{Binding FilterCommand}" CommandParameter="MilkTea" Foreground="#794730" Background="#ffffd9"/>
+                            <Button Content="Croissant" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Croissant" Foreground="#794730" Background="#ffffd9"/>
+                            <Button Content="Smoothie" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Smoothie" Foreground="#794730" Background="#ffffd9"/>
+                            <Button Content="Juice" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Juice" Foreground="#794730" Background="#ffffd9"/>
+                            <Button Content="Tea" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="Tea" Foreground="#794730" Background="#ffffd9"/>
+                            <Button Content="All" Width="100" Height="35" Margin="5" Command="{Binding FilterCommand}" CommandParameter="All" Foreground="#794730" Background="#ffffd9"/>
+
+                        </StackPanel>
 
 
-                <!-- This place use for display all items of categories-->
-                <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick" HorizontalAlignment="Center">
-                    <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
-                    <GridView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" />
-                        </ItemsPanelTemplate>
-                    </GridView.ItemsPanel>
+                        <!-- This place use for display all items of categories-->
+                        <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick" HorizontalAlignment="Center">
+                            <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" />
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
 
-                    <!-- Item container style to set margins and alignment -->
-                    <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
-                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                            <Setter Property="Margin" Value="5"/>
-                        </Style>
-                    </GridView.ItemContainerStyle>
+                            <!-- Item container style to set margins and alignment -->
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>
+                            </GridView.ItemContainerStyle>
 
-                    <!-- Template for each item -->
-                    <GridView.ItemTemplate >
-                        <DataTemplate >
-                            <StackPanel Orientation="Vertical" CornerRadius="6" Background="{Binding status, Converter={StaticResource StatusDrinkToColorConverter}}" Width="auto" HorizontalAlignment="Stretch">
-                                <!-- Product Image -->
-                                <Border Width="190" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
-                                    <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>
-                                </Border>
+                            <!-- Template for each item -->
+                            <GridView.ItemTemplate >
+                                <DataTemplate >
+                                    <StackPanel Orientation="Vertical" CornerRadius="6" Background="{Binding status, Converter={StaticResource StatusDrinkToColorConverter}}" Width="auto" HorizontalAlignment="Stretch">
+                                        <!-- Product Image -->
+                                        <Border Width="190" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
+                                            <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>
+                                        </Border>
 
-                                <!-- Product Name -->
-                                <TextBlock Text="{Binding name}" MaxLines="2" TextWrapping="Wrap" Foreground="#794730"
+                                        <!-- Product Name -->
+                                        <TextBlock Text="{Binding name}" MaxLines="2" TextWrapping="Wrap" Foreground="#794730"
                         FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
 
-                                <!-- Product Price -->
-                                <TextBlock Text="{Binding price}" FontSize="14" FontWeight="SemiBold" Foreground="#794730"
+                                        <!-- Product Price -->
+                                        <TextBlock Text="{Binding price}" FontSize="14" FontWeight="SemiBold" Foreground="#794730"
                         HorizontalAlignment="Center" Margin="0,0,0,5"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
 
-            </Grid>
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-                <Button Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
+                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                        <Button Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
      Click="previousButton_Click"  Foreground="#794730" Background="#ffffd9"/>
-                <ComboBox ItemsSource="{x:Bind OrderPageViewModel.PageInfos, Mode=OneWay}"
+                        <ComboBox ItemsSource="{x:Bind OrderPageViewModel.PageInfos, Mode=OneWay}"
          SelectedItem="{x:Bind OrderPageViewModel.SelectedPageInfoItem, Mode=OneWay}"
          SelectionChanged="pagesComboBox_SelectionChanged"
          Margin="5" Name="pagesComboBox" Width="100" Height="35"  Foreground="#794730" Background="#ffffd9">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock >
              <Run Text="{Binding Page}"/>/<Run Text="{Binding Total}" />
-                            </TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <Button Margin="5" Content=">" Width="80" Height="35" Name="nextButton" Click="nextButton_Click"  Foreground="#794730" Background="#ffffd9"/>
-            </StackPanel>
-        </Grid>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
+                    <Button Margin="5" Content=">" Width="80" Height="35" Name="nextButton" Click="nextButton_Click"  Foreground="#794730" Background="#ffffd9"/>
+                    </StackPanel>
+                    
+                </Grid>
+
+            <!--</StackPanel>-->
+            <Grid x:Name="InterfaceB" Visibility="Collapsed" Padding="20">
+                <!-- Product Section -->
+                <StackPanel Orientation="Vertical" Spacing="15">
+                    <!-- Product Name -->
+                    <TextBlock Text="Product Name" FontSize="20" FontWeight="Bold" Foreground="#ffffd9"/>
+                    <TextBox x:Name="ProductName"  HorizontalAlignment="Stretch" PlaceholderText="Enter product name" />
+
+                    <!-- Product Price -->
+                    <TextBlock Text="Product Price" FontSize="16" Foreground="#ffffd9"/>
+                    <TextBox x:Name="ProductPrice"  HorizontalAlignment="Stretch" PlaceholderText="Enter product price" />
+
+                    <!-- Product Image Link -->
+                    <TextBlock Text="Image Link" FontSize="16" Foreground="#ffffd9"/>
+                    <TextBox x:Name="ProductImageLink"  HorizontalAlignment="Stretch" PlaceholderText="Enter image link" />
+
+                    <!-- Product Image Display -->
+                    <Image x:Name="ProductImage" Width="200" Height="200" Stretch="Uniform"  Margin="0,10,0,0"/>
+                </StackPanel>
+
+                <!-- Recipe Section -->
+                <StackPanel Orientation="Vertical" Spacing="15" VerticalAlignment="Top" Margin="0,250,0,0">
+                    <TextBlock Text="Recipe" FontSize="20" FontWeight="Bold" Foreground="#ffffd9"/>
+
+                    <!-- Ingredients -->
+                    <StackPanel x:Name="IngredientsPanel" Orientation="Vertical" Spacing="10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10">
+                            <TextBox Width="810" PlaceholderText="Ingredient 1" />
+                            <TextBox Width="100" HorizontalAlignment="Left" PlaceholderText="Quantity" />
+                            <TextBox Width="100" HorizontalAlignment="Left" PlaceholderText="Unit" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBox Width="810" PlaceholderText="Ingredient 2" />
+                            <TextBox Width="100" PlaceholderText="Quantity" />
+                            <TextBox Width="100" HorizontalAlignment="Left" PlaceholderText="Unit" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Add Ingredient Button -->
+                    <Button Content="Add Ingredient" Width="150" Click="OnAddIngredientClick" Margin="0,10,0,0" />
+                    <Button Content="Switch to Interface A" Click="SwitchToInterfaceA_Click"/>
+
+                </StackPanel>
+            </Grid>
+            <!--<StackPanel x:Name="InterfaceB" Visibility="Collapsed">
+                <TextBlock Text="This is Interface B" FontSize="16" Margin="10"/>
+            </StackPanel>-->
+        </Grid>
         <!--Display seletedItems and preview Bill [1,2]-->
         <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,20" Background="#986650">
 

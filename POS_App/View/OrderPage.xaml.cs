@@ -234,6 +234,29 @@ namespace POS_App.View
             }
         }
 
+        private void SwitchToInterfaceB_Click(object sender, RoutedEventArgs e)
+        {
+            InterfaceA.Visibility = Visibility.Collapsed;
+            InterfaceB.Visibility = Visibility.Visible;
+        }
+
+        private void SwitchToInterfaceA_Click(object sender, RoutedEventArgs e)
+        {
+            InterfaceB.Visibility = Visibility.Collapsed;
+            InterfaceA.Visibility = Visibility.Visible;
+        }
+        private void OnAddIngredientClick(object sender, RoutedEventArgs e)
+        {
+            // Create a new StackPanel for the new ingredient
+            var newIngredientPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 10 };
+            newIngredientPanel.Children.Add(new TextBox { Width = 810, PlaceholderText = "New Ingredient" });
+            newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Quantity" });
+            newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Unit" });
+
+            // Add the new ingredient panel to the IngredientsPanel
+            IngredientsPanel.Children.Add(newIngredientPanel);
+        }
+
 
     }
 }

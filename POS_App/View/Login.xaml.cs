@@ -46,5 +46,6 @@ namespace POS_App
             Register register = new Register();
             Frame.Navigate(typeof(Register));
         }
+
     }
 }

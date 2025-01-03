@@ -8,10 +8,11 @@ namespace POS_App
 {
     public sealed partial class MainPage : Page
     {
+        private bool IsLoggedIn { get; set; } = false;
         public MainPage()
         {
             this.InitializeComponent();
-            MainFrame.Navigate(typeof(DashBoardPage)); 
+            MainFrame.Navigate(typeof(DashBoardPage));
         }
 
         private async void NavigationView_SelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
@@ -26,6 +27,9 @@ namespace POS_App
                 {
                     case "Order":
                         MainFrame.Navigate(typeof(OrderPage));
+                        break;
+                    case "Drink IngredientPage":
+                        MainFrame.Navigate(typeof(DrinkIngredientPage));
                         break;
                     case "Material Management":
                         MainFrame.Navigate(typeof(MaterialManagement));
@@ -53,12 +57,19 @@ namespace POS_App
 
         private void Logout_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-         
-
             var localSettings = ApplicationData.Current.LocalSettings;
             localSettings.Values.Clear();
-            MainFrame.Navigate(typeof(Login));
+            IsLoggedIn = false;
+            UpdateUI();
         }
 
+        private void UpdateUI()
+        {
+            MyNavigationView.Visibility = IsLoggedIn ? Visibility.Visible : Visibility.Collapsed;
+            if (!IsLoggedIn)
+            {
+                Frame.Navigate(typeof(Login));
+            }
+        }
     }
 }
