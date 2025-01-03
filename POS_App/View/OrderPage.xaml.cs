@@ -12,12 +12,15 @@ using POS_App.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -256,7 +259,56 @@ namespace POS_App.View
             // Add the new ingredient panel to the IngredientsPanel
             IngredientsPanel.Children.Add(newIngredientPanel);
         }
+        private async void PickPhotoButton_Click(object sender, RoutedEventArgs e)
+        {
+            var picturesLibrary = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
+            if (picturesLibrary.RequestAddFolderAsync() != null)
+            {
+                var picker = new FileOpenPicker();
+                picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+                picker.ViewMode = PickerViewMode.Thumbnail;
+                picker.FileTypeFilter.Add(".jpg");
+                picker.FileTypeFilter.Add(".jpeg");
+                picker.FileTypeFilter.Add(".png");
 
+                StorageFile file = await picker.PickSingleFileAsync();
 
+                if (file != null)
+                {
+                    textBlock.Text = "Picked photo: " + file.Name;
+                }
+                else
+                {
+                    textBlock.Text = "Operation cancelled.";
+                }
+            }
+            else
+            {
+                textBlock.Text = "Access to pictures library denied.";
+            }
+        }
+        //private async void PickPhotoButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Create a FileOpenPicker to allow the user to pick a file
+        //    var picker = new FileOpenPicker();
+        //    picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+        //    picker.ViewMode = PickerViewMode.Thumbnail;
+        //    picker.FileTypeFilter.Add(".jpg");
+        //    picker.FileTypeFilter.Add(".jpeg");
+        //    picker.FileTypeFilter.Add(".png");
+
+        //    // Make the picker available for desktop apps
+        //    StorageFile file = await picker.PickSingleFileAsync();
+
+        //    if (file != null)
+        //    {
+        //        // Application now has read/write access to the picked file
+        //        textBlock.Text = "Picked photo: " + file.Name;
+        //    }
+        //    else
+        //    {
+        //        textBlock.Text = "Operation cancelled.";
+        //    }
+        //}
     }
 }

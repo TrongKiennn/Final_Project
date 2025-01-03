@@ -59,6 +59,8 @@ namespace POS_App
             m_window.Activate();
         }
 
-        private Window m_window;
+        //private Window m_window;
+        public static Window MainWindow => m_window;
+        private static Window m_window;
     }
 }

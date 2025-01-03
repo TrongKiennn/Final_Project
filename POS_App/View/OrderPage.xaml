@@ -401,11 +401,11 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
                                         <!-- Product Name -->
                                         <TextBlock Text="{Binding name}" MaxLines="2" TextWrapping="Wrap" Foreground="#794730"
-                        FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                                    FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
 
                                         <!-- Product Price -->
                                         <TextBlock Text="{Binding price}" FontSize="14" FontWeight="SemiBold" Foreground="#794730"
-                        HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                                    HorizontalAlignment="Center" Margin="0,0,0,5"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
@@ -414,15 +414,15 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
                         <Button Margin="5" Content="&lt;" Width="80" Height="35" Name="previousButton" 
-     Click="previousButton_Click"  Foreground="#794730" Background="#ffffd9"/>
+                                    Click="previousButton_Click"  Foreground="#794730" Background="#ffffd9"/>
                         <ComboBox ItemsSource="{x:Bind OrderPageViewModel.PageInfos, Mode=OneWay}"
-         SelectedItem="{x:Bind OrderPageViewModel.SelectedPageInfoItem, Mode=OneWay}"
-         SelectionChanged="pagesComboBox_SelectionChanged"
-         Margin="5" Name="pagesComboBox" Width="100" Height="35"  Foreground="#794730" Background="#ffffd9">
+                                 SelectedItem="{x:Bind OrderPageViewModel.SelectedPageInfoItem, Mode=OneWay}"
+                                 SelectionChanged="pagesComboBox_SelectionChanged"
+                                 Margin="5" Name="pagesComboBox" Width="100" Height="35"  Foreground="#794730" Background="#ffffd9">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock >
-             <Run Text="{Binding Page}"/>/<Run Text="{Binding Total}" />
+                                        <Run Text="{Binding Page}"/>/<Run Text="{Binding Total}" />
                                     </TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
@@ -446,11 +446,15 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     <TextBox x:Name="ProductPrice"  HorizontalAlignment="Stretch" PlaceholderText="Enter product price" />
 
                     <!-- Product Image Link -->
-                    <TextBlock Text="Image Link" FontSize="16" Foreground="#ffffd9"/>
-                    <TextBox x:Name="ProductImageLink"  HorizontalAlignment="Stretch" PlaceholderText="Enter image link" />
+                    <Button Content="Pick a Photo"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Click="PickPhotoButton_Click"/>
 
-                    <!-- Product Image Display -->
-                    <Image x:Name="ProductImage" Width="200" Height="200" Stretch="Uniform"  Margin="0,10,0,0"/>
+                    <TextBlock x:Name="textBlock"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="10"/>
                 </StackPanel>
 
                 <!-- Recipe Section -->
@@ -477,9 +481,6 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
                 </StackPanel>
             </Grid>
-            <!--<StackPanel x:Name="InterfaceB" Visibility="Collapsed">
-                <TextBlock Text="This is Interface B" FontSize="16" Margin="10"/>
-            </StackPanel>-->
         </Grid>
         <!--Display seletedItems and preview Bill [1,2]-->
         <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30" Background="#986650">
