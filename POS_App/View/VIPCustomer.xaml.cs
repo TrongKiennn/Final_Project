@@ -76,9 +76,13 @@ namespace POS_App.View
 
         private void GoToSeccessCustomer(object sender, RoutedEventArgs e)
         {
+        
             ViewModel.SaveCustomerCommand.Execute(null);
-            AddCustomerInformation.Visibility = Visibility.Collapsed;
-            createCustomerSuccessful.Visibility = Visibility.Visible;
+            if (ViewModel.isCheck == true)
+            {
+                AddCustomerInformation.Visibility = Visibility.Collapsed;
+                createCustomerSuccessful.Visibility = Visibility.Visible;
+            }
         }
     }
 }

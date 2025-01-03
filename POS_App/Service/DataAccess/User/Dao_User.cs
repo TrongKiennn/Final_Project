@@ -68,14 +68,10 @@ public class Dao_User : IDao_User
             var connectionString = GetConnectionString();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                Debug.WriteLine(user.Email);
-                Debug.WriteLine(user.PassWord);
-                Debug.WriteLine(user.FirstName);
-                Debug.WriteLine(user.LastName);
-                Debug.WriteLine(user.Salt);
+               
 
-                var query = "INSERT INTO users (email, password, first_name, last_name, salt) " +
-                            "VALUES (@Email, @PassWord, @FirstName, @LastName, @Salt)";
+                var query = "INSERT INTO users (email, password, first_name, last_name, salt, role) " +
+                            "VALUES (@Email, @PassWord, @FirstName, @LastName, @Salt,@Role)";
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@Email", user.Email);
@@ -83,7 +79,7 @@ public class Dao_User : IDao_User
                     cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
                     cmd.Parameters.AddWithValue("@LastName", user.LastName);
                     cmd.Parameters.AddWithValue("@Salt", user.Salt);
-
+                    cmd.Parameters.AddWithValue("@Role", user.Role);
                     connection.Open();
                     cmd.ExecuteNonQuery();
 

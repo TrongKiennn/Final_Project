@@ -127,6 +127,14 @@ namespace POS_App.ViewModel
                 }
             }
         }
+
+        private ErrorHandling _checkCusInfo;
+        public ErrorHandling CheckCusInfo
+        {
+            get => _checkCusInfo;
+            set => SetProperty(ref _checkCusInfo, value);
+        }
+        public bool isCheck = false;
         public CustomerViewModel()
         {
             _Dao_Customer = ServiceFactory.GetChildOf(typeof(IDao_Customer)) as IDao_Customer;
@@ -145,6 +153,7 @@ namespace POS_App.ViewModel
             }
             LoadData();
             NewCustomer = new Model.Customer();
+            CheckCusInfo = new ErrorHandling();
         }
 
         private void OnCustomerClick(Model.Customer selectedCustomer)
@@ -155,24 +164,76 @@ namespace POS_App.ViewModel
 
         private void OnSaveCustomer()
         {
-            
+            isCheck = false;
+
+            var validations = new List<(string FieldValue, string ErrorMessage)>
+            {
+                 (NewCustomer.FullName, "Full name cannot be blank."),
+                (NewCustomer.PhoneNumber, "Phone number cannot be blank."),
+                (NewCustomer.Email, "Email cannot be blank."),
+            };
+
+            foreach (var (fieldValue, errorMessage) in validations)
+            {
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    CheckCusInfo.ErrorMessage = errorMessage;
+                    return;
+                }
+            }
+
+            if (!ValidatorEmail.IsValidEmail(NewCustomer.Email))
+            {
+                CheckCusInfo.ErrorMessage = "Please enter a valid email address.";
+                return;
+            }
+
             var findCustomer = _Dao_Customer.FindCustomerByPhone(NewCustomer.PhoneNumber);
             if (findCustomer != null)
             {
+                CheckCusInfo.ErrorMessage = "This customer is already a registered member.";
                 return;
             }
             else
             {
-                _Dao_Customer.CreateCustomer(NewCustomer);
+                try
+                {
+                    _Dao_Customer.CreateCustomer(NewCustomer);
+                    LoadData();
+                    isCheck = true;
+                    CheckCusInfo.ErrorMessage = "";
+                }
+                catch (Exception ex)
+                {
+                    CheckCusInfo.ErrorMessage = "We encountered an issue while processing your membership registration. Please ensure all information is correct and try again.";
+                    Debug.WriteLine(ex.Message);
+                }
+                    
             }
-            LoadData();
+            
         }
         private void UpdateCustomer() {
+            isCheck = false;
             if (SelectedCustomer != null)
             {
-                _Dao_Customer.UpdateCustomerInfo(SelectedCustomer, _preCustomer.PhoneNumber);
-                LoadData();
+                try
+                {
+                    _Dao_Customer.UpdateCustomerInfo(SelectedCustomer, _preCustomer.PhoneNumber);
+                    LoadData();
+                    isCheck = true;
+                    CheckCusInfo.ErrorMessage = "";
+                }
+                catch(Exception ex)
+                {
+                    CheckCusInfo.ErrorMessage = "An error occurred while updating your information. Please try again.";
+                    Debug.WriteLine(ex.Message);
+                }
             }
+            else
+            {
+                CheckCusInfo.ErrorMessage = "Please select a customer to update.";
+            }
+           
         }
         public void LoadData()
         {

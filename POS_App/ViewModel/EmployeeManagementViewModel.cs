@@ -90,7 +90,7 @@ namespace POS_App.ViewModel
             set => SetProperty(ref _userRole, value);
         }
 
-        public bool IsCheckAccount;
+        public bool IsCheckAccount=false;
         public bool IsCheckEmployeeInfo = false;
 
         private ErrorHandling _checkAccountInfo;
@@ -138,6 +138,7 @@ namespace POS_App.ViewModel
             NewEmployee = new Model.User();
             NewEmployeeInfo = new employeeInfo();
             CheckAccountInfo = new ErrorHandling();
+            CheckEmployeeInfo = new ErrorHandling();
             var localSettings = ApplicationData.Current.LocalSettings;
             ErrorHandling = new ErrorHandling();
 
@@ -195,12 +196,6 @@ namespace POS_App.ViewModel
         private void OnTemporarySaveEmployeeAccount()
         {
             var User = _Dao_User.FindUserByEmail(NewEmployee.Email);
-            if (!ValidatorEmail.IsValidEmail(NewEmployee.Email))
-            {
-                CheckAccountInfo.ErrorMessage = "Please enter a valid email address.";
-                IsCheckAccount = false;
-                return;
-            }
             var validations = new List<(string FieldValue, string ErrorMessage)>
             {
                 (NewEmployee.Email, "Email cannot be blank."),
@@ -210,6 +205,7 @@ namespace POS_App.ViewModel
                 (NewEmployee.LastName, "Last Name cannot be blank."),
                 (NewEmployee.Role, "Position cannot be blank.")
             };
+
 
             foreach (var (fieldValue, errorMessage) in validations)
             {
@@ -222,13 +218,19 @@ namespace POS_App.ViewModel
             }
 
 
+
             if (User != null)
             {
                 CheckAccountInfo.ErrorMessage = "Email already exists.";
                 IsCheckAccount = false;
                 return;
             }
-
+            if (!ValidatorEmail.IsValidEmail(NewEmployee.Email))
+            {
+                CheckAccountInfo.ErrorMessage = "Please enter a valid email address.";
+                IsCheckAccount = false;
+                return;
+            }
             if (!ValidatorPass.IsValidPassword(NewEmployee.PassWord))
             {
                 CheckAccountInfo.ErrorMessage = "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character.";
@@ -251,10 +253,12 @@ namespace POS_App.ViewModel
 
             IsCheckAccount = true;
             NewEmployeeInfo.FullName = NewEmployee.FirstName + " " + NewEmployee.LastName;
+            CheckAccountInfo.ErrorMessage = "";
         }
 
         private void OnSaveEmployeeInfoAndAccount()
         {
+            IsCheckEmployeeInfo = false;
             var validations = new List<(string FieldValue, string ErrorMessage)>
             {
                 (NewEmployeeInfo.FullName, "Email cannot be blank."),
@@ -267,25 +271,34 @@ namespace POS_App.ViewModel
             {
                 if (string.IsNullOrWhiteSpace(fieldValue))
                 {
-                    CheckAccountInfo.ErrorMessage = errorMessage;
-                    IsCheckEmployeeInfo = false;
+                    CheckEmployeeInfo.ErrorMessage = errorMessage;
                     return;
                 }
             }
 
+            if (!ValidatorEmail.IsValidEmail(NewEmployee.Email))
+            {
+                CheckEmployeeInfo.ErrorMessage = "Please enter a valid email address.";
+      
+                return;
+            }
+
+
             if (NewEmployeeInfo.Position != "employee" && NewEmployeeInfo.Position != "manager")
             {
-                CheckAccountInfo.ErrorMessage = "Position must be 'employee' or 'manager'.";
-                IsCheckEmployeeInfo = false;
+                CheckEmployeeInfo.ErrorMessage = "Position must be 'employee' or 'manager'.";
+   
                 return;
             }
 
             if (NewEmployeeInfo.Gender != "Male" && NewEmployeeInfo.Gender != "Female" && NewEmployeeInfo.Gender != "Other")
             {
-                CheckAccountInfo.ErrorMessage = "Gender must be 'Male' or 'Female' or 'Other'.";
-                IsCheckEmployeeInfo = false;
+                CheckEmployeeInfo.ErrorMessage = "Gender must be 'Male' or 'Female' or 'Other'.";
+ 
                 return;
             }
+
+           
 
             string salt = genSalt.GenSalt(50);
             NewEmployee.Salt = salt;
@@ -294,20 +307,21 @@ namespace POS_App.ViewModel
             try {
                 NewEmployeeInfo.User_Id = _Dao_User.CreateUser(NewEmployee);
             } catch {
-                CheckAccountInfo.ErrorMessage = "An error occurred while creating your account. Please try again.";
-                IsCheckEmployeeInfo = false;
+                CheckEmployeeInfo.ErrorMessage = "An error occurred while creating your account. Please try again.";
+       
                 return;
             }
+
             try {
                 _Dao_Employee_Information.CreateEmployeeInfo(NewEmployeeInfo);
             } catch
             {
-                CheckAccountInfo.ErrorMessage = "Some required fields are missing. Please complete all the fields and try again.";
-                IsCheckEmployeeInfo = false;
+                CheckEmployeeInfo.ErrorMessage = "Some required fields are missing. Please complete all the fields and try again.";
                 return;
             }
            
             IsCheckEmployeeInfo = true;
+            CheckEmployeeInfo.ErrorMessage = "";
             LoadData();
         }
 

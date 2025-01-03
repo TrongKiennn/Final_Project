@@ -92,6 +92,13 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
             }
         }
     }
+
+    private ErrorHandling _checkCustomerPhone;
+    public ErrorHandling CheckCustomerPhone
+    {
+        get => _checkCustomerPhone;
+        set => SetProperty(ref _checkCustomerPhone, value);
+    }
     public ICommand CancelCommand { get; }
     public ICommand SaveCommand { get; }
     public ICommand ConfirmPaymentCommand { get; }
@@ -133,6 +140,21 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
             }
         }
     }
+    private string _searchText;
+    public string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            if (_searchText != value)
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                PerformSearch();
+            }
+        }
+    }
+
 
     public OrderPageViewModel(IDao_Drinks_Test repository)
     {
@@ -147,7 +169,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     {
         RowsPerPage = 10;
         CurrentPage = 1;
-        Customer= new Model.Customer();
+      
         FilterCommand = new RelayCommand(ExecuteFilter);
         SaveCommand = new RelayCommand(_ => SaveOrderItem());
         ConfirmPaymentCommand = new RelayCommand(_ => SaveOrderToDb());
@@ -160,6 +182,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         ordersItems = new ObservableCollection<orderItem>(); 
         order = new Order();
         OrderDetails = new OrderDetail();
+        CheckCustomerPhone = new ErrorHandling();
+        Customer = new Model.Customer();
 
         _dao = ServiceFactory.GetChildOf(typeof(IDao_Drinks)) as IDao_Drinks;
         _Order_Dao = ServiceFactory.GetChildOf(typeof(IDao_Order)) as IDao_Order;
@@ -258,6 +282,18 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         }
     }
 
+    private void PerformSearch()
+    {
+        if (string.IsNullOrWhiteSpace(SearchText))
+        {
+            SearchText = "";
+            LoadData();
+        }
+        else
+        {
+            LoadData();
+        }
+    }
     public void LoadData()
     {
         var sortOptions = new Dictionary<string, SortType>
@@ -267,7 +303,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
         if (_repository_Test != null)
         {
-            var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, Keyword, sortOptions);
+            var (item, _) = _repository_Test.GetDrink(CurrentPage, RowsPerPage, SearchText, sortOptions);
             Drinks = new ObservableCollection<Drinks>(item);
         }
 
@@ -276,7 +312,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
 
             var (items, count) = _dao.GetDrink(
-                CurrentPage, RowsPerPage, Keyword,
+                CurrentPage, RowsPerPage, SearchText,
                 _sortOptions, typeName
             );
 
@@ -502,6 +538,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
        
     }
 
+
+
     private void CheckCustomer()
     {
   
@@ -511,10 +549,12 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
             var FindCustomer = _Dao_Customer.FindCustomerByPhone(Customer.PhoneNumber);
             if (FindCustomer == null)
             {
+                CheckCustomerPhone.ErrorMessage = "Customer not found";
                 return;
             }
             else
             {
+                CheckCustomerPhone.ErrorMessage = "Customer found";
                 Customer = FindCustomer;
                
                 Customer.Point = (int)(order.CusPayment*Customer.PointPerDollar);
@@ -523,10 +563,14 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
             }
         }
+
     }
     private void SaveOrderToDb()
     {
+        CheckCustomerPhone.ErrorMessage = "";
+        Customer = new Model.Customer();
         _Dao_Customer.UpdateCustomerPoint(Customer.PhoneNumber, Customer.Point);
+    
         CreateData();
         GeneratePDF();
         ClearOrder();
@@ -537,7 +581,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     private void GeneratePDF()
     {
-        string Name = $"{order.id}bill.pdf";
+        string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        string Name = $"{order.id}_bill_{dateTimeNow}.pdf";
         string folderPath = @"D:\C#\22120151_22120167\AllBill";
         if (!Directory.Exists(folderPath))
         {
@@ -549,53 +594,45 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
         using (var document = new PdfDocument())
         {
-           
             var page = document.AddPage();
             var gfx = XGraphics.FromPdfPage(page);
 
-           
-            var font = new XFont("Arial", 12);
+            var font = new XFont("Arial", 11);
             var boldFont = new XFont("Arial", 12, XFontStyle.Bold);
 
-           
             gfx.DrawString("KH COFFEE", boldFont, XBrushes.Black, new XPoint(40, 40));
-            gfx.DrawString("PHIẾU THANH TOÁN", boldFont, XBrushes.Black, new XPoint(40, 60));
-            gfx.DrawString("KH - A: 82 - ĐƯỜNG VẠNH ĐAI ĐHQG", font, XBrushes.Black, new XPoint(40, 80));
+            gfx.DrawString("PAYMENT RECEIPT", boldFont, XBrushes.Black, new XPoint(40, 60));
+            gfx.DrawString("KH - A: 82 - Vanh Dai Street", font, XBrushes.Black, new XPoint(40, 80));
 
             // Bill number and time
-            gfx.DrawString($"Số HĐ: {order.id}", font, XBrushes.Black, new XPoint(40, 100));
-
+            gfx.DrawString($"Invoice No: {order.id}", font, XBrushes.Black, new XPoint(40, 100));
 
             gfx.DrawString("-------------------------------------------------", font, XBrushes.Black, new XPoint(40, 180));
 
             // Products
-            gfx.DrawString("TT  Tên món               SL    Đ.Giá    T.Tiền", boldFont, XBrushes.Black, new XPoint(40, 200));
+            gfx.DrawString("No  Product Name      Qty  Unit Price", boldFont, XBrushes.Black, new XPoint(40, 200));
 
-           
             int yPosition = 220;
+            int serialNumber = 1;
             foreach (var item in ordersItems)
             {
-                string formattedString = $"{item.OrderDetail.Quantity,-5} {item.Drinks.name,-25} {item.OrderDetail.Quantity,-5} x {item.Drinks.price,-8} = {item.TotalPerProduct,-10}";
+                string formattedString = $"{serialNumber,-5} {item.Drinks.name,-30} {item.OrderDetail.Quantity,-4} {item.Drinks.price,-10:C}";
                 gfx.DrawString(formattedString, font, XBrushes.Black, new XPoint(40, yPosition));
                 yPosition += 20;
+                serialNumber++;
             }
-
 
             gfx.DrawString("-------------------------------------------------", font, XBrushes.Black, new XPoint(40, yPosition));
             yPosition += 20;
 
-            
             var total = order.Total;
-            var cusPayment = order.CusPayment; 
+            var cusPayment = order.CusPayment;
             var amountOfChange = cusPayment - total;
 
-            gfx.DrawString($"Tiền Thanh Toán: {total}", boldFont, XBrushes.Black, new XPoint(40, yPosition));
-            gfx.DrawString($"Tiền khách đưa: {cusPayment}", font, XBrushes.Black, new XPoint(40, yPosition + 20));
-            gfx.DrawString($"Tiền trả lại: {amountOfChange}", font, XBrushes.Black, new XPoint(40, yPosition + 40));
+            gfx.DrawString($"Total Amount: {total}", boldFont, XBrushes.Black, new XPoint(40, yPosition));
+            gfx.DrawString($"Customer Payment: {cusPayment}", font, XBrushes.Black, new XPoint(40, yPosition + 20));
+            gfx.DrawString($"Change: {amountOfChange}", font, XBrushes.Black, new XPoint(40, yPosition + 40));
 
-          
-
-            // Lưu tệp PDF
             document.Save(pdfPath);
         }
 

@@ -114,12 +114,13 @@ namespace POS_App.ViewModel
 
         private void OnConfirmDelete()
         {
-            if (UserRole == "admin")
+            if (UserRole == "manager")
             {
                 if (SelectedIngredient != null)
                 {
                     _Dao_Ingredients.DeleteIngredient(SelectedIngredient.ingredient_id);
                     LoadData();
+                    ErrorUpdateOrDelete.ErrorMessage = "";
                 }
             }
             else
@@ -130,7 +131,7 @@ namespace POS_App.ViewModel
 
         private void OnContinueToUpdate()
         {
-            if (UserRole == "admin")
+            if (UserRole == "manager")
             {
                 if (SelectedIngredient != null)
                 {
@@ -142,6 +143,7 @@ namespace POS_App.ViewModel
                     _Dao_Ingredients.UpdateIngredientStockById(SelectedIngredient.ingredient_id, SelectedIngredient.stock);
                     SelectedIngredient = null;
                     LoadData();
+                    ErrorUpdateOrDelete.ErrorMessage = "";
                 }
             }
             else
@@ -152,7 +154,7 @@ namespace POS_App.ViewModel
 
         private void OnContinueToCreate()
         {
-            if (UserRole == "admin")
+            if (UserRole == "manager")
             {
                 var findIngredient=_Dao_Ingredients.GetIngredientByName(NewIngredient.name);
                 if (findIngredient != null)
@@ -169,6 +171,7 @@ namespace POS_App.ViewModel
                 {
                     _Dao_Ingredients.CreateIngredient(NewIngredient);
                     LoadData();
+                    ErrorCreate.ErrorMessage= "";
                 }
                 NewIngredient = new Ingredient();
             }

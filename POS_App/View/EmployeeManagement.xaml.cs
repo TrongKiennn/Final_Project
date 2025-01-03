@@ -83,7 +83,7 @@ namespace POS_App.View
         {
             ViewModel.SaveEmployeeInfoAndAccount.Execute(null);
 
-            if (ViewModel.IsCheckAccount)
+            if (ViewModel.IsCheckEmployeeInfo)
             {
                 SetInformationToEmployee.Visibility = Visibility.Collapsed;
                 createAccountSuccessful.Visibility = Visibility.Visible;
