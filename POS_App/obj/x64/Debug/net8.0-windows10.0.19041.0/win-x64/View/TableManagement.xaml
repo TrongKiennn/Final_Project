@@ -99,13 +99,11 @@
 
 
         <!-- Row 1, Column 1: Order details of a table -->
-        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30" HorizontalAlignment="Center" >
+        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,30" HorizontalAlignment="Center">
 
             <Grid>
-
-       
                 <!-- Tổng hợp giá trị đơn hàng -->
-                <StackPanel  Background="#ffffd9" Padding="10" Margin="0,0,0,0" CornerRadius="0,0,12,12">
+                <StackPanel  Background="#ffffd9" Padding="10" Margin="0,0,0,0" CornerRadius="12" Height="250">
                     <StackPanel Orientation="Horizontal" Margin="0,5">
                         <TextBlock Text="Subtotal:" Width="150" Foreground="#794730" FontWeight="Bold"/>
                         <TextBlock Text="{Binding order.Subtotal}" Width="100" FontWeight="Bold" TextAlignment="Right" Foreground="#794730"/>

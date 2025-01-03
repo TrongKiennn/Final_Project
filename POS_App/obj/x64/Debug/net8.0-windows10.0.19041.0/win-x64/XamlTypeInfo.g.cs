@@ -890,6 +890,7 @@ namespace POS_App.POS_App_XamlTypeInfo
                 userType.AddMemberName("ErrorUpdateOrDelete");
                 userType.AddMemberName("NewIngredient");
                 userType.AddMemberName("SelectedIngredient");
+                userType.AddMemberName("UpdateIngredient");
                 userType.AddMemberName("UserRole");
                 userType.SetIsLocalType();
                 xamlType = userType;
@@ -1759,122 +1760,132 @@ namespace POS_App.POS_App_XamlTypeInfo
             var that = (global::POS_App.ViewModel.MaterialManagementViewModel)instance;
             that.SelectedIngredient = (global::POS_App.Model.Ingredient)Value;
         }
-        private object get_66_MaterialManagementViewModel_UserRole(object instance)
+        private object get_66_MaterialManagementViewModel_UpdateIngredient(object instance)
+        {
+            var that = (global::POS_App.ViewModel.MaterialManagementViewModel)instance;
+            return that.UpdateIngredient;
+        }
+        private void set_66_MaterialManagementViewModel_UpdateIngredient(object instance, object Value)
+        {
+            var that = (global::POS_App.ViewModel.MaterialManagementViewModel)instance;
+            that.UpdateIngredient = (global::POS_App.Model.Ingredient)Value;
+        }
+        private object get_67_MaterialManagementViewModel_UserRole(object instance)
         {
             var that = (global::POS_App.ViewModel.MaterialManagementViewModel)instance;
             return that.UserRole;
         }
-        private void set_66_MaterialManagementViewModel_UserRole(object instance, object Value)
+        private void set_67_MaterialManagementViewModel_UserRole(object instance, object Value)
         {
             var that = (global::POS_App.ViewModel.MaterialManagementViewModel)instance;
             that.UserRole = (global::System.String)Value;
         }
-        private object get_67_MaterialManagement_ViewModel(object instance)
+        private object get_68_MaterialManagement_ViewModel(object instance)
         {
             var that = (global::POS_App.View.MaterialManagement)instance;
             return that.ViewModel;
         }
-        private void set_67_MaterialManagement_ViewModel(object instance, object Value)
+        private void set_68_MaterialManagement_ViewModel(object instance, object Value)
         {
             var that = (global::POS_App.View.MaterialManagement)instance;
             that.ViewModel = (global::POS_App.ViewModel.MaterialManagementViewModel)Value;
         }
-        private object get_68_OrderPage_OrderPageViewModel(object instance)
+        private object get_69_OrderPage_OrderPageViewModel(object instance)
         {
             var that = (global::POS_App.View.OrderPage)instance;
             return that.OrderPageViewModel;
         }
-        private void set_68_OrderPage_OrderPageViewModel(object instance, object Value)
+        private void set_69_OrderPage_OrderPageViewModel(object instance, object Value)
         {
             var that = (global::POS_App.View.OrderPage)instance;
             that.OrderPageViewModel = (global::POS_App.OrderPageViewModel)Value;
         }
-        private object get_69_Register_uVm(object instance)
+        private object get_70_Register_uVm(object instance)
         {
             var that = (global::POS_App.View.Register)instance;
             return that.uVm;
         }
-        private void set_69_Register_uVm(object instance, object Value)
+        private void set_70_Register_uVm(object instance, object Value)
         {
             var that = (global::POS_App.View.Register)instance;
             that.uVm = (global::POS_App.ViewModel.RegisterViewModel)Value;
         }
-        private object get_70_Statistic_ViewModel(object instance)
+        private object get_71_Statistic_ViewModel(object instance)
         {
             var that = (global::POS_App.View.Statistic)instance;
             return that.ViewModel;
         }
-        private void set_70_Statistic_ViewModel(object instance, object Value)
+        private void set_71_Statistic_ViewModel(object instance, object Value)
         {
             var that = (global::POS_App.View.Statistic)instance;
             that.ViewModel = (global::POS_App.ViewModel.StatisticViewModel)Value;
         }
-        private object get_71_TableManagement_TableManagerViewModel(object instance)
+        private object get_72_TableManagement_TableManagerViewModel(object instance)
         {
             var that = (global::POS_App.View.TableManagement)instance;
             return that.TableManagerViewModel;
         }
-        private void set_71_TableManagement_TableManagerViewModel(object instance, object Value)
+        private void set_72_TableManagement_TableManagerViewModel(object instance, object Value)
         {
             var that = (global::POS_App.View.TableManagement)instance;
             that.TableManagerViewModel = (global::POS_App.TableManagerViewModel)Value;
         }
-        private object get_72_VIPCustomer_ViewModel(object instance)
+        private object get_73_VIPCustomer_ViewModel(object instance)
         {
             var that = (global::POS_App.View.VIPCustomer)instance;
             return that.ViewModel;
         }
-        private void set_72_VIPCustomer_ViewModel(object instance, object Value)
+        private void set_73_VIPCustomer_ViewModel(object instance, object Value)
         {
             var that = (global::POS_App.View.VIPCustomer)instance;
             that.ViewModel = (global::POS_App.ViewModel.CustomerViewModel)Value;
         }
-        private object get_73_TreeViewNode_Children(object instance)
+        private object get_74_TreeViewNode_Children(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Children;
         }
-        private object get_74_TreeViewNode_Content(object instance)
+        private object get_75_TreeViewNode_Content(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Content;
         }
-        private void set_74_TreeViewNode_Content(object instance, object Value)
+        private void set_75_TreeViewNode_Content(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.Content = (global::System.Object)Value;
         }
-        private object get_75_TreeViewNode_Depth(object instance)
+        private object get_76_TreeViewNode_Depth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Depth;
         }
-        private object get_76_TreeViewNode_HasChildren(object instance)
+        private object get_77_TreeViewNode_HasChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasChildren;
         }
-        private object get_77_TreeViewNode_HasUnrealizedChildren(object instance)
+        private object get_78_TreeViewNode_HasUnrealizedChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasUnrealizedChildren;
         }
-        private void set_77_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
+        private void set_78_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
-        private object get_78_TreeViewNode_IsExpanded(object instance)
+        private object get_79_TreeViewNode_IsExpanded(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.IsExpanded;
         }
-        private void set_78_TreeViewNode_IsExpanded(object instance, object Value)
+        private void set_79_TreeViewNode_IsExpanded(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.IsExpanded = (global::System.Boolean)Value;
         }
-        private object get_79_TreeViewNode_Parent(object instance)
+        private object get_80_TreeViewNode_Parent(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Parent;
@@ -2331,92 +2342,98 @@ namespace POS_App.POS_App_XamlTypeInfo
                 xamlMember.Getter = get_65_MaterialManagementViewModel_SelectedIngredient;
                 xamlMember.Setter = set_65_MaterialManagementViewModel_SelectedIngredient;
                 break;
+            case "POS_App.ViewModel.MaterialManagementViewModel.UpdateIngredient":
+                userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.ViewModel.MaterialManagementViewModel");
+                xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "UpdateIngredient", "POS_App.Model.Ingredient");
+                xamlMember.Getter = get_66_MaterialManagementViewModel_UpdateIngredient;
+                xamlMember.Setter = set_66_MaterialManagementViewModel_UpdateIngredient;
+                break;
             case "POS_App.ViewModel.MaterialManagementViewModel.UserRole":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.ViewModel.MaterialManagementViewModel");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "UserRole", "String");
-                xamlMember.Getter = get_66_MaterialManagementViewModel_UserRole;
-                xamlMember.Setter = set_66_MaterialManagementViewModel_UserRole;
+                xamlMember.Getter = get_67_MaterialManagementViewModel_UserRole;
+                xamlMember.Setter = set_67_MaterialManagementViewModel_UserRole;
                 break;
             case "POS_App.View.MaterialManagement.ViewModel":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.MaterialManagement");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "ViewModel", "POS_App.ViewModel.MaterialManagementViewModel");
-                xamlMember.Getter = get_67_MaterialManagement_ViewModel;
-                xamlMember.Setter = set_67_MaterialManagement_ViewModel;
+                xamlMember.Getter = get_68_MaterialManagement_ViewModel;
+                xamlMember.Setter = set_68_MaterialManagement_ViewModel;
                 break;
             case "POS_App.View.OrderPage.OrderPageViewModel":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.OrderPage");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "OrderPageViewModel", "POS_App.OrderPageViewModel");
-                xamlMember.Getter = get_68_OrderPage_OrderPageViewModel;
-                xamlMember.Setter = set_68_OrderPage_OrderPageViewModel;
+                xamlMember.Getter = get_69_OrderPage_OrderPageViewModel;
+                xamlMember.Setter = set_69_OrderPage_OrderPageViewModel;
                 break;
             case "POS_App.View.Register.uVm":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.Register");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "uVm", "POS_App.ViewModel.RegisterViewModel");
-                xamlMember.Getter = get_69_Register_uVm;
-                xamlMember.Setter = set_69_Register_uVm;
+                xamlMember.Getter = get_70_Register_uVm;
+                xamlMember.Setter = set_70_Register_uVm;
                 break;
             case "POS_App.View.Statistic.ViewModel":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.Statistic");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "ViewModel", "POS_App.ViewModel.StatisticViewModel");
-                xamlMember.Getter = get_70_Statistic_ViewModel;
-                xamlMember.Setter = set_70_Statistic_ViewModel;
+                xamlMember.Getter = get_71_Statistic_ViewModel;
+                xamlMember.Setter = set_71_Statistic_ViewModel;
                 break;
             case "POS_App.View.TableManagement.TableManagerViewModel":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.TableManagement");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "TableManagerViewModel", "POS_App.TableManagerViewModel");
-                xamlMember.Getter = get_71_TableManagement_TableManagerViewModel;
-                xamlMember.Setter = set_71_TableManagement_TableManagerViewModel;
+                xamlMember.Getter = get_72_TableManagement_TableManagerViewModel;
+                xamlMember.Setter = set_72_TableManagement_TableManagerViewModel;
                 break;
             case "POS_App.View.VIPCustomer.ViewModel":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("POS_App.View.VIPCustomer");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "ViewModel", "POS_App.ViewModel.CustomerViewModel");
-                xamlMember.Getter = get_72_VIPCustomer_ViewModel;
-                xamlMember.Setter = set_72_VIPCustomer_ViewModel;
+                xamlMember.Getter = get_73_VIPCustomer_ViewModel;
+                xamlMember.Setter = set_73_VIPCustomer_ViewModel;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "Children", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>");
-                xamlMember.Getter = get_73_TreeViewNode_Children;
+                xamlMember.Getter = get_74_TreeViewNode_Children;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Content":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "Content", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_74_TreeViewNode_Content;
-                xamlMember.Setter = set_74_TreeViewNode_Content;
+                xamlMember.Getter = get_75_TreeViewNode_Content;
+                xamlMember.Setter = set_75_TreeViewNode_Content;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Depth":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "Depth", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_75_TreeViewNode_Depth;
+                xamlMember.Getter = get_76_TreeViewNode_Depth;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasChildren":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "HasChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_76_TreeViewNode_HasChildren;
+                xamlMember.Getter = get_77_TreeViewNode_HasChildren;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasUnrealizedChildren":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
-                xamlMember.Getter = get_77_TreeViewNode_HasUnrealizedChildren;
-                xamlMember.Setter = set_77_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Getter = get_78_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Setter = set_78_TreeViewNode_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.IsExpanded":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_78_TreeViewNode_IsExpanded;
-                xamlMember.Setter = set_78_TreeViewNode_IsExpanded;
+                xamlMember.Getter = get_79_TreeViewNode_IsExpanded;
+                xamlMember.Setter = set_79_TreeViewNode_IsExpanded;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Parent":
                 userType = (global::POS_App.POS_App_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::POS_App.POS_App_XamlTypeInfo.XamlMember(this, "Parent", "Microsoft.UI.Xaml.Controls.TreeViewNode");
-                xamlMember.Getter = get_79_TreeViewNode_Parent;
+                xamlMember.Getter = get_80_TreeViewNode_Parent;
                 xamlMember.SetIsReadOnly();
                 break;
             }

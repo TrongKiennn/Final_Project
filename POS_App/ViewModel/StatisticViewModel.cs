@@ -96,17 +96,17 @@ namespace POS_App.ViewModel
         
         public void LoadData()
         {
-            //Debug.WriteLine("LoadData");
-            //Debug.WriteLine(SelectedDay);
+            Debug.WriteLine("LoadData");
+            Debug.WriteLine(SelectedDay);
 
-            //var(data1, data2, data3,data4,data5) = _Dao_Order.GetTotalAmountAndOrdersByDate(SelectedDay);
-            //TotalByDay = data1;
-            //TotalByMonth = data2;
-            //TotalByYear = data3;
-            //TotalOrdersByDay = data4;
-            //TotalOrdersByMonth = data5;
-            //var items = _Dao_Order_Item.GetTopSellingDrinks();
-            //Drinks = new ObservableCollection<Drinks>(items);
+            var (data1, data2, data3, data4, data5) = _Dao_Order.GetTotalAmountAndOrdersByDate(SelectedDay);
+            TotalByDay = data1;
+            TotalByMonth = data2;
+            TotalByYear = data3;
+            TotalOrdersByDay = data4;
+            TotalOrdersByMonth = data5;
+            var items = _Dao_Order_Item.GetTopSellingDrinks();
+            Drinks = new ObservableCollection<Drinks>(items);
         }
 
        

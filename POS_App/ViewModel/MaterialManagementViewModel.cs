@@ -73,6 +73,14 @@ namespace POS_App.ViewModel
             set => SetProperty(ref _selectedIngredient, value);
         }
 
+        private Ingredient _updateIngredient;
+        public Ingredient UpdateIngredient
+        {
+            get => _updateIngredient;
+            set => SetProperty(ref _updateIngredient, value);
+        }
+
+
         private string _userRole;
         public string UserRole
         {
@@ -109,6 +117,7 @@ namespace POS_App.ViewModel
         private void OnIngredientClick(Ingredient selectedIngredient)
         {
             SelectedIngredient = selectedIngredient;
+            UpdateIngredient = SelectedIngredient;
             Debug.WriteLine(SelectedIngredient.name);
         }
 
@@ -133,6 +142,7 @@ namespace POS_App.ViewModel
         {
             if (UserRole == "manager")
             {
+               
                 if (SelectedIngredient != null)
                 {
                     if(SelectedIngredient.stock<0)
@@ -140,16 +150,21 @@ namespace POS_App.ViewModel
                         ErrorUpdateOrDelete.ErrorMessage = "Quantity must be greater than 0.";
                         return;
                     }
-                    _Dao_Ingredients.UpdateIngredientStockById(SelectedIngredient.ingredient_id, SelectedIngredient.stock);
-                    SelectedIngredient = null;
-                    LoadData();
+                    _Dao_Ingredients.UpdateIngredientStockById(UpdateIngredient.ingredient_id, UpdateIngredient.stock);
+                   
                     ErrorUpdateOrDelete.ErrorMessage = "";
                 }
             }
             else
             {
+               
                 ErrorUpdateOrDelete.ErrorMessage = "You don't have permission to update.";
+               
+                
             }
+            SelectedIngredient = new Ingredient();
+            UpdateIngredient = new Ingredient();
+            LoadData();
         }
 
         private void OnContinueToCreate()

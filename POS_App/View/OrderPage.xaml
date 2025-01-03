@@ -319,19 +319,21 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
         <Grid Grid.Row="0" Grid.Column="0" Padding="30,30,0,30" Background="#986650" BorderBrush="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <TextBlock Text="Welcome, Menu" HorizontalAlignment="Left" FontWeight="Bold" FontSize="28" Foreground="#ffffd9"/>
                 <TextBlock Text="Discover whatever you need easily" HorizontalAlignment="Left" FontSize="18" Foreground="#ffffd9"/>
             </StackPanel>
+            <StackPanel  Grid.Column="1" VerticalAlignment="Center" CornerRadius="12" Margin="50,0,0,0"   >
+                <TextBox Background="#ffffd9" Name="SearchBox" PlaceholderText="Search drink..." FontSize="16" Padding="5"  Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderForeground="#794730" Width="450"/>
+            </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <TextBox Name="keyword" Height="35" VerticalAlignment="Center" Text="{x:Bind OrderPageViewModel.Keyword, 
-                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" HorizontalAlignment="Right" Foreground="#794730" Background="#ffffd9"/>
-                <Button Name="searchButton" Width="70" Height="35" VerticalAlignment="Center" HorizontalAlignment="Right" 
-                         Content="Search" Click="searchButton_Click" Margin="0,0,10,0" Foreground="#794730" Background="#ffffd9"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+
+              
                 <ToggleSwitch Width="100"  
                              HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort" Foreground="#ffffd9" Toggled="ToggleSwitch_Toggled"/>
                 <Button Content="+" Padding="0" FontSize="25" Width="43" Height="43" CornerRadius="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Click="SwitchToInterfaceB_Click"/>
@@ -347,7 +349,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
         <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12" Margin="10,0,0,10" Background="#794730" 
                   Name="optionsStackPanel">
             <!--<StackPanel >-->
-            <Grid x:Name="InterfaceA" Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12"  Background="#794730" 
+                <Grid x:Name="InterfaceA" Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12"  Background="#794730" 
                   >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="9*" />
@@ -355,7 +357,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                         <RowDefinition Height="1*" />
                         <!-- Hàng chứa Previous/Next -->
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="9*" />
@@ -374,28 +376,28 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
 
                         <!-- This place use for display all items of categories-->
-                        <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick" HorizontalAlignment="Center">
+                        <GridView Grid.Row="1" Margin="0,20,0,0" ItemsSource="{Binding Drinks}" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick" HorizontalAlignment="Stretch" Width="840">
                             <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
                             <GridView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Stretch" />
-                                </ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Left" />
+                            </ItemsPanelTemplate>
                             </GridView.ItemsPanel>
 
                             <!-- Item container style to set margins and alignment -->
                             <GridView.ItemContainerStyle>
                                 <Style TargetType="GridViewItem">
-                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                    <Setter Property="Margin" Value="5"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="Margin" Value="5"/>
                                 </Style>
                             </GridView.ItemContainerStyle>
 
                             <!-- Template for each item -->
                             <GridView.ItemTemplate >
                                 <DataTemplate >
-                                    <StackPanel Orientation="Vertical" CornerRadius="6" Background="{Binding status, Converter={StaticResource StatusDrinkToColorConverter}}" Width="auto" HorizontalAlignment="Stretch">
+                                    <StackPanel  CornerRadius="6" Background="{Binding status, Converter={StaticResource StatusDrinkToColorConverter}}" Width="auto">
                                         <!-- Product Image -->
-                                        <Border Width="190" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10">
+                                        <Border Width="190" Height="180" CornerRadius="6" Background="LightGray" Margin="4,4,4,10" >
                                             <Image Source="{Binding imageUrl}" Stretch="UniformToFill"/>
                                         </Border>
 

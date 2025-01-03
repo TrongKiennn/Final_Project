@@ -158,7 +158,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     public OrderPageViewModel(IDao_Drinks_Test repository)
     {
-        RowsPerPage = 10;
+        RowsPerPage = 8;
         CurrentPage = 1;
         _repository_Test = repository;
         SearchCommand = new RelayCommand(_ => Search());
@@ -167,7 +167,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     }
     public OrderPageViewModel()
     {
-        RowsPerPage = 10;
+        RowsPerPage = 8;
         CurrentPage = 1;
       
         FilterCommand = new RelayCommand(ExecuteFilter);
@@ -193,7 +193,8 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
         _Dao_Drink_Ingredient = ServiceFactory.GetChildOf(typeof(IDao_Drink_Ingredient)) as IDao_Drink_Ingredient;
         _Dao_Customer = ServiceFactory.GetChildOf(typeof(IDao_Customer)) as IDao_Customer;
         orderService = new OrderService(_Order_Dao, _Order_Item_Dao);
-        LoadData();
+        UpdateDrinkStatus();
+
     }
 
     private  void OnDrinkClick(Drinks selectedDrink)
@@ -284,22 +285,17 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
 
     private void PerformSearch()
     {
-        if (string.IsNullOrWhiteSpace(SearchText))
-        {
-            SearchText = "";
+        Debug.WriteLine($"SearchText: {SearchText}");
+        
             LoadData();
-        }
-        else
-        {
-            LoadData();
-        }
+        
     }
     public void LoadData()
     {
-        //var sortOptions = new Dictionary<string, SortType>
-        //    {
-        //        { "Name", SortType.Ascending }
-        //    };
+        var sortOptions = new Dictionary<string, SortType>
+        {
+            { "Name", SortType.Ascending }
+        };
 
         if (_repository_Test != null)
         {
@@ -307,43 +303,70 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
             Drinks = new ObservableCollection<Drinks>(item);
         }
 
-        //if (_dao != null)
-        //{
-
-
+        if (_dao != null)
+        {
             var (items, count) = _dao.GetDrink(
-                CurrentPage, RowsPerPage, SearchText,
-                _sortOptions, typeName
-            );
+            CurrentPage, RowsPerPage, SearchText,
+            _sortOptions, typeName);
 
-        //    if (items == null || !items.Any())
-        //    {
-        //        SelectedPageInfoItem.Page = 1;
-        //        SelectedPageInfoItem.Total = 1;
-        //        Drinks = new ObservableCollection<Drinks>();
-        //    }
-        //    else
-        //    {
-        //        Drinks = new ObservableCollection<Drinks>(items);
-        //        if (count != TotalItems)
-        //        {
-        //            TotalItems = count;
-        //            TotalPages = (TotalItems / RowsPerPage) +
-        //                (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
+            if (items == null || !items.Any())
+            {
+                SelectedPageInfoItem.Page = 1;
+                SelectedPageInfoItem.Total = 1;
+                Drinks = new ObservableCollection<Drinks>();
+            }
+            else
+            {
+                Drinks = new ObservableCollection<Drinks>(items);
+                if (count != TotalItems)
+                {
+                    TotalItems = count;
+                    TotalPages = (TotalItems / RowsPerPage) +
+                        (((TotalItems % RowsPerPage) == 0) ? 0 : 1);
 
-        //            PageInfos = new();
-        //            for (int i = 1; i <= TotalPages; i++)
-        //            {
-        //                PageInfos.Add(new PageInfo
-        //                {
-        //                    Page = i,
-        //                    Total = TotalPages
-        //                });
-        //            }
-        //        }
-        //        SelectedPageInfoItem = PageInfos[CurrentPage - 1];
-        //    }
-        //}
+                    PageInfos = new();
+                    for (int i = 1; i <= TotalPages; i++)
+                    {
+                        PageInfos.Add(new PageInfo
+                        {
+                            Page = i,
+                            Total = TotalPages
+                        });
+                    }
+                }
+                SelectedPageInfoItem = PageInfos[CurrentPage - 1];
+            }
+        }  
+    }
+
+    private void UpdateDrinkStatus()
+    {
+        LoadData();
+        var ingredeintItems = _Dao_Ingredients.GetIngredients();
+        Ingredients = new ObservableCollection<Ingredient>(ingredeintItems);
+        foreach (Drinks drink in Drinks)
+        {
+            var drinkIngreItem = _Dao_Drink_Ingredient.GetDrinkIngredientsByDrinkId(drink.id);
+            bool isAvailable = true;
+            foreach (Drink_Ingredient drink_Ingredient in drinkIngreItem)
+            {
+                var getIngredient = Ingredients.FirstOrDefault(i => i.ingredient_id == drink_Ingredient.ingredient_id);
+                Debug.WriteLine(getIngredient.name);
+                if (getIngredient.stock < drink_Ingredient.quantity)
+                {
+                    _dao.UpdateDrinkStatus(drink.id, "unavailable");
+                    isAvailable = false;
+                    break;
+                }
+            }
+            string newStatus = isAvailable ? "available" : "unavailable";
+            if (drink.status != newStatus)
+            {
+                _dao.UpdateDrinkStatus(drink.id, newStatus);
+            }
+
+        }
+        LoadData();
     }
 
     public void GoToPage(int page)

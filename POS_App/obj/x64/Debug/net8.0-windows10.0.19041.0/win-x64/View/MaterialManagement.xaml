@@ -163,12 +163,12 @@
 
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <TextBlock Text="Ingredient Name:" Width="150" Foreground="#794730" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding SelectedIngredient.name}" Width="100" FontWeight="Bold" TextAlignment="Left" Foreground="#794730"/>
+                            <TextBlock Text="{Binding UpdateIngredient.name}" Width="100" FontWeight="Bold" TextAlignment="Left" Foreground="#794730"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,5">
                             <TextBlock Text="Quantity:" Width="150" Foreground="#794730" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding SelectedIngredient.stock}" Width="100" FontWeight="Bold" TextAlignment="Left" Foreground="#794730" />
+                            <TextBlock Text="{Binding UpdateIngredient.stock}" Width="100" FontWeight="Bold" TextAlignment="Left" Foreground="#794730" />
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Stretch">
@@ -176,7 +176,7 @@
                             <TextBox x:ConnectionId='5' HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="40" CornerRadius="8" Background="#794730"
                                 Name="QuantityTextBox"
                                 Foreground="#f0daae"
-                                Text="{Binding SelectedIngredient.stock, Mode=TwoWay}"
+                                Text="{Binding UpdateIngredient.stock, Mode=TwoWay}"
                                 Padding="10,7,0,0" 
                                 />      
                         </StackPanel>
@@ -193,10 +193,10 @@
                             <ColumnDefinition Width="*"/>
                             
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Width="100" Height="40" Background="#794730" HorizontalAlignment="Center" CornerRadius="12"  Margin="0,5,0,0" Command="{Binding ContinueToUpdateCommand}">
+                        <Button Grid.Column="0" Width="110" Height="40" Background="#794730" HorizontalAlignment="Center" CornerRadius="12"  Margin="0,5,0,0" Command="{Binding ContinueToUpdateCommand}">
                             <TextBlock Text="Update Item!" FontWeight="Bold" Foreground="#ffffd9" />
                         </Button>
-                        <Button x:ConnectionId='4' Grid.Column="1" Width="100" Height="40" Background="#794730" HorizontalAlignment="Center" CornerRadius="12"  Margin="0,5,0,0"                                  >
+                        <Button x:ConnectionId='4' Grid.Column="1" Width="110" Height="40" Background="#794730" HorizontalAlignment="Center" CornerRadius="12"  Margin="0,5,0,0"                                  >
                             <TextBlock Text="Delete Item!" FontWeight="Bold" Foreground="#ffffd9" />
                         </Button>
                     </Grid>
