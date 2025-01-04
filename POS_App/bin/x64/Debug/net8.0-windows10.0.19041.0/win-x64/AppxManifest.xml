@@ -32,6 +32,8 @@
   </Applications>
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
+    <uap:Capability Name="picturesLibrary" />
+    <Capability Name="internetClient" />
   </Capabilities>
   <build:Metadata>
     <build:Item Name="Microsoft.UI.Xaml.Markup.Compiler.dll" Version="3.0.0.2409" />

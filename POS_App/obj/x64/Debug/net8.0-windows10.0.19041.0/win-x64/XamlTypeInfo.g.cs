@@ -226,7 +226,7 @@ namespace POS_App.POS_App_XamlTypeInfo
         
         private void InitTypeTables()
         {
-            _typeNameTable = new string[69];
+            _typeNameTable = new string[70];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -292,12 +292,13 @@ namespace POS_App.POS_App_XamlTypeInfo
             _typeNameTable[62] = "POS_App.ViewModel.StatisticViewModel";
             _typeNameTable[63] = "POS_App.View.TableManagement";
             _typeNameTable[64] = "POS_App.TableManagerViewModel";
-            _typeNameTable[65] = "POS_App.View.VIPCustomer";
-            _typeNameTable[66] = "POS_App.ViewModel.CustomerViewModel";
-            _typeNameTable[67] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[68] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[65] = "POS_App.View.UpdateProduct";
+            _typeNameTable[66] = "POS_App.View.VIPCustomer";
+            _typeNameTable[67] = "POS_App.ViewModel.CustomerViewModel";
+            _typeNameTable[68] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[69] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
 
-            _typeTable = new global::System.Type[69];
+            _typeTable = new global::System.Type[70];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -363,10 +364,11 @@ namespace POS_App.POS_App_XamlTypeInfo
             _typeTable[62] = typeof(global::POS_App.ViewModel.StatisticViewModel);
             _typeTable[63] = typeof(global::POS_App.View.TableManagement);
             _typeTable[64] = typeof(global::POS_App.TableManagerViewModel);
-            _typeTable[65] = typeof(global::POS_App.View.VIPCustomer);
-            _typeTable[66] = typeof(global::POS_App.ViewModel.CustomerViewModel);
-            _typeTable[67] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[68] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[65] = typeof(global::POS_App.View.UpdateProduct);
+            _typeTable[66] = typeof(global::POS_App.View.VIPCustomer);
+            _typeTable[67] = typeof(global::POS_App.ViewModel.CustomerViewModel);
+            _typeTable[68] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[69] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -435,9 +437,10 @@ namespace POS_App.POS_App_XamlTypeInfo
         private object Activate_62_StatisticViewModel() { return new global::POS_App.ViewModel.StatisticViewModel(); }
         private object Activate_63_TableManagement() { return new global::POS_App.View.TableManagement(); }
         private object Activate_64_TableManagerViewModel() { return new global::POS_App.TableManagerViewModel(); }
-        private object Activate_65_VIPCustomer() { return new global::POS_App.View.VIPCustomer(); }
-        private object Activate_66_CustomerViewModel() { return new global::POS_App.ViewModel.CustomerViewModel(); }
-        private object Activate_67_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_65_UpdateProduct() { return new global::POS_App.View.UpdateProduct(); }
+        private object Activate_66_VIPCustomer() { return new global::POS_App.View.VIPCustomer(); }
+        private object Activate_67_CustomerViewModel() { return new global::POS_App.ViewModel.CustomerViewModel(); }
+        private object Activate_68_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void StaticInitializer_0_XamlControlsResources() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources).TypeHandle);
         private void StaticInitializer_4_DashBoardPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.DashBoardPage).TypeHandle);
         private void StaticInitializer_8_DrinkIngredientPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.View.DrinkIngredientPage).TypeHandle);
@@ -483,10 +486,11 @@ namespace POS_App.POS_App_XamlTypeInfo
         private void StaticInitializer_62_StatisticViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.ViewModel.StatisticViewModel).TypeHandle);
         private void StaticInitializer_63_TableManagement() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.View.TableManagement).TypeHandle);
         private void StaticInitializer_64_TableManagerViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.TableManagerViewModel).TypeHandle);
-        private void StaticInitializer_65_VIPCustomer() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.View.VIPCustomer).TypeHandle);
-        private void StaticInitializer_66_CustomerViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.ViewModel.CustomerViewModel).TypeHandle);
-        private void StaticInitializer_67_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
-        private void StaticInitializer_68_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
+        private void StaticInitializer_65_UpdateProduct() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.View.UpdateProduct).TypeHandle);
+        private void StaticInitializer_66_VIPCustomer() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.View.VIPCustomer).TypeHandle);
+        private void StaticInitializer_67_CustomerViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::POS_App.ViewModel.CustomerViewModel).TypeHandle);
+        private void StaticInitializer_68_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
+        private void StaticInitializer_69_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -512,7 +516,7 @@ namespace POS_App.POS_App_XamlTypeInfo
             var newItem = (global::POS_App.Model.Ingredient)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_68_IList(object instance, object item)
+        private void VectorAdd_69_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -1037,27 +1041,35 @@ namespace POS_App.POS_App_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 65:   //  POS_App.View.VIPCustomer
+            case 65:   //  POS_App.View.UpdateProduct
                 userType = new global::POS_App.POS_App_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_65_VIPCustomer;
-                userType.StaticInitializer = StaticInitializer_65_VIPCustomer;
+                userType.Activator = Activate_65_UpdateProduct;
+                userType.StaticInitializer = StaticInitializer_65_UpdateProduct;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 66:   //  POS_App.View.VIPCustomer
+                userType = new global::POS_App.POS_App_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_66_VIPCustomer;
+                userType.StaticInitializer = StaticInitializer_66_VIPCustomer;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 66:   //  POS_App.ViewModel.CustomerViewModel
+            case 67:   //  POS_App.ViewModel.CustomerViewModel
                 userType = new global::POS_App.POS_App_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.StaticInitializer = StaticInitializer_66_CustomerViewModel;
+                userType.StaticInitializer = StaticInitializer_67_CustomerViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 67:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 68:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::POS_App.POS_App_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_67_TreeViewNode;
-                userType.StaticInitializer = StaticInitializer_67_TreeViewNode;
+                userType.Activator = Activate_68_TreeViewNode;
+                userType.StaticInitializer = StaticInitializer_68_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -1069,10 +1081,10 @@ namespace POS_App.POS_App_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 68:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 69:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::POS_App.POS_App_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_68_IList;
-                userType.CollectionAdd = VectorAdd_68_IList;
+                userType.StaticInitializer = StaticInitializer_69_IList;
+                userType.CollectionAdd = VectorAdd_69_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;

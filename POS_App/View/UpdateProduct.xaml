@@ -101,19 +101,15 @@
                                 <StackPanel Orientation="Vertical" Spacing="10">
                                     <TextBlock Text="Photo of product" FontSize="16" FontWeight="Bold" Foreground="#794730" VerticalAlignment="Center"/>
 
-                                    <!-- Button to add photo -->
-                                    <Button Content="Add Photo" Width="100" Height="30" Click="AddPhotoButton_Click"/>
-
-                                    <!-- TextBlock to display the photo name or cancellation message -->
-                                    <TextBlock x:Name="textBlock" FontSize="14" Foreground="#794730" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                                    <Button Content="Chọn ảnh" Click="SelectImage_Click"/>
+                                    <Image x:Name="PreviewImage" Width="190" Height="200" Stretch="Uniform" Margin="10"/>
+                                    <Button Content="Tải ảnh lên" Click="UploadImage_Click" Margin="10"/>
 
                                 </StackPanel>
 
-                                <StackPanel>
-                                    <Button Content="Update Info" Width="100" Height="30" Click="UpdateInfoButton_Click" HorizontalAlignment="Right" VerticalContentAlignment="Bottom"/>
-                                </StackPanel>
+                              
                                 <!-- Chỉ một ảnh được hiển thị -->
-                                <Image Name="SelectedImage" Width="200" Height="200" Stretch="UniformToFill" Visibility="Collapsed" Margin="10"/>
+                                <Image Name="SelectedImage" Width="190" Height="200" Stretch="UniformToFill" Visibility="Collapsed" Margin="10"/>
                             </StackPanel>
                         </Border>
                     </ListViewItem>

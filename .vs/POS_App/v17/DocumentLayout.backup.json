@@ -3,36 +3,16 @@
   "WorkspaceRootPath": "D:\\C#\\22120151_22120167\\POS_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\viewmodel\\materialmanagementviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\materialmanagementviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\view\\updateproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\updateproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\service\\dataaccess\\ingredient\\dao_ingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\service\\dataaccess\\ingredient\\dao_ingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\view\\updateproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\updateproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\view\\materialmanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\materialmanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\viewmodel\\drinkingredientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\drinkingredientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\viewmodel\\orderpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\orderpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\service\\dataaccess\\drink\\dao_drinks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\service\\dataaccess\\drink\\dao_drinks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\view\\orderpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\view\\orderpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|d:\\c#\\22120151_22120167\\pos_app\\pos_app\\viewmodel\\customerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4DDE5E79-50AD-4D61-9A1E-4672A913887A}|POS_App\\POS_App.csproj|solutionrelative:pos_app\\viewmodel\\customerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\C#\\22120151_22120167\\POS_App\\POS_App\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\View\\UpdateProduct.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:POS_App\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\View\\UpdateProduct.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,106 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Dao_Ingredients.cs",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\Service\\DataAccess\\Ingredient\\Dao_Ingredients.cs",
-              "RelativeDocumentMoniker": "POS_App\\Service\\DataAccess\\Ingredient\\Dao_Ingredients.cs",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\Service\\DataAccess\\Ingredient\\Dao_Ingredients.cs",
-              "RelativeToolTip": "POS_App\\Service\\DataAccess\\Ingredient\\Dao_Ingredients.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UpdateProduct.g.cs",
+              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\View\\UpdateProduct.g.cs",
+              "RelativeDocumentMoniker": "POS_App\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\View\\UpdateProduct.g.cs",
+              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\View\\UpdateProduct.g.cs",
+              "RelativeToolTip": "POS_App\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\View\\UpdateProduct.g.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCcAAABqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T12:02:10.916Z",
+              "WhenOpened": "2025-01-03T18:26:41.319Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MaterialManagementViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\MaterialManagementViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\MaterialManagementViewModel.cs",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\MaterialManagementViewModel.cs*",
-              "RelativeToolTip": "POS_App\\ViewModel\\MaterialManagementViewModel.cs*",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKYAAAAXAAAAAAAAAA==",
+              "Title": "UpdateProduct.xaml.cs",
+              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\UpdateProduct.xaml.cs",
+              "RelativeDocumentMoniker": "POS_App\\View\\UpdateProduct.xaml.cs",
+              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\UpdateProduct.xaml.cs*",
+              "RelativeToolTip": "POS_App\\View\\UpdateProduct.xaml.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAADyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T11:52:16.172Z",
+              "WhenOpened": "2025-01-03T18:05:17.01Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DrinkIngredientViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\DrinkIngredientViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\DrinkIngredientViewModel.cs",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\DrinkIngredientViewModel.cs",
-              "RelativeToolTip": "POS_App\\ViewModel\\DrinkIngredientViewModel.cs",
-              "ViewState": "AgIAAMkAAAAAAAAAAAA7wNYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T11:51:30.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MaterialManagement.xaml",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\MaterialManagement.xaml",
-              "RelativeDocumentMoniker": "POS_App\\View\\MaterialManagement.xaml",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\MaterialManagement.xaml",
-              "RelativeToolTip": "POS_App\\View\\MaterialManagement.xaml",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAAAKUAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UpdateProduct.xaml",
+              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\UpdateProduct.xaml",
+              "RelativeDocumentMoniker": "POS_App\\View\\UpdateProduct.xaml",
+              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\UpdateProduct.xaml",
+              "RelativeToolTip": "POS_App\\View\\UpdateProduct.xaml",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAWwGgAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-03T11:49:56.549Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Dao_Drinks.cs",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\Service\\DataAccess\\Drink\\Dao_Drinks.cs",
-              "RelativeDocumentMoniker": "POS_App\\Service\\DataAccess\\Drink\\Dao_Drinks.cs",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\Service\\DataAccess\\Drink\\Dao_Drinks.cs",
-              "RelativeToolTip": "POS_App\\Service\\DataAccess\\Drink\\Dao_Drinks.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAQwGAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T10:33:18.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CustomerViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\CustomerViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\CustomerViewModel.cs",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\CustomerViewModel.cs",
-              "RelativeToolTip": "POS_App\\ViewModel\\CustomerViewModel.cs",
-              "ViewState": "AgIAAPYAAAAAAAAAAAAowHQAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T10:31:59.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderPageViewModel.cs",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\OrderPageViewModel.cs",
-              "RelativeDocumentMoniker": "POS_App\\ViewModel\\OrderPageViewModel.cs",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\ViewModel\\OrderPageViewModel.cs",
-              "RelativeToolTip": "POS_App\\ViewModel\\OrderPageViewModel.cs",
-              "ViewState": "AgIAAIABAAAAAAAAAAAnwFcBAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T10:31:54.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OrderPage.xaml",
-              "DocumentMoniker": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\OrderPage.xaml",
-              "RelativeDocumentMoniker": "POS_App\\View\\OrderPage.xaml",
-              "ToolTip": "D:\\C#\\22120151_22120167\\POS_App\\POS_App\\View\\OrderPage.xaml",
-              "RelativeToolTip": "POS_App\\View\\OrderPage.xaml",
-              "ViewState": "AgIAAD4BAAAAAAAAAAAWwEkBAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-03T10:22:11.923Z",
+              "WhenOpened": "2025-01-03T17:39:06.265Z",
               "EditorCaption": ""
             }
           ]
