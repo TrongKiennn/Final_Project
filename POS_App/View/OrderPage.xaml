@@ -436,7 +436,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 </Grid>
 
             <!--</StackPanel>-->
-            <Grid x:Name="InterfaceB" Visibility="Collapsed" Padding="20">
+            <Grid x:Name="InterfaceB" Visibility="Collapsed" Padding="200, 20, 200, 0">
                 <!-- Product Section -->
                 <StackPanel Orientation="Vertical" Spacing="15">
                     <!-- Product Name -->
@@ -448,38 +448,14 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     <TextBox x:Name="ProductPrice"  HorizontalAlignment="Stretch" PlaceholderText="Enter product price" />
 
                     <!-- Product Image Link -->
-                    <Button Content="Pick a Photo"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Click="PickPhotoButton_Click"/>
+                    <TextBlock Text="Add image of product" FontSize="16" Foreground="#ffffd9"/>
+                    
+                        <!-- Button to add photo -->
+                    <Button Content="Add Photo" HorizontalAlignment="Stretch" Height="30" Click="AddPhotoButton_Click"/>
 
-                    <TextBlock x:Name="textBlock"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="10"/>
-                </StackPanel>
-
-                <!-- Recipe Section -->
-                <StackPanel Orientation="Vertical" Spacing="15" VerticalAlignment="Top" Margin="0,250,0,0">
-                    <TextBlock Text="Recipe" FontSize="20" FontWeight="Bold" Foreground="#ffffd9"/>
-
-                    <!-- Ingredients -->
-                    <StackPanel x:Name="IngredientsPanel" Orientation="Vertical" Spacing="10">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="10">
-                            <TextBox Width="810" PlaceholderText="Ingredient 1" />
-                            <TextBox Width="100" HorizontalAlignment="Left" PlaceholderText="Quantity" />
-                            <TextBox Width="100" HorizontalAlignment="Left" PlaceholderText="Unit" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Spacing="10">
-                            <TextBox Width="810" PlaceholderText="Ingredient 2" />
-                            <TextBox Width="100" PlaceholderText="Quantity" />
-                            <TextBox Width="100" HorizontalAlignment="Left" PlaceholderText="Unit" />
-                        </StackPanel>
-                    </StackPanel>
-
-                    <!-- Add Ingredient Button -->
-                    <Button Content="Add Ingredient" Width="150" Click="OnAddIngredientClick" Margin="0,10,0,0" />
-                    <Button Content="Switch to Interface A" Click="SwitchToInterfaceA_Click"/>
+                    <!-- TextBlock to display the photo name or cancellation message -->
+                    <TextBlock x:Name="textBlock" FontSize="14" Foreground="#794730" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                    <Image Name="SelectedImage" Width="180" Height="180" Stretch="UniformToFill" Visibility="Collapsed" Margin="10"/>
 
                 </StackPanel>
             </Grid>
