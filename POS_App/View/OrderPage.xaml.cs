@@ -21,6 +21,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using WinRT.Interop;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -248,67 +249,68 @@ namespace POS_App.View
             InterfaceB.Visibility = Visibility.Collapsed;
             InterfaceA.Visibility = Visibility.Visible;
         }
-        private void OnAddIngredientClick(object sender, RoutedEventArgs e)
-        {
-            // Create a new StackPanel for the new ingredient
-            var newIngredientPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 10 };
-            newIngredientPanel.Children.Add(new TextBox { Width = 810, PlaceholderText = "New Ingredient" });
-            newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Quantity" });
-            newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Unit" });
+        //private void OnAddIngredientClick(object sender, RoutedEventArgs e)
+        //{
+        //    // Create a new StackPanel for the new ingredient
+        //    var newIngredientPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 10 };
+        //    newIngredientPanel.Children.Add(new TextBox { Width = 810, PlaceholderText = "New Ingredient" });
+        //    newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Quantity" });
+        //    newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Unit" });
 
-            // Add the new ingredient panel to the IngredientsPanel
-            IngredientsPanel.Children.Add(newIngredientPanel);
-        }
-        private async void PickPhotoButton_Click(object sender, RoutedEventArgs e)
+        //    // Add the new ingredient panel to the IngredientsPanel
+        //    IngredientsPanel.Children.Add(newIngredientPanel);
+        //}
+
+        private async void AddPhotoButton_Click(object sender, RoutedEventArgs e)
         {
-            var picturesLibrary = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
-            if (picturesLibrary.RequestAddFolderAsync() != null)
+            try
             {
-                var picker = new FileOpenPicker();
-                picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-                picker.ViewMode = PickerViewMode.Thumbnail;
+                // Create the FileOpenPicker
+                var picker = new FileOpenPicker
+                {
+                    ViewMode = PickerViewMode.Thumbnail,
+                    SuggestedStartLocation = PickerLocationId.PicturesLibrary
+                };
+
+                // Add allowed file types
                 picker.FileTypeFilter.Add(".jpg");
                 picker.FileTypeFilter.Add(".jpeg");
                 picker.FileTypeFilter.Add(".png");
 
+                // Initialize the picker with the correct window handle for WinUI apps
+                var hwnd = WindowNative.GetWindowHandle(App.MainWindow);
+                InitializeWithWindow.Initialize(picker, hwnd);
+
+                // Pick a file
                 StorageFile file = await picker.PickSingleFileAsync();
 
                 if (file != null)
                 {
-                    textBlock.Text = "Picked photo: " + file.Name;
+                    // If file is selected, display the file name
+                    this.textBlock.Text = "Picked photo: " + file.Name;
+
+                    // Optionally, set the image source
+                    var bitmapImage = new BitmapImage();
+                    using (var stream = await file.OpenAsync(FileAccessMode.Read))
+                    {
+                        await bitmapImage.SetSourceAsync(stream);
+                    }
+
+                    SelectedImage.Source = bitmapImage;
+                    SelectedImage.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    textBlock.Text = "Operation cancelled.";
+                    // If no file was selected, show cancellation message
+                    this.textBlock.Text = "Operation cancelled.";
                 }
             }
-            else
+            catch (Exception ex)
             {
-                textBlock.Text = "Access to pictures library denied.";
+                // Handle any error that may have occurred during the process
+                this.textBlock.Text = "Error: " + ex.Message;
             }
         }
-        //private async void PickPhotoButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // Create a FileOpenPicker to allow the user to pick a file
-        //    var picker = new FileOpenPicker();
-        //    picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-        //    picker.ViewMode = PickerViewMode.Thumbnail;
-        //    picker.FileTypeFilter.Add(".jpg");
-        //    picker.FileTypeFilter.Add(".jpeg");
-        //    picker.FileTypeFilter.Add(".png");
 
-        //    // Make the picker available for desktop apps
-        //    StorageFile file = await picker.PickSingleFileAsync();
-
-        //    if (file != null)
-        //    {
-        //        // Application now has read/write access to the picked file
-        //        textBlock.Text = "Picked photo: " + file.Name;
-        //    }
-        //    else
-        //    {
-        //        textBlock.Text = "Operation cancelled.";
-        //    }
-        //}
     }
 }
