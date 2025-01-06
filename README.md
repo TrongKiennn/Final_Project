@@ -195,7 +195,7 @@ Task Assignment Table:
 | UI for VIP customer page                                                                                                                       | Handle backend VIP customer page                                                                                                                                |
 | UI for Update Drink                                                                                                                            | Handle Update Drink                                                                                                                                |
 | UI for Statistic Page                                                                                                                            | Handle Statistic Page                                                                                                                         |
-|                                                                                                                             | Implement avantage feature                                                                                                              |
+| Fix navigationView still appear when logout                                                                                                                            | Implement avantage feature                                                                                                              |
 | Menual testing                                                                                                         |   Menual testing                                                                                          |
 
 - **UI/UX (20%)**  
@@ -217,8 +217,7 @@ Task Assignment Table:
      - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project)
 
 - **Quality Assurance (20%)**  
-   - Unit test some functions: Search, SortByName, Loadata.
+   - Menual testing: milestone 01, milestone 02, milestone 03 (test for all project before submit this project)
  
-Link Video Demo Milestone 2: 
 
 By setting clear and actionable criteria, we aim to ensure each milestone meets its objectives while maintaining high standards for usability, reliability, and scalability.
