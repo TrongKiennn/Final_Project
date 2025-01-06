@@ -218,6 +218,7 @@ Task Assignment Table:
 
 - **Quality Assurance (20%)**  
    - Menual testing: milestone 01, milestone 02, milestone 03 (test for all project before submit this project)
+   - Link menual testing documentary [Test](https://docs.google.com/spreadsheets/d/1HMXQcMaR_7F8xfuhtY96nJejchJaXYU9/edit?gid=1938212532#gid=1938212532)
  
 
 By setting clear and actionable criteria, we aim to ensure each milestone meets its objectives while maintaining high standards for usability, reliability, and scalability.
