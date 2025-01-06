@@ -158,8 +158,65 @@ Task Assignment Table:
 Link Video Demo Milestone 2: 
 
 ### Milestone 03: Final Release (Weeks 12–15)
-*To be determined based on outcomes of previous milestones.*
+The team has completed 7 hours of work for **Milestone 3**, focusing on two main features:
 
----
+1. **Suggestions for drink recipes (1 hours):** After completing the order, you can click on the suggestions to display the drink recipes in the order, making it convenient for staff, especially new employees, who might struggle to remember too many recipes.
+2. Employee Management (1 hour)
+- Manage employees with roles such as:
+  - **Manager**
+  - **Employee**
+- Calculate working hours for each employee.
+- Track attendance efficiently.
+3. Ingredient Management (1 hours)
+- Track quantities of ingredients such as:
+  - **Milk**
+  - **Coffee**
+  - **Sugar**
+  - **Tea**
+- Provide alerts when ingredients are low or running out.
+5. Loyalty Customer Management (2 hours)
+- Store purchase history for customers who are members of the shop.
+- Accumulate points for customers to redeem vouchers or gifts.
+6. Real-time Inventory Update (1 hour - Advanced Feature)
+- Automatically update ingredient quantities in the system with each new order.
+- Helps manage inventory more efficiently and reduces waste.
+7. VIP Customer Upgrade (1 hour - Advanced Feature)
+- Customers who make more than 50 purchases will be upgraded to VIP status.
+- VIP customers will receive discounts on future purchases.
+8. **Revenue Statistics (2 hours):** Display the revenue statistics for the shop by day, week, and month.  [ProjectProposal](https://docs.google.com/document/d/1kSat9CqWG8-aWRFB-62Lu82mtGdHkVtC2Y2KuRkuEpE/edit?usp=sharing)
+
+Both features have been thoroughly tested and are operating as expected, meeting the milestone timeline.
+
+Task Assignment Table:
+| 22120151                                                                                                                             | 22120167                                                                                                                             |
+|----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| UI for Employee management                                                                                                                | Handle backend employee management                                                                                                               |
+| UI for VIP customer page                                                                                                                       | Handle backend VIP customer page                                                                                                                                |
+| UI for Update Drink                                                                                                                            | Handle Update Drink                                                                                                                                |
+| UI for Statistic Page                                                                                                                            | Handle Statistic Page                                                                                                                         |
+| Fix navigationView still appear when logout                                                                                                                            | Implement avantage feature                                                                                                              |
+| Menual testing                                                                                                         |   Menual testing                                                                                          |
+
+- **UI/UX (20%)**  
+   - The interface should be cleaned and logically organized.
+   - When click on an items, If user does not choose any custom items, the default will be seted for this items.
+   - UI: [UI link check](https://docs.google.com/document/d/1XnmnEVnmcCzOUzSOjxavhJ2Yj78g9KM-R-ONCt2x0Jw/edit?usp=sharing)
+
+- **Design Patterns / Architecture (20%)**  
+   - The project follows the **MVVM architecture** to ensure a clear separation of concerns.
+   - Each function and class includes comments detailing its functionality for improved code readability.
+ 
+- **Advantage Topic**
+   - Update table status in real-time: Automatically change the table's status to "observe" one hour before an event.
+   - Upload image files to Supabase, retrieve their URLs by calling the Supabase API.
+
+- **Teamwork - Git Flow (10%)**  
+   - The team uses **GitHub** and **Trello** to organize and track development:
+     - Trello: [Project Board](https://trello.com/b/N54ELBhQ/l%E1%BA%ADp-trinh-win)
+     - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project)
+
+- **Quality Assurance (20%)**  
+   - Menual testing: milestone 01, milestone 02, milestone 03 (test for all project before submit this project)
+ 
 
 By setting clear and actionable criteria, we aim to ensure each milestone meets its objectives while maintaining high standards for usability, reliability, and scalability.
