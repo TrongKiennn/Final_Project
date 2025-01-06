@@ -150,7 +150,7 @@ Task Assignment Table:
 - **Teamwork - Git Flow (10%)**  
    - The team uses **GitHub** and **Trello** to organize and track development:
      - Trello: [Project Board](https://trello.com/b/N54ELBhQ/l%E1%BA%ADp-trinh-win)
-     - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project)
+     - GitHub: [Repository](https://github.com/TrongKiennn/Final_Project) (exactly time)
 
 - **Quality Assurance (20%)**  
    - Unit test some functions: Search, SortByName, Loadata.
@@ -196,6 +196,7 @@ Task Assignment Table:
 | UI for Statistic Page                                                                                                                            | Handle Statistic Page                                                                                                                         |
 | Fix navigationView still appear when logout                                                                                                                            | Implement avantage feature                                                                                                              |
 | Menual testing                                                                                                         |   Menual testing                                                                                          |
+|   | Implement drink ingredient|
 
 - **UI/UX (20%)**  
    - The interface should be cleaned and logically organized.
