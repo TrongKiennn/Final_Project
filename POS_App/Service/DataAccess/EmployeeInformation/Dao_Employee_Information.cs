@@ -4,6 +4,7 @@ using POS_App.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -125,6 +126,56 @@ public class Dao_Employee_Information : IDao_Employee_Information
                     command.Parameters.AddWithValue("@gender", employeeInfo.Gender);
                     command.Parameters.AddWithValue("@position", employeeInfo.Position);
                     command.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine($"MySQL error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"General error: {ex.Message}");
+        }
+    }
+
+    public void UpdateEmployeeInfo(employeeInfo employeeInfo)
+    {
+       
+        try
+        {
+            var connectionString = GetConnectionString();
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var sql = @"UPDATE employeeInformations 
+                        SET fullname = @FullName, 
+                            dateOfBirth = @DateOfBirth, 
+                            phoneNumber = @PhoneNumber, 
+                            gender = @Gender, 
+                            position = @Position 
+                        WHERE user_id = @User_Id";
+
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@FullName", employeeInfo.FullName);
+                    command.Parameters.AddWithValue("@DateOfBirth", employeeInfo.DateOfBirth);
+                    command.Parameters.AddWithValue("@PhoneNumber", employeeInfo.PhoneNumber);
+                    command.Parameters.AddWithValue("@Gender", employeeInfo.Gender);
+                    command.Parameters.AddWithValue("@Position", employeeInfo.Position);
+                    command.Parameters.AddWithValue("@User_Id", employeeInfo.User_Id);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Employee information updated successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No employee found with the given ID.");
+                    }
                 }
             }
         }

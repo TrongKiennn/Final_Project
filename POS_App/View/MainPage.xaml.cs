@@ -31,7 +31,7 @@ namespace POS_App
             {
                 string content = selectedItem.Content.ToString();
 
-                if (UserRole == "manager")
+                if (UserRole == "manager" || UserRole=="admin")
                 {
                     switch (content)
                     {

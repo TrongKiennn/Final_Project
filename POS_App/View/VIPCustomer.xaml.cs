@@ -49,8 +49,12 @@ namespace POS_App.View
 
         private void GoToVIPSetting(object sender, RoutedEventArgs e)
         {
-            CustomerInformation.Visibility = Visibility.Collapsed;
-            SettingVIPRank.Visibility = Visibility.Visible;
+            ViewModel.checkRole();
+            if (ViewModel.isManagerOrAdmin == true)
+            {
+                CustomerInformation.Visibility = Visibility.Collapsed;
+                SettingVIPRank.Visibility = Visibility.Visible;
+            }
         }
 
         private void GoToAddCustomer(object sender, RoutedEventArgs e)

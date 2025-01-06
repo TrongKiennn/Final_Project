@@ -153,6 +153,7 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
             );
         }
         NewIngredientOfDrinkRecipe.DrinkId = SelectedDrink.id;
+        SelectedIngredientOfDrinkRecipe = null;
     }
 
     private void LoadDrinkRecipe()
@@ -214,7 +215,7 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
     }
     private void OnConfirmDelete()
     {
-        if (UserRole == "manager")
+        if (UserRole == "manager"  || UserRole == "admin")
         {
             if (SelectedIngredientOfDrinkRecipe != null)
             {
@@ -237,7 +238,7 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
 
     private void OnContinueToUpdate()
     {
-        if (UserRole == "manager")
+        if (UserRole == "manager"  || UserRole == "admin")
         {
             if(SelectedDrink == null)
             {
@@ -257,6 +258,10 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
                 ErrorUpdateOrDelete.ErrorMessage = "";
                 LoadDrinkRecipe();
             }
+            else
+            {
+                ErrorUpdateOrDelete.ErrorMessage= "You haven't chosen any ingredient yet.";
+            }
         }
         else
         {
@@ -267,7 +272,7 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
 
     private void OnContinueToCreate()
     {
-        if (UserRole == "manager")
+        if (UserRole == "manager"  || UserRole == "admin")
         {
             if(SelectedDrink == null)
             {

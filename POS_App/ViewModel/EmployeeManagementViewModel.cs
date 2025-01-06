@@ -49,7 +49,7 @@ namespace POS_App.ViewModel
         public ICommand CheckInCommand { get; set; }
         public ICommand CheckOutCommand { get; set; }
         public ICommand ConfirmDeleteCommand { get; set; }
-
+        public ICommand UpdateEmployeeInfoCommand { get; set; }
         public ObservableCollection<employeeInfo> Employees { get; set; }
 
         public int TotalEmployees { get; set; }
@@ -76,6 +76,8 @@ namespace POS_App.ViewModel
             set => SetProperty(ref _selectedEmployee, value);
         }
 
+        public string newEmployeePosition;
+
         private employeeAttendance _selectedEmployeeAttend;
         public employeeAttendance SelectedEmployeeAttend
         {
@@ -90,7 +92,7 @@ namespace POS_App.ViewModel
             set => SetProperty(ref _userRole, value);
         }
 
-        public bool IsCheckAccount=false;
+        public bool IsCheckAccount = false;
         public bool IsCheckEmployeeInfo = false;
 
         private ErrorHandling _checkAccountInfo;
@@ -128,12 +130,13 @@ namespace POS_App.ViewModel
             _Dao_User = ServiceFactory.GetChildOf(typeof(IDao_User)) as IDao_User;
             _Dao_Employee_Attendance = ServiceFactory.GetChildOf(typeof(IDao_Employee_Attendance)) as IDao_Employee_Attendance;
 
-            TemporarySaveEmployeeAccount = new RelayCommand(_=>OnTemporarySaveEmployeeAccount());
+            TemporarySaveEmployeeAccount = new RelayCommand(_ => OnTemporarySaveEmployeeAccount());
             SaveEmployeeInfoAndAccount = new RelayCommand(_ => OnSaveEmployeeInfoAndAccount());
             ConfirmDeleteCommand = new RelayCommand(_ => OnConfirmDelete());
             EmployeeClickCommand = new RelayCommand<employeeInfo>(OnEmployeeClick);
             CheckInCommand = new RelayCommand(_ => OnCheckIn());
             CheckOutCommand = new RelayCommand(_ => OnCheckOut());
+            UpdateEmployeeInfoCommand = new RelayCommand(_ => OnUpdateInfo());
 
             NewEmployee = new Model.User();
             NewEmployeeInfo = new employeeInfo();
@@ -153,7 +156,8 @@ namespace POS_App.ViewModel
         {
             ErrorHandling.ErrorMessage = "";
             SelectedEmployee = selectedEmployee;
-            var(total_working_days, total_working_hours) = _Dao_Employee_Attendance.GetEmployeeAttendence(selectedEmployee.User_Id);
+           
+            var (total_working_days, total_working_hours) = _Dao_Employee_Attendance.GetEmployeeAttendence(selectedEmployee.User_Id);
             var employeeAttend = _Dao_Employee_Attendance.FindEmployeeAttendanceByUser_IdToday(SelectedEmployee.User_Id);
             if (employeeAttend != null)
             {
@@ -169,15 +173,15 @@ namespace POS_App.ViewModel
                     TotalHours = total_working_hours
                 };
             }
+            CheckAccountInfo.ErrorMessage = "";
+            CheckEmployeeInfo.ErrorMessage = "";
+            newEmployeePosition=selectedEmployee.Position;
         }
         public void LoadData()
         {
-            var (items,count) = _Dao_Employee_Information.GetEmployees();
+            var (items, count) = _Dao_Employee_Information.GetEmployees();
             TotalEmployees = count;
             Employees = new ObservableCollection<employeeInfo>(items);
-            foreach (employeeInfo item in items) {
-                Debug.WriteLine(item.FullName);
-            }
         }
 
         private void PerformSearch()
@@ -245,13 +249,19 @@ namespace POS_App.ViewModel
                 IsCheckAccount = false;
                 return;
             }
-            if(NewEmployee.Role!= "employee" && NewEmployee.Role != "manager")
+
+            if (NewEmployee.Role != "employee" && NewEmployee.Role != "manager")
             {
                 CheckAccountInfo.ErrorMessage = "Position must be 'employee' or 'manager'.";
                 IsCheckAccount = false;
                 return;
             }
-
+            if (UserRole == "manager" && NewEmployee.Role == "manager")
+            {
+                CheckAccountInfo.ErrorMessage = "You don't have permision to create another manager account.";
+                IsCheckAccount = false;
+                return;
+            }
             IsCheckAccount = true;
             NewEmployeeInfo.FullName = NewEmployee.FirstName + " " + NewEmployee.LastName;
             CheckAccountInfo.ErrorMessage = "";
@@ -262,7 +272,7 @@ namespace POS_App.ViewModel
             IsCheckEmployeeInfo = false;
             var validations = new List<(string FieldValue, string ErrorMessage)>
             {
-                (NewEmployeeInfo.FullName, "Email cannot be blank."),
+                (NewEmployeeInfo.FullName, "Full Name cannot be blank."),
                 (NewEmployeeInfo.PhoneNumber, "Phone number cannot be blank."),
                 (NewEmployeeInfo.Gender, "Gender cannot be blank."),
             };
@@ -279,7 +289,7 @@ namespace POS_App.ViewModel
             if (!ValidatorEmail.IsValidEmail(NewEmployee.Email))
             {
                 CheckEmployeeInfo.ErrorMessage = "Please enter a valid email address.";
-      
+
                 return;
             }
 
@@ -288,18 +298,23 @@ namespace POS_App.ViewModel
             if (NewEmployeeInfo.Position != "employee" && NewEmployeeInfo.Position != "manager")
             {
                 CheckEmployeeInfo.ErrorMessage = "Position must be 'employee' or 'manager'.";
-   
+
+                return;
+            }
+            if (UserRole == "manager" && NewEmployeeInfo.Position == "manager")
+            {
+                CheckEmployeeInfo.ErrorMessage = "You don't have permision to create another manager account.";
                 return;
             }
 
             if (NewEmployeeInfo.Gender != "Male" && NewEmployeeInfo.Gender != "Female" && NewEmployeeInfo.Gender != "Other")
             {
                 CheckEmployeeInfo.ErrorMessage = "Gender must be 'Male' or 'Female' or 'Other'.";
- 
+
                 return;
             }
 
-           
+
 
             string salt = genSalt.GenSalt(50);
             NewEmployee.Salt = salt;
@@ -309,7 +324,7 @@ namespace POS_App.ViewModel
                 NewEmployeeInfo.User_Id = _Dao_User.CreateUser(NewEmployee);
             } catch {
                 CheckEmployeeInfo.ErrorMessage = "An error occurred while creating your account. Please try again.";
-       
+
                 return;
             }
 
@@ -320,12 +335,75 @@ namespace POS_App.ViewModel
                 CheckEmployeeInfo.ErrorMessage = "Some required fields are missing. Please complete all the fields and try again.";
                 return;
             }
-           
+
             IsCheckEmployeeInfo = true;
             CheckEmployeeInfo.ErrorMessage = "";
             LoadData();
         }
 
+        private void OnUpdateInfo()
+        {
+            
+            if(SelectedEmployee == null)
+            {
+                CheckEmployeeInfo.ErrorMessage = "Please select an employee.";
+                return;
+            }
+
+            IsCheckEmployeeInfo = false;
+            var validations = new List<(string FieldValue, string ErrorMessage)>
+            {
+                (SelectedEmployee.FullName, "Full Name cannot be blank."),
+                (SelectedEmployee.PhoneNumber, "Phone number cannot be blank."),
+                (SelectedEmployee.Gender, "Gender cannot be blank."),
+            };
+
+            foreach (var (fieldValue, errorMessage) in validations)
+            {
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    CheckEmployeeInfo.ErrorMessage = errorMessage;
+                    return;
+                }
+            }
+            if (SelectedEmployee.Gender != "male" && SelectedEmployee.Gender != "female" && SelectedEmployee.Gender != "other")
+            {
+                CheckEmployeeInfo.ErrorMessage = "Gender must be 'Male' or 'Female' or 'Other'.";
+
+                return;
+            }
+
+            Debug.WriteLine(newEmployeePosition);
+          
+            if (SelectedEmployee.Position != newEmployeePosition && UserRole != "admin")
+            {
+                CheckEmployeeInfo.ErrorMessage = "You don't have permission to change the position.";
+                return;
+            }
+            
+            if (SelectedEmployee.Position != "employee" && SelectedEmployee.Position != "manager")
+            {
+                CheckEmployeeInfo.ErrorMessage = "Position must be 'employee' or 'manager'.";
+
+                return;
+            }
+
+            try
+            {
+                _Dao_Employee_Information.UpdateEmployeeInfo(SelectedEmployee);
+                _Dao_User.UpdateUserRole(SelectedEmployee.User_Id, SelectedEmployee.Position);
+                SelectedEmployee = null;
+                IsCheckEmployeeInfo = true;
+                LoadData();
+            }
+            catch
+            {
+                CheckEmployeeInfo.ErrorMessage = "Some required fields are missing. Please complete all the fields and try again.";
+                SelectedEmployee = null;
+                return;
+            }
+            
+        }    
         private void OnCheckIn() {
             ErrorHandling.ErrorMessage = "";
             if (SelectedEmployee == null)
@@ -379,6 +457,11 @@ namespace POS_App.ViewModel
         {
             if (SelectedEmployee != null)
             {
+                if(UserRole == "manager" && SelectedEmployee.Position == "manager")
+                {
+                    ErrorHandling.ErrorMessage = "You don't have permision to delete another manager account.";
+                    return;
+                }
                 _Dao_User.DeleteUserById(SelectedEmployee.User_Id);
                 SelectedEmployeeAttend = new employeeAttendance();
                 SelectedEmployee=new employeeInfo();

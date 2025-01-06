@@ -12,5 +12,6 @@ public interface IDao_User
     User FindUserByEmail(string email);
     int CreateUser(User user);
     void DeleteUserById(int id);
+    void UpdateUserRole(int User_id, string role);
 }
 

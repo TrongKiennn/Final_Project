@@ -92,7 +92,7 @@ public class Dao_Events : IDao_Events
                 updateCommand.ExecuteNonQuery();
             }
 
-            var selectSql = "SELECT * FROM events WHERE status != 'cancel' ORDER BY date ASC;";
+            var selectSql = "SELECT * FROM events WHERE status NOT IN ('cancel', 'complete') ORDER BY date ASC;";
             using (var selectCommand = new MySqlCommand(selectSql, connection))
             using (var reader = selectCommand.ExecuteReader())
             {

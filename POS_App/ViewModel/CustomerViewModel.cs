@@ -135,6 +135,7 @@ namespace POS_App.ViewModel
             set => SetProperty(ref _checkCusInfo, value);
         }
         public bool isCheck = false;
+        public bool isManagerOrAdmin = false;
         public CustomerViewModel()
         {
             _Dao_Customer = ServiceFactory.GetChildOf(typeof(IDao_Customer)) as IDao_Customer;
@@ -152,10 +153,24 @@ namespace POS_App.ViewModel
                 UserRole = localSettings.Values["Role"] as string;
             }
             LoadData();
+            
             NewCustomer = new Model.Customer();
             CheckCusInfo = new ErrorHandling();
+
+            
         }
 
+        public void checkRole()
+        {
+            if (UserRole == "Manager" || UserRole == "Admin")
+            {
+                isManagerOrAdmin = true;
+                return;
+            }
+            CheckCusInfo.ErrorMessage = "You don't have permission to go to this!";
+
+
+        }
         private void OnCustomerClick(Model.Customer selectedCustomer)
         {
             SelectedCustomer = selectedCustomer;

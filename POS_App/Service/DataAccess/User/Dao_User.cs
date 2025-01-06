@@ -98,7 +98,48 @@ public class Dao_User : IDao_User
         }
     }
 
+    public void UpdateUserRole(int User_id, string role)
+    {
+        Debug.WriteLine("User_id: " + User_id);
+        Debug.WriteLine("Role: " + role);
+        try
+        {
+            var connectionString = GetConnectionString();
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
 
+                var sql = @"UPDATE users 
+                        SET role = @role 
+                        WHERE id = @id";
+
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@id", User_id);
+                    command.Parameters.AddWithValue("@role", role);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Employee information updated successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No employee found with the given ID.");
+                    }
+                }
+            }
+        }
+        catch (MySqlException ex)
+        {
+            Console.WriteLine($"MySQL error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"General error: {ex.Message}");
+        }
+    }
     public void DeleteUserById(int id)
     {
         try

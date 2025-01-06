@@ -14,7 +14,7 @@ exports.up = async function(knex) {
             last_name varchar(50) NOT NULL,
             first_name varchar(50) NOT NULL,
             phone varchar(20) DEFAULT NULL,
-            role enum('employee', 'manager') NOT NULL DEFAULT 'employee',
+            role enum('employee', 'manager', 'admin') NOT NULL DEFAULT 'employee',
             avatar json DEFAULT NULL,
             status int NOT NULL DEFAULT '1',
             created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,

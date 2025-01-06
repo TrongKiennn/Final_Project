@@ -123,7 +123,7 @@ namespace POS_App.ViewModel
 
         private void OnConfirmDelete()
         {
-            if (UserRole == "manager")
+            if (UserRole == "manager"  || UserRole == "admin")
             {
                 if (SelectedIngredient != null)
                 {
@@ -140,7 +140,7 @@ namespace POS_App.ViewModel
 
         private void OnContinueToUpdate()
         {
-            if (UserRole == "manager")
+            if (UserRole == "manager"  || UserRole == "admin")
             {
                
                 if (SelectedIngredient != null)
@@ -169,7 +169,7 @@ namespace POS_App.ViewModel
 
         private void OnContinueToCreate()
         {
-            if (UserRole == "manager")
+            if (UserRole == "manager"  || UserRole == "admin")
             {
                 var findIngredient=_Dao_Ingredients.GetIngredientByName(NewIngredient.name);
                 if (findIngredient != null)

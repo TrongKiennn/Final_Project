@@ -88,29 +88,20 @@
                     FontSize="16"/>
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="30">
+            <StackPanel  HorizontalAlignment="Center" Margin="30">
                 <Button x:Name="loginButton" Content="Login" 
                         FontSize="16" 
                         FontWeight="Bold" 
                         CornerRadius="20"
                         Foreground="Black"
                         Background="#D6557E" 
-                        Width="120" 
+                        Width="140" 
                         Height="40" 
                         Margin="30 0"
                         Command="{Binding LoginCommand}"  
                         CommandParameter="{Binding LoginParams}"/>
                    
-                    <Button x:Name="signUpButton" Content="Sign up"  
-                        FontSize="16" 
-                        FontWeight="Bold" 
-                        CornerRadius="20" 
-                        Foreground="Black"
-                        Background="#D6557E" 
-                        Width="120" 
-                        Height="40" 
-                        Margin="30 0"
-                        Click="registerButtonClick"/>
+                   
             </StackPanel>
         </StackPanel>
     </StackPanel>

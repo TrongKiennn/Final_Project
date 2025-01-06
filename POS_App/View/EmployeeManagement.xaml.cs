@@ -100,6 +100,26 @@ namespace POS_App.View
         {
             DefaultStatePanel.Visibility = Visibility.Visible;
             createAccountSuccessful.Visibility = Visibility.Collapsed;
+            ViewFullInformation.Visibility = Visibility.Collapsed;
+            updateAccountSuccessful.Visibility = Visibility.Collapsed;
+        }
+
+        private void OnViewfullInfoClicked(object sender, RoutedEventArgs e)
+        {
+            DefaultStatePanel.Visibility = Visibility.Collapsed;
+            ViewFullInformation.Visibility = Visibility.Visible;
+        }
+
+        private void OnUpdateEmployeeInfoButtonClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.UpdateEmployeeInfoCommand.Execute(null);
+
+            if (ViewModel.IsCheckEmployeeInfo)
+            {
+                ViewFullInformation.Visibility = Visibility.Collapsed;
+                updateAccountSuccessful.Visibility = Visibility.Visible;
+            }
+           
         }
 
         private async void OnContinueToDeleteClicked(object sender, RoutedEventArgs e)

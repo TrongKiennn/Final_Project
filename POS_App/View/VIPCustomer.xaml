@@ -130,8 +130,10 @@
                         <TextBox PlaceholderText="Enter phone number" Text="{Binding NewCustomer.PhoneNumber, Mode=TwoWay}" Margin="0,5"/>
                         <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
                         <TextBox PlaceholderText="Enter email" Text="{Binding NewCustomer.Email, Mode=TwoWay}" Margin="0,5"/>
-                        <TextBlock Text="Point:" Foreground="#FFFFD9" Margin="0,5"/>
-                        <TextBox PlaceholderText="Enter point" Text="{Binding NewCustomer.Point}" Margin="0,5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                            <TextBlock Text="{Binding SelectedCustomer.Point}" Foreground="#FFFFD9" Margin="5,5"/>
+                        </StackPanel>
 
                         <StackPanel Background="#ffffd9"  Margin="0,15,0,0" CornerRadius="8">
                             <TextBlock Text="{Binding CheckCusInfo.ErrorMessage}" Foreground="#D9534F" TextAlignment="Center" FontWeight="Bold" FontSize="16" Padding="0,5" TextWrapping="Wrap"/>
@@ -177,8 +179,12 @@
                         <TextBox PlaceholderText="Enter phone mumber" Text="{Binding SelectedCustomer.PhoneNumber, Mode=TwoWay}" Margin="0,5"/>
                         <TextBlock Text="Email:" Foreground="#FFFFD9" Margin="0,5"/>
                         <TextBox PlaceholderText="Enter email" Text="{Binding SelectedCustomer.Email, Mode=TwoWay}" Margin="0,5"/>
-                        <TextBlock Text="Point:" Foreground="#FFFFD9" Margin="0,5"/>
-                        <TextBox PlaceholderText="Enter point" Text="{Binding SelectedCustomer.Point}" Margin="0,5"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Point:" Foreground="#FFFFD9" Margin="0,5"/>
+                            <TextBlock Text="{Binding SelectedCustomer.Point}" Foreground="#FFFFD9" Margin="5,5"/>
+                        </StackPanel>
+                       
 
                         <StackPanel Background="#ffffd9"  Margin="0,15,0,0" CornerRadius="8">
                             <TextBlock Text="{Binding CheckCusInfo.ErrorMessage}" Foreground="#D9534F" TextAlignment="Center" FontWeight="Bold" FontSize="16" Padding="0,5" TextWrapping="Wrap"/>

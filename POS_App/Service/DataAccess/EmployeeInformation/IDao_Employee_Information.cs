@@ -18,5 +18,6 @@ public interface IDao_Employee_Information
     //employeeInfo GetEmployeeByName(string EmployeeName);
 
     public void CreateEmployeeInfo(employeeInfo employeeInfo);
+    public void UpdateEmployeeInfo(employeeInfo employeeInfo);
 
 }
