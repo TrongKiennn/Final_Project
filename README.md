@@ -207,8 +207,8 @@ Task Assignment Table:
    - Each function and class includes comments detailing its functionality for improved code readability.
  
 - **Advantage Topic**
-   - Use NavigationView to navigate between pages.
-   - Export bills to PDF files.
+   - Update table status in real-time: Automatically change the table's status to "observe" one hour before an event.
+   - Upload image files to Supabase, retrieve their URLs by calling the Supabase API.
 
 - **Teamwork - Git Flow (10%)**  
    - The team uses **GitHub** and **Trello** to organize and track development:
