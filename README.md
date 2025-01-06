@@ -158,7 +158,7 @@ Task Assignment Table:
 Link Video Demo Milestone 2: 
 
 ### Milestone 03: Final Release (Weeks 12–15)
-The team has completed 7 hours of work for **Milestone 2**, focusing on two main features:
+The team has completed 7 hours of work for **Milestone 3**, focusing on two main features:
 
 1. **Suggestions for drink recipes (1 hours):** After completing the order, you can click on the suggestions to display the drink recipes in the order, making it convenient for staff, especially new employees, who might struggle to remember too many recipes.
 2. Employee Management (1 hour)
@@ -191,15 +191,13 @@ Both features have been thoroughly tested and are operating as expected, meeting
 Task Assignment Table:
 | 22120151                                                                                                                             | 22120167                                                                                                                             |
 |----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| FrontEnd for OrderPage                                                                                                                | BackEnd for OrderPage                                                                                                                 |
-| navigationView                                                                                                                        | filter                                                                                                                                |
-| Items view                                                                                                                            | search                                                                                                                                |
-| searchView                                                                                                                            | display items                                                                                                                         |
-| filterView                                                                                                                            | save items into database                                                                                                              |
-| popup for continue to payment                                                                                                         | handle popup for custom an item when order                                                                                            |
-| popup for custom an item when order                                                                                                   | handle popUp for continue payment                                                                                                     |
-| Content for Record                                                                                                                    | Video Record                                                                                                                          |
-| Unit test                                                                                                                             | Unit test                                                                                                                             |
+| UI for Employee management                                                                                                                | Handle backend employee management                                                                                                               |
+| UI for VIP customer page                                                                                                                       | Handle backend VIP customer page                                                                                                                                |
+| UI for Update Drink                                                                                                                            | Handle Update Drink                                                                                                                                |
+| UI for Statistic Page                                                                                                                            | Handle Statistic Page                                                                                                                         |
+|                                                                                                                             | Implement avantage feature                                                                                                              |
+| Menual testing                                                                                                         |   Menual testing                                                                                          |
+
 - **UI/UX (20%)**  
    - The interface should be cleaned and logically organized.
    - When click on an items, If user does not choose any custom items, the default will be seted for this items.
