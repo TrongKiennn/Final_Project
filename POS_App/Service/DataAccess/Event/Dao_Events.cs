@@ -1,9 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Session;
 using MySqlX.XDevAPI.Common;
 using POS_App.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,21 +78,113 @@ public class Dao_Events : IDao_Events
         }
     }
 
-    //public async Task UpdateTableStatusAsync(Table table)
-    //{
-    //    using (var connection = new MySqlConnection(GetConnectionString()))
-    //    {
-    //        await connection.OpenAsync();
-    //        string query = "UPDATE tables SET status = @status WHERE id = @id";
+    public List<Event> GetAllEvent()
+    {
+        var result = new List<Event>();
+        var connectionString = GetConnectionString();
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
 
-    //        using (var command = new MySqlCommand(query, connection))
-    //        {
-    //            command.Parameters.AddWithValue("@status", table.status);
-    //            command.Parameters.AddWithValue("@id", table.id);
-    //            await command.ExecuteNonQueryAsync();
-    //        }
-    //    }
-    //}
+            var updateSql = "UPDATE events SET status = 'cancel' WHERE DATE(date) < CURDATE();";
+            using (var updateCommand = new MySqlCommand(updateSql, connection))
+            {
+                updateCommand.ExecuteNonQuery();
+            }
+
+            var selectSql = "SELECT * FROM events WHERE status != 'cancel' ORDER BY date ASC;";
+            using (var selectCommand = new MySqlCommand(selectSql, connection))
+            using (var reader = selectCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    DateTime dateTime = reader.GetDateTime(reader.GetOrdinal("date"));
+                    Event Event = new Event
+                    {
+                        Id = reader.GetInt32("id"),
+                        Name = reader.GetString("customer_name"),
+                        PhoneNumber = reader.GetString("phone_number"),
+                        Email = reader.GetString("email"),
+                        TableNumber = reader.GetInt32("table_number"),
+                        Note = reader.GetString("note"),
+                        Date = dateTime.ToString("yyyy-MM-dd"),
+                        Time = dateTime.ToString("HH:mm:ss")
+                    };
+                    result.Add(Event);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public void AddEvent(Event Event)
+    {
+        try
+        {
+            string dateTimeString = $"{Event.Date} {Event.Time}";
+            DateTime eventDateTime = DateTime.ParseExact(dateTimeString, "yyyy-M-d H:mm:ss", CultureInfo.InvariantCulture);
+            var connectionString = GetConnectionString();
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "INSERT INTO events (event_name,customer_name,phone_number ,email ,date,table_number,note ) VALUES (@eventName,@customerName, @phoneNumber, @Email, @Date, @tableNumber,@Note)";
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@eventName", Event.Type);
+                    cmd.Parameters.AddWithValue("@customerName", Event.Name);
+                    cmd.Parameters.AddWithValue("@phoneNumber", Event.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@Email", Event.Email);
+                    cmd.Parameters.AddWithValue("@Date", eventDateTime);
+                    cmd.Parameters.AddWithValue("@tableNumber", Event.TableNumber);
+                    cmd.Parameters.AddWithValue("@Note", Event.Note);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }catch(Exception ex)
+        {
+       
+            Console.WriteLine($"Error adding event: {ex.Message}");
+            throw;
+        }
+    }
+
+    public Event GetEventById(int id)
+    {
+        Event Event = null;
+        var connectionString = GetConnectionString();
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
+
+            var query = "SELECT * FROM events WHERE id = @id";
+            using (var command = new MySqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        DateTime dateTime = reader.GetDateTime(reader.GetOrdinal("date"));
+                        Event = new Event
+                        {
+                            Id = reader.GetInt32("id"),
+                            Name = reader.GetString("customer_name"),
+                            PhoneNumber = reader.GetString("phone_number"),
+                            Email = reader.GetString("email"),
+                            TableNumber = reader.GetInt32("table_number"),
+                            Note = reader.GetString("note"),
+                            Date = dateTime.ToString("yyyy-MM-dd"),
+                            Time = dateTime.ToString("HH:mm:ss")
+                        };
+                    }
+                }
+            }
+        }
+
+        return Event;
+    }
 
     private static string GetConnectionString()
     {

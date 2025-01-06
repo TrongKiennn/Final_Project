@@ -52,7 +52,7 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
 
     public ObservableCollection<IngredientOfDrinkRecipe> ingredientOfDrinkRecipes { get; set; }
 
-    private Drinks _selectedDrink = new Drinks();
+    private Drinks _selectedDrink;
     public Drinks SelectedDrink
     {
         get => _selectedDrink;
@@ -90,6 +90,21 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
     {
         get => _userRole;
         set => SetProperty(ref _userRole, value);
+    }
+
+    private string _searchText;
+    public string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            if (_searchText != value)
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                PerformSearch();
+            }
+        }
     }
     public DrinkIngredientViewModel()
     { 
@@ -166,7 +181,7 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
     public void LoadData()
     {
       
-            var items= _dao.GetDrinkWithoutFilter();
+            var items= _dao.GetDrinkWithFilter("");
 
             if (items == null || !items.Any())
             {
@@ -178,6 +193,20 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
             }
     }
 
+    private void PerformSearch()
+    {
+        if (string.IsNullOrWhiteSpace(SearchText))
+        {
+
+            LoadData();
+        }
+        else
+        {
+            var filteredDrink = _dao.GetDrinkWithFilter(SearchText);
+            Drinks = new ObservableCollection<Drinks>(filteredDrink);
+        }
+    }
+
     private void OnIngredientClick(IngredientOfDrinkRecipe clickedIngredientOfDrinkRecipe)
     {
         SelectedIngredientOfDrinkRecipe = clickedIngredientOfDrinkRecipe;
@@ -185,12 +214,19 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
     }
     private void OnConfirmDelete()
     {
-        if (UserRole != "admin")
+        if (UserRole == "manager")
         {
             if (SelectedIngredientOfDrinkRecipe != null)
             {
                 _Dao_Drink_Ingredient.DeleteDrinkIngredient(SelectedIngredientOfDrinkRecipe.DrinkId, SelectedIngredientOfDrinkRecipe.IngredientId);
                 LoadDrinkRecipe();
+                ErrorUpdateOrDelete.ErrorMessage = "";
+                SelectedDrink = null;
+                SelectedIngredientOfDrinkRecipe = null;
+            }
+            else
+            {
+                ErrorUpdateOrDelete.ErrorMessage = "You haven't chosen any ingredient yet.";
             }
         }
         else
@@ -201,8 +237,13 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
 
     private void OnContinueToUpdate()
     {
-        if (UserRole != "admin")
+        if (UserRole == "manager")
         {
+            if(SelectedDrink == null)
+            {
+                ErrorUpdateOrDelete.ErrorMessage = "You haven't chosen a drink yet.";
+                return;
+            }
             if (SelectedIngredientOfDrinkRecipe != null)
             {
                 if (SelectedIngredientOfDrinkRecipe.Quantity < 0)
@@ -211,7 +252,9 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
                     return;
                 }
                 _Dao_Drink_Ingredient.UpdateQuantityOfDrinkIngredient(SelectedIngredientOfDrinkRecipe.DrinkId, SelectedIngredientOfDrinkRecipe.IngredientId, SelectedIngredientOfDrinkRecipe.Quantity);
-                SelectedIngredientOfDrinkRecipe = new IngredientOfDrinkRecipe();
+                SelectedIngredientOfDrinkRecipe = null;
+                SelectedDrink = null;
+                ErrorUpdateOrDelete.ErrorMessage = "";
                 LoadDrinkRecipe();
             }
         }
@@ -224,8 +267,13 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
 
     private void OnContinueToCreate()
     {
-        if (UserRole != "admin")
+        if (UserRole == "manager")
         {
+            if(SelectedDrink == null)
+            {
+                ErrorCreate.ErrorMessage = "You haven't chosen a drink yet.";
+                return;
+            }
             var findIngredient = _Dao_Ingredients.GetIngredientByName(NewIngredientOfDrinkRecipe.Name);
             if (findIngredient == null)
             {
@@ -249,7 +297,9 @@ public partial class DrinkIngredientViewModel : INotifyPropertyChanged
                     _Dao_Drink_Ingredient.CreateDrinkIngredient(NewIngredientOfDrinkRecipe.DrinkId, findIngredient.ingredient_id, NewIngredientOfDrinkRecipe.Quantity);
                     LoadDrinkRecipe();
                 }
-                NewIngredientOfDrinkRecipe = new IngredientOfDrinkRecipe();
+                NewIngredientOfDrinkRecipe =null;
+                SelectedDrink = null;
+                ErrorCreate.ErrorMessage = "";
             }
 
             

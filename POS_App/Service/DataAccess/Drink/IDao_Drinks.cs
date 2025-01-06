@@ -21,9 +21,13 @@ public interface IDao_Drinks
          string typeName = null
     );
 
-    List<Drinks> GetDrinkWithoutFilter();
-    public void UpdateDrinkStatus(int drinkId, string status);
+    List<Drinks> GetDrinkWithFilter(string searchTest);
 
+    Drinks GetDrinkByName(string drinkName);
+    public void UpdateDrinkStatus(int drinkId, string status);
+    public void SaveDrink(Drinks drink);
+    public void UpdateDrink(Drinks drink);
+    public void DeleteDrink(int drinkId);
 }
 
 

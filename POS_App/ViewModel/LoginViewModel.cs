@@ -59,7 +59,17 @@ public class LoginViewModel
         if (loginParams != null)
         {
             string email = loginParams.Username;
-               
+            if(string.IsNullOrEmpty(email))
+            {
+                loginParams.Noti = "Please enter your email!";
+                return;
+            }
+            string password = loginParams.Password;
+            if (string.IsNullOrEmpty(password))
+            {
+                loginParams.Noti = "Please enter your password!";
+                return;
+            }
 
             var connection = _dbManager.GetConnection();
             if (connection != null)
@@ -85,11 +95,13 @@ public class LoginViewModel
 
                 if (user == null)
                 {
-                    loginParams.Noti = "UserName or Password is incorrect!";
+                    loginParams.Noti = "Email or Password is incorrect!";
                 }
                 else
                 {
-                    string password = loginParams.Password;
+                    
+                
+
 
                     string passHashed = Hasher.Hash(password + user.Salt);
 
@@ -106,7 +118,7 @@ public class LoginViewModel
                     }
                     else
                     {
-                        loginParams.Noti = "UserName or Password is incorrect!";
+                        loginParams.Noti = "Email or Password is incorrect!";
                     }
 
                 }

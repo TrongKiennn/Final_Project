@@ -119,7 +119,7 @@
 
                 <Border Grid.Row="2" Grid.Column="0" Background="#ffffd9" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Event Day (yyyy-mm-dd)" Foreground="Black" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="Event Day (yyyy-m-d)" Foreground="Black" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="0,5,0,0"/>
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                  Name="dateTextBox"
                  Text="{Binding EventParams.Date, Mode=TwoWay}"
@@ -130,7 +130,7 @@
 
                 <Border Grid.Row="2" Grid.Column="1" Background="#ffffd9" Width="Auto" Height="100">
                     <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,0">
-                        <TextBlock Text="Time" Foreground="Black" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="Time (H:mm:ss)" Foreground="Black" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="0,5,0,0"/>
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="0,5,0,0" Height="50" CornerRadius="8" Background="#f0daae"
                  Name="timeTextBox"
                  Text="{Binding EventParams.Time, Mode=TwoWay}"
@@ -174,10 +174,9 @@
     Command="{Binding SaveCommand}"  
     CommandParameter="{Binding EventParams}"
 />
-                <Button Grid.Row="4" Grid.Column="0" Background="#f0daae" Margin="10" Width="170" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BackToDashBoardButton_Click">
-                    <TextBlock Text="Back to DashBoard" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </Button>
-
+                <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Background="#f0daae"  Margin="10" CornerRadius="8">
+                    <TextBlock Text="{Binding CheckEventInfo.ErrorMessage}" Foreground="#D9534F" TextAlignment="Center" FontWeight="Bold" FontSize="16" Padding="0,5" Margin="0,5,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
             </Grid>
 
             <Grid x:Name="EventView" Visibility="{Binding IsEventViewVisible, Converter={StaticResource BooleanToVisibilityConverter}}">

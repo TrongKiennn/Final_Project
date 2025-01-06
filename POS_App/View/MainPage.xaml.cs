@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using POS_App.View;
+using Windows.Networking.Proximity;
 using Windows.Storage;
 
 namespace POS_App
@@ -18,39 +19,78 @@ namespace POS_App
         private async void NavigationView_SelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
         {
             var selectedItem = e.SelectedItem as NavigationViewItem;
+            string UserRole = "";
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values.ContainsKey("Role"))
+            {
+                UserRole = localSettings.Values["Role"] as string;
+            }
 
             if (selectedItem != null)
             {
                 string content = selectedItem.Content.ToString();
 
-                switch (content)
+                if (UserRole == "manager")
                 {
-                    case "Order":
-                        MainFrame.Navigate(typeof(OrderPage));
-                        break;
-                    case "Drink IngredientPage":
-                        MainFrame.Navigate(typeof(DrinkIngredientPage));
-                        break;
-                    case "Material Management":
-                        MainFrame.Navigate(typeof(MaterialManagement));
-                        break;
-                    case "Event Scheduling":
-                        MainFrame.Navigate(typeof(EventScheduling)); 
-                        break;
-                    case "Statistics":
-                        MainFrame.Navigate(typeof(Statistic));
-                        break;
-                    case "Table Manager":
-                        MainFrame.Navigate(typeof(TableManagement));
-                        break;
-                    case "Employee Management":
-                        MainFrame.Navigate(typeof(EmployeeManagement));
-                        break;
-                    case "VIP":
-                        MainFrame.Navigate(typeof(VIPCustomer));
-                        break;
-                    default:
-                        break;
+                    switch (content)
+                    {
+                        case "Order":
+                            MainFrame.Navigate(typeof(OrderPage));
+                            break;
+                        case "Drink IngredientPage":
+                            MainFrame.Navigate(typeof(DrinkIngredientPage));
+                            break;
+                        case "Material Management":
+                            MainFrame.Navigate(typeof(MaterialManagement));
+                            break;
+                        case "Event Scheduling":
+                            MainFrame.Navigate(typeof(EventScheduling));
+                            break;
+                        case "Statistics":
+                            MainFrame.Navigate(typeof(Statistic));
+                            break;
+                        case "Table Manager":
+                            MainFrame.Navigate(typeof(TableManagement));
+                            break;
+                        case "Employee Management":
+                            MainFrame.Navigate(typeof(EmployeeManagement));
+                            break;
+                        case "VIP":
+                            MainFrame.Navigate(typeof(VIPCustomer));
+                            break;
+                        case "Update Menu":
+                            MainFrame.Navigate(typeof(UpdateProduct));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (content)
+                    {
+                        case "Order":
+                            MainFrame.Navigate(typeof(OrderPage));
+                            break;
+                        case "Drink IngredientPage":
+                            MainFrame.Navigate(typeof(DrinkIngredientPage));
+                            break;
+                        case "Event Scheduling":
+                            MainFrame.Navigate(typeof(EventScheduling));
+                            break;
+                        case "Material Management":
+                            MainFrame.Navigate(typeof(MaterialManagement));
+                            break;
+                        case "Table Manager":
+                            MainFrame.Navigate(typeof(TableManagement));
+                            break;
+                        case "VIP":
+                            MainFrame.Navigate(typeof(VIPCustomer));
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }

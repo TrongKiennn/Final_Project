@@ -13,7 +13,7 @@ public class Drinks : INotifyPropertyChanged
     public string name { get; set; }
     public decimal price { get; set; }
     public string imageUrl { get; set; }
-
+    public string drinkType { get; set; }
     private string _status { get; set; }
 
     public string status

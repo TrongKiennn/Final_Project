@@ -12,5 +12,7 @@ public interface IDao_Events
 
     public Task<List<Event>> GetEventsWithinTimeFrameAsync(DateTime from, DateTime to) ;
     public Task UpdateEventStatus(int eventId, string status);
-
+    public List<Event> GetAllEvent();
+    public void AddEvent(Event Event); 
+    public Event GetEventById(int id);
 }

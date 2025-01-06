@@ -182,6 +182,17 @@ namespace POS_App.ViewModel
                     ErrorUpdateOrDelete.ErrorMessage = "Quantity must be greater than 0.";
                     return;
                 }
+                if(NewIngredient.name == null || NewIngredient.name == "")
+                {
+                    ErrorCreate.ErrorMessage = "Ingredient name cannot be blank.";
+                    return;
+                }
+                if(NewIngredient.unit == null || NewIngredient.unit == "")
+                {
+                    ErrorCreate.ErrorMessage = "Unit cannot be blank.";
+                    return;
+                }
+
                 if (NewIngredient != null)
                 {
                     _Dao_Ingredients.CreateIngredient(NewIngredient);

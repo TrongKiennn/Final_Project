@@ -94,7 +94,7 @@
         </Style>
 
         <localConverters:StatusDrinkToColorConverter x:Key="StatusDrinkToColorConverter"/>
-        
+        <localConverters:DecimalToStringConverter x:Key="DecimalToStringConverter"/>
     </Page.Resources>
 
 
@@ -312,7 +312,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
         </ContentDialog>
 
         <ContentDialog x:Name="UnAvailableOrderDetailDialog"
-                Title="Hết nguyên liệu để làm món!"
+                Title="Not enough igredient to make drink!"
                 PrimaryButtonText="Cancel">
         </ContentDialog>
 
@@ -336,7 +336,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
               
                 <ToggleSwitch Width="100"  
                              HorizontalAlignment="Right" OnContent="Sort by Name" OffContent="No sort" Foreground="#ffffd9" Toggled="ToggleSwitch_Toggled"/>
-                <Button Content="+" Padding="0" FontSize="25" Width="43" Height="43" CornerRadius="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Click="SwitchToInterfaceB_Click"/>
+                
 
             </StackPanel>
         </Grid>
@@ -349,7 +349,7 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
         <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12" Margin="10,0,0,10" Background="#794730" 
                   Name="optionsStackPanel">
             <!--<StackPanel >-->
-                <Grid x:Name="InterfaceA" Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12"  Background="#794730" 
+                <Grid  Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="12"  Background="#794730" 
                   >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="9*" />
@@ -435,30 +435,6 @@ FontSize="10" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     
                 </Grid>
 
-            <!--</StackPanel>-->
-            <Grid x:Name="InterfaceB" Visibility="Collapsed" Padding="200, 20, 200, 0">
-                <!-- Product Section -->
-                <StackPanel Orientation="Vertical" Spacing="15">
-                    <!-- Product Name -->
-                    <TextBlock Text="Product Name" FontSize="20" FontWeight="Bold" Foreground="#ffffd9"/>
-                    <TextBox x:Name="ProductName"  HorizontalAlignment="Stretch" PlaceholderText="Enter product name" />
-
-                    <!-- Product Price -->
-                    <TextBlock Text="Product Price" FontSize="16" Foreground="#ffffd9"/>
-                    <TextBox x:Name="ProductPrice"  HorizontalAlignment="Stretch" PlaceholderText="Enter product price" />
-
-                    <!-- Product Image Link -->
-                    <TextBlock Text="Add image of product" FontSize="16" Foreground="#ffffd9"/>
-                    
-                        <!-- Button to add photo -->
-                    <Button Content="Add Photo" HorizontalAlignment="Stretch" Height="30" Click="AddPhotoButton_Click"/>
-
-                    <!-- TextBlock to display the photo name or cancellation message -->
-                    <TextBlock x:Name="textBlock" FontSize="14" Foreground="#794730" VerticalAlignment="Center" Margin="0,10,0,0"/>
-                    <Image Name="SelectedImage" Width="180" Height="180" Stretch="UniformToFill" Visibility="Collapsed" Margin="10"/>
-
-                </StackPanel>
-            </Grid>
         </Grid>
         <!--Display seletedItems and preview Bill [1,2]-->
         <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" Padding="30,0,30,20" Background="#986650">

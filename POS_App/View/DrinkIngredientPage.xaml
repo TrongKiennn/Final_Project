@@ -104,7 +104,7 @@
         </Grid.ColumnDefinitions>
 
         <ContentDialog x:Name="ConfirmDialog"
-             Title="Xác nhận xóa!"
+             Title="Confirm delete!"
              PrimaryButtonText = "Confirm Delete"
              PrimaryButtonCommand="{Binding ConfirmDeleteCommand}"
              SecondaryButtonText = "Cancel"
@@ -128,13 +128,15 @@
 
         <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#794730" CornerRadius="12">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="9*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <TextBox Grid.Row="0" Name="SearchBox" PlaceholderText="Search drink..." FontSize="16" Margin="5" Padding="5"  Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CornerRadius="12" />
+            <Grid Grid.Row="1">
 
 
                 <!-- This place use for display all items of categories-->
-                <GridView Grid.Row="1" Margin="0,20,0,20" ItemsSource="{Binding Drinks}" HorizontalAlignment="Center" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick">
+                <GridView Grid.Row="1" Margin="0,0,0,20" ItemsSource="{Binding Drinks}" HorizontalAlignment="Center" IsItemClickEnabled="True" ItemClick="OnDrinkItemClick">
                     <!-- Wrap items in rows of 3, and ensure they stretch across the available width -->
                     <GridView.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -314,7 +316,7 @@
                             </StackPanel>
 
                             <StackPanel HorizontalAlignment="Stretch">
-                                <TextBlock Text="{Binding ErrorUpdateOrDelete.ErrorMessage, Mode=OneWay}" Foreground="#ff6347" FontWeight="Bold"  VerticalAlignment="Center" Margin="5,15,0,0"/>
+                                <TextBlock Text="{Binding ErrorUpdateOrDelete.ErrorMessage, Mode=OneWay}" Foreground="#ff6347" FontWeight="Bold"  VerticalAlignment="Center" Margin="5,15,0,0" TextWrapping="Wrap"/>
                             </StackPanel>
 
                         </StackPanel>

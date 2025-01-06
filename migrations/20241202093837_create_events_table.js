@@ -10,7 +10,7 @@ exports.up = async function(knex) {
             event_name varchar(50) NOT NULL,
             date datetime NOT NULL,
             customer_name varchar(50) NOT NULL,
-            status ENUM('upcoming', 'complete', 'near_due') DEFAULT 'upcoming',
+            status ENUM('upcoming', 'complete', 'near_due', 'cancle') DEFAULT 'upcoming',
             note varchar(50) DEFAULT 'Không có ghi chú!' COMMENT 'empty',
             email varchar(50) NOT NULL DEFAULT 'null' COMMENT 'empty',
             phone_number varchar(50) NOT NULL DEFAULT 'null' COMMENT 'EMPTY',

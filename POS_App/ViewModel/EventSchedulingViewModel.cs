@@ -21,11 +21,14 @@ using Microsoft.UI.Xaml.Input;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Windows.UI.Text;
 using Microsoft.UI.Text;
+using POS_App.Service.DataAccess;
+using System.Runtime.CompilerServices;
 
 namespace POS_App.ViewModel;
 
 public class EventSchedulingViewModel : INotifyPropertyChanged
 {
+    IDao_Events _Dao_Events;
     public class EventParameters : INotifyPropertyChanged
     {
         public int Id { get; set; }
@@ -49,6 +52,8 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
 
     public ICommand ReturnCommand { get; private set; }
     public ObservableCollection<Grid> Events { get; set; }
+
+    public ObservableCollection<Event> listEvents { get; set; }
 
     public event Action OnEventSchedulingSuccessful;
 
@@ -80,11 +85,17 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         }
     }
 
+    private ErrorHandling _checkEventInfo;
+    public ErrorHandling CheckEventInfo
+    {
+        get => _checkEventInfo;
+        set => SetProperty(ref _checkEventInfo, value);
+    }
+
     public EventSchedulingViewModel()
     {
-        _dbManager = new DatabaseManager();
-
-        EventParams = new EventParameters(); // Khởi tạo LoginParameters
+      
+        EventParams = new EventParameters();
 
         InfoParams = new EventParameters();
 
@@ -93,6 +104,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         ReturnCommand = new RelayCommand(ReturnEventSchedulingPage);
 
         Events = new ObservableCollection<Grid>();
+        _Dao_Events = ServiceFactory.GetChildOf(typeof(IDao_Events)) as IDao_Events;
 
         IsDefaultViewVisible = true;
         IsEventViewVisible = false;
@@ -102,62 +114,100 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
 
     private void ExecuteEvent(object parameter)
     {
+        CheckEventInfo = new ErrorHandling();
 
         Model.Event Event = null;
         var EventParams = parameter as EventParameters;
         if (EventParams != null)
         {
 
-            var connection = _dbManager.GetConnection();
-            if (connection != null)
+            var validations = new List<(string FieldValue, string ErrorMessage)>
             {
+                 (EventParams.Name, "Name cannot be blank."),
+                (EventParams.PhoneNumber, "Phone number cannot be blank."),
+                (EventParams.Email, "Email cannot be blank."),
+                (EventParams.Type, "Main content of event cannot be blank."),
+                (EventParams.Date, "Date cannot be blank."),
+                (EventParams.Time, "Time cannot be blank."),
+            };
 
-                string name = EventParams.Name;
-                string phoneNumber = EventParams.PhoneNumber;
-                string email = EventParams.Email;
-                string type = EventParams.Type;
-                string date = EventParams.Date;
-                string time = EventParams.Time;
-                int tableNumber = EventParams.TableNumber;
-                string note = EventParams.Note;
-                Event = new Model.Event
+            foreach (var (fieldValue, errorMessage) in validations)
+            {
+                if (string.IsNullOrWhiteSpace(fieldValue))
                 {
-                    Name = name,
-                    PhoneNumber = phoneNumber,
-                    Email = email,
-                    Type = type,
-                    Date = date,
-                    Time = time,
-                    TableNumber = tableNumber,
-                    Note = note
-                };
-
-                if(Event.Note == null)
-                {
-                    Event.Note = "Không có ghi chú";
+                    CheckEventInfo.ErrorMessage = errorMessage;
+                    return;
                 }
-
-                string dateTimeString = $"{Event.Date} {Event.Time}";
-                DateTime eventDateTime = DateTime.ParseExact(dateTimeString, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-
-                string query = "INSERT INTO events (event_name,customer_name,phone_number ,email ,date,table_number,note ) VALUES (@eventName,@customerName, @phoneNumber, @Email, @Date, @tableNumber,@Note)";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@eventName", Event.Type);
-                    cmd.Parameters.AddWithValue("@customerName", Event.Name);
-                    cmd.Parameters.AddWithValue("@phoneNumber", Event.PhoneNumber);
-                    cmd.Parameters.AddWithValue("@Email", Event.Email);
-                    cmd.Parameters.AddWithValue("@Date", eventDateTime);
-                    cmd.Parameters.AddWithValue("@tableNumber", Event.TableNumber);
-                    cmd.Parameters.AddWithValue("@Note", Event.Note);
-                    cmd.ExecuteNonQuery();
-                }
-                OnEventSchedulingSuccessful?.Invoke();
-
-                LoadEvents(null);
-                ResetForm(null);
-                connection.Close();
             }
+
+           
+            if (!DateTime.TryParseExact(EventParams.Date, "yyyy-M-d", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+            {
+                CheckEventInfo.ErrorMessage = "Date must be in the format yyyy-M-d.";
+                return;
+            }
+
+
+
+            if (!DateTime.TryParseExact(EventParams.Time, "H:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+            {
+                CheckEventInfo.ErrorMessage = "Time must be in the format H:mm:ss.";
+                return;
+            }
+
+
+          
+            string dateTimeString = $"{EventParams.Date} {EventParams.Time}";
+            DateTime eventDateTime = DateTime.ParseExact(dateTimeString, "yyyy-M-d H:mm:ss", CultureInfo.InvariantCulture);
+
+
+            if (eventDateTime<DateTime.Now)
+            {
+                CheckEventInfo.ErrorMessage = "Date and time must be greater than current date and time.";
+                return;
+            }
+
+            if (EventParams.TableNumber <= 0)
+            {
+                CheckEventInfo.ErrorMessage = "Table number must be greater than 0.";
+                return;
+            }
+
+            string name = EventParams.Name;
+            string phoneNumber = EventParams.PhoneNumber;
+            string email = EventParams.Email;
+            string type = EventParams.Type;
+            string date = EventParams.Date;
+            string time = EventParams.Time;
+            int tableNumber = EventParams.TableNumber;
+            string note = EventParams.Note;
+
+           
+
+            Event = new Model.Event
+            {
+                Name = name,
+                PhoneNumber = phoneNumber,
+                Email = email,
+                Type = type,
+                Date = date,
+                Time = time,
+                TableNumber = tableNumber,
+                Note = note
+            };
+
+            if(Event.Note == null)
+            {
+                Event.Note = "Không có ghi chú";
+            }
+            
+            _Dao_Events.AddEvent(Event);
+            OnEventSchedulingSuccessful?.Invoke();
+
+            LoadEvents(null);
+            ResetForm(null);
+
+            CheckEventInfo = new ErrorHandling();
         }
     }
 
@@ -166,24 +216,15 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         Events.Clear(); 
         try
         {
-            var connection = _dbManager.GetConnection();
-            if (connection != null)
-            {
-                string query = "SELECT * FROM events WHERE status='upcoming' or status='near_due'";
-                using (MySqlCommand cmd = new MySqlCommand(query, connection))
-                {
-                    DataTable dt = new DataTable();
-                    using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
+            var result = _Dao_Events.GetAllEvent();
+            listEvents=new ObservableCollection<Event>(result);
 
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        Grid eventGrid = CreateEventGrid(row);
-                        Events.Add(eventGrid); 
-                    }
-                }
+
+            foreach (var eventItem in listEvents)
+            {
+                    Grid eventGrid = CreateEventGrid(eventItem);
+                    Events.Add(eventGrid);
+                
             }
         }
         catch (Exception ex)
@@ -192,7 +233,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         }
     }
 
-    private Grid CreateEventGrid(DataRow row)
+    private Grid CreateEventGrid(Event eventItem)
     {
         Grid eventGrid = new Grid
         {
@@ -205,30 +246,50 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         eventGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(100) });
         eventGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
 
+        // Panel hiển thị thông tin sự kiện
         StackPanel infoPanel = new StackPanel
         {
-           
             Padding = new Thickness(10, 10, 10, 0),
             Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9))
-            
         };
         Grid.SetRow(infoPanel, 0);
 
-        infoPanel.Children.Add(new TextBlock { Text = "Event Name: " + row["event_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize=16 });
-        infoPanel.Children.Add(new TextBlock { Text = "Appointment: " + row["date"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
-        infoPanel.Children.Add(new TextBlock { Text = "Booker: " + row["customer_name"].ToString(), Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)), FontSize = 16 });
+        infoPanel.Children.Add(new TextBlock
+        {
+            Text = "Event Name: " + eventItem.Name,
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)),
+            FontSize = 16
+        });
+
+        infoPanel.Children.Add(new TextBlock
+        {
+            Text = "Appointment: " + eventItem.Date + " " + eventItem.Time,
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)),
+            FontSize = 16
+        });
+
+        infoPanel.Children.Add(new TextBlock
+        {
+            Text = "Booker: " + eventItem.Name,
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0x79, 0x47, 0x30)),
+            FontSize = 16
+        });
 
         infoPanel.PointerPressed += OnStackPanelPressed;
 
-        infoPanel.Tag = row["id"].ToString();
+        infoPanel.Tag = eventItem.Id.ToString();
         eventGrid.Children.Add(infoPanel);
 
+        // Panel chứa các nút chức năng
         StackPanel buttonPanel = new StackPanel
         {
+            Orientation = Orientation.Horizontal,
+            HorizontalAlignment = HorizontalAlignment.Center,
             Margin = new Thickness(10, 0, 0, 0)
         };
         Grid.SetRow(buttonPanel, 1);
 
+        // Nút "Complete"
         Button completeButton = new Button
         {
             Width = 120,
@@ -237,28 +298,56 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
             CornerRadius = new CornerRadius(20),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
-            Margin = new Thickness(0, 5, 0, 0),
-            Tag = row["id"].ToString()
+            Margin = new Thickness(5, 5, 5, 5),
+            Tag = eventItem.Id.ToString()
         };
-        completeButton.Click += CompleteButton_Click; // Lưu ý: Có thể xem xét chuyển đổi cách này sang command.
+        completeButton.Click += CompleteButton_Click;
 
         completeButton.Content = new TextBlock
         {
             Text = "Complete",
             Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)),
-            FontWeight= FontWeights.Bold,
+            FontWeight = FontWeights.Bold,
             FontSize = 16,
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };
 
+        // Nút "Cancel"
+        Button cancelButton = new Button
+        {
+            Width = 120,
+            Height = 40,
+            Background = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xFF, 0x45, 0x45)),
+            CornerRadius = new CornerRadius(20),
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+            Margin = new Thickness(5, 5, 5, 5),
+            Tag = eventItem.Id.ToString()
+        };
+        cancelButton.Click += CancelButton_Click;
+
+        cancelButton.Content = new TextBlock
+        {
+            Text = "Cancel",
+            Foreground = new SolidColorBrush(ColorHelper.FromArgb(0xFF, 0xff, 0xff, 0xd9)),
+            FontWeight = FontWeights.Bold,
+            FontSize = 16,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center
+        };
+
+        // Thêm các nút vào panel
         buttonPanel.Children.Add(completeButton);
+        buttonPanel.Children.Add(cancelButton);
         eventGrid.Children.Add(buttonPanel);
 
         return eventGrid;
     }
 
-    
+
+
+
 
     private void ResetForm(object parameter)
     {
@@ -272,21 +361,17 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         EventParams.Type=string.Empty;
     }
 
+    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    {
+        int id = Convert.ToInt32((sender as Button).Tag);
+        _Dao_Events.UpdateEventStatus(id, "cancel");
+
+        LoadEvents(null);
+    }
     private void CompleteButton_Click(object sender, RoutedEventArgs e)
     {
         int id = Convert.ToInt32((sender as Button).Tag);
-        string query = "UPDATE events SET status=@status WHERE id = @id";
-
-
-        using (var connection = _dbManager.GetConnection())
-        {
-            using (MySqlCommand cmd = new MySqlCommand(query, connection))
-            {
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@status", "complete");
-                cmd.ExecuteNonQuery();
-            }
-        }
+        _Dao_Events.UpdateEventStatus(id,"complete");
 
         LoadEvents(null);
     }
@@ -300,35 +385,7 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
         }
 
         int id = Convert.ToInt32((sender as StackPanel).Tag);
-        Model.Event Event = null;
-        string query = "SELECT * FROM events WHERE id=@id";
-        using (var connection = _dbManager.GetConnection())
-        {
-            using (MySqlCommand cmd = new MySqlCommand(query, connection))
-            {
-
-                cmd.Parameters.AddWithValue("@id", id);
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        DateTime dateTime = reader.GetDateTime(reader.GetOrdinal("date"));
-                        Event = new Model.Event
-                        {
-                            Name = reader.GetString("customer_name"),
-                            PhoneNumber = reader.GetString("phone_number"),
-                            Email = reader.GetString("email"),
-                            TableNumber = reader.GetInt32("table_number"),
-                            Note = reader.GetString("note"),
-                            Date = dateTime.ToString("yyyy-MM-dd"),
-                            Time = dateTime.ToString("HH:mm:ss")
-                        };
-                        
-                    }
-                }
-            }
-        }
-
+        Model.Event Event = _Dao_Events.GetEventById(id);
        
         InfoParams.Name = Event.Name;
         InfoParams.PhoneNumber=Event.PhoneNumber;
@@ -355,6 +412,15 @@ public class EventSchedulingViewModel : INotifyPropertyChanged
     protected virtual void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+    {
+        if (Equals(storage, value))
+            return false;
+
+        storage = value;
+        OnPropertyChanged(propertyName);
+        return true;
     }
 }
     

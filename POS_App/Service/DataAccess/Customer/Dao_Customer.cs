@@ -204,6 +204,9 @@ public class Dao_Customer : IDao_Customer
 
                 var query = "UPDATE customers SET point = point+@point WHERE phoneNumber = @phoneNumber";
 
+                Debug.WriteLine(phoneNumber);
+                Debug.WriteLine(point);
+
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@phoneNumber", phoneNumber);

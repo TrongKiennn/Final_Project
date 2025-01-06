@@ -581,7 +581,7 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
                 Customer = FindCustomer;
                
                 Customer.Point = (int)(order.CusPayment*Customer.PointPerDollar);
-
+                Debug.WriteLine(Customer.Point);
                 order.DiscountSalesTax = Math.Round(order.CusPayment * Customer.RankDiscount, 2);
 
             }
@@ -591,7 +591,6 @@ public partial class OrderPageViewModel : INotifyPropertyChanged
     private void SaveOrderToDb()
     {
         CheckCustomerPhone.ErrorMessage = "";
-        Customer = new Model.Customer();
         _Dao_Customer.UpdateCustomerPoint(Customer.PhoneNumber, Customer.Point);
     
         CreateData();

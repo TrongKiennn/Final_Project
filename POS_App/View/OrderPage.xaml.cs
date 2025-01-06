@@ -132,12 +132,7 @@ namespace POS_App.View
         }
 
 
-     
-        //private async void OnProductTapped(object sender, RoutedEventArgs e)
-        //{
-        //    await OrderDetailDialog.ShowAsync();
-        //}
-
+ 
         private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.InvokedItemContainer.Tag != null)
@@ -164,17 +159,7 @@ namespace POS_App.View
             VisualStateManager.GoToState(this, "PaneClosedState", true);
         }
 
-        // This will handle Save button click inside the ContentDialog
-        private void OnSaveClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            // You can handle saving the order here
-        }
-
-        // This will handle Cancel button click inside the ContentDialog
-        private void OnCancelClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            // Handle cancellation logic if needed
-        }
+      
 
         private void nextButton_Click(object sender, RoutedEventArgs e) {
             OrderPageViewModel.GoToNextPage();
@@ -238,79 +223,6 @@ namespace POS_App.View
             }
         }
 
-        private void SwitchToInterfaceB_Click(object sender, RoutedEventArgs e)
-        {
-            InterfaceA.Visibility = Visibility.Collapsed;
-            InterfaceB.Visibility = Visibility.Visible;
-        }
-
-        private void SwitchToInterfaceA_Click(object sender, RoutedEventArgs e)
-        {
-            InterfaceB.Visibility = Visibility.Collapsed;
-            InterfaceA.Visibility = Visibility.Visible;
-        }
-        //private void OnAddIngredientClick(object sender, RoutedEventArgs e)
-        //{
-        //    // Create a new StackPanel for the new ingredient
-        //    var newIngredientPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 10 };
-        //    newIngredientPanel.Children.Add(new TextBox { Width = 810, PlaceholderText = "New Ingredient" });
-        //    newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Quantity" });
-        //    newIngredientPanel.Children.Add(new TextBox { Width = 100, PlaceholderText = "Unit" });
-
-        //    // Add the new ingredient panel to the IngredientsPanel
-        //    IngredientsPanel.Children.Add(newIngredientPanel);
-        //}
-
-        private async void AddPhotoButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // Create the FileOpenPicker
-                var picker = new FileOpenPicker
-                {
-                    ViewMode = PickerViewMode.Thumbnail,
-                    SuggestedStartLocation = PickerLocationId.PicturesLibrary
-                };
-
-                // Add allowed file types
-                picker.FileTypeFilter.Add(".jpg");
-                picker.FileTypeFilter.Add(".jpeg");
-                picker.FileTypeFilter.Add(".png");
-
-                // Initialize the picker with the correct window handle for WinUI apps
-                var hwnd = WindowNative.GetWindowHandle(App.MainWindow);
-                InitializeWithWindow.Initialize(picker, hwnd);
-
-                // Pick a file
-                StorageFile file = await picker.PickSingleFileAsync();
-
-                if (file != null)
-                {
-                    // If file is selected, display the file name
-                    this.textBlock.Text = "Picked photo: " + file.Name;
-
-                    // Optionally, set the image source
-                    var bitmapImage = new BitmapImage();
-                    using (var stream = await file.OpenAsync(FileAccessMode.Read))
-                    {
-                        await bitmapImage.SetSourceAsync(stream);
-                    }
-
-                    SelectedImage.Source = bitmapImage;
-                    SelectedImage.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    // If no file was selected, show cancellation message
-                    this.textBlock.Text = "Operation cancelled.";
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle any error that may have occurred during the process
-                this.textBlock.Text = "Error: " + ex.Message;
-            }
-        }
-
+       
     }
 }

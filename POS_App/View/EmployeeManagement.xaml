@@ -212,10 +212,10 @@
                         <TextBox PlaceholderText="Enter email" Text="{Binding NewEmployee.Email,Mode=TwoWay}" Margin="0,0,0,10"/>
 
                         <TextBlock Text="Password:" Foreground="#FFFFD9" Margin="0,5"/>
-                        <TextBox PlaceholderText="Enter password" Text="{Binding NewEmployee.PassWord, Mode=TwoWay}" Margin="0,0,0,10"/>
+                        <PasswordBox PlaceholderText="Enter password" Password="{Binding NewEmployee.PassWord, Mode=TwoWay}" Margin="0,0,0,10"/>
 
                         <TextBlock Text="Confirm Password:" Foreground="#FFFFD9" Margin="0,5"/>
-                        <TextBox PlaceholderText="Enter confirm password" Text="{Binding NewEmployee.ConfirmPassword,Mode=TwoWay}" Margin="0,0,0,10"/>
+                        <PasswordBox PlaceholderText="Enter confirm password" Password="{Binding NewEmployee.ConfirmPassword,Mode=TwoWay}" Margin="0,0,0,10"/>
 
                         <Grid Margin="0,0,0,5">
                             <Grid.ColumnDefinitions>

@@ -204,6 +204,7 @@ namespace POS_App.ViewModel
                 (NewEmployee.FirstName, "First Name cannot be blank."),
                 (NewEmployee.LastName, "Last Name cannot be blank."),
                 (NewEmployee.Role, "Position cannot be blank.")
+
             };
 
 
@@ -264,7 +265,6 @@ namespace POS_App.ViewModel
                 (NewEmployeeInfo.FullName, "Email cannot be blank."),
                 (NewEmployeeInfo.PhoneNumber, "Phone number cannot be blank."),
                 (NewEmployeeInfo.Gender, "Gender cannot be blank."),
-                (NewEmployeeInfo.Position, "Position cannot be blank.")
             };
 
             foreach (var (fieldValue, errorMessage) in validations)
@@ -283,6 +283,7 @@ namespace POS_App.ViewModel
                 return;
             }
 
+            NewEmployeeInfo.Position = NewEmployee.Role;
 
             if (NewEmployeeInfo.Position != "employee" && NewEmployeeInfo.Position != "manager")
             {

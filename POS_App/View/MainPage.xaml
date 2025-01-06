@@ -31,6 +31,7 @@
                 <NavigationViewItem Content="Table Manager" Icon="Tag" />
                 <NavigationViewItem Content="Employee Management" Icon="Placeholder"/>
                 <NavigationViewItem Content="VIP" Icon="SolidStar"/>
+                <NavigationViewItem Content="Update Menu" Icon="Edit"/>
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <NavigationViewItem Content="Logout" Icon="Switch" Tapped="Logout_Tapped"/>

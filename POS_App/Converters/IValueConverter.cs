@@ -75,5 +75,30 @@ namespace POS_App.Converters
         {
             throw new NotImplementedException();
         }
+
+       
+    }
+
+    public class DecimalToStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is decimal decimalValue)
+            {
+
+                return decimalValue.ToString("F2", CultureInfo.InvariantCulture);
+            }
+            return "0.00";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            if (decimal.TryParse(value as string, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal result))
+            {
+                return result;
+            }
+
+            return 0m;
+        }
     }
 }

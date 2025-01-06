@@ -7,10 +7,12 @@ using POS_App.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static POS_App.Service.DataAccess.IDao_Drinks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace POS_App.Service.DataAccess;
 
 public class Dao_Drinks : IDao_Drinks
@@ -82,7 +84,9 @@ public class Dao_Drinks : IDao_Drinks
                     name = reader.GetString("Name"),
                     imageUrl = reader.IsDBNull("ImageUrl") ? "/Assets/default_drink.jpg" : reader.GetString("ImageUrl"),
                     price = reader.GetDecimal("Price"),
-                    status = reader.GetString("status")
+                    status = reader.GetString("status"),
+                    drinkType = reader.GetString("TypeName")
+                    
                 };
 
                 result.Add(drink);
@@ -117,45 +121,160 @@ public class Dao_Drinks : IDao_Drinks
     }
 
 
-    public List<Drinks> GetDrinkWithoutFilter()
+    public List<Drinks> GetDrinkWithFilter(string searchText)
     {
         var result = new List<Drinks>();
         var connectionString = GetConnectionString();
-        MySqlConnection connection = new MySqlConnection(connectionString);
-      
 
-        connection.Open();
-       
-
-       
-        var sql = $"""
-        SELECT d.id AS ID, d.drink_name AS Name, d.drink_img_url AS ImageUrl, 
-               d.price AS Price,d.status
-        FROM drinks d; 
-        """;
-
-        var command = new MySqlCommand(sql, connection);
-     
-        using (var reader = command.ExecuteReader())
+        using (var connection = new MySqlConnection(connectionString))
         {
-            while (reader.Read())
-            {
-                var drink = new Drinks
-                {
-                    id = reader.GetInt32("ID"),
-                    name = reader.GetString("Name"),
-                    imageUrl = reader.IsDBNull("ImageUrl") ? "/Assets/default_drink.jpg" : reader.GetString("ImageUrl"),
-                    price = reader.GetDecimal("Price"),
-                    status = reader.GetString("status")
-                };
+            connection.Open();
 
-                result.Add(drink);
+            var sql = @"
+                SELECT d.id AS ID, d.drink_name AS Name, d.drink_img_url AS ImageUrl, 
+                       d.price AS Price, d.status, t.type_name as TypeName
+                FROM drinks d 
+                JOIN type_of_drink t ON d.typeId = t.id
+                WHERE d.drink_name LIKE @searchText 
+                Order by d.drink_name asc;
+                ";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@searchText", $"%{searchText}%");
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var drink = new Drinks
+                        {
+                            id = reader.GetInt32("ID"),
+                            name = reader.GetString("Name"),
+                            imageUrl = reader.IsDBNull("ImageUrl") ? "/Assets/default_drink.jpg" : reader.GetString("ImageUrl"),
+                            price = reader.GetDecimal("Price"),
+                            status = reader.GetString("status"),
+                            drinkType = reader.GetString("TypeName")
+                        };
+
+                        result.Add(drink);
+                    }
+                }
             }
         }
 
-        connection.Close();
-
         return result;
+    }
+
+    public Drinks GetDrinkByName(string drinkName)
+    {
+        var result = new Drinks();
+        var connectionString = GetConnectionString();
+
+        using (var connection = new MySqlConnection(connectionString))
+        {
+            connection.Open();
+
+            var sql = @"
+                SELECT d.id AS ID, d.drink_name AS Name, d.drink_img_url AS ImageUrl, 
+                       d.price AS Price, d.status, t.type_name as TypeName
+                FROM drinks d 
+                JOIN type_of_drink t ON d.typeId = t.id
+                WHERE d.drink_name=@drinkName;
+                ";
+
+            using (var command = new MySqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@drinkName",drinkName);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result = new Drinks
+                        {
+                            id = reader.GetInt32("ID"),
+                            name = reader.GetString("Name"),
+                            imageUrl = reader.IsDBNull("ImageUrl") ? "/Assets/default_drink.jpg" : reader.GetString("ImageUrl"),
+                            price = reader.GetDecimal("Price"),
+                            status = reader.GetString("status"),
+                            drinkType = reader.GetString("TypeName")
+                        };
+
+                       
+                    }
+                }
+            }
+        }
+        return result;
+    }
+    public void SaveDrink(Drinks drink)
+    {
+        using (var connection = new MySqlConnection(GetConnectionString()))
+        {
+            connection.Open();
+
+            var insertQuery = @"
+            INSERT INTO drinks (drink_name, price, drink_img_url, typeId)
+            VALUES (@name, @price, @imageUrl, 
+                    (SELECT id FROM type_of_drink WHERE type_name = @drinkType))";
+
+            using (var command = new MySqlCommand(insertQuery, connection))
+            {
+                command.Parameters.AddWithValue("@name", drink.name);
+                command.Parameters.AddWithValue("@price", drink.price);
+                command.Parameters.AddWithValue("@imageUrl", drink.imageUrl);
+                command.Parameters.AddWithValue("@drinkType", drink.drinkType);
+
+                command.ExecuteNonQuery();
+
+               
+                drink.id = (int)command.LastInsertedId;
+            }
+        }
+    }
+
+    public void UpdateDrink(Drinks drink)
+    {
+        using (var connection = new MySqlConnection(GetConnectionString()))
+        {
+            connection.Open();
+
+            var updateQuery = @"
+            UPDATE drinks
+            SET drink_name = @name, 
+                price = @price, 
+                drink_img_url = @imageUrl, 
+                typeId = (SELECT id FROM type_of_drink WHERE type_name = @drinkType)
+            WHERE id = @id";
+
+            using (var command = new MySqlCommand(updateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@name", drink.name);
+                command.Parameters.AddWithValue("@price", drink.price);
+                command.Parameters.AddWithValue("@imageUrl", drink.imageUrl);
+                command.Parameters.AddWithValue("@drinkType", drink.drinkType);
+                command.Parameters.AddWithValue("@id", drink.id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+
+    public void DeleteDrink(int drinkId)
+    {
+        using (var connection = new MySqlConnection(GetConnectionString()))
+        {
+            connection.Open();
+
+            var deleteQuery = "DELETE FROM drinks WHERE id = @drinkId";
+
+            using (var command = new MySqlCommand(deleteQuery, connection))
+            {
+                command.Parameters.AddWithValue("@drinkId", drinkId);
+                command.ExecuteNonQuery();
+            }
+        }
     }
     private static string GetConnectionString()
     {
