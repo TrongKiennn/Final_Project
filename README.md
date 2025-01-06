@@ -164,8 +164,7 @@ The team has completed 7 hours of work for **Milestone 3**, focusing on two main
 2. Employee Management (1 hour)
 - Manage employees with roles such as:
   - **Manager**
-  - **Waiter**
-  - **Staff**
+  - **Employee**
 - Calculate working hours for each employee.
 - Track attendance efficiently.
 3. Ingredient Management (1 hours)
@@ -173,7 +172,7 @@ The team has completed 7 hours of work for **Milestone 3**, focusing on two main
   - **Milk**
   - **Coffee**
   - **Sugar**
-  - **Ice**
+  - **Tea**
 - Provide alerts when ingredients are low or running out.
 5. Loyalty Customer Management (2 hours)
 - Store purchase history for customers who are members of the shop.
